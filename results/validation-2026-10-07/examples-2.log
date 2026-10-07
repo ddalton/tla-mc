@@ -1,0 +1,41 @@
+success specifications/CarTalkPuzzle/CarTalkPuzzle.toolbox/Model_1/MC.cfg 0.0 
+safety failure specifications/CheckpointCoordination/MCCheckpointCoordinationFailure.cfg 1.6 
+success specifications/CoffeeCan/CoffeeCan3000Beans.cfg 110.51 
+success specifications/DiningPhilosophers/DiningPhilosophers.cfg 0.01 
+unsupported specifications/FiniteMonotonic/MCCRDT.cfg 0.0 tla-mc: MCCRDT.tla: line 19: unsupported operator \cdot
+success specifications/FlashProtocol/MCFlashWithMutexLive.cfg 0.1 
+success specifications/GermanProtocol/MCGermanData.cfg 0.03 
+unsupported specifications/KeyValueStore/MCKVsnap.cfg 0.0 tla-mc: in CC!INTERSECTION: unknown operator op
+success specifications/LoopInvariance/MCBinarySearch.cfg 1.19 
+unsupported specifications/MisraReachability/MCReachabilityTestAllGraphs.cfg 0.0 tla-mc: ReachabilityTest.tla: line 46 col 12: unexpected keyword (at Ident("INSTANCE"))
+success specifications/Moving_Cat_Puzzle/CatEvenBoxes.cfg 0.0 
+success specifications/MultiCarElevator/ElevatorSafetyMedium.cfg 112.7 
+safety failure specifications/N-Queens/Queens.toolbox/FourQueens/MC.cfg 0.01 
+success specifications/Paxos/MCConsensus.cfg 0.0 
+success specifications/PaxosHowToWinATuringAward/MCPaxosSmall.cfg 17.44 
+success specifications/Prisoners_Single_Switch/Prisoner.cfg 0.01 
+success specifications/ReadersWriters/MC.cfg 0.17 
+success specifications/SimplifiedFastPaxos/Paxos.cfg 0.22 
+success specifications/SlushProtocol/SlushMedium.cfg 39.01 
+unsupported specifications/SpanningTree/SpanTreeTest4Nodes.cfg 0.0 tla-mc: Randomization.tla: No such file or directory (os error 2)
+success specifications/SpecifyingSystems/AsynchronousInterface/Channel.cfg 0.0 
+success specifications/SpecifyingSystems/FIFO/MCInnerFIFO.cfg 0.01 
+unsupported specifications/SpecifyingSystems/Liveness/MCLiveInternalMemory.cfg 0.0 tla-mc: PROPERTY Liveness: unsupported temporal formula Temporal("WF", [Ident("vars"), Apply("Do", [Ident("p")])])
+success specifications/SpecifyingSystems/TLC/ABCorrectness.cfg 0.0 
+success specifications/TeachingConcurrency/Simple.cfg 0.01 
+unsupported specifications/YoYo/MCYoYoNoPruning.cfg 0.0 tla-mc: cannot enumerate the infinite set Seq({1})
+success specifications/acp/ACP_NB_TLC.cfg 0.05 
+unsupported specifications/allocator/AllocatorRefinement.cfg 0.0 tla-mc: PROPERTY SimpleAllocator: unsupported temporal formula Temporal("WF", [Ident("Simple!vars"), Apply("Simple!Retur
+success specifications/barriers/Barriers.cfg 0.3 
+unsupported specifications/braf/BufferedRandomAccessFile.cfg 0.0 tla-mc: Common.tla: No such file or directory (os error 2)
+success specifications/byihive/VoucherIssue.cfg 0.11 
+success specifications/byzpaxos/Consensus.cfg 0.0 
+unsupported specifications/chang_roberts/MCChangRoberts.cfg 0.0 tla-mc: PROPERTY Liveness: unsupported temporal formula Bin("=>", Quant(false, [Bound { names: ["n"], tuple: false, set:
+success specifications/dijkstra-mutex/DijkstraMutex.toolbox/Safety-4-processors/MC.cfg 52.73 
+unsupported specifications/ewd840/EWD840.cfg 0.0 tla-mc: PROPERTY TDSpec: unsupported temporal formula Temporal("WF", [Ident("TD!vars"), Ident("TD!DetectTermination")])
+unsupported specifications/ewd998/EWD998Small.cfg 0.0 tla-mc: in Sum: unknown operator choose
+success specifications/ewd998/EWD998PCal.cfg 9.4 
+success specifications/lamport_mutex/MCLamportMutex.cfg 3.44 
+success specifications/nbacc_ray97/nbacc_ray97.cfg 0.02 
+unsupported specifications/tcp/MCtcp.cfg 0.0 tla-mc: ACTION_CONSTRAINT is not supported
+success specifications/transaction_commit/PaxosCommit.cfg 14.3 

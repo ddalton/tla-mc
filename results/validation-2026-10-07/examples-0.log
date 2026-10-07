@@ -1,0 +1,42 @@
+success specifications/Bakery-Boulangerie/MCBakery.cfg 10.9 
+success specifications/Chameneos/Chameneos.cfg 0.09 
+success specifications/CoffeeCan/CoffeeCan1000Beans.cfg 5.2 
+safety failure specifications/DieHard/MCDieHarder.cfg 0.01 
+success specifications/Disruptor/MCDisruptor_MPMC_liveliness.cfg 0.3 
+unsupported specifications/FiniteMonotonic/MCReplicatedLog.cfg 0.0 tla-mc: MCReplicatedLog.tla: line 22: unsupported operator \cdot
+success specifications/GermanProtocol/MCGermanCMPWithMutex.cfg 0.01 
+success specifications/KeyValueStore/MCKVSSafetyMedium.cfg 116.53 
+success specifications/LeastCircularSubstring/MCLeastCircularSubstringMedium.cfg 2.1 
+success specifications/Majority/MCMajority.cfg 0.01 
+success specifications/MisraReachability/MCReachable.cfg 0.04 
+success specifications/MultiCarElevator/ElevatorLivenessMedium.cfg 0.09 
+timeout specifications/MultiPaxos-SMR/MultiPaxos_MC.cfg 600.15 
+unsupported specifications/NanoBlockchain/MCNanoMedium.cfg 0.0 tla-mc: Nano.tla: line 31 col 34: expected `\in` (at Op(":"))
+success specifications/Paxos/MCVoting.cfg 0.01 
+success specifications/PaxosHowToWinATuringAward/MCVoting.cfg 0.21 
+success specifications/Prisoners_Single_Switch/PrisonerSolo.cfg 0.0 
+unsupported specifications/SDP_Verification/SDP_Attack_Spec/MC.cfg 0.0 tla-mc: /data/CommunityModules/modules/Bitwise.tla: line 34 col 3: expected `==` (at Op("|"))
+safety failure specifications/SlidingPuzzles/SlidingPuzzles.cfg 0.23 
+success specifications/SpanningTree/SpanTree.cfg 0.03 
+unsupported specifications/SpecifyingSystems/AdvancedExamples/MCInnerSerial.cfg 0.0 tla-mc: fairness: unsupported fairness conjunct Bin("=>", Bin("#", Ident("oi"), Ident("oj")), Temporal("WF", [Tuple([Ide
+success specifications/SpecifyingSystems/CachingMemory/MCInternalMemory.cfg 0.02 
+success specifications/SpecifyingSystems/HourClock/HourClock2.cfg 0.0 
+unsupported specifications/SpecifyingSystems/RealTime/MCRealTimeHourClock.cfg 0.0 tla-mc: a temporal formula where a value is expected
+success specifications/Stones/Stones.cfg 0.04 
+unsupported specifications/TransitiveClosure/TransitiveClosure.cfg 0.0 tla-mc: unknown operator R
+error specifications/YoYo/YoYoAllGraphs.cfg 0.01 Error: cannot enumerate the infinite set Seq({1})
+success specifications/acp/ACP_SB_TLC.cfg 0.1 
+success specifications/allocator/SimpleAllocator.cfg 0.01 
+unsupported specifications/bcastByz/bcastByzNoBcast.cfg 0.0 tla-mc: PROPERTY CorrLtl: unsupported temporal formula Bin("=>", Quant(true, [Bound { names: ["i"], tuple: false, set: I
+success specifications/btree/kvstore.cfg 0.02 
+success specifications/byihive/VoucherRedeem.cfg 0.15 
+success specifications/byzpaxos/VoteProof.cfg 0.5 
+unsupported specifications/dag-consensus/TLCSailfish1.cfg 0.0 tla-mc: cannot enumerate the infinite set Nat
+success specifications/ewd426/TokenRing.cfg 0.27 
+unsupported specifications/ewd840/SyncTerminationDetection.cfg 0.0 tla-mc: PROPERTY Quiescence: unsupported shape under []
+unsupported specifications/ewd998/EWD998ChanID.cfg 0.01 tla-mc: PROPERTY EWD998ChanSpec: unsupported temporal formula Temporal("WF", [Ident("EWD998Chan!vars"), Ident("EWD998Cha
+unsupported specifications/glowingRaccoon/product.cfg 0.0 tla-mc: PROPERTY stagesSpec: unsupported temporal formula Temporal("WF", [Ident("stagesInstance!vars"), Ident("stagesIns
+success specifications/locks_auxiliary_vars/LockHS.cfg 0.01 
+safety failure specifications/spanning/MC_spanning.cfg 0.0 
+safety failure specifications/tower_of_hanoi/Hanoi_anim.cfg 0.01 
+success specifications/transaction_commit/TwoPhase.cfg 0.01 

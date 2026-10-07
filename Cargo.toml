@@ -1,6 +1,6 @@
 [package]
 name = "tla-mc"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 rust-version = "1.88"
 description = "A fast TLA+ model checker: compiles a spec into a native, parallel checker; state counts measured exact against TLC"

@@ -1,0 +1,17 @@
+LeanProbeRemovalRefused.cfg 0.015 2.084 213 343
+LeanBarrierLeaseSentinelOutrankedOk.cfg 87.61 129.407 8236291 6137994
+LeanBarrierLeaseOrphanTracked.cfg 55.49 68.545 2657152 2657152
+LeanImmutableSweepLeaseFree.cfg 0.055 2.179 2594 3595
+FlintA2ProbeArmed.cfg 0.009 1.252 22 173
+FlintReplicationKubeToothSelfLive.cfg 0.01 1.288 8 51
+FlintAdmissionZombie.cfg 0.008 1.138 36 46
+FlintShareDiskNoGuard.cfg 0.006 1.132 220 242
+ForgeSyncCodeKeptSetNoRenew.cfg 28.62 34.611 1744482 2247069
+FlintDelegRecallRearmStale.cfg 0.01 1.151 1543 1543
+LeanProbeScopedDeferral.cfg 0.057 1.935 4576 3160
+LeanCoreCommitBlindReverts.cfg 52.15 58.314 4305740 2971774
+LeanChunkGCAdoptSkips.cfg 0.037 1.552 41705 52198
+LeanBarrierLeaseDeposal.cfg 12.79 19.077 619637 619637
+LeanBarrierLeaseRandomArbitration.cfg 0.853 6.817 23545 23545
+LeanProbeTombstoneApplied.cfg 0.052 1.816 3595 3845
+FlintReplicationA2Naive.cfg 0.019 1.086 29 63

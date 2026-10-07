@@ -1,0 +1,441 @@
+[1/443 28s] formal/FlintDelegRecallProbeStale.cfg OK
+[2/443 28s] formal/ForgeMergeChainNoCoalesce.cfg OK
+[3/443 28s] lean/formal/LeanChunkGCRefsFirst.cfg DIFF: interp verdict Inv_LiveComplete want Invariant Inv_LiveComplete is violated; gen verdict Inv_LiveComplete want Invariant Inv_LiveComplete is violated
+[4/443 28s] formal/FlintSnapshotsBareDelete.cfg OK
+[5/443 29s] formal/FlintExtentsProbeResnapshot.cfg OK
+[6/443 30s] formal/FlintClientIdentityLockLeak.cfg OK
+[7/443 30s] formal/FlintCompositionNoActor.cfg OK
+[8/443 30s] formal/FlintCompositionEpochKeyedToo.cfg OK
+[9/443 33s] formal/FlintTierEpochLive.cfg OK
+[10/443 38s] formal/FlintReplicationRaidLost.cfg OK
+[11/443 39s] formal/FlintReplicationBounceRace.cfg OK
+[12/443 39s] formal/FlintReplicationA2AdoptValidated.cfg OK
+[13/443 48s] formal/FlintReplicationDeep.cfg OK
+[14/443 54s] formal/FlintTruncate.cfg OK
+[15/443 55s] formal/FlintExtentsProbeDelivered.cfg OK
+[16/443 58s] formal/FlintCompositionSkew.cfg OK
+[17/443 59s] formal/FlintReplication.cfg OK
+[18/443 59s] formal/FlintTierEpochNoSweep.cfg OK
+[19/443 59s] formal/FlintCompositionStaticTraddr.cfg OK
+[20/443 63s] formal/FlintReplicationRaidFenceAB.cfg OK
+[21/443 64s] formal/FlintTierMarker.cfg OK
+[22/443 65s] lean/formal/LeanCoreRepairRecites.cfg DIFF: interp verdict Inv_OneName want Invariant Inv_OneName is violated; gen verdict Inv_OneName want Invariant Inv_OneName is violated
+[23/443 66s] formal/FlintCsiMount.cfg OK
+[24/443 67s] formal/FlintClientIdentityNoCollide.cfg OK
+[25/443 76s] formal/ForgeSyncProveFromDisk.cfg OK
+[26/443 85s] formal/FlintReplicationA2AdoptBelted.cfg OK
+[27/443 85s] lean/formal/LeanChunkGCNoGrace.cfg DIFF: interp verdict Inv_LiveComplete want Invariant Inv_LiveComplete is violated; gen verdict Inv_LiveComplete want Invariant Inv_LiveComplete is violated
+[28/443 100s] formal/FlintReplicationGateRealStale.cfg OK
+[29/443 105s] lean/formal/LeanNarrowHolds.cfg OK
+[30/443 105s] formal/FlintReplicationA2SoleOwner.cfg OK
+[31/443 105s] lean/formal/LeanGCUnguarded.cfg DIFF: interp verdict Inv_HITLDurable want Invariant Inv_HITLDurable is violated; gen verdict Inv_HITLDurable want Invariant Inv_HITLDurable is violated
+[32/443 105s] lean/formal/LeanProbeRemovalRefused.cfg DIFF: interp verdict ProbeRemovalRefused want Invariant ProbeRemovalRefused is violated; gen verdict ProbeRemovalRefused want Invariant ProbeRemovalRefused is violated
+[33/443 109s] lean/formal/LeanBarrierLeaseStragglerLoadsSuccessor.cfg DIFF: interp verdict Inv_NoStragglerInstall want Invariant Inv_NoStragglerInstall is violated; gen verdict Inv_NoStragglerInstall want Invariant Inv_NoStragglerInstall is violated
+[34/443 109s] lean/formal/LeanProbeCollectorLeaked.cfg DIFF: interp verdict ProbeCollectorLeaked want Invariant ProbeCollectorLeaked is violated; gen verdict ProbeCollectorLeaked want Invariant ProbeCollectorLeaked is violated
+[35/443 111s] formal/FlintClaims.cfg OK
+[36/443 113s] formal/FlintReplicationRollerRaceUngated.cfg OK
+[37/443 124s] lean/formal/LeanBarrierLeaseHitlOverAnyUnverified.cfg DIFF: interp verdict Inv_HITLDurable want Invariant Inv_HITLDurable is violated; gen verdict Inv_HITLDurable want Invariant Inv_HITLDurable is violated
+[38/443 129s] formal/FlintExtentsQuarantineBlindRelease.cfg OK
+[39/443 133s] formal/FlintCompositionProbeZombie.cfg OK
+[40/443 136s] formal/FlintDelegRecall.cfg OK
+[41/443 138s] formal/FlintCsiMountCrashStuck.cfg OK
+[42/443 139s] formal/FlintTierSessionNoDepose.cfg OK
+[43/443 139s] formal/FlintExtentsMergeMin.cfg OK
+[44/443 148s] formal/ForgeSyncNoIdxGate.cfg OK
+[45/443 153s] lean/formal/LeanDanglingOrder.cfg DIFF: interp verdict Inv_NoDangling want Invariant Inv_NoDangling is violated; gen verdict Inv_NoDangling want Invariant Inv_NoDangling is violated
+[46/443 157s] lean/formal/LeanImmutableOrphanCollected.cfg OK
+[47/443 158s] lean/formal/LeanNarrowUnlinkFirst.cfg DIFF: interp verdict Inv_NarrowNeverDeletes want Invariant Inv_NarrowNeverDeletes is violated; gen verdict Inv_NarrowNeverDeletes want Invariant Inv_NarrowNeverDeletes is violated
+[48/443 159s] lean/formal/LeanChunkMergeProbeDiverge.cfg DIFF: interp verdict Probe_BoundariesDiverged want Invariant Probe_BoundariesDiverged is violated; gen verdict Probe_BoundariesDiverged want Invariant Probe_BoundariesDiverged is violated
+[49/443 161s] lean/formal/LeanProbeRename.cfg DIFF: interp verdict ProbeRenameApplied want Invariant ProbeRenameApplied is violated; gen verdict ProbeRenameApplied want Invariant ProbeRenameApplied is violated
+[50/443 164s] formal/FlintCompositionLiveWitness.cfg OK
+[51/443 166s] formal/ForgeSyncFoldTicksBatchSensor.cfg OK
+[52/443 171s] lean/formal/LeanProbeStragglerGCFenced.cfg DIFF: interp verdict ProbeFenceAbandoned want Invariant ProbeFenceAbandoned is violated; gen verdict ProbeFenceAbandoned want Invariant ProbeFenceAbandoned is violated
+[53/443 175s] lean/formal/LeanImmutableProbeSwept.cfg DIFF: interp verdict ProbeSwept want Invariant ProbeSwept is violated; gen verdict ProbeSwept want Invariant ProbeSwept is violated
+[54/443 188s] formal/FlintReplicationMonitorLag.cfg OK
+[55/443 189s] formal/FlintExtentsReuseUnderGrant.cfg OK
+[56/443 192s] formal/FlintReplicationBounceRaceFixed.cfg OK
+[57/443 192s] formal/FlintExtentsQuarantineVisible.cfg OK
+[58/443 193s] lean/formal/LeanImmutableSyncQueueRegress.cfg DIFF: interp verdict Inv_ConsumeNeverRegresses want Invariant Inv_ConsumeNeverRegresses is violated; gen verdict Inv_ConsumeNeverRegresses want Invariant Inv_ConsumeNeverRegresses is violated
+[59/443 193s] lean/formal/LeanCoreProbeGone.cfg DIFF: interp verdict ProbeGone want Invariant ProbeGone is violated; gen verdict ProbeGone want Invariant ProbeGone is violated
+[60/443 195s] formal/FlintCompositionProbeFree.cfg OK
+[61/443 195s] formal/FlintReplicationRollerRaceFixed.cfg OK
+[62/443 200s] formal/FlintCompositionNoWitness.cfg OK
+[63/443 202s] formal/FlintReplicationKubeToothSocket.cfg OK
+[64/443 215s] lean/formal/LeanProbeGC.cfg DIFF: interp verdict ProbeGC want Invariant ProbeGC is violated; gen verdict ProbeGC want Invariant ProbeGC is violated
+[65/443 217s] formal/FlintDelegRecallLive.cfg OK
+[66/443 218s] formal/ForgeSyncNoTickOnHash.cfg OK
+[67/443 218s] formal/FlintCsiMountProbeHandoff.cfg OK
+[68/443 220s] formal/FlintTierSessionNoFence.cfg OK
+[69/443 221s] lean/formal/LeanChunkMergeProbeBoth.cfg DIFF: interp verdict Probe_BothWrote want Invariant Probe_BothWrote is violated; gen verdict Probe_BothWrote want Invariant Probe_BothWrote is violated
+[70/443 230s] lean/formal/LeanSentinelFastPathUnguarded.cfg DIFF: interp verdict Inv_AckBoundaryCoherent want Invariant Inv_AckBoundaryCoherent is violated; gen verdict Inv_AckBoundaryCoherent want Invariant Inv_AckBoundaryCoherent is violated
+[71/443 240s] formal/ForgeSyncListingKeepsRetained.cfg OK
+[72/443 245s] lean/formal/LeanProbeDeposalMidCommit.cfg DIFF: interp verdict ProbeDeposalMidCommit want Invariant ProbeDeposalMidCommit is violated; gen verdict ProbeDeposalMidCommit want Invariant ProbeDeposalMidCommit is violated
+[73/443 255s] lean/formal/LeanCoreCommitBlind.cfg DIFF: interp verdict Inv_AckedNamed want Invariant Inv_AckedNamed is violated; gen verdict Inv_AckedNamed want Invariant Inv_AckedNamed is violated
+[74/443 258s] lean/formal/LeanCoreProbeRefused.cfg DIFF: interp verdict ProbeRefused want Invariant ProbeRefused is violated; gen verdict ProbeRefused want Invariant ProbeRefused is violated
+[75/443 258s] formal/FlintReplicationA2Armed.cfg OK
+[76/443 259s] formal/FlintReplicationMaintPark.cfg OK
+[77/443 264s] lean/formal/LeanImmutableSyncQueueHolds.cfg OK
+[78/443 267s] formal/FlintExtentsGrantOverlap.cfg OK
+[79/443 270s] lean/formal/LeanImmutableCasVerifies.cfg OK
+[80/443 273s] formal/FlintExtentsProbeQuarantineRelease.cfg OK
+[81/443 276s] lean/formal/LeanBarrierLeaseSyncOverlayHolds.cfg DIFF: distinct interp 455773 gen 455964; distinct TLC 455930 gen 455964
+[82/443 277s] formal/FlintReplicationMaint.cfg OK
+[83/443 284s] formal/FlintShareDisk.cfg OK
+[84/443 285s] formal/FlintReplicationKubeToothLatched.cfg OK
+[85/443 291s] formal/FlintTierSessionNoRotate.cfg OK
+[86/443 292s] formal/FlintCompositionRejoin.cfg OK
+[87/443 293s] formal/FlintDelegRecallNoGuard.cfg OK
+[88/443 297s] lean/formal/LeanProbeRefusal.cfg DIFF: interp verdict ProbeRefusal want Invariant ProbeRefusal is violated; gen verdict ProbeRefusal want Invariant ProbeRefusal is violated
+[89/443 297s] formal/FlintCsiMountProbeCleanup.cfg OK
+[90/443 304s] lean/formal/LeanSentinelStaleMergeBase.cfg DIFF: interp verdict Inv_AckImpliesCited want Invariant Inv_AckImpliesCited is violated; gen verdict Inv_AckImpliesCited want Invariant Inv_AckImpliesCited is violated
+[91/443 305s] formal/ForgeSyncNoRotate.cfg OK
+[92/443 308s] lean/formal/LeanProbeFenceAbandoned.cfg DIFF: interp verdict ProbeFenceAbandoned want Invariant ProbeFenceAbandoned is violated; gen verdict ProbeFenceAbandoned want Invariant ProbeFenceAbandoned is violated
+[93/443 309s] lean/formal/LeanBarrierLeaseLive.cfg OK
+[94/443 322s] lean/formal/LeanProbeOrphanTracked.cfg DIFF: interp verdict ProbeOrphanTracked want Invariant ProbeOrphanTracked is violated; gen verdict ProbeOrphanTracked want Invariant ProbeOrphanTracked is violated
+[95/443 327s] lean/formal/LeanImmutableSweepLeaseFree.cfg DIFF: interp verdict Inv_NoDangling want Invariant Inv_NoDangling is violated; gen verdict Inv_NoDangling want Invariant Inv_NoDangling is violated
+[96/443 336s] formal/FlintExtentsStaleSnapshotFree.cfg OK
+[97/443 340s] lean/formal/LeanCoreProbePending.cfg DIFF: interp verdict ProbePending want Invariant ProbePending is violated; gen verdict ProbePending want Invariant ProbePending is violated
+[98/443 341s] formal/FlintA2ProbeArmed.cfg OK
+[99/443 346s] formal/FlintReplicationKubeToothVolume.cfg OK
+[100/443 349s] formal/FlintReplicationMaintParkFixed.cfg OK
+[101/443 350s] formal/FlintExtentsProbeTruncate.cfg OK
+[102/443 356s] lean/formal/LeanBarrierLeaseAckAfterRestart.cfg DIFF: interp verdict Inv_AckImpliesCited want Invariant Inv_AckImpliesCited is violated; gen verdict Inv_AckImpliesCited want Invariant Inv_AckImpliesCited is violated
+[103/443 356s] formal/FlintCompositionSelfRejoin.cfg OK
+[104/443 363s] formal/FlintShareDiskLive.cfg OK
+[105/443 364s] formal/FlintReplicationA2Staging.cfg OK
+[106/443 375s] formal/FlintTierSessionNoDrain.cfg OK
+[107/443 375s] formal/FlintDelegRecallNoFence.cfg OK
+[108/443 377s] lean/formal/LeanProbeAdoptOwn.cfg DIFF: interp verdict ProbeAdoptOwn want Invariant ProbeAdoptOwn is violated; gen verdict ProbeAdoptOwn want Invariant ProbeAdoptOwn is violated
+[109/443 381s] lean/formal/LeanProbeSentinelHonored.cfg DIFF: interp verdict ProbeSentinelHonored want Invariant ProbeSentinelHonored is violated; gen verdict ProbeSentinelHonored want Invariant ProbeSentinelHonored is violated
+[110/443 383s] formal/ForgeSyncCasBeforePacks.cfg OK
+[111/443 386s] formal/ForgeSyncCodeNeededQueued.cfg OK
+[112/443 396s] lean/formal/LeanProbeDeadHandoffSkipped.cfg DIFF: interp verdict ProbeDeadHandoffSkipped want Invariant ProbeDeadHandoffSkipped is violated; gen verdict ProbeDeadHandoffSkipped want Invariant ProbeDeadHandoffSkipped is violated
+[113/443 398s] lean/formal/LeanProbeOrphanOutlived.cfg DIFF: interp verdict ProbeOrphanOutlived want Invariant ProbeOrphanOutlived is violated; gen verdict ProbeOrphanOutlived want Invariant ProbeOrphanOutlived is violated
+[114/443 404s] lean/formal/LeanImmutableSweepTakesTracked.cfg DIFF: interp verdict Inv_HITLDurable want Invariant Inv_HITLDurable is violated; gen verdict Inv_HITLDurable want Invariant Inv_HITLDurable is violated
+[115/443 405s] lean/formal/LeanBarrierLeaseLiveCrash.cfg OK
+[116/443 410s] formal/FlintReplicationMaintDeep.cfg OK
+[117/443 411s] lean/formal/LeanRemovalHolds.cfg OK
+[118/443 421s] formal/FlintReplicationRollUnfenced.cfg OK
+[119/443 429s] lean/formal/LeanBarrierLeaseOrphanTracked.cfg OK
+[120/443 434s] formal/FlintExtentsLostFence.cfg OK
+[121/443 434s] formal/FlintA2ProbeDeath.cfg OK
+[122/443 437s] formal/FlintAdmission.cfg OK
+[123/443 440s] formal/FlintReplicationExpand.cfg OK
+[124/443 441s] formal/FlintCompositionUncleanBlind.cfg OK
+[125/443 442s] formal/FlintReplicationKubeToothSelfLive.cfg OK
+[126/443 448s] formal/FlintShareDiskVacuity.cfg OK
+[127/443 461s] lean/formal/LeanProbeRefusedAck.cfg DIFF: interp verdict ProbeRefusedAck want Invariant ProbeRefusedAck is violated; gen verdict ProbeRefusedAck want Invariant ProbeRefusedAck is violated
+[128/443 461s] lean/formal/LeanSyncHolds.cfg OK
+[129/443 463s] formal/FlintDelegRecallDisownDrop.cfg OK
+[130/443 464s] formal/FlintTierSessionProbeStale.cfg OK
+[131/443 466s] lean/formal/LeanBarrierLeaseSentinelOutrankedOk.cfg DIFF: interp verdict Inv_AckImpliesCited want Invariant Inv_AckImpliesCited is violated; gen verdict Inv_AckImpliesCited want Invariant Inv_AckImpliesCited is violated
+[132/443 467s] formal/ForgeSyncCodeLive.cfg OK
+[133/443 471s] formal/ForgeSyncProbeToldFailed.cfg OK
+[134/443 479s] lean/formal/LeanCoreProbeRemovalOutranked.cfg DIFF: interp verdict ProbeRemovalOutranked want Invariant ProbeRemovalOutranked is violated; gen verdict ProbeRemovalOutranked want Invariant ProbeRemovalOutranked is violated
+[135/443 482s] lean/formal/LeanBarrierLeaseEpochReused.cfg DIFF: interp verdict Inv_CommitExclusive want Invariant Inv_CommitExclusive is violated; gen verdict Inv_CommitExclusive want Invariant Inv_CommitExclusive is violated
+[136/443 492s] lean/formal/LeanProbeAdoptWithheld.cfg DIFF: interp verdict ProbeAdoptWithheld want Invariant ProbeAdoptWithheld is violated; gen verdict ProbeAdoptWithheld want Invariant ProbeAdoptWithheld is violated
+[137/443 506s] lean/formal/LeanBarrierLeaseOrphanStaleCopy.cfg DIFF: interp verdict Inv_TreesConverged want Invariant Inv_TreesConverged is violated; gen verdict Inv_TreesConverged want Invariant Inv_TreesConverged is violated
+[138/443 508s] formal/FlintReplicationRollBarrier.cfg OK
+[139/443 509s] lean/formal/LeanImmutableGCUnconditional.cfg OK
+[140/443 518s] formal/FlintReplicationUncontrolledBlind.cfg OK
+[141/443 520s] formal/FlintClaimsNoGrace.cfg OK
+[142/443 520s] lean/formal/LeanSubtree.cfg OK
+[143/443 522s] formal/FlintReplicationExpandWedge.cfg OK
+[144/443 534s] formal/FlintExtentsTgtAmnesia.cfg OK
+[145/443 534s] formal/FlintAdmissionZombie.cfg OK
+[146/443 537s] formal/FlintCompositionAncestryBlind.cfg OK
+[147/443 538s] lean/formal/LeanCoreWithheldHolds.cfg OK
+[148/443 545s] formal/FlintShareDiskNoDrain.cfg OK
+[149/443 547s] lean/formal/LeanProbeAckAfterCrash.cfg DIFF: interp verdict ProbeAckAfterCrash want Invariant ProbeAckAfterCrash is violated; gen verdict ProbeAckAfterCrash want Invariant ProbeAckAfterCrash is violated
+[150/443 547s] lean/formal/LeanSyncStaleDirt.cfg DIFF: interp verdict Inv_SyncNeverDestroysDirty want Invariant Inv_SyncNeverDestroysDirty is violated; gen verdict Inv_SyncNeverDestroysDirty want Invariant Inv_SyncNeverDestroysDirty is violated
+[151/443 550s] formal/FlintClientIdentity.cfg OK
+[152/443 560s] formal/FlintDelegRecallNoEvidence.cfg OK
+[153/443 565s] lean/formal/LeanRemovalOverreaches.cfg DIFF: interp verdict Inv_RemovalNamesItsVersion want Invariant Inv_RemovalNamesItsVersion is violated; gen verdict Inv_RemovalNamesItsVersion want Invariant Inv_RemovalNamesItsVersion is violated
+[154/443 568s] lean/formal/LeanProbeCarrierAck.cfg DIFF: interp verdict ProbeCarrierAck want Invariant ProbeCarrierAck is violated; gen verdict ProbeCarrierAck want Invariant ProbeCarrierAck is violated
+[155/443 569s] lean/formal/LeanBarrierLeaseClaimUnstamped.cfg DIFF: interp verdict Inv_CellHeldByHolder want Invariant Inv_CellHeldByHolder is violated; gen verdict Inv_CellHeldByHolder want Invariant Inv_CellHeldByHolder is violated
+[156/443 570s] lean/formal/LeanProbeUploadWithheld.cfg DIFF: interp verdict ProbeUploadWithheld want Invariant ProbeUploadWithheld is violated; gen verdict ProbeUploadWithheld want Invariant ProbeUploadWithheld is violated
+[157/443 582s] lean/formal/LeanSubtreeTakeover.cfg OK
+[158/443 582s] formal/ForgeSyncCodeKeptSetVsOriginal.cfg OK
+[159/443 584s] lean/formal/LeanImmutableQueueHolds.cfg OK
+[160/443 590s] lean/formal/LeanImmutableAdoptBlind.cfg OK
+[161/443 604s] lean/formal/LeanBarrierLeaseAckCarried.cfg OK
+[162/443 605s] formal/FlintReplicationRollLease.cfg OK
+[163/443 605s] formal/ForgeSyncCodeKeptSetAnyDrop.cfg OK
+[164/443 606s] formal/FlintReplicationExpandGuard.cfg OK
+[165/443 607s] formal/ForgeSyncFoldNoRenew.cfg OK
+[166/443 607s] formal/FlintReplicationUncontrolledA1.cfg OK
+[167/443 608s] formal/FlintClaimsNoLeader.cfg OK
+[168/443 610s] formal/FlintAdmissionCrossHost.cfg OK
+[169/443 619s] formal/FlintCompositionProbeRejoin.cfg OK
+[170/443 625s] lean/formal/LeanCoreWithheldReverts.cfg DIFF: interp verdict Prop_NoSilentRevert want Action property Prop_NoSilentRevert is violated; gen verdict Prop_NoSilentRevert want Action property Prop_NoSilentRevert is violated
+[171/443 631s] formal/FlintShareDiskNoGuard.cfg OK
+[172/443 632s] formal/FlintDelegRecallNoRecheck.cfg OK
+[173/443 638s] formal/FlintClientIdentityDeep.cfg OK
+[174/443 640s] lean/formal/LeanNoWindowHolds.cfg OK
+[175/443 642s] lean/formal/LeanProbeSyncApplied.cfg DIFF: interp verdict ProbeSyncApplied want Invariant ProbeSyncApplied is violated; gen verdict ProbeSyncApplied want Invariant ProbeSyncApplied is violated
+[176/443 643s] lean/formal/LeanProbeCoalescedAck.cfg DIFF: interp verdict ProbeCoalescedAck want Invariant ProbeCoalescedAck is violated; gen verdict ProbeCoalescedAck want Invariant ProbeCoalescedAck is violated
+[177/443 651s] lean/formal/LeanBarrierLeaseNoRotate.cfg DIFF: interp verdict Inv_NoStragglerInstall want Invariant Inv_NoStragglerInstall is violated; gen verdict Inv_NoStragglerInstall want Invariant Inv_NoStragglerInstall is violated
+[178/443 653s] lean/formal/LeanRemovalViaWalk.cfg DIFF: interp verdict Inv_RenameAtomic want Invariant Inv_RenameAtomic is violated; gen verdict Inv_RenameAtomic want Invariant Inv_RenameAtomic is violated
+[179/443 656s] formal/ForgeSyncRacyGrace.cfg OK
+[180/443 660s] lean/formal/LeanBarrierLeaseQueueTombstoneOverHitl.cfg DIFF: interp verdict Inv_HITLTracked want Invariant Inv_HITLTracked is violated; gen verdict Inv_HITLTracked want Invariant Inv_HITLTracked is violated
+[181/443 680s] formal/FlintReplicationRollWedge.cfg OK
+[182/443 683s] formal/FlintSnapshots.cfg OK
+[183/443 688s] formal/FlintExtentsProbeReuse.cfg OK
+[184/443 689s] formal/FlintReplicationUncontrolledA2.cfg OK
+[185/443 689s] formal/FlintReplicationExpandShrinkReal.cfg OK
+[186/443 703s] formal/ForgeSyncCodeKeptSetWhileServing.cfg OK
+[187/443 707s] formal/FlintAdmissionProbeSweep.cfg OK
+[188/443 712s] formal/FlintCompositionProbeTorn.cfg OK
+[189/443 712s] lean/formal/LeanProbeSyncConflict.cfg DIFF: interp verdict ProbeSyncConflict want Invariant ProbeSyncConflict is violated; gen verdict ProbeSyncConflict want Invariant ProbeSyncConflict is violated
+[190/443 714s] lean/formal/LeanProbeFastPathHonor.cfg DIFF: interp verdict ProbeFastPathHonor want Invariant ProbeFastPathHonor is violated; gen verdict ProbeFastPathHonor want Invariant ProbeFastPathHonor is violated
+[191/443 714s] formal/FlintShareDiskNoAdoptGuard.cfg OK
+[192/443 716s] lean/formal/LeanEpochOnlyHolds.cfg OK
+[193/443 729s] lean/formal/LeanEarlyInboxDropLosesHitl.cfg DIFF: interp verdict Inv_HITLTracked want Invariant Inv_HITLTracked is violated; gen verdict Inv_HITLTracked want Invariant Inv_HITLTracked is violated
+[194/443 732s] formal/FlintClientIdentityNconnect3.cfg OK
+[195/443 733s] formal/FlintDelegRecallRearmWorks.cfg OK
+[196/443 735s] formal/ForgeSyncFoldCasBeforeUpload.cfg OK
+[197/443 737s] lean/formal/LeanBarrierLeaseGCUnconditional.cfg DIFF: interp verdict Inv_NoDangling want Invariant Inv_NoDangling is violated; gen verdict Inv_NoDangling want Invariant Inv_NoDangling is violated
+[198/443 745s] lean/formal/LeanBarrierLeaseQueueHolds.cfg OK
+[199/443 761s] lean/formal/LeanProbeBaseRestored.cfg DIFF: interp verdict ProbeBaseRestored want Invariant ProbeBaseRestored is violated; gen verdict ProbeBaseRestored want Invariant ProbeBaseRestored is violated
+[200/443 782s] formal/FlintReplicationRollProcessed.cfg OK
+[201/443 796s] lean/formal/LeanImmutableCasOverridesUI.cfg DIFF: interp verdict Inv_HITLDurable want Invariant Inv_HITLDurable is violated; gen verdict Inv_HITLDurable want Invariant Inv_HITLDurable is violated
+[202/443 801s] formal/FlintReplicationUncontrolledStrike.cfg OK
+[203/443 803s] formal/ForgeSyncCodeKeptSetNoRenew.cfg OK
+[204/443 815s] lean/formal/LeanAmputation.cfg DIFF: interp verdict Inv_HITLDurable want Invariant Inv_HITLDurable is violated; gen verdict Inv_HITLDurable want Invariant Inv_HITLDurable is violated
+[205/443 820s] lean/formal/LeanEarlyInboxDropLosesRename.cfg DIFF: interp verdict Inv_HITLTracked want Invariant Inv_HITLTracked is violated; gen verdict Inv_HITLTracked want Invariant Inv_HITLTracked is violated
+[206/443 823s] formal/FlintSnapshotsSplit.cfg OK
+[207/443 827s] lean/formal/LeanBarrierLeaseInboxSnapshot.cfg OK
+[208/443 828s] formal/FlintExtentsProbeFence.cfg OK
+[209/443 831s] formal/FlintAdmissionProbeReadmit.cfg OK
+[210/443 834s] lean/formal/LeanScopedSyncHolds.cfg DIFF: distinct interp 246243 gen 246151; distinct TLC 246199 gen 246151
+[211/443 838s] formal/FlintExtentsTarget.cfg OK
+[212/443 843s] lean/formal/LeanImmutableNarrowUnlinkFirst.cfg DIFF: interp verdict Inv_NarrowNeverDeletes want Invariant Inv_NarrowNeverDeletes is violated; gen verdict Inv_NarrowNeverDeletes want Invariant Inv_NarrowNeverDeletes is violated
+[213/443 844s] formal/FlintCompositionProbeFailBack.cfg OK
+[214/443 846s] lean/formal/LeanBarrierLeaseAdoptBlind.cfg DIFF: interp verdict Inv_NoDangling want Invariant Inv_NoDangling is violated; gen verdict Inv_NoDangling want Invariant Inv_NoDangling is violated
+[215/443 846s] formal/FlintShareDiskAbortOnWake.cfg OK
+[216/443 847s] lean/formal/LeanProbeLeakApplied.cfg DIFF: interp verdict ProbeLeakApplied want Invariant ProbeLeakApplied is violated; gen verdict ProbeLeakApplied want Invariant ProbeLeakApplied is violated
+[217/443 848s] lean/formal/LeanSentinelClockHolds.cfg OK
+[218/443 852s] formal/ForgeMergeChain.cfg OK
+[219/443 856s] formal/FlintClientIdentityCaseFour.cfg OK
+[220/443 856s] formal/FlintDelegRecallRearmStale.cfg OK
+[221/443 862s] lean/formal/LeanImmutableCasOverridesPeer.cfg DIFF: interp verdict Inv_NoStaleOverride want Invariant Inv_NoStaleOverride is violated; gen verdict Inv_NoStaleOverride want Invariant Inv_NoStaleOverride is violated
+[222/443 877s] formal/ForgeSyncFoldCasFromDisk.cfg OK
+[223/443 886s] lean/formal/LeanChunkGC.cfg OK
+[224/443 894s] formal/FlintReplicationRaidLifetime.cfg OK
+[225/443 900s] formal/FlintReplicationA2AdoptBlind.cfg OK
+[226/443 913s] formal/FlintSnapshotsOrder.cfg OK
+[227/443 915s] formal/FlintReplicationBounceRisk.cfg OK
+[228/443 920s] lean/formal/LeanBarrierLeaseSupersedeDropsBase.cfg DIFF: interp verdict Inv_TreesConverged want Invariant Inv_TreesConverged is violated; gen verdict Inv_TreesConverged want Invariant Inv_TreesConverged is violated
+[229/443 922s] formal/FlintExtentsProbeRestart.cfg OK
+[230/443 931s] formal/FlintComposition.cfg OK
+[231/443 940s] lean/formal/LeanDirectMergeInsufficient.cfg DIFF: interp verdict Inv_HITLDurable want Invariant Inv_HITLDurable is violated; gen verdict Inv_HITLDurable want Invariant Inv_HITLDurable is violated
+[232/443 944s] lean/formal/LeanScopedSyncWholeBase.cfg DIFF: interp verdict Inv_NoForeignLost want Invariant Inv_NoForeignLost is violated; gen verdict Inv_NoForeignLost want Invariant Inv_NoForeignLost is violated
+[233/443 948s] formal/ForgeMergeChainExcludeBase.cfg OK
+[234/443 949s] lean/formal/LeanImmutableNarrowHolds.cfg OK
+[235/443 949s] lean/formal/LeanSentinelClockUnstamped.cfg DIFF: interp verdict Inv_BoundaryNamesItsClock want Invariant Inv_BoundaryNamesItsClock is violated; gen verdict Inv_BoundaryNamesItsClock want Invariant Inv_BoundaryNamesItsClock is violated
+[236/443 952s] lean/formal/LeanRenameNoDestinationGuard.cfg DIFF: interp verdict Inv_RenameNoHole want Invariant Inv_RenameNoHole is violated; gen verdict Inv_RenameNoHole want Invariant Inv_RenameNoHole is violated
+[237/443 957s] lean/formal/LeanBarrierLeaseSameBytesUnverified.cfg DIFF: interp verdict Inv_NoDangling want Invariant Inv_NoDangling is violated; gen verdict Inv_NoDangling want Invariant Inv_NoDangling is violated
+[238/443 959s] lean/formal/LeanBarrierLeaseStragglerGC.cfg DIFF: interp verdict Inv_NoDangling want Invariant Inv_NoDangling is violated; gen verdict Inv_NoDangling want Invariant Inv_NoDangling is violated
+[239/443 959s] formal/FlintClientIdentityIndexBlind.cfg OK
+[240/443 960s] formal/FlintCompositionLive.cfg OK
+[241/443 961s] lean/formal/LeanImmutableNarrowUncieFirst.cfg DIFF: interp verdict Inv_NarrowNeverRecites want Invariant Inv_NarrowNeverRecites is violated; gen verdict Inv_NarrowNeverRecites want Invariant Inv_NarrowNeverRecites is violated
+[242/443 967s] formal/FlintDelegRecallProbeDisown.cfg OK
+[243/443 970s] lean/formal/LeanImmutableLeakHolds.cfg OK
+[244/443 974s] formal/ForgeSyncProveFromDiskRetention.cfg OK
+[245/443 976s] lean/formal/LeanChunkGCStaleRefs.cfg DIFF: interp verdict Inv_LiveComplete want Invariant Inv_LiveComplete is violated; gen verdict Inv_LiveComplete want Invariant Inv_LiveComplete is violated
+[246/443 1001s] formal/FlintReplicationF36c.cfg OK
+[247/443 1007s] formal/FlintReplicationRaidRefuse.cfg OK
+[248/443 1008s] lean/formal/LeanRefineQueue.cfg OK
+[249/443 1011s] formal/FlintReplicationA2AdoptArmed.cfg OK
+[250/443 1012s] formal/FlintReplicationBounceLoop.cfg OK
+[251/443 1028s] formal/FlintTruncateBlindClear.cfg OK
+[252/443 1034s] formal/FlintExtentsProbeMerge.cfg OK
+[253/443 1036s] formal/FlintCompositionLegGate.cfg OK
+[254/443 1040s] formal/FlintCompositionWaitsPrice.cfg OK
+[255/443 1041s] formal/FlintTierEpochNoRotate.cfg OK
+[256/443 1042s] formal/FlintReplicationBounce.cfg OK
+[257/443 1048s] lean/formal/LeanLocalWins.cfg DIFF: interp verdict Inv_HITLDurable want Invariant Inv_HITLDurable is violated; gen verdict Inv_HITLDurable want Invariant Inv_HITLDurable is violated
+[258/443 1050s] lean/formal/LeanProbeScopedDeferral.cfg DIFF: interp verdict ProbeScopedDeferral want Invariant ProbeScopedDeferral is violated; gen verdict ProbeScopedDeferral want Invariant ProbeScopedDeferral is violated
+[259/443 1055s] lean/formal/LeanProbeRemoval.cfg DIFF: interp verdict ProbeRemovalApplied want Invariant ProbeRemovalApplied is violated; gen verdict ProbeRemovalApplied want Invariant ProbeRemovalApplied is violated
+[260/443 1060s] formal/FlintTierMarkerMarkLate.cfg OK
+[261/443 1064s] formal/FlintClientIdentityNconnect1.cfg OK
+[262/443 1066s] lean/formal/LeanImmutableProbeNarrow.cfg DIFF: interp verdict ProbeNarrow want Invariant ProbeNarrow is violated; gen verdict ProbeNarrow want Invariant ProbeNarrow is violated
+[263/443 1067s] formal/FlintCsiMountDeep.cfg OK
+[264/443 1070s] lean/formal/LeanBarrierLeaseSameBytesOverride.cfg DIFF: interp verdict Inv_NoStaleOverride want Invariant Inv_NoStaleOverride is violated; gen verdict Inv_NoStaleOverride want Invariant Inv_NoStaleOverride is violated
+[265/443 1071s] lean/formal/LeanImmutableStragglerGC.cfg OK
+[266/443 1077s] lean/formal/LeanChunkGCRacyGrace.cfg DIFF: interp verdict Inv_LiveComplete want Invariant Inv_LiveComplete is violated; gen verdict Inv_LiveComplete want Invariant Inv_LiveComplete is violated
+[267/443 1083s] lean/formal/LeanBarrierLeaseStragglerGCFenced.cfg OK
+[268/443 1098s] formal/FlintTierEpoch.cfg OK
+[269/443 1107s] formal/FlintReplicationRejoin.cfg OK
+[270/443 1115s] formal/FlintReplicationRaidReconcile.cfg OK
+[271/443 1119s] formal/FlintA2ProbeAdoptArmed.cfg OK
+[272/443 1133s] lean/formal/LeanBarrierLeaseCollectorOffNoTombstone.cfg DIFF: interp verdict Inv_NoDeleteResurrected want Invariant Inv_NoDeleteResurrected is violated; gen verdict Inv_NoDeleteResurrected want Invariant Inv_NoDeleteResurrected is violated
+[273/443 1135s] formal/FlintReplicationBouncePod.cfg OK
+[274/443 1135s] formal/FlintTruncateMarkOverwrite.cfg OK
+[275/443 1146s] lean/formal/LeanNarrowUncieFirst.cfg DIFF: interp verdict Inv_NarrowNeverRecites want Invariant Inv_NarrowNeverRecites is violated; gen verdict Inv_NarrowNeverRecites want Invariant Inv_NarrowNeverRecites is violated
+[276/443 1147s] lean/formal/LeanNoRotate.cfg DIFF: interp verdict Inv_NoStragglerInstall want Invariant Inv_NoStragglerInstall is violated; gen verdict Inv_NoStragglerInstall want Invariant Inv_NoStragglerInstall is violated
+[277/443 1148s] formal/FlintCompositionDeadman.cfg OK
+[278/443 1165s] formal/FlintTierEpochNoFence.cfg OK
+[279/443 1172s] lean/formal/LeanProbeStaleInboxAdopt.cfg DIFF: interp verdict ProbeStaleInboxAdopt want Invariant ProbeStaleInboxAdopt is violated; gen verdict ProbeStaleInboxAdopt want Invariant ProbeStaleInboxAdopt is violated
+[280/443 1172s] formal/FlintTierMarkerNoRecheck.cfg OK
+[281/443 1174s] formal/FlintCsiMountDevOracle.cfg OK
+[282/443 1175s] formal/FlintClientIdentityLeaseOrphan.cfg OK
+[283/443 1175s] lean/formal/LeanBarrierLeaseLeakResurrects.cfg DIFF: interp verdict Inv_NoDeleteResurrected want Invariant Inv_NoDeleteResurrected is violated; gen verdict Inv_NoDeleteResurrected want Invariant Inv_NoDeleteResurrected is violated
+[284/443 1177s] lean/formal/LeanImmutableProbeGC.cfg DIFF: interp verdict ProbeGC want Invariant ProbeGC is violated; gen verdict ProbeGC want Invariant ProbeGC is violated
+[285/443 1201s] lean/formal/LeanChunkGCAdoptSkips.cfg DIFF: interp verdict Inv_LiveComplete want Invariant Inv_LiveComplete is violated; gen verdict Inv_LiveComplete want Invariant Inv_LiveComplete is violated
+[286/443 1237s] lean/formal/LeanCoreSweepTakesNamed.cfg DIFF: interp verdict Inv_AckedNamed want Invariant Inv_AckedNamed is violated; gen verdict Inv_AckedNamed want Invariant Inv_AckedNamed is violated
+[287/443 1244s] lean/formal/LeanCoreCommitBlindReverts.cfg DIFF: interp verdict Prop_NoSilentRevert want Action property Prop_NoSilentRevert is violated; gen verdict Prop_NoSilentRevert want Action property Prop_NoSilentRevert is violated
+[288/443 1246s] formal/FlintCompositionWitness.cfg OK
+[289/443 1270s] lean/formal/LeanNoEpochCheck.cfg DIFF: interp verdict Inv_NoDeposedPut want Invariant Inv_NoDeposedPut is violated; gen verdict Inv_NoDeposedPut want Invariant Inv_NoDeposedPut is violated
+[290/443 1278s] lean/formal/LeanProbeNarrow.cfg DIFF: interp verdict ProbeNarrow want Invariant ProbeNarrow is violated; gen verdict ProbeNarrow want Invariant ProbeNarrow is violated
+[291/443 1278s] formal/ForgeSyncFoldSupersedesArrivals.cfg OK
+[292/443 1280s] formal/FlintReplicationF48.cfg OK
+[293/443 1301s] lean/formal/LeanBarrierLeaseQueueDropped.cfg DIFF: interp verdict Inv_AckBoundaryCoherent want Invariant Inv_AckBoundaryCoherent is violated; gen verdict Inv_AckBoundaryCoherent want Invariant Inv_AckBoundaryCoherent is violated
+[294/443 1307s] formal/FlintTruncateHeldLayout.cfg OK
+[295/443 1308s] formal/FlintReplicationRaidSeenBlind.cfg OK
+[296/443 1315s] formal/FlintReplicationBouncePodFixed.cfg OK
+[297/443 1315s] lean/formal/LeanBarrierLeaseLeakHolds.cfg OK
+[298/443 1325s] formal/FlintReplicationRollRecordBarrier.cfg OK
+[299/443 1329s] formal/FlintExtentsUngatedSize.cfg OK
+[300/443 1334s] formal/FlintCompositionAssembly.cfg OK
+[301/443 1334s] lean/formal/LeanImmutableSyncQueueShippedInvs.cfg OK
+[302/443 1336s] formal/FlintCompositionLocalMark.cfg OK
+[303/443 1346s] formal/FlintTierEpochProbeStale.cfg OK
+[304/443 1348s] formal/ForgeSyncFoldCommitMidBatch.cfg OK
+[305/443 1352s] formal/FlintTierMarkerRowLate.cfg OK
+[306/443 1356s] lean/formal/LeanImmutableProbeUploadWithheld.cfg DIFF: interp verdict ProbeUploadWithheld want Invariant ProbeUploadWithheld is violated; gen verdict ProbeUploadWithheld want Invariant ProbeUploadWithheld is violated
+[307/443 1356s] lean/formal/LeanImmutableRepairRecites.cfg DIFF: interp verdict Inv_OneName want Invariant Inv_OneName is violated; gen verdict Inv_OneName want Invariant Inv_OneName is violated
+[308/443 1357s] formal/FlintClientIdentityLeaseSilent.cfg OK
+[309/443 1361s] formal/FlintCsiMountDevDurability.cfg OK
+[310/443 1375s] lean/formal/LeanChunkGCProbeCollect.cfg DIFF: interp verdict Probe_Collected want Invariant Probe_Collected is violated; gen verdict Probe_Collected want Invariant Probe_Collected is violated
+[311/443 1411s] formal/FlintReplicationF43.cfg OK
+[312/443 1414s] lean/formal/LeanBarrierLeaseOrphanConverges.cfg OK
+[313/443 1426s] lean/formal/LeanBarrierLeaseImplHolds.cfg OK
+[314/443 1436s] lean/formal/LeanProbeOutrankedPartial.cfg DIFF: interp verdict ProbePartialAck want Invariant ProbePartialAck is violated; gen verdict ProbePartialAck want Invariant ProbePartialAck is violated
+[315/443 1439s] lean/formal/LeanRematerialize.cfg DIFF: interp verdict Prop_NoResurrection want Action property; gen verdict Prop_NoResurrection want Action property
+[316/443 1447s] lean/formal/LeanImmutableHitlOverAny.cfg OK
+[317/443 1448s] formal/FlintReplicationRaidSeenFixed.cfg OK
+[318/443 1453s] formal/FlintReplicationRollWedged.cfg OK
+[319/443 1456s] formal/ForgeSyncFoldReachableCoverage.cfg OK
+[320/443 1462s] formal/FlintReplicationBounceTimeout.cfg OK
+[321/443 1463s] formal/FlintTruncateLostRecall.cfg OK
+[322/443 1463s] lean/formal/LeanProbePullOnly.cfg DIFF: interp verdict ProbePullOnly want Invariant ProbePullOnly is violated; gen verdict ProbePullOnly want Invariant ProbePullOnly is violated
+[323/443 1467s] formal/FlintExtentsForgedCommit.cfg OK
+[324/443 1471s] lean/formal/LeanImmutableProbeHITLCited.cfg DIFF: interp verdict ProbeHITLCited want Invariant ProbeHITLCited is violated; gen verdict ProbeHITLCited want Invariant ProbeHITLCited is violated
+[325/443 1472s] lean/formal/LeanBarrierLeaseLeakRetiredOnly.cfg OK
+[326/443 1473s] lean/formal/LeanSentinelHolds.cfg OK
+[327/443 1475s] formal/FlintCompositionElectStale.cfg OK
+[328/443 1479s] formal/FlintCompositionFenceLocal.cfg OK
+[329/443 1482s] formal/FlintTierEpochNoStampCheck.cfg OK
+[330/443 1484s] lean/formal/LeanBarrierLeaseSyncOverlayStale.cfg DIFF: interp verdict Inv_NoForeignLost want Invariant Inv_NoForeignLost is violated; gen verdict Inv_NoForeignLost want Invariant Inv_NoForeignLost is violated
+[331/443 1490s] formal/FlintTierMarkerNoFlag.cfg OK
+[332/443 1490s] formal/FlintCsiMountDevGuarded.cfg OK
+[333/443 1491s] formal/FlintClientIdentityLeaseAtomic.cfg OK
+[334/443 1499s] lean/formal/LeanBarrierLeaseDeposal.cfg OK
+[335/443 1500s] lean/formal/LeanChunkGCProbeAdopt.cfg DIFF: interp verdict Probe_Adopted want Invariant Probe_Adopted is violated; gen verdict Probe_Adopted want Invariant Probe_Adopted is violated
+[336/443 1527s] formal/FlintReplicationResurrect.cfg OK
+[337/443 1539s] formal/FlintReplicationRefusalClears.cfg OK
+[338/443 1564s] formal/FlintReplicationBouncePlanner.cfg OK
+[339/443 1565s] formal/FlintTruncateGrantRace.cfg OK
+[340/443 1572s] lean/formal/LeanProbeBarrier.cfg DIFF: interp verdict ProbeBarrierDone want Invariant ProbeBarrierDone is violated; gen verdict ProbeBarrierDone want Invariant ProbeBarrierDone is violated
+[341/443 1575s] formal/FlintReplicationRollRecordBarrier3.cfg OK
+[342/443 1587s] lean/formal/LeanBarrierLeaseHolds.cfg OK
+[343/443 1590s] lean/formal/LeanBarrierLeaseRandomArbitration.cfg DIFF: interp verdict NoStarvation want Temporal properties were violated; gen verdict NoStarvation want Temporal properties were violated
+[344/443 1591s] lean/formal/LeanSentinelRestart.cfg OK
+[345/443 1591s] lean/formal/LeanProbeEmptyInstall.cfg DIFF: interp verdict ProbeEmptyInstall want Invariant ProbeEmptyInstall is violated; gen verdict ProbeEmptyInstall want Invariant ProbeEmptyInstall is violated
+[346/443 1592s] formal/FlintExtentsBlindProvision.cfg OK
+[347/443 1593s] formal/FlintCompositionDegradeBlind.cfg OK
+[348/443 1599s] lean/formal/LeanBarrierLeaseLeakRestoreOnly.cfg OK
+[349/443 1599s] formal/FlintCompositionWitnessDeadman.cfg OK
+[350/443 1600s] lean/formal/LeanImmutableProbeRename.cfg DIFF: interp verdict ProbeRenameApplied want Invariant ProbeRenameApplied is violated; gen verdict ProbeRenameApplied want Invariant ProbeRenameApplied is violated
+[351/443 1606s] formal/FlintTierEpochReleaseBeforeFence.cfg OK
+[352/443 1618s] formal/FlintCsiMountPassthrough.cfg OK
+[353/443 1618s] formal/FlintTierMarkerCycleBlind.cfg OK
+[354/443 1619s] formal/FlintClientIdentityLeaseNotify.cfg OK
+[355/443 1621s] lean/formal/LeanBarrierLeaseEpochOnly.cfg OK
+[356/443 1623s] lean/formal/LeanCoreForeignFlat.cfg DIFF: interp verdict Inv_AckedNamed want Invariant Inv_AckedNamed is violated; gen verdict Inv_AckedNamed want Invariant Inv_AckedNamed is violated
+[357/443 1630s] formal/ForgeSyncForgetPushPack.cfg OK
+[358/443 1630s] lean/formal/LeanChunkGCSlowReader.cfg DIFF: interp verdict Inv_NoTornRead want Invariant Inv_NoTornRead is violated; gen verdict Inv_NoTornRead want Invariant Inv_NoTornRead is violated
+[359/443 1637s] lean/formal/LeanBarrierLeaseHitlOverUncited.cfg DIFF: interp verdict Inv_HITLDurable want Invariant Inv_HITLDurable is violated; gen verdict Inv_HITLDurable want Invariant Inv_HITLDurable is violated
+[360/443 1655s] formal/FlintReplicationP4.cfg OK
+[361/443 1661s] lean/formal/LeanRemovalCrashHolds.cfg OK
+[362/443 1663s] formal/FlintReplicationRefusalSticky.cfg OK
+[363/443 1665s] formal/FlintTruncateNoStaleServe.cfg OK
+[364/443 1666s] lean/formal/LeanImmutableHolds.cfg OK
+[365/443 1681s] lean/formal/LeanCorePendingDropped.cfg DIFF: interp verdict Inv_AckedNamed want Invariant Inv_AckedNamed is violated; gen verdict Inv_AckedNamed want Invariant Inv_AckedNamed is violated
+[366/443 1683s] formal/FlintExtentsProbeCommit.cfg OK
+[367/443 1689s] formal/FlintCompositionFreeEarly.cfg OK
+[368/443 1692s] formal/FlintCompositionProbeCutFailover.cfg OK
+[369/443 1695s] lean/formal/LeanProbeHITLCited.cfg DIFF: interp verdict ProbeHITLCited want Invariant ProbeHITLCited is violated; gen verdict ProbeHITLCited want Invariant ProbeHITLCited is violated
+[370/443 1695s] formal/FlintReplicationBouncePlannerScoped.cfg OK
+[371/443 1699s] formal/ForgeSyncReclaimWhileServing.cfg OK
+[372/443 1707s] formal/FlintTierMarkerInsertBlind.cfg OK
+[373/443 1711s] formal/FlintClientIdentityLeaseNotifyUnique.cfg OK
+[374/443 1714s] lean/formal/LeanBarrierLeaseDeadHandoffWedge.cfg DIFF: interp verdict NoStarvation want Temporal properties were violated; gen verdict NoStarvation want Temporal properties were violated
+[375/443 1716s] formal/FlintCsiMountNoLease.cfg OK
+[376/443 1717s] lean/formal/LeanCoreCitesBlind.cfg DIFF: interp verdict Inv_CitationsLive want Invariant Inv_CitationsLive is violated; gen verdict Inv_CitationsLive want Invariant Inv_CitationsLive is violated
+[377/443 1725s] lean/formal/LeanProbeTombstoneApplied.cfg DIFF: interp verdict ProbeTombstoneApplied want Invariant ProbeTombstoneApplied is violated; gen verdict ProbeTombstoneApplied want Invariant ProbeTombstoneApplied is violated
+[378/443 1726s] lean/formal/LeanBarrierLeaseLeakFlaps.cfg DIFF: interp verdict Inv_TreesConverged want Invariant Inv_TreesConverged is violated; gen verdict Inv_TreesConverged want Invariant Inv_TreesConverged is violated
+[379/443 1729s] lean/formal/LeanChunkGCProbeRestart.cfg DIFF: interp verdict Probe_Restarted want Invariant Probe_Restarted is violated; gen verdict Probe_Restarted want Invariant Probe_Restarted is violated
+[380/443 1739s] lean/formal/LeanImmutableProbePending.cfg DIFF: interp verdict ProbePendingKept want Invariant ProbePendingKept is violated; gen verdict ProbePendingKept want Invariant ProbePendingKept is violated
+[381/443 1742s] formal/FlintExtentsCommit.cfg OK
+[382/443 1743s] formal/FlintReplicationRollRecordBarrierDeep.cfg OK
+[383/443 1747s] lean/formal/LeanBarrierLeaseRotationOnly.cfg OK
+[384/443 1758s] lean/formal/LeanCoreSweepLeaseFree.cfg DIFF: interp verdict Inv_CitationsLive want Invariant Inv_CitationsLive is violated; gen verdict Inv_CitationsLive want Invariant Inv_CitationsLive is violated
+[385/443 1763s] formal/FlintReplicationRollNoBelt.cfg OK
+[386/443 1764s] formal/FlintReplicationBounceStarve.cfg OK
+[387/443 1768s] formal/FlintReplicationGateReal.cfg OK
+[388/443 1769s] formal/FlintExtentsProbeCommitAfterReturn.cfg OK
+[389/443 1769s] lean/formal/LeanBarrierLeaseCollectorOff.cfg OK
+[390/443 1771s] formal/FlintCompositionNoReplay.cfg OK
+[391/443 1774s] formal/FlintCompositionProbeMarkFirst.cfg OK
+[392/443 1794s] lean/formal/LeanProbeTakeover.cfg DIFF: interp verdict ProbeTakeover want Invariant ProbeTakeover is violated; gen verdict ProbeTakeover want Invariant ProbeTakeover is violated
+[393/443 1796s] lean/formal/LeanSentinelDeposal.cfg OK
+[394/443 1796s] formal/FlintCsiMountReleaseFirst.cfg OK
+[395/443 1797s] formal/FlintClientIdentityLeaseHandshake.cfg OK
+[396/443 1800s] lean/formal/LeanSentinelOrphan.cfg DIFF: interp verdict Inv_NoNonceOrphan want Invariant Inv_NoNonceOrphan is violated; gen verdict Inv_NoNonceOrphan want Invariant Inv_NoNonceOrphan is violated
+[397/443 1815s] formal/FlintReplicationMobileStrict.cfg OK
+[398/443 1816s] lean/formal/LeanProbeWritersInterleave.cfg DIFF: interp verdict ProbeWritersInterleave want Invariant ProbeWritersInterleave is violated; gen verdict ProbeWritersInterleave want Invariant ProbeWritersInterleave is violated
+[399/443 1819s] lean/formal/LeanProbeTombstoneSuperseded.cfg DIFF: interp verdict ProbeTombstoneSuperseded want Invariant ProbeTombstoneSuperseded is violated; gen verdict ProbeTombstoneSuperseded want Invariant ProbeTombstoneSuperseded is violated
+[400/443 1820s] lean/formal/LeanChunkMerge.cfg OK
+[401/443 1824s] formal/FlintExtents.cfg OK
+[402/443 1828s] lean/formal/LeanBarrierLeaseLeakRuleConverges.cfg OK
+[403/443 1832s] lean/formal/LeanBarrierLeaseAdoptVerified.cfg OK
+[404/443 1837s] lean/formal/LeanCoreRetirePerPath.cfg DIFF: interp verdict Inv_CitationsLive want Invariant Inv_CitationsLive is violated; gen verdict Inv_CitationsLive want Invariant Inv_CitationsLive is violated
+[405/443 1850s] formal/FlintReplicationGateRealHollow.cfg OK
+[406/443 1855s] formal/FlintExtentsMergeHeld.cfg OK
+[407/443 1856s] formal/FlintReplicationRollerRace.cfg OK
+[408/443 1857s] formal/FlintReplicationA2Naive.cfg OK
+[409/443 1865s] formal/FlintCompositionProbeFailover.cfg OK
+[410/443 1872s] lean/formal/LeanProbeStragglerAttempt.cfg DIFF: interp verdict ProbeStragglerAttempt want Invariant ProbeStragglerAttempt is violated; gen verdict ProbeStragglerAttempt want Invariant ProbeStragglerAttempt is violated
+[411/443 1877s] formal/FlintReplicationBounceBounded.cfg OK
+[412/443 1877s] lean/formal/LeanSentinelAckEarly.cfg DIFF: interp verdict Inv_AckImpliesCited want Invariant Inv_AckImpliesCited is violated; gen verdict Inv_AckImpliesCited want Invariant Inv_AckImpliesCited is violated
+[413/443 1878s] formal/FlintCompositionProbeBill.cfg OK
+[414/443 1881s] lean/formal/LeanBarrierLeaseImplThreeWriters.cfg OK
+[415/443 1887s] formal/FlintExtentsNoCommitGrace.cfg OK
+[416/443 1894s] formal/FlintClientIdentityLeaseHandshakeProbe.cfg OK
+[417/443 1897s] formal/ForgeSyncEarlyAck.cfg OK
+[418/443 1899s] formal/FlintCsiMountCrash.cfg OK
+[419/443 1902s] lean/formal/LeanProbeHandoff.cfg DIFF: interp verdict ProbeHandoffFired want Invariant ProbeHandoffFired is violated; gen verdict ProbeHandoffFired want Invariant ProbeHandoffFired is violated
+[420/443 1904s] lean/formal/LeanBarrierLeaseOrphanDiverges.cfg DIFF: interp verdict Inv_QuiescentConverged want Invariant Inv_QuiescentConverged is violated; gen verdict Inv_QuiescentConverged want Invariant Inv_QuiescentConverged is violated
+[421/443 1906s] formal/ForgeSyncReclaimUnlinksServing.cfg OK
+[422/443 1907s] lean/formal/LeanChunkMergeSplice.cfg DIFF: interp verdict Inv_ChunkedMergeMatches want Invariant Inv_ChunkedMergeMatches is violated; gen verdict Inv_ChunkedMergeMatches want Invariant Inv_ChunkedMergeMatches is violated
+[423/443 1909s] lean/formal/LeanBarrierLeaseLeakSkippedGeneration.cfg DIFF: interp verdict Inv_TreesConverged want Invariant Inv_TreesConverged is violated; gen verdict Inv_TreesConverged want Invariant Inv_TreesConverged is violated
+[424/443 1913s] formal/FlintTierSession.cfg OK
+[425/443 1930s] lean/formal/LeanImmutableRetirePerPath.cfg DIFF: interp verdict Inv_NoDangling want Invariant Inv_NoDangling is violated; gen verdict Inv_NoDangling want Invariant Inv_NoDangling is violated
+[426/443 1940s] lean/formal/LeanCoreProbeRenamed.cfg DIFF: interp verdict ProbeRenamed want Invariant ProbeRenamed is violated; gen verdict ProbeRenamed want Invariant ProbeRenamed is violated
+[427/443 1982s] lean/formal/LeanProbePark.cfg DIFF: interp verdict ProbePark want Invariant ProbePark is violated; gen verdict ProbePark want Invariant ProbePark is violated
+[428/443 1982s] lean/formal/LeanSentinelFencedAck.cfg DIFF: interp verdict Inv_NoFencedOkAck want Invariant Inv_NoFencedOkAck is violated; gen verdict Inv_NoFencedOkAck want Invariant Inv_NoFencedOkAck is violated
+[429/443 1988s] formal/FlintTierSessionLive.cfg OK
+[430/443 1994s] formal/ForgeSyncLive.cfg DIFF: distinct TLC 1371035 gen 1781559
+[431/443 1998s] lean/formal/LeanProbeEnqueued.cfg DIFF: interp verdict ProbeEnqueued want Invariant ProbeEnqueued is violated; gen verdict ProbeEnqueued want Invariant ProbeEnqueued is violated
+[432/443 2006s] lean/formal/LeanProbeTombstoneOverLeak.cfg DIFF: interp verdict ProbeTombstoneApplied want Invariant ProbeTombstoneApplied is violated; gen verdict ProbeTombstoneApplied want Invariant ProbeTombstoneApplied is violated
+[433/443 2013s] lean/formal/LeanImmutableCasCitesBlind.cfg DIFF: interp verdict Inv_NoDangling want Invariant Inv_NoDangling is violated; gen verdict Inv_NoDangling want Invariant Inv_NoDangling is violated
+[434/443 2024s] lean/formal/LeanBarrierLeaseOrphanResurrects.cfg DIFF: interp verdict Inv_NoDeleteResurrected want Invariant Inv_NoDeleteResurrected is violated; gen verdict Inv_NoDeleteResurrected want Invariant Inv_NoDeleteResurrected is violated
+[435/443 2043s] lean/formal/LeanRefineProbe.cfg OK
+[436/443 2130s] formal/ForgeSyncCode.cfg OK
+[437/443 2140s] lean/formal/LeanBarrierLeaseSameBytesVerified.cfg OK
+[438/443 2164s] lean/formal/LeanBarrierLeaseHitlOverAnyVerified.cfg OK
+[439/443 2330s] formal/ForgeSyncReclaimAtRestore.cfg OK
+[440/443 2416s] formal/ForgeSyncReclaimBySet.cfg OK
+[441/443 2780s] lean/formal/LeanCoreHoldsSmall.cfg OK

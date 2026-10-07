@@ -116,13 +116,17 @@ This is one machine and seven models; the logs are in the results directory, and
 
 ## How it is checked
 
-- **tlaplus/Examples**: at the last full sweep tla-mc accepted 112 of the 165
-  exhaustive-search models, and every one it accepted matched TLC's recorded
-  result (verdict and distinct states). What it rejects, it rejects with a message
-  — it never checks less than the cfg asks.
-- **Against TLC directly**: hundreds of gate entries from
-  [flint](https://github.com/ddalton/flint)'s TLA+ models, run by both, with
-  identical distinct-state counts; every planted bug ("mutation") caught by both.
+- **tlaplus/Examples**: tla-mc accepts **115 of the 165** exhaustive-search
+  models, and **every one it accepts matches TLC's recorded result** (verdict and
+  distinct states). What it rejects, it rejects with a message — it never checks
+  less than the cfg asks.
+- **Against TLC directly**: the 446 entries of [flint](https://github.com/ddalton/flint)'s
+  TLA+ gate — **443 decided, all with the gate's expected verdict**, by the interpreter
+  and the compiled checker alike; every planted bug caught; on the must-hold runs TLC
+  finished, the same distinct-state count (126 of 128; the two others are `SYMMETRY` +
+  `VIEW` worlds, where counts vary with timing at several workers, TLC's too).
+  Run on the published 0.1.0 crate, 2026-10-07:
+  [`results/validation-2026-10-07/`](results/validation-2026-10-07/SUMMARY.md).
 - **Its own tests**, several of them checked to fail with the code they guard
   disabled.
 

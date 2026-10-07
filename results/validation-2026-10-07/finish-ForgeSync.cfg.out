@@ -1,0 +1,9 @@
+tla-mc: building a checker for ForgeSync (cache: /data/tlamc-cache-fin)
+tla-mc: built in 21.8s
+tla-mc: ForgeSync (41 variables, 3 symmetry permutations), 192 workers, generated engine; loaded in 0.006s
+progress: depth 35, 94172832 generated, 23280617 distinct (0 fingerprint spills), 4766833 on queue (0 on disk), 10.8s
+progress: depth 39, 205816691 generated, 47032442 distinct (0 fingerprint spills), 6377542 on queue (0 on disk), 23.3s
+progress: depth 42, 296363790 generated, 65648429 distinct (0 fingerprint spills), 5948543 on queue (0 on disk), 33.7s
+progress: depth 46, 385175909 generated, 82843117 distinct (0 fingerprint spills), 3060502 on queue (0 on disk), 44.2s
+Model checking completed. No error has been found.
+423419639 states generated, 89146934 distinct states found. Depth 62. Checked in 49.545s (1799320 distinct/s).

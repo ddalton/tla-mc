@@ -1,0 +1,5 @@
+tla-mc: LeanSubtree (20 variables, 0 symmetry permutations), 184 workers, generated engine; loaded in 0.009s
+progress: depth 15, 67796042 generated, 21735992 distinct (0 fingerprint spills), 10035398 on queue (0 on disk), 10.1s
+progress: depth 17, 208114472 generated, 63665023 distinct (0 fingerprint spills), 25444273 on queue (0 on disk), 31.6s
+progress: depth 18, 334676275 generated, 100795193 distinct (0 fingerprint spills), 37130170 on queue (0 on disk), 51.4s
+progress: depth 19, 511149712 generated, 152428050 distinct (0 fingerprint spills), 51632857 on queue (0 on disk), 95.5s

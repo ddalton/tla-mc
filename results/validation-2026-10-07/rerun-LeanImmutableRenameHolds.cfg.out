@@ -1,0 +1,10 @@
+tla-mc: building a checker for LeanSubtree (cache: /data/tlamc-cache-LeanImmutableRenameHolds.cfg)
+tla-mc: built in 95.7s
+tla-mc: LeanSubtree (20 variables, 0 symmetry permutations), 92 workers, generated engine; loaded in 0.010s
+progress: depth 14, 35584135 generated, 11700594 distinct (0 fingerprint spills), 5746629 on queue (0 on disk), 11.7s
+progress: depth 15, 67796042 generated, 21735992 distinct (0 fingerprint spills), 10035398 on queue (0 on disk), 22.4s
+progress: depth 16, 122239050 generated, 38220750 distinct (0 fingerprint spills), 16484758 on queue (0 on disk), 40.6s
+progress: depth 17, 208114472 generated, 63665023 distinct (0 fingerprint spills), 25444273 on queue (0 on disk), 69.4s
+progress: depth 18, 334676275 generated, 100795193 distinct (0 fingerprint spills), 37130170 on queue (0 on disk), 112.6s
+progress: depth 19, 511149728 generated, 152428058 distinct (0 fingerprint spills), 51632865 on queue (11155169 on disk), 176.3s
+progress: depth 20, 747808960 generated, 221369460 distinct (0 fingerprint spills), 68941402 on queue (28418906 on disk), 496.8s

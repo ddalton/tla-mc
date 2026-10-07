@@ -1,0 +1,41 @@
+success specifications/Bakery-Boulangerie/MCBoulanger.cfg 42.17 
+success specifications/CheckpointCoordination/MCCheckpointCoordination.cfg 19.76 
+success specifications/CoffeeCan/CoffeeCan100Beans.cfg 0.03 
+unsupported specifications/DieHard/MCDieHardest.cfg 0.0 tla-mc: unknown operator TLCGet
+success specifications/Disruptor/MCDisruptor_SPMC.cfg 0.14 
+success specifications/FlashProtocol/MCFlashWithMutex.cfg 0.03 
+success specifications/GermanProtocol/MCGermanControl.cfg 0.01 
+success specifications/KeyValueStore/MCKVSSafetySmall.cfg 21.89 
+success specifications/LeastCircularSubstring/MCLeastCircularSubstringSmall.cfg 0.05 
+unsupported specifications/MisraReachability/MCParReach.cfg 0.0 tla-mc: PROPERTY Refines: unsupported temporal formula Temporal("WF", [Ident("R!vars"), Ident("R!Next")])
+safety failure specifications/MissionariesAndCannibals/MissionariesAndCannibals.cfg 0.01 
+success specifications/MultiCarElevator/ElevatorSafetyLarge.cfg 347.57 
+success specifications/MultiPaxos-SMR/MultiPaxos_MC_small.cfg 3.76 
+unsupported specifications/NanoBlockchain/MCNanoSmall.cfg 0.0 tla-mc: Nano.tla: line 31 col 34: expected `\in` (at Op(":"))
+success specifications/PaxosHowToWinATuringAward/MCConsensus.cfg 0.0 
+success specifications/Prisoners/Prisoners.cfg 0.01 
+success specifications/Prisoners_Single_Switch/PrisonerSoloLightUnknown.cfg 0.01 
+success specifications/SimplifiedFastPaxos/FastPaxos.cfg 10.32 
+safety failure specifications/SlidingPuzzles/SlidingPuzzles_anim.cfg 0.21 
+unsupported specifications/SpanningTree/SpanTreeRandom.cfg 0.0 tla-mc: in Edges: unknown operator RandomElement
+success specifications/SpecifyingSystems/AsynchronousInterface/AsynchInterface.cfg 0.0 
+success specifications/SpecifyingSystems/CachingMemory/MCWriteThroughCache.cfg 0.08 
+unsupported specifications/SpecifyingSystems/Liveness/LiveHourClock.cfg 0.0 tla-mc: PROPERTY AlwaysTick: unsupported shape under []
+success specifications/SpecifyingSystems/SimpleMath/SimpleMath.cfg 0.0 
+unsupported specifications/TLC/TestGraphs.cfg 0.0 tla-mc: unknown operator Constraint
+success specifications/TwoPhase/MCTwoPhase.cfg 0.0 
+unsupported specifications/aba-asyn-byz/aba_asyn_byz.cfg 0.0 tla-mc: PROPERTY Unforg_Ltl: unsupported temporal formula Bin("=>", Quant(true, [Bound { names: ["i"], tuple: false, set
+unsupported specifications/allocator/AllocatorImplementation.cfg 0.0 tla-mc: PROPERTY SchedAllocator: unsupported temporal formula Temporal("WF", [Ident("Sched!vars"), And([Bin("=", App(Ide
+success specifications/barriers/Barrier.cfg 0.0 
+success specifications/bosco/bosco.cfg 239.88 
+success specifications/byihive/VoucherCancel.cfg 0.1 
+success specifications/byihive/VoucherTransfer.cfg 0.09 
+unsupported specifications/cf1s-folklore/cf1s_folklore.cfg 0.0 tla-mc: PROPERTY OneStep0_Ltl: unsupported temporal formula Bin("=>", Quant(true, [Bound { names: ["i"], tuple: false, s
+success specifications/dijkstra-mutex/DijkstraMutex.toolbox/LSpec-model/MC.cfg 0.56 
+error specifications/ewd687a/MCEWD687a.cfg 0.0 Error: evaluating TreeWithRoot: cannot enumerate the infinite set Seq({Leader})
+unsupported specifications/ewd998/AsyncTerminationDetection.cfg 0.0 tla-mc: PROPERTY Quiescence: unsupported shape under []
+unsupported specifications/ewd998/EWD998ChanTrace.cfg 0.0 tla-mc: ACTION_CONSTRAINT is not supported
+success specifications/glowingRaccoon/stages.cfg 0.01 
+success specifications/locks_auxiliary_vars/Peterson.cfg 0.01 
+unsupported specifications/sums_even/MC_sums_even.cfg 0.0 tla-mc: unknown identifier T1
+success specifications/transaction_commit/2PCwithBTM.cfg 0.01 

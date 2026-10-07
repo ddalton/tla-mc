@@ -1,0 +1,41 @@
+success specifications/CarTalkPuzzle/CarTalkPuzzle.toolbox/Model_2/MC.cfg 0.41 
+success specifications/CigaretteSmokers/CigaretteSmokers.cfg 0.0 
+safety failure specifications/DieHard/DieHard.cfg 0.01 
+success specifications/Disruptor/MCDisruptor_MPMC.cfg 0.52 
+unsupported specifications/FiniteMonotonic/MCDistributedReplicatedLog.cfg 0.0 tla-mc: PROPERTY AllExtending: unsupported shape under []
+success specifications/GameOfLife/GameOfLife.cfg 7.33 
+unsupported specifications/Huang/Huang.cfg 0.0 tla-mc: PROPERTY Safe: unsupported shape under []
+success specifications/LearnProofs/MCFindHighest.cfg 0.01 
+success specifications/LoopInvariance/MCQuicksort.cfg 1.42 
+unsupported specifications/MisraReachability/MCReachabilityTestRandomGraphs.cfg 0.0 tla-mc: ReachabilityTest.tla: line 46 col 12: unexpected keyword (at Ident("INSTANCE"))
+success specifications/Moving_Cat_Puzzle/CatOddBoxes.cfg 0.0 
+success specifications/MultiCarElevator/ElevatorSafetySmall.cfg 0.04 
+safety failure specifications/N-Queens/QueensPluscal.toolbox/FourQueens/MC.cfg 0.01 
+success specifications/Paxos/MCPaxos.cfg 0.01 
+success specifications/PaxosHowToWinATuringAward/MCPaxosTiny.cfg 0.23 
+success specifications/Prisoners_Single_Switch/PrisonerLightUnknown.cfg 0.01 
+unsupported specifications/SDP_Verification/SDP_Attack_New_Solution_Spec/MC.cfg 0.0 tla-mc: /data/CommunityModules/modules/Bitwise.tla: line 34 col 3: expected `==` (at Op("|"))
+success specifications/SingleLaneBridge/MC.cfg 0.07 
+success specifications/SlushProtocol/SlushSmall.cfg 1.01 
+success specifications/SpecifyingSystems/AdvancedExamples/MCInnerSequential.cfg 0.04 
+success specifications/SpecifyingSystems/AsynchronousInterface/PrintValues.cfg 0.0 
+success specifications/SpecifyingSystems/HourClock/HourClock.cfg 0.0 
+unsupported specifications/SpecifyingSystems/Liveness/MCLiveWriteThroughCache.cfg 0.0 tla-mc: PROPERTY LM_Inner_LISpec: unsupported temporal formula Or([Temporal("[]", [Temporal("<>", [Not(Or([Apply("LM_Inn
+unsupported specifications/SpecifyingSystems/TLC/MCAlternatingBit.cfg 0.0 tla-mc: PROPERTY ABCSpec: unsupported temporal formula Temporal("WF", [Ident("cvars"), Ident("CRcvMsg")])
+success specifications/TeachingConcurrency/SimpleRegular.cfg 1.18 
+unsupported specifications/YoYo/MCYoYoPruning.cfg 0.0 tla-mc: cannot enumerate the infinite set Seq({1})
+safety failure specifications/acp/ACP_NB_WRONG_TLC.cfg 0.05 
+success specifications/allocator/SchedulingAllocator.cfg 0.04 
+unsupported specifications/bcastByz/bcastByz.cfg 0.0 tla-mc: PROPERTY CorrLtl: unsupported temporal formula Bin("=>", Quant(true, [Bound { names: ["i"], tuple: false, set: I
+success specifications/btree/MCbtree.cfg 6.53 
+success specifications/byihive/VoucherLifeCycle.cfg 0.01 
+success specifications/byzpaxos/PConProof.cfg 64.45 
+unsupported specifications/dag-consensus/BlockDagTest.cfg 0.01 tla-mc: cannot enumerate the infinite set Nat
+success specifications/echo/MCEcho.cfg 0.18 
+unsupported specifications/ewd840/EWD840_json.cfg 0.0 tla-mc: TLCExt.tla: No such file or directory (os error 2)
+unsupported specifications/ewd998/EWD998Chan.cfg 0.0 tla-mc: PROPERTY EWD998Spec: unsupported temporal formula Temporal("WF", [Ident("EWD998!vars"), Ident("EWD998!System")])
+success specifications/glowingRaccoon/clean.cfg 0.01 
+success specifications/locks_auxiliary_vars/Lock.cfg 0.0 
+unsupported specifications/nbacg_guer01/nbacg_guer01.cfg 0.0 tla-mc: PROPERTY AbortValidityLtl: unsupported temporal formula Bin("=>", Quant(false, [Bound { names: ["i"], tuple: fal
+safety failure specifications/tower_of_hanoi/Hanoi.toolbox/Model_1/MC.cfg 0.02 
+success specifications/transaction_commit/TCommit.cfg 0.0 
