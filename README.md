@@ -1,5 +1,7 @@
 # tla-mc
 
+[![crates.io](https://img.shields.io/crates/v/tla-mc.svg)](https://crates.io/crates/tla-mc)
+
 **A fast TLA+ model checker, written in Rust.** It reads the same `.tla` and `.cfg`
 files as TLC, explores the same state space — down to the same distinct-state
 count — and can compile a spec into a native, parallel checker.
@@ -22,7 +24,7 @@ count — and can compile a spec into a native, parallel checker.
 ## Quick start
 
 ```sh
-cargo install --git https://github.com/ddalton/tla-mc   # Rust 1.88+
+cargo install tla-mc   # Rust 1.88+
 tla-mc -workers 8 -config MCPaxos.cfg MCPaxos.tla
 ```
 
