@@ -1,0 +1,39 @@
+java -XX:+UseParallelGC -cp /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar tlc2.TLC -workers 8 -metadir /tmp/bench-md -config PaxosCommit.cfg PaxosCommit.tla
+
+TLC2 Version 2026.10.06.014338 (rev: 94d0c50)
+Running breadth-first search Model-Checking with fp 5 and seed 8341438944669856668 with 8 workers on 8 cores with 1820MB heap and 64MB offheap memory [pid: 28727] (Mac OS X 26.3.1 aarch64, Oracle Corporation 25.0.1 64bit, MSBDiskFPSet, DiskStateQueue).
+Parsing file /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/Examples/specifications/transaction_commit/PaxosCommit.tla
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-4381721043327814913/Integers.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/Integers.tla)
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-4381721043327814913/_TLCTrace.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/_TLCTrace.tla)
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-4381721043327814913/Naturals.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/Naturals.tla)
+Parsing file /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/Examples/specifications/transaction_commit/TCommit.tla
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-4381721043327814913/TLC.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/TLC.tla)
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-4381721043327814913/TLCExt.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/TLCExt.tla)
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-4381721043327814913/Sequences.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/Sequences.tla)
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-4381721043327814913/FiniteSets.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/FiniteSets.tla)
+Semantic processing of module Naturals
+Semantic processing of module Integers
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module TLCExt
+Semantic processing of module _TLCTrace
+Semantic processing of module TCommit
+Semantic processing of module PaxosCommit
+Linting of module TLCExt
+Linting of module _TLCTrace
+Linting of module TCommit
+Linting of module PaxosCommit
+Starting... (2026-10-07 10:44:19)
+Computing initial states...
+Finished computing initial states: 1 distinct state generated at 2026-10-07 10:44:19.
+Progress(15) at 2026-10-07 10:44:22: 1,332,715 states generated (1,332,715 s/min), 191,546 distinct states found (191,546 ds/min), 73,146 states left on queue.
+Model checking completed. No error has been found.
+  Estimates of the probability that TLC did not check all reachable states
+  because two distinct states had the same fingerprint:
+  calculated (optimistic):  val = 1.1E-6
+  based on the actual fingerprints:  val = 1.6E-7
+16959159 states generated, 1321761 distinct states found, 0 states left on queue.
+The depth of the complete state graph search is 28.
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 12 and the 95th percentile is 3).
+Finished in 30s at (2026-10-07 10:44:50)

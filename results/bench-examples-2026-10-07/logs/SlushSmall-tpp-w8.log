@@ -1,0 +1,29 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tlaplusplus/target/release/tlaplusplus run-tla --module Slush.tla --config SlushSmall.cfg --workers 8 --work-dir /tmp/bench-md --fresh
+
+Warning: Could not evaluate ASSUME 'HostMappingType ==': unexpected trailing tokens in expr: HostMappingType ==
+Starting... (2026-10-07 10:02:45)
+Computing initial states...
+WARNING: Disk space is under pressure (43.9 GB available, 80% used). Consider freeing space to avoid checkpoint failures.
+Auto-switching fingerprint store initialized (auto-switch: enabled)
+  Switch triggers: state count > 1000000000 OR memory > 85%
+  Bloom FPR after switch: 0.10%
+=== NUMA Topology Diagnostics ===
+NUMA nodes detected: 1
+Worker distribution across NUMA nodes:
+  Node 0: 8 workers (IDs: [0, 1, 2, 3, 4, 5, 6, 7])
+Fingerprint store NUMA nodes: unknown (not on Linux or not yet allocated)
+=================================
+Finished computing initial states: 1 distinct state generated at 2026-10-07 10:02:45.
+AutoTune: stopped during warmup
+Exit checkpoint written and validated [keeping last 5]
+1 states generated, 1 distinct states found, 0 states left on queue.
+Finished in 01s at (2026-10-07 10:02:46)
+violation=true (1 violations found)
+
+--- Violation 1 ---
+  message: failed evaluating invariant 'TypeInvariant': failed to resolve NoColor: expected BOOLEAN, got ModelValue("__choose_c_a8b56b628fe88b42")
+  invariant variables: pick, message
+  noise variables (not referenced by invariant): loopVariant, pc, sampleSet
+  state: {"loopVariant": Function(HashedArc { inner: {ModelValue("l1"): Int(0), ModelValue("l2"): Int(0), ModelValue("l3"): Int(0)}, hash: 6170231553595567263 }), "message": Set(HashedArc { inner: {}, hash: 3561292839083623157 }), "pc": Function(HashedArc { inner: {String("ClientRequest"): String("ClientRequestLoop"), ModelValue("l1"): String("RequireColorAssignment"), ModelValue("l2"): String("RequireColorAssignment"), ModelValue("l3"): String("RequireColorAssignment"), ModelValue("q1"): String("QueryReplyLoop"), ModelValue("q2"): String("QueryReplyLoop"), ModelValue("q3"): String("QueryReplyLoop")}, hash: 13122747485173817159 }), "pick": Function(HashedArc { inner: {ModelValue("n1"): ModelValue("NoColor"), ModelValue("n2"): ModelValue("NoColor"), ModelValue("n3"): ModelValue("NoColor")}, hash: 1047342050007660812 }), "sampleSet": Function(HashedArc { inner: {ModelValue("l1"): Set(HashedArc { inner: {}, hash: 3561292839083623157 }), ModelValue("l2"): Set(HashedArc { inner: {}, hash: 3561292839083623157 }), ModelValue("l3"): Set(HashedArc { inner: {}, hash: 3561292839083623157 })}, hash: 9482545099077245480 })}
+  trace (1 steps):
+    step 0: {"loopVariant": Function(HashedArc { inner: {ModelValue("l1"): Int(0), ModelValue("l2"): Int(0), ModelValue("l3"): Int(0)}, hash: 6170231553595567263 }), "message": Set(HashedArc { inner: {}, hash: 3561292839083623157 }), "pc": Function(HashedArc { inner: {String("ClientRequest"): String("ClientRequestLoop"), ModelValue("l1"): String("RequireColorAssignment"), ModelValue("l2"): String("RequireColorAssignment"), ModelValue("l3"): String("RequireColorAssignment"), ModelValue("q1"): String("QueryReplyLoop"), ModelValue("q2"): String("QueryReplyLoop"), ModelValue("q3"): String("QueryReplyLoop")}, hash: 13122747485173817159 }), "pick": Function(HashedArc { inner: {ModelValue("n1"): ModelValue("NoColor"), ModelValue("n2"): ModelValue("NoColor"), ModelValue("n3"): ModelValue("NoColor")}, hash: 1047342050007660812 }), "sampleSet": Function(HashedArc { inner: {ModelValue("l1"): Set(HashedArc { inner: {}, hash: 3561292839083623157 }), ModelValue("l2"): Set(HashedArc { inner: {}, hash: 3561292839083623157 }), ModelValue("l3"): Set(HashedArc { inner: {}, hash: 3561292839083623157 })}, hash: 9482545099077245480 })}

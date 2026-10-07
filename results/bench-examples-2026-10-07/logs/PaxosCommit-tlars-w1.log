@@ -1,0 +1,15 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla-rs/target/release/tla PaxosCommit.tla --config PaxosCommit.cfg --max-states 1000000000 --max-depth 1000000
+
+Checking spec: PaxosCommit.tla
+  Extends: Integers
+  Variables: rmState, aState, msgs
+  Constants: RM, Acceptor, Majority, Ballot
+  Invariants: 1
+
+  Resolved 1 instance(s)
+  Computing initial states...
+  Found 1 initial states
+  Starting exploration (limit: 1000000000 states)...
+  Exploring states...
+  Progress: 10 states explored, queue: 44
+  Progress: 100 states explored, queue: 259

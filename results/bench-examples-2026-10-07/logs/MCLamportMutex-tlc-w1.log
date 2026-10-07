@@ -1,0 +1,39 @@
+java -XX:+UseParallelGC -cp /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar tlc2.TLC -workers 1 -metadir /tmp/bench-md -config MCLamportMutex.cfg MCLamportMutex.tla
+
+TLC2 Version 2026.10.06.014338 (rev: 94d0c50)
+Running breadth-first search Model-Checking with fp 43 and seed -5701692111239084152 with 1 worker on 8 cores with 1820MB heap and 64MB offheap memory [pid: 26757] (Mac OS X 26.3.1 aarch64, Oracle Corporation 25.0.1 64bit, MSBDiskFPSet, DiskStateQueue).
+Parsing file /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/Examples/specifications/lamport_mutex/MCLamportMutex.tla
+Parsing file /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/Examples/specifications/lamport_mutex/LamportMutex.tla
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-1888678705126532035/_TLCTrace.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/_TLCTrace.tla)
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-1888678705126532035/Naturals.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/Naturals.tla)
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-1888678705126532035/Sequences.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/Sequences.tla)
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-1888678705126532035/TLC.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/TLC.tla)
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-1888678705126532035/TLCExt.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/TLCExt.tla)
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-1888678705126532035/FiniteSets.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/FiniteSets.tla)
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-1888678705126532035/Integers.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/Integers.tla)
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module LamportMutex
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module Integers
+Semantic processing of module TLCExt
+Semantic processing of module _TLCTrace
+Semantic processing of module MCLamportMutex
+Linting of module LamportMutex
+Linting of module TLCExt
+Linting of module _TLCTrace
+Linting of module MCLamportMutex
+Starting... (2026-10-07 10:19:30)
+Computing initial states...
+Finished computing initial states: 1 distinct state generated at 2026-10-07 10:19:30.
+Progress(26) at 2026-10-07 10:19:33: 558,056 states generated (558,056 s/min), 181,387 distinct states found (181,387 ds/min), 29,147 states left on queue.
+Model checking completed. No error has been found.
+  Estimates of the probability that TLC did not check all reachable states
+  because two distinct states had the same fingerprint:
+  calculated (optimistic):  val = 7.9E-8
+  based on the actual fingerprints:  val = 3.7E-8
+2729079 states generated, 724274 distinct states found, 0 states left on queue.
+The depth of the complete state graph search is 61.
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 7 and the 95th percentile is 3).
+Finished in 13s at (2026-10-07 10:19:44)

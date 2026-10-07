@@ -1,0 +1,40 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tlaplusplus/target/release/tlaplusplus run-tla --module CoffeeCan.tla --config CoffeeCan1000Beans.cfg --workers 8 --work-dir /tmp/bench-md --fresh
+
+Constraint propagation: 501500 valid records (from 1001x1001 = 1002001 total)
+Extracted 1 fairness constraints from specification
+  WF_<<can>>(Next) - Weak fairness
+Warning: Could not evaluate ASSUME 'MaxBeanFact == MaxBeanCount \in Nat /\ MaxBeanCount >= 1': unexpected trailing tokens in expr: MaxBeanFact == MaxBeanCount
+Starting... (2026-10-07 11:29:09)
+Computing initial states...
+WARNING: Disk space is under pressure (43.3 GB available, 81% used). Consider freeing space to avoid checkpoint failures.
+Auto-switching fingerprint store initialized (auto-switch: enabled)
+  Switch triggers: state count > 1000000000 OR memory > 85%
+  Bloom FPR after switch: 0.10%
+Fairness/graph-liveness properties detected - collecting labeled transitions
+=== NUMA Topology Diagnostics ===
+NUMA nodes detected: 1
+Worker distribution across NUMA nodes:
+  Node 0: 8 workers (IDs: [0, 1, 2, 3, 4, 5, 6, 7])
+Fingerprint store NUMA nodes: unknown (not on Linux or not yet allocated)
+=================================
+Finished computing initial states: 501297 distinct states generated at 2026-10-07 11:29:11.
+AutoTune: stopped during warmup
+Exit checkpoint written and validated [keeping last 5]
+Checking fairness constraints on 501500 states with transitions...
+  Total transitions collected: 1498502 (flatten: 1.79s, parallel via 32 shards)
+  Unique states in graph: 501500
+  Adjacency built in 63.49ms (1498502 edges, 501500 nodes)
+  Trivial-SCC pre-filter: 501500 → 501500 candidate nodes (399.21µs; avg-outdeg 2.99, trim skipped)
+  Found 501500 strongly connected components in 351.29ms
+  Non-trivial SCCs: 2 (filter: 45.37ms)
+  Per-action shard index: 4 actions (55.42ms)
+  Checking 1 fairness constraints against 2 SCCs
+  Fairness check: 2 constraint-on-SCC checks in 24.46µs
+  All fairness constraints satisfied
+  Liveness post-processing total: 2.31s
+2,000,002 states generated, 501,500 distinct states found, 0 states left on queue.
+Finished in 05s at (2026-10-07 11:29:16)
+Checking 4 temporal properties...
+violation=false
+
+Model checking completed successfully!

@@ -1,0 +1,5 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/gt/SlushSmall/release/tlcgen-slush -lib /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/CommunityModules/modules -workers 8 -checkpoint 0 -metadir /tmp/bench-md -config SlushSmall.cfg Slush.tla
+
+tla-mc: Slush (5 variables, 0 symmetry permutations), 8 workers, generated engine; loaded in 0.001s
+Model checking completed. No error has been found.
+1621541 states generated, 274678 distinct states found. Depth 43. Checked in 0.359s (765789 distinct/s).

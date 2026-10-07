@@ -1,0 +1,9 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla-rs/target/release/tla EWD998PCal.tla --config EWD998PCal.cfg --max-states 1000000000 --max-depth 1000000
+
+error: unexpected `=`
+  --> EWD998PCal.tla:27:13
+   |
+26 |     *)
+27 |     network = [n \in Node |-> IF n = Initiator THEN SetToBag({[type|-> "tok", q |-> 0, color |-> "black"]}) ELSE EmptyBag];
+   |             ^ expected `==`, found `=`
+

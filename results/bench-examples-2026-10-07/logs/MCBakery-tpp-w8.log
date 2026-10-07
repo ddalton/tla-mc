@@ -1,0 +1,26 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tlaplusplus/target/release/tlaplusplus run-tla --module MCBakery.tla --config MCBakery.cfg --workers 8 --work-dir /tmp/bench-md --fresh
+
+Warning: Extended module 'TLAPS' not found at TLAPS.tla
+Starting... (2026-10-07 10:18:28)
+Computing initial states...
+WARNING: Disk space is under pressure (43.8 GB available, 80% used). Consider freeing space to avoid checkpoint failures.
+Auto-switching fingerprint store initialized (auto-switch: enabled)
+  Switch triggers: state count > 1000000000 OR memory > 85%
+  Bloom FPR after switch: 0.10%
+=== NUMA Topology Diagnostics ===
+NUMA nodes detected: 1
+Worker distribution across NUMA nodes:
+  Node 0: 8 workers (IDs: [0, 1, 2, 3, 4, 5, 6, 7])
+Fingerprint store NUMA nodes: unknown (not on Linux or not yet allocated)
+=================================
+Finished computing initial states: 604584 distinct states generated at 2026-10-07 10:18:36.
+Progress(1) at 2026-10-07 10:18:38: 1,248,872 states generated (7,461,798 s/min), 655,200 distinct states found (3,914,709 ds/min), 529,898 states left on queue.
+Progress(2) at 2026-10-07 10:18:48: 2,061,032 states generated (4,858,507 s/min), 655,200 distinct states found (0 ds/min), 330,218 states left on queue. ETA: 17s
+Progress(3) at 2026-10-07 10:18:58: 2,804,184 states generated (4,437,853 s/min), 655,200 distinct states found (0 ds/min), 141,546 states left on queue. ETA: 8s
+AutoTune: finished. Best: 0 states/s with 8 workers
+Exit checkpoint written and validated [keeping last 5]
+3,403,584 states generated, 655,200 distinct states found, 0 states left on queue.
+Finished in 39s at (2026-10-07 10:19:08)
+violation=false
+
+Model checking completed successfully!

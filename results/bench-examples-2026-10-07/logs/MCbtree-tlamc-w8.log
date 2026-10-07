@@ -1,0 +1,5 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/../tgt-tlamc/release/tla-mc -lib /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/CommunityModules/modules -workers 8 -checkpoint 0 -metadir /tmp/bench-md -config MCbtree.cfg MCbtree.tla
+
+tla-mc: MCbtree (12 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.002s
+Model checking completed. No error has been found.
+2820091 states generated, 374727 distinct states found. Depth 38. Checked in 6.054s (61898 distinct/s).

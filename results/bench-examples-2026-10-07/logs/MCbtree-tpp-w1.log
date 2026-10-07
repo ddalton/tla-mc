@@ -1,0 +1,55 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tlaplusplus/target/release/tlaplusplus run-tla --module MCbtree.tla --config MCbtree.cfg --workers 1 --work-dir /tmp/bench-md --fresh
+
+Extracted 1 fairness constraints from specification
+  WF_<<op>>(\E key \in Keys: GetReq(key)) - Weak fairness
+Warning: Could not evaluate ASSUME 'KeyDomainIsNonEmpty == MaxKey \in Nat \ {0}': unexpected trailing tokens in expr: KeyDomainIsNonEmpty == MaxKey
+Warning: Could not evaluate ASSUME 'NodeBoundIsNat == MaxNode \in Nat': unexpected trailing tokens in expr: NodeBoundIsNat == MaxNode
+Starting... (2026-10-07 10:07:14)
+Computing initial states...
+WARNING: Disk space is under pressure (43.9 GB available, 80% used). Consider freeing space to avoid checkpoint failures.
+Auto-switching fingerprint store initialized (auto-switch: enabled)
+  Switch triggers: state count > 1000000000 OR memory > 85%
+  Bloom FPR after switch: 0.10%
+=== NUMA Topology Diagnostics ===
+NUMA nodes detected: 1
+Worker distribution across NUMA nodes:
+  Node 0: 1 workers (IDs: [0])
+Fingerprint store NUMA nodes: unknown (not on Linux or not yet allocated)
+=================================
+Finished computing initial states: 1 distinct state generated at 2026-10-07 10:07:14.
+Progress(1) at 2026-10-07 10:07:24: 65,663 states generated (391,382 s/min), 20,941 distinct states found (124,818 ds/min), 6,521 states left on queue.
+Progress(2) at 2026-10-07 10:07:34: 169,429 states generated (617,041 s/min), 35,309 distinct states found (85,438 ds/min), 12,253 states left on queue. ETA: queue growing
+Progress(3) at 2026-10-07 10:07:44: 234,364 states generated (387,436 s/min), 51,744 distinct states found (98,059 ds/min), 12,318 states left on queue. ETA: stabilizing
+Progress(4) at 2026-10-07 10:07:54: 375,791 states generated (843,098 s/min), 73,887 distinct states found (132,002 ds/min), 21,207 states left on queue. ETA: queue growing
+Progress(5) at 2026-10-07 10:08:05: 447,907 states generated (429,209 s/min), 86,754 distinct states found (76,579 ds/min), 19,575 states left on queue. ETA: 2.0m
+Progress(6) at 2026-10-07 10:08:15: 467,132 states generated (114,693 s/min), 95,148 distinct states found (50,077 ds/min), 16,019 states left on queue. ETA: 45s
+Progress(7) at 2026-10-07 10:08:25: 632,051 states generated (983,294 s/min), 109,047 distinct states found (82,869 ds/min), 16,167 states left on queue. ETA: queue growing
+Progress(8) at 2026-10-07 10:08:35: 734,005 states generated (607,049 s/min), 131,473 distinct states found (133,527 ds/min), 27,071 states left on queue. ETA: queue growing
+Progress(9) at 2026-10-07 10:08:45: 864,147 states generated (777,983 s/min), 161,515 distinct states found (179,589 ds/min), 43,063 states left on queue. ETA: queue growing
+Progress(10) at 2026-10-07 10:08:55: 905,723 states generated (247,930 s/min), 167,025 distinct states found (32,857 ds/min), 32,567 states left on queue. ETA: 31s
+Progress(11) at 2026-10-07 10:09:05: 923,131 states generated (103,721 s/min), 172,900 distinct states found (35,004 ds/min), 21,303 states left on queue. ETA: 19s
+Progress(12) at 2026-10-07 10:09:15: 1,056,351 states generated (794,332 s/min), 189,139 distinct states found (96,826 ds/min), 24,569 states left on queue. ETA: queue growing
+Progress(13) at 2026-10-07 10:09:25: 1,272,439 states generated (1,292,579 s/min), 192,747 distinct states found (21,582 ds/min), 17,659 states left on queue. ETA: 26s
+Progress(14) at 2026-10-07 10:09:35: 1,339,315 states generated (400,160 s/min), 203,639 distinct states found (65,173 ds/min), 13,589 states left on queue. ETA: 33s
+Progress(15) at 2026-10-07 10:09:45: 1,477,775 states generated (827,317 s/min), 215,048 distinct states found (68,170 ds/min), 13,271 states left on queue. ETA: 7.0m
+Progress(16) at 2026-10-07 10:09:55: 1,548,083 states generated (420,118 s/min), 227,607 distinct states found (75,045 ds/min), 11,899 states left on queue. ETA: 1.5m
+Progress(17) at 2026-10-07 10:10:05: 1,636,973 states generated (531,571 s/min), 236,437 distinct states found (52,804 ds/min), 10,275 states left on queue. ETA: 1.1m
+Progress(18) at 2026-10-07 10:10:15: 1,722,925 states generated (514,296 s/min), 250,447 distinct states found (83,829 ds/min), 15,369 states left on queue. ETA: queue growing
+Progress(19) at 2026-10-07 10:10:25: 1,772,955 states generated (299,289 s/min), 259,351 distinct states found (53,265 ds/min), 10,587 states left on queue. ETA: 22s
+Progress(20) at 2026-10-07 10:10:35: 1,917,737 states generated (865,985 s/min), 276,609 distinct states found (103,225 ds/min), 17,383 states left on queue. ETA: queue growing
+Progress(21) at 2026-10-07 10:10:45: 1,946,361 states generated (171,104 s/min), 285,686 distinct states found (54,259 ds/min), 14,665 states left on queue. ETA: 54s
+Progress(22) at 2026-10-07 10:10:55: 2,040,731 states generated (564,100 s/min), 297,547 distinct states found (70,899 ds/min), 15,363 states left on queue. ETA: queue growing
+Progress(23) at 2026-10-07 10:11:05: 2,139,501 states generated (590,843 s/min), 308,287 distinct states found (64,246 ds/min), 14,307 states left on queue. ETA: 2.3m
+Progress(24) at 2026-10-07 10:11:15: 2,286,849 states generated (882,508 s/min), 334,462 distinct states found (156,769 ds/min), 31,323 states left on queue. ETA: queue growing
+Progress(25) at 2026-10-07 10:11:25: 2,325,377 states generated (230,292 s/min), 339,043 distinct states found (27,381 ds/min), 21,339 states left on queue. ETA: 21s
+Progress(26) at 2026-10-07 10:11:35: 2,341,249 states generated (94,945 s/min), 344,127 distinct states found (30,412 ds/min), 10,843 states left on queue. ETA: 10s
+Progress(27) at 2026-10-07 10:11:45: 2,518,947 states generated (1,063,689 s/min), 353,343 distinct states found (55,166 ds/min), 11,671 states left on queue. ETA: queue growing
+Progress(28) at 2026-10-07 10:11:55: 2,621,227 states generated (611,363 s/min), 363,579 distinct states found (61,184 ds/min), 10,695 states left on queue. ETA: 1.8m
+Progress(29) at 2026-10-07 10:12:05: 2,706,441 states generated (509,931 s/min), 370,978 distinct states found (44,276 ds/min), 4,711 states left on queue. ETA: 8s
+AutoTune: finished. Best: 0 states/s with 1 workers
+Exit checkpoint written and validated [keeping last 5]
+2,820,091 states generated, 374,727 distinct states found, 0 states left on queue.
+Finished in 05min 00s at (2026-10-07 10:12:15)
+violation=false
+
+Model checking completed successfully!

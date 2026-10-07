@@ -1,0 +1,45 @@
+java -XX:+UseParallelGC -cp /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/CommunityModules-deps.jar tlc2.TLC -workers 8 -metadir /tmp/bench-md -config MCbtree.cfg MCbtree.tla
+
+TLC2 Version 2026.10.06.014338 (rev: 94d0c50)
+Running breadth-first search Model-Checking with fp 84 and seed 9061093268119153678 with 8 workers on 8 cores with 1820MB heap and 64MB offheap memory [pid: 26344] (Mac OS X 26.3.1 aarch64, Oracle Corporation 25.0.1 64bit, MSBDiskFPSet, DiskStateQueue).
+Parsing file /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/Examples/specifications/btree/MCbtree.tla
+Parsing file /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/Examples/specifications/btree/btree.tla
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-6655703511004152311/_TLCTrace.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/_TLCTrace.tla)
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-6655703511004152311/Naturals.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/Naturals.tla)
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-6655703511004152311/FiniteSets.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/FiniteSets.tla)
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-6655703511004152311/Sequences.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/Sequences.tla)
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-6655703511004152311/Relation.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/CommunityModules-deps.jar!/Relation.tla)
+Parsing file /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/Examples/specifications/btree/kvstore.tla
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-6655703511004152311/TLC.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/TLC.tla)
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-6655703511004152311/TLCExt.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/TLCExt.tla)
+Parsing file /private/var/folders/c2/146zh2lj05g11sn0ts7s_ygr0000gq/T/tlc-6655703511004152311/Integers.tla (jar:file:/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla2tools-1.8.0.jar!/tla2sany/StandardModules/Integers.tla)
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module Relation
+Semantic processing of module kvstore
+Semantic processing of module btree
+Semantic processing of module TLC
+Semantic processing of module Integers
+Semantic processing of module TLCExt
+Semantic processing of module _TLCTrace
+Semantic processing of module MCbtree
+Linting of module Relation
+Linting of module kvstore
+Linting of module btree
+Linting of module TLCExt
+Linting of module _TLCTrace
+Linting of module MCbtree
+Starting... (2026-10-07 10:12:15)
+Computing initial states...
+Finished computing initial states: 1 distinct state generated at 2026-10-07 10:12:15.
+Progress(24) at 2026-10-07 10:12:18: 917,011 states generated (917,011 s/min), 160,886 distinct states found (160,886 ds/min), 29,699 states left on queue.
+Model checking completed. No error has been found.
+  Estimates of the probability that TLC did not check all reachable states
+  because two distinct states had the same fingerprint:
+  calculated (optimistic):  val = 5.0E-8
+  based on the actual fingerprints:  val = 7.0E-9
+2820091 states generated, 374727 distinct states found, 0 states left on queue.
+The depth of the complete state graph search is 39.
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 28 and the 95th percentile is 1).
+Finished in 07s at (2026-10-07 10:12:22)

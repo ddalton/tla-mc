@@ -1,0 +1,6 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/../tgt-tlamc/release/tla-mc -lib /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/CommunityModules/modules -workers 8 -checkpoint 0 -metadir /tmp/bench-md -config PaxosCommit.cfg PaxosCommit.tla
+
+tla-mc: PaxosCommit (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.002s
+progress: depth 20, 11669386 generated, 1149701 distinct (0 fingerprint spills), 136593 on queue (0 on disk), 11.1s
+Model checking completed. No error has been found.
+15242979 states generated, 1321761 distinct states found. Depth 28. Checked in 14.345s (92139 distinct/s).

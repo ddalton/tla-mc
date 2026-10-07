@@ -1,0 +1,29 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tlaplusplus/target/release/tlaplusplus run-tla --module EWD998PCal.tla --config EWD998PCal.cfg --workers 1 --work-dir /tmp/bench-md --fresh
+
+Warning: Could not evaluate ASSUME 'NAssumption == N \in Nat \ {0}': unexpected trailing tokens in expr: NAssumption == N
+Starting... (2026-10-07 10:04:15)
+Computing initial states...
+WARNING: Disk space is under pressure (43.9 GB available, 80% used). Consider freeing space to avoid checkpoint failures.
+Auto-switching fingerprint store initialized (auto-switch: enabled)
+  Switch triggers: state count > 1000000000 OR memory > 85%
+  Bloom FPR after switch: 0.10%
+=== NUMA Topology Diagnostics ===
+NUMA nodes detected: 1
+Worker distribution across NUMA nodes:
+  Node 0: 1 workers (IDs: [0])
+Fingerprint store NUMA nodes: unknown (not on Linux or not yet allocated)
+=================================
+Finished computing initial states: 8 distinct states generated at 2026-10-07 10:04:15.
+Progress(1) at 2026-10-07 10:04:25: 440,092 states generated (2,630,175 s/min), 70,282 distinct states found (420,034 ds/min), 20,424 states left on queue.
+Progress(2) at 2026-10-07 10:04:35: 881,733 states generated (2,637,370 s/min), 127,142 distinct states found (339,553 ds/min), 26,699 states left on queue. ETA: queue growing
+Progress(3) at 2026-10-07 10:04:45: 1,321,242 states generated (2,629,434 s/min), 176,966 distinct states found (298,080 ds/min), 26,577 states left on queue. ETA: 36.4m
+Progress(4) at 2026-10-07 10:04:55: 1,762,617 states generated (2,639,810 s/min), 222,273 distinct states found (270,975 ds/min), 20,538 states left on queue. ETA: 34s
+Progress(5) at 2026-10-07 10:05:05: 2,200,694 states generated (2,616,530 s/min), 263,366 distinct states found (245,438 ds/min), 9,871 states left on queue. ETA: 9s
+Progress(6) at 2026-10-07 10:05:15: 2,645,559 states generated (2,659,552 s/min), 307,178 distinct states found (261,922 ds/min), 2,542 states left on queue. ETA: 3s
+AutoTune: finished. Best: 0 states/s with 1 workers
+Exit checkpoint written and validated [keeping last 5]
+2,808,396 states generated, 321,370 distinct states found, 0 states left on queue.
+Finished in 01min 04s at (2026-10-07 10:05:19)
+violation=false
+
+Model checking completed successfully!

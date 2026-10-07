@@ -1,0 +1,5 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/../tgt-tlamc/release/tla-mc -lib /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/CommunityModules/modules -workers 8 -checkpoint 0 -metadir /tmp/bench-md -config EWD998PCal.cfg EWD998PCal.tla
+
+tla-mc: EWD998PCal (4 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.003s
+Model checking completed. No error has been found.
+2609134 states generated, 321370 distinct states found. Depth 47. Checked in 8.051s (39915 distinct/s).

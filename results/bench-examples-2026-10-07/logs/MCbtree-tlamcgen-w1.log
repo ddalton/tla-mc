@@ -1,0 +1,6 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/gt/MCbtree/release/tlcgen-mcbtree -lib /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/CommunityModules/modules -workers 1 -checkpoint 0 -metadir /tmp/bench-md -config MCbtree.cfg MCbtree.tla
+
+tla-mc: MCbtree (12 variables, 0 symmetry permutations), 1 workers, generated engine; loaded in 0.005s
+progress: depth 33, 2341867 generated, 344271 distinct (0 fingerprint spills), 10368 on queue (0 on disk), 10.1s
+Model checking completed. No error has been found.
+2820091 states generated, 374727 distinct states found. Depth 38. Checked in 11.154s (33597 distinct/s).

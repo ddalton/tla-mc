@@ -1,0 +1,6 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/../tgt-tlamc/release/tla-mc -lib /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/CommunityModules/modules -workers 1 -checkpoint 0 -metadir /tmp/bench-md -config MCLamportMutex.cfg MCLamportMutex.tla
+
+tla-mc: MCLamportMutex (5 variables, 0 symmetry permutations), 1 workers, interp engine; loaded in 0.002s
+progress: depth 42, 2470706 generated, 675992 distinct (0 fingerprint spills), 17098 on queue (0 on disk), 10.3s
+Model checking completed. No error has been found.
+2729079 states generated, 724274 distinct states found. Depth 61. Checked in 11.167s (64860 distinct/s).

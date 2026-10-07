@@ -1,0 +1,24 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tlaplusplus/target/release/tlaplusplus run-tla --module EWD998PCal.tla --config EWD998PCal.cfg --workers 8 --work-dir /tmp/bench-md --fresh
+
+Warning: Could not evaluate ASSUME 'NAssumption == N \in Nat \ {0}': unexpected trailing tokens in expr: NAssumption == N
+Starting... (2026-10-07 10:05:38)
+Computing initial states...
+WARNING: Disk space is under pressure (43.9 GB available, 80% used). Consider freeing space to avoid checkpoint failures.
+Auto-switching fingerprint store initialized (auto-switch: enabled)
+  Switch triggers: state count > 1000000000 OR memory > 85%
+  Bloom FPR after switch: 0.10%
+=== NUMA Topology Diagnostics ===
+NUMA nodes detected: 1
+Worker distribution across NUMA nodes:
+  Node 0: 8 workers (IDs: [0, 1, 2, 3, 4, 5, 6, 7])
+Fingerprint store NUMA nodes: unknown (not on Linux or not yet allocated)
+=================================
+Finished computing initial states: 8 distinct states generated at 2026-10-07 10:05:38.
+Progress(1) at 2026-10-07 10:05:48: 1,730,430 states generated (10,345,702 s/min), 224,813 distinct states found (1,344,086 ds/min), 25,987 states left on queue.
+AutoTune: finished. Best: 0 states/s with 8 workers
+Exit checkpoint written and validated [keeping last 5]
+2,808,396 states generated, 321,370 distinct states found, 0 states left on queue.
+Finished in 17s at (2026-10-07 10:05:55)
+violation=false
+
+Model checking completed successfully!

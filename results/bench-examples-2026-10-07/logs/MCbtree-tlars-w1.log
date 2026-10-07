@@ -1,0 +1,3 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla-rs/target/release/tla MCbtree.tla --config MCbtree.cfg --max-states 1000000000 --max-depth 1000000
+
+error applying MCbtree.cfg: SPECIFICATION definition 'Spec' not found in spec

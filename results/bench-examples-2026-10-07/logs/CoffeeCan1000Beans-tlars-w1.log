@@ -1,0 +1,13 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tla-rs/target/release/tla CoffeeCan.tla --config CoffeeCan1000Beans.cfg --max-states 1000000000 --max-depth 1000000
+
+Checking spec: CoffeeCan.tla
+  Extends: Naturals
+  Variables: can
+  Constants: MaxBeanCount
+  Invariants: 1
+
+error: ASSUME constraint evaluated to FALSE
+   |
+   = note: ASSUME constraint 0 is not satisfied by current constant values
+   = help: check that --constant values satisfy all ASSUME constraints
+

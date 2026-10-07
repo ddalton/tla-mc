@@ -1,0 +1,5 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/../tgt-tlamc/release/tla-mc -lib /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/CommunityModules/modules -workers 1 -checkpoint 0 -metadir /tmp/bench-md -config MCBakery.cfg MCBakery.tla
+
+tla-mc: MCBakery (6 variables, 0 symmetry permutations), 1 workers, interp engine; loaded in 0.002s
+Model checking completed. No error has been found.
+3403584 states generated, 655200 distinct states found. Depth 1. Checked in 7.009s (93483 distinct/s).

@@ -1,0 +1,8 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/../tgt-tlamc/release/tla-mc -lib /private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/CommunityModules/modules -workers 1 -checkpoint 0 -metadir /tmp/bench-md -config CoffeeCan1000Beans.cfg CoffeeCan.tla
+
+tla-mc: CoffeeCan (1 variables, 0 symmetry permutations), 1 workers, interp engine; loaded in 0.001s
+liveness: checking 3 property instances under 1 fairness instances
+liveness: graph of 501500 nodes loaded in 0.3s
+liveness: all properties checked in 0.5s
+Model checking completed. No error has been found.
+2000002 states generated, 501500 distinct states found. Depth 1. Checked in 4.030s (124439 distinct/s).

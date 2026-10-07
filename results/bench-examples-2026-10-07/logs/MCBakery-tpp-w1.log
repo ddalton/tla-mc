@@ -1,0 +1,34 @@
+/private/tmp/claude-503/-Users-ddalton-github-flint/43d3502a-78c0-49e1-a64a-e1c9da8981bf/scratchpad/cmp/tlaplusplus/target/release/tlaplusplus run-tla --module MCBakery.tla --config MCBakery.cfg --workers 1 --work-dir /tmp/bench-md --fresh
+
+Warning: Extended module 'TLAPS' not found at TLAPS.tla
+Starting... (2026-10-07 10:16:09)
+Computing initial states...
+WARNING: Disk space is under pressure (43.8 GB available, 80% used). Consider freeing space to avoid checkpoint failures.
+Auto-switching fingerprint store initialized (auto-switch: enabled)
+  Switch triggers: state count > 1000000000 OR memory > 85%
+  Bloom FPR after switch: 0.10%
+=== NUMA Topology Diagnostics ===
+NUMA nodes detected: 1
+Worker distribution across NUMA nodes:
+  Node 0: 1 workers (IDs: [0])
+Fingerprint store NUMA nodes: unknown (not on Linux or not yet allocated)
+=================================
+Finished computing initial states: 644020 distinct states generated at 2026-10-07 10:16:12.
+Progress(1) at 2026-10-07 10:16:20: 928,381 states generated (5,551,608 s/min), 655,200 distinct states found (3,918,018 ds/min), 594,648 states left on queue.
+Progress(2) at 2026-10-07 10:16:30: 1,166,770 states generated (1,425,513 s/min), 655,200 distinct states found (0 ds/min), 539,864 states left on queue. ETA: 1.6m
+Progress(3) at 2026-10-07 10:16:40: 1,409,607 states generated (1,453,776 s/min), 655,200 distinct states found (0 ds/min), 481,240 states left on queue. ETA: 1.4m
+Progress(4) at 2026-10-07 10:16:50: 1,618,624 states generated (1,249,838 s/min), 655,200 distinct states found (0 ds/min), 428,504 states left on queue. ETA: 1.4m
+Progress(5) at 2026-10-07 10:17:00: 1,853,890 states generated (1,408,264 s/min), 655,200 distinct states found (0 ds/min), 370,648 states left on queue. ETA: 1.1m
+Progress(6) at 2026-10-07 10:17:10: 2,084,291 states generated (1,378,512 s/min), 655,200 distinct states found (0 ds/min), 312,536 states left on queue. ETA: 54s
+Progress(7) at 2026-10-07 10:17:20: 2,340,285 states generated (1,529,220 s/min), 655,200 distinct states found (0 ds/min), 249,048 states left on queue. ETA: 39s
+Progress(8) at 2026-10-07 10:17:30: 2,586,422 states generated (1,472,299 s/min), 655,200 distinct states found (0 ds/min), 188,120 states left on queue. ETA: 31s
+Progress(9) at 2026-10-07 10:17:40: 2,826,019 states generated (1,432,280 s/min), 655,200 distinct states found (0 ds/min), 129,496 states left on queue. ETA: 22s
+Progress(10) at 2026-10-07 10:17:50: 3,017,219 states generated (1,143,411 s/min), 655,200 distinct states found (0 ds/min), 84,952 states left on queue. ETA: 19s
+Progress(11) at 2026-10-07 10:18:00: 3,268,124 states generated (1,500,467 s/min), 655,200 distinct states found (0 ds/min), 27,608 states left on queue. ETA: 5s
+AutoTune: finished. Best: 0 states/s with 1 workers
+Exit checkpoint written and validated [keeping last 5]
+3,403,584 states generated, 655,200 distinct states found, 0 states left on queue.
+Finished in 01min 57s at (2026-10-07 10:18:07)
+violation=false
+
+Model checking completed successfully!
