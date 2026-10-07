@@ -9,7 +9,7 @@ repository = "https://github.com/ddalton/tla-mc"
 readme = "README.md"
 keywords = ["tla-plus", "tlaplus", "model-checker", "formal-verification", "tla"]
 categories = ["development-tools", "command-line-utilities"]
-exclude = ["results/"]
+exclude = ["results/", ".cargo/"]
 
 # Standalone: not a member of any enclosing workspace.
 [workspace]
