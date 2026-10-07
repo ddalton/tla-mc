@@ -38,7 +38,7 @@ fn run(cmd: &mut Command) -> String {
 
 fn generated(dir: &Path) -> PathBuf {
     let crate_dir = dir.join("gen");
-    let out = run(Command::new(env!("CARGO_BIN_EXE_tlc-rs"))
+    let out = run(Command::new(env!("CARGO_BIN_EXE_tla-mc"))
         .current_dir(dir)
         .args(["-codegen", crate_dir.to_str().unwrap(), "-config", "ViewToy.cfg", "ViewToy.tla"]));
     let main = std::fs::read_to_string(crate_dir.join("src/main.rs")).unwrap_or_else(|_| panic!("codegen failed: {out}"));
@@ -76,7 +76,7 @@ fn a_generated_checker_keys_symmetry_and_view_with_compiled_parts_and_the_interp
     std::fs::write(dir.join("ViewToy.cfg"), CFG).unwrap();
     let bin = generated(&dir);
     let compiled = distinct(&bin, &dir, false);
-    let interp = distinct(Path::new(env!("CARGO_BIN_EXE_tlc-rs")), &dir, true);
+    let interp = distinct(Path::new(env!("CARGO_BIN_EXE_tla-mc")), &dir, true);
     assert!(!compiled.is_empty(), "no count from the generated checker");
     assert_eq!(compiled, interp, "the compiled VIEW parts must key states exactly as the interpreter does");
 }

@@ -1,4 +1,4 @@
-//! tlc-rs: an explicit-state model checker for a subset of TLA+.
+//! tla-mc: an explicit-state model checker for a subset of TLA+.
 
 pub mod ast;
 pub mod check;

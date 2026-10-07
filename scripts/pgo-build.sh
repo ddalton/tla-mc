@@ -6,13 +6,13 @@
 #
 #   pgo-build.sh TLC_RS SPEC.tla CFG GEN_DIR TARGET_DIR [SAMPLE_SECS] [WORKERS]
 #
-# TLC_RS      the tlc-rs binary to generate with
+# TLC_RS      the tla-mc binary to generate with
 # SPEC.tla    the spec; the sample run happens in its directory
 # CFG         its config (the world to be run)
 # GEN_DIR     where the checker's crate is generated
 # TARGET_DIR  cargo's target dir for the final build; the binary is printed
 # SAMPLE_SECS seconds of sampling, ended at the next level boundary
-#             (TLCRS_STOP_AFTER_SECS; default 120)
+#             (TLAMC_STOP_AFTER_SECS; default 120)
 # WORKERS     for the sample run (default: all cores)
 #
 # Needs llvm-profdata from the toolchain (`rustup component add llvm-tools`).
@@ -39,11 +39,11 @@ BIN=$(ls "$TGT"/instrumented/release/tlcgen-* | grep -v '\.d$' | head -1)
 echo "pgo-build: sampling ${SECS}s at $WORKERS workers" >&2
 META=$(mktemp -d)
 set +e
-( cd "$SPEC_DIR" && TLCRS_STOP_AFTER_SECS=$SECS "$BIN" -workers "$WORKERS" -checkpoint 0 -metadir "$META/st" -config "$CFG" "$(basename "$SPEC")" > "$TGT/pgo-sample.out" 2>&1 )
+( cd "$SPEC_DIR" && TLAMC_STOP_AFTER_SECS=$SECS "$BIN" -workers "$WORKERS" -checkpoint 0 -metadir "$META/st" -config "$CFG" "$(basename "$SPEC")" > "$TGT/pgo-sample.out" 2>&1 )
 rc=$?
 set -e
 rm -rf "$META"
-# 3: stopped by TLCRS_STOP_AFTER_SECS; 0: the world finished inside the sample
+# 3: stopped by TLAMC_STOP_AFTER_SECS; 0: the world finished inside the sample
 [ $rc -eq 3 ] || [ $rc -eq 0 ] || { echo "pgo-build: sample run failed (rc=$rc), see $TGT/pgo-sample.out" >&2; exit 1; }
 ls "$PD"/*.profraw >/dev/null 2>&1 || { echo "pgo-build: the sample run wrote no profile" >&2; exit 1; }
 "$PROFDATA" merge -o "$TGT/merged.profdata" "$PD"

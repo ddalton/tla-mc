@@ -1,3 +1,3 @@
 fn main() -> std::process::ExitCode {
-    tlc_rs::cli::main(None)
+    tla_mc::cli::main(None)
 }

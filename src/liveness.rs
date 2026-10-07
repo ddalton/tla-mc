@@ -30,6 +30,22 @@ pub struct Inst<'p> {
     pub leaf: &'p TProp,
     pub env: Vec<(u32, Value)>,
     pub frame: u32,
+    /// the `IF` conditions the leaf sits under, each with the branch taken:
+    /// the leaf is a property of the behaviors whose first state meets
+    /// them all (empty: of every behavior)
+    pub guard: Vec<(&'p Expr, bool)>,
+}
+
+impl Inst<'_> {
+    /// Whether a behavior starting in `st` is one this leaf is about.
+    pub fn guard_holds(&self, p: &Program, st: &[Value], bufs: &mut Bufs) -> R<bool> {
+        for (c, branch) in &self.guard {
+            if eval_env(p, c, self.frame, &self.env, st, None, bufs)?.as_bool()? != *branch {
+                return Ok(false);
+            }
+        }
+        Ok(true)
+    }
 }
 
 pub struct FairInst<'p> {
@@ -73,13 +89,23 @@ fn bind_all(p: &Program, b: &crate::eval::Bound, frame: u32, env: &[(u32, Value)
 pub fn instances(p: &Program) -> R<(Vec<Inst<'_>>, Vec<FairInst<'_>>)> {
     let mut bufs = Bufs::default();
     let mut props = Vec::new();
-    fn walk<'p>(p: &'p Program, t: &'p TProp, name: &str, frame: u32, env: &mut Vec<(u32, Value)>, out: &mut Vec<Inst<'p>>, bufs: &mut Bufs) -> R<()> {
+    #[allow(clippy::too_many_arguments)]
+    fn walk<'p>(
+        p: &'p Program,
+        t: &'p TProp,
+        name: &str,
+        frame: u32,
+        env: &mut Vec<(u32, Value)>,
+        guard: &mut Vec<(&'p Expr, bool)>,
+        out: &mut Vec<Inst<'p>>,
+        bufs: &mut Bufs,
+    ) -> R<()> {
         match t {
             TProp::ForAll(b, body) => {
                 for binding in bind_all(p, b, frame, env, bufs)? {
                     let n = env.len();
                     env.extend(binding);
-                    walk(p, body, name, frame, env, out, bufs)?;
+                    walk(p, body, name, frame, env, guard, out, bufs)?;
                     env.truncate(n);
                 }
             }
@@ -89,20 +115,32 @@ pub fn instances(p: &Program) -> R<(Vec<Inst<'_>>, Vec<FairInst<'_>>)> {
                     let v = eval_env(p, e, frame, env, &[], None, bufs)?;
                     env.push((*s, v));
                 }
-                walk(p, body, name, frame, env, out, bufs)?;
+                walk(p, body, name, frame, env, guard, out, bufs)?;
                 env.truncate(n);
             }
             TProp::And(v) => {
                 for x in v {
-                    walk(p, x, name, frame, env, out, bufs)?;
+                    walk(p, x, name, frame, env, guard, out, bufs)?;
                 }
             }
-            leaf => out.push(Inst { name: name.to_string(), leaf, env: env.clone(), frame }),
+            TProp::If(c, a, b) => {
+                for (branch, side) in [(true, a), (false, b)] {
+                    guard.push((c, branch));
+                    walk(p, side, name, frame, env, guard, out, bufs)?;
+                    guard.pop();
+                }
+            }
+            // a safety leaf under an IF would hold only of the states reached
+            // from some initial states; the search does not track that
+            TProp::Always(_) | TProp::ActionBox(..) if !guard.is_empty() => {
+                return Err(format!("{name}: [] and [][A]_v inside an IF of a property are not supported"));
+            }
+            leaf => out.push(Inst { name: name.to_string(), leaf, env: env.clone(), frame, guard: guard.clone() }),
         }
         Ok(())
     }
     for prop in &p.properties {
-        walk(p, &prop.body, &prop.name, prop.frame, &mut Vec::new(), &mut props, &mut bufs)?;
+        walk(p, &prop.body, &prop.name, prop.frame, &mut Vec::new(), &mut Vec::new(), &mut props, &mut bufs)?;
     }
     let mut fair = Vec::new();
     fn fwalk<'p>(p: &'p Program, t: &'p FairTree, frame: u32, env: &mut Vec<(u32, Value)>, out: &mut Vec<FairInst<'p>>, bufs: &mut Bufs) -> R<()> {
@@ -172,6 +210,9 @@ pub fn is_graph_leaf(t: &TProp) -> bool {
 pub struct Layout {
     /// per instance (indexes into the checker's `props`): its first bit
     pub base: Vec<Option<usize>>,
+    /// per instance under an `IF`: the bit "a behavior from here is one it
+    /// is about" (read at initial nodes only)
+    pub guard: Vec<Option<usize>>,
     pub words: usize,
 }
 
@@ -191,7 +232,17 @@ pub fn layout(props: &[Inst]) -> Layout {
             _ => None,
         })
         .collect();
-    Layout { base, words: next.div_ceil(64) }
+    let guard = props
+        .iter()
+        .zip(&base)
+        .map(|(i, b): (&Inst, &Option<usize>)| {
+            (b.is_some() && !i.guard.is_empty()).then(|| {
+                next += 1;
+                next - 1
+            })
+        })
+        .collect();
+    Layout { base, guard, words: next.div_ceil(64) }
 }
 
 /// A node's predicate bits, evaluated once, when the state is expanded:
@@ -214,6 +265,11 @@ pub fn node_bits(p: &Program, props: &[Inst], lay: &Layout, st: &[Value], bufs: 
             }
             TProp::AlwaysEventually(pe) | TProp::EventuallyAlways(pe) | TProp::Eventually(pe) => set(b, pe, bufs)?,
             _ => {}
+        }
+        if let Some(k) = lay.guard[i] {
+            if inst.guard_holds(p, st, bufs)? {
+                out[k / 64] |= 1 << (k % 64);
+            }
         }
     }
     Ok(())
@@ -635,6 +691,24 @@ impl Graph {
     }
 
     /// Shortest path from any `from` node to any `to` node, within `allowed`.
+    /// The nodes reachable from `from` (themselves included).
+    pub fn reachable(&self, from: &[u32]) -> Vec<bool> {
+        let mut seen = vec![false; self.len()];
+        let mut stack: Vec<u32> = from.to_vec();
+        for &u in from {
+            seen[u as usize] = true;
+        }
+        while let Some(u) = stack.pop() {
+            for (v, _) in self.succ(u) {
+                if !seen[v as usize] {
+                    seen[v as usize] = true;
+                    stack.push(v);
+                }
+            }
+        }
+        seen
+    }
+
     pub fn path(&self, from: &[u32], to: &[bool], allowed: &[bool]) -> Option<Vec<u32>> {
         let mut prev = vec![u32::MAX; self.len()];
         let mut q = std::collections::VecDeque::new();
@@ -674,8 +748,23 @@ pub struct Lasso {
 }
 
 /// `base`: the instance's first predicate bit (see `layout`).
-pub fn check_leaf(g: &Graph, i: &Inst, base: usize, fair: &[FairInst], inits: &[u32]) -> R<Option<Lasso>> {
+pub fn check_leaf(g: &Graph, i: &Inst, base: usize, guard: Option<usize>, fair: &[FairInst], inits: &[u32]) -> R<Option<Lasso>> {
     let n = g.len();
+    // under an IF: only the behaviors from the initial nodes the guard
+    // admits, so only what they reach
+    let guarded: Vec<u32>;
+    let mut reach: Option<Vec<bool>> = None;
+    let inits = match guard {
+        Some(k) => {
+            guarded = inits.iter().copied().filter(|&u| g.bit(u, k)).collect();
+            if guarded.is_empty() {
+                return Ok(None);
+            }
+            reach = Some(g.reachable(&guarded));
+            &guarded[..]
+        }
+        None => inits,
+    };
     let holds = |k: usize| -> Vec<bool> { (0..n as u32).map(|u| g.bit(u, k)).collect() };
     let all = vec![true; n];
     let (allowed, accept, starts): (Vec<bool>, Option<Vec<bool>>, Option<Vec<bool>>) = match i.leaf {
@@ -706,6 +795,16 @@ pub fn check_leaf(g: &Graph, i: &Inst, base: usize, fair: &[FairInst], inits: &[
         TProp::EventuallyAlways(_) => (all.clone(), Some(holds(base).iter().map(|x| !x).collect()), None),
         _ => return Ok(None),
     };
+    let (allowed, starts) = match &reach {
+        Some(r) => (
+            allowed.iter().zip(r).map(|(a, b)| *a && *b).collect(),
+            starts.map(|s| s.iter().zip(r).map(|(a, b)| *a && *b).collect::<Vec<bool>>()),
+        ),
+        None => (allowed, starts),
+    };
+    if starts.as_ref().is_some_and(|s| !s.iter().any(|&b| b)) {
+        return Ok(None);
+    }
     let comps = g.fair_sccs(&allowed, accept.as_deref(), fair);
     if comps.is_empty() {
         return Ok(None);

@@ -448,9 +448,9 @@ pub struct Trace {
 
 impl Trace {
     pub fn new(workers: usize) -> Trace {
-        // at most ~32M records (512 MB) buffered in all; TLCRS_TRACE_BUF
+        // at most ~32M records (512 MB) buffered in all; TLAMC_TRACE_BUF
         // (records per log) forces spilling, for testing
-        let cap = std::env::var("TLCRS_TRACE_BUF").ok().and_then(|v| v.parse().ok()).unwrap_or((32 << 20) / workers.max(1)).max(1);
+        let cap = std::env::var("TLAMC_TRACE_BUF").ok().and_then(|v| v.parse().ok()).unwrap_or((32 << 20) / workers.max(1)).max(1);
         Trace { logs: (0..workers.max(1)).map(|slot| Mutex::new(Log { slot, file: None, flushed: 0, buf: Vec::new(), cap })).collect() }
     }
     /// The fingerprints from an initial state to the state at `idx`.

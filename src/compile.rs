@@ -621,6 +621,11 @@ impl Compiler {
                 let body = self.temporal(&d.body, &mut inner)?;
                 Ok(if binds.is_empty() { body } else { TProp::Let(binds, Box::new(body)) })
             }
+            // `IF c THEN A ELSE B` with c a state predicate (CoffeeCan's
+            // TerminationHypothesis): c is read in the first state
+            Ast::If(c, t, e) if !self.is_temporal(c) => {
+                Ok(TProp::If(self.expr(c, sc, false)?, Box::new(self.temporal(t, sc)?), Box::new(self.temporal(e, sc)?)))
+            }
             _ => Err(format!("unsupported temporal formula {a:?}")),
         }
     }

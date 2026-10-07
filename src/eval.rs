@@ -179,6 +179,10 @@ pub enum TProp {
     Always(Expr),
     /// P, a state predicate: holds in every initial state
     Init(Expr),
+    /// `IF c THEN A ELSE B`, c a state predicate and A or B temporal: c is
+    /// read in a behavior's first state, so A is a property of the
+    /// behaviors from initial states where c holds, B of the others
+    If(Expr, Box<TProp>, Box<TProp>),
     /// `[][A]_v`: every step satisfies A or leaves v unchanged
     ActionBox(Expr, Expr),
 }

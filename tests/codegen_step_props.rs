@@ -33,7 +33,7 @@ fn run(cmd: &mut Command) -> String {
 
 fn generated(dir: &Path, cfg_name: &str) -> PathBuf {
     let crate_dir = dir.join(format!("gen-{cfg_name}"));
-    let out = run(Command::new(env!("CARGO_BIN_EXE_tlc-rs"))
+    let out = run(Command::new(env!("CARGO_BIN_EXE_tla-mc"))
         .current_dir(dir)
         .args(["-codegen", crate_dir.to_str().unwrap(), "-config", &format!("{cfg_name}.cfg"), "StepToy.tla"]));
     let main = std::fs::read_to_string(crate_dir.join("src/main.rs")).unwrap_or_else(|_| panic!("codegen failed: {out}"));
@@ -70,7 +70,7 @@ fn a_generated_checker_decides_step_properties_as_the_interpreter_does() {
     std::fs::write(dir.join("StepToy.tla"), SPEC).unwrap();
     std::fs::write(dir.join("Rises.cfg"), cfg("Rises")).unwrap();
     std::fs::write(dir.join("Wraps.cfg"), cfg("Wraps")).unwrap();
-    let interp = Path::new(env!("CARGO_BIN_EXE_tlc-rs"));
+    let interp = Path::new(env!("CARGO_BIN_EXE_tla-mc"));
 
     // Violated: the wrap 3 -> 0 does not rise.
     let bin = generated(&dir, "Rises");

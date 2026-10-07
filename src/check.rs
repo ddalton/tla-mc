@@ -85,7 +85,7 @@ impl<'p> Checker<'p> {
     pub fn new(p: &'p Program, e: &'p dyn Engine, workers: usize) -> Result<Checker<'p>, String> {
         let (props, fair) = liveness::instances(p)?;
         let disk = Disk {
-            metadir: std::env::temp_dir().join(format!("tlc-rs-{}", std::process::id())),
+            metadir: std::env::temp_dir().join(format!("tla-mc-{}", std::process::id())),
             checkpoint_secs: 0,
             queue_mem: 1 << 30,
             fp_mem: u64::MAX,
@@ -111,7 +111,7 @@ impl<'p> Checker<'p> {
     fn init_ok(&self, st: &[Value], bufs: &mut Bufs) -> Result<Option<String>, String> {
         for i in &self.props {
             if let crate::eval::TProp::Init(e) = i.leaf {
-                if !liveness::eval_env(self.p, e, i.frame, &i.env, st, None, bufs)?.as_bool()? {
+                if i.guard_holds(self.p, st, bufs)? && !liveness::eval_env(self.p, e, i.frame, &i.env, st, None, bufs)?.as_bool()? {
                     return Ok(Some(i.name.clone()));
                 }
             }
@@ -651,21 +651,21 @@ impl<'p> Checker<'p> {
                     });
                 }
             });
-            // TLCRS_LEVEL_PROFILE: per level, how busy the workers were
-            if std::env::var_os("TLCRS_LEVEL_PROFILE").is_some() {
+            // TLAMC_LEVEL_PROFILE: per level, how busy the workers were
+            if std::env::var_os("TLAMC_LEVEL_PROFILE").is_some() {
                 let wall = lvl_t0.elapsed().as_secs_f64();
                 eprintln!("level {depth}: {} states, wall {:.1} ms, workers busy {:.0}%", frontier.len(), wall * 1e3, busy_ns.load(Ordering::Relaxed) as f64 / 1e9 / (wall * self.workers as f64) * 100.0);
             }
             if stop.load(Ordering::Relaxed) {
                 break;
             }
-            // TLCRS_STOP_AFTER_SECS: end the run at the first level boundary
+            // TLAMC_STOP_AFTER_SECS: end the run at the first level boundary
             // past N seconds, with a normal exit (no verdict) — the sample
             // run of a profile-guided build (scripts/pgo-build.sh) writes its
             // profile only on a normal exit
-            if let Some(n) = std::env::var("TLCRS_STOP_AFTER_SECS").ok().and_then(|v| v.parse::<u64>().ok()) {
+            if let Some(n) = std::env::var("TLAMC_STOP_AFTER_SECS").ok().and_then(|v| v.parse::<u64>().ok()) {
                 if t0.elapsed().as_secs() >= n {
-                    eprintln!("TLCRS_STOP_AFTER_SECS={n}: stopped after level {depth} with no verdict");
+                    eprintln!("TLAMC_STOP_AFTER_SECS={n}: stopped after level {depth} with no verdict");
                     std::process::exit(3);
                 }
             }
@@ -746,7 +746,7 @@ impl<'p> Checker<'p> {
         let inits: Vec<u32> = init_keys.iter().filter_map(|&k| g.index(k)).collect();
         for (i, inst) in self.props.iter().enumerate() {
             let Some(base) = self.lay.base[i] else { continue };
-            match liveness::check_leaf(&g, inst, base, &self.fair, &inits) {
+            match liveness::check_leaf(&g, inst, base, self.lay.guard[i], &self.fair, &inits) {
                 Ok(None) => {}
                 Ok(Some(l)) => {
                     let env: Vec<String> = inst.env.iter().map(|(_, v)| v.to_string()).collect();

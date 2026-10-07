@@ -195,7 +195,7 @@ impl Builder<'_> {
 pub fn tlc_order(root: &str, modules: &HashMap<String, ModuleDecls>) -> Result<Vec<String>, String> {
     let mut b = Builder { user: modules, done: HashMap::new() };
     let t = b.context(root)?;
-    if std::env::var_os("TLCRS_VARORDER_DEBUG").is_some() {
+    if std::env::var_os("TLAMC_VARORDER_DEBUG").is_some() {
         eprintln!("varorder: {root}: {} symbols, capacity {}", t.count, t.tab.len());
         for s in &t.syms {
             eprintln!("  {}{}", s.name, if s.local { " (local)" } else { "" });

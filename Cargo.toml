@@ -1,11 +1,17 @@
 [package]
-name = "tlc-rs"
+name = "tla-mc"
 version = "0.1.0"
 edition = "2024"
 rust-version = "1.88"
-description = "An explicit-state model checker for a subset of TLA+, measured against TLC"
+description = "A fast TLA+ model checker: compiles a spec into a native, parallel checker; state counts measured exact against TLC"
+license = "MIT"
+repository = "https://github.com/ddalton/tla-mc"
+readme = "README.md"
+keywords = ["tla-plus", "tlaplus", "model-checker", "formal-verification", "tla"]
+categories = ["development-tools", "command-line-utilities"]
+exclude = ["results/"]
 
-# Standalone: not a member of any flint workspace.
+# Standalone: not a member of any enclosing workspace.
 [workspace]
 
 [dependencies]

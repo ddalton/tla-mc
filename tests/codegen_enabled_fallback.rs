@@ -31,7 +31,7 @@ fn run(cmd: &mut Command) -> String {
 
 fn generated(dir: &Path, cfg_name: &str) -> PathBuf {
     let crate_dir = dir.join(format!("gen-{cfg_name}"));
-    let out = run(Command::new(env!("CARGO_BIN_EXE_tlc-rs"))
+    let out = run(Command::new(env!("CARGO_BIN_EXE_tla-mc"))
         .current_dir(dir)
         .args(["-codegen", crate_dir.to_str().unwrap(), "-config", &format!("{cfg_name}.cfg"), "EnabledToy.tla"]));
     let main = std::fs::read_to_string(crate_dir.join("src/main.rs")).unwrap_or_else(|_| panic!("codegen failed: {out}"));
@@ -65,7 +65,7 @@ fn a_generated_checker_decides_an_enabled_invariant_through_the_interpreter() {
     std::fs::write(dir.join("EnabledToy.tla"), SPEC).unwrap();
     std::fs::write(dir.join("Settled.cfg"), cfg("Settled")).unwrap();
     std::fs::write(dir.join("Early.cfg"), cfg("Early")).unwrap();
-    let interp = Path::new(env!("CARGO_BIN_EXE_tlc-rs"));
+    let interp = Path::new(env!("CARGO_BIN_EXE_tla-mc"));
 
     // Holds: Next is disabled only at x = 3.
     let bin = generated(&dir, "Settled");

@@ -254,7 +254,7 @@ impl Parser {
                         m.assumes.push(e);
                     }
                     // Theorems and their proofs, and proof commands, are
-                    // for TLAPS; TLC ignores them, and so does tlc-rs.
+                    // for TLAPS; TLC ignores them, and so does tla-mc.
                     "THEOREM" | "LEMMA" | "PROPOSITION" | "COROLLARY" | "USE" | "HIDE" | "PROOF" | "BY" | "OBVIOUS"
                     | "OMITTED" | "QED" => {
                         // `THEOREM Name == e` with e an expression: `Name!:`
@@ -1118,7 +1118,7 @@ pub fn parse_cfg(toks: Vec<Token>) -> R<Cfg> {
                         } else {
                             p.expect_op("=")?;
                             // a constant is one name however it is reached:
-                            // the scope changes nothing tlc-rs resolves
+                            // the scope changes nothing tla-mc resolves
                             scope(&mut p);
                             c.constants.push((name, cfg_val(&mut p)?));
                         }

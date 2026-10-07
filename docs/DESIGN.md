@@ -1,4 +1,10 @@
-# tlc-rs — a Rust explicit-state checker for the safety subset of TLA+
+# tla-mc — design notes and history
+
+> The development record from when tla-mc was `tlc-rs`, inside the
+> [flint](https://github.com/ddalton/flint) repository, written as it was
+> built. Commands and variables here use the old names: read `tlc-rs` as
+> `tla-mc` and `TLCRS_*` as `TLAMC_*`. The gates and models it mentions
+> (`scripts/check-tla.sh`, Lean*, Forge*, Flint*) are flint's.
 
 An experiment asking whether it is worth replacing TLC (Java) for the gates
 in `scripts/check-tla.sh` and `lean/formal/check.sh`. Measured 2026-09-26

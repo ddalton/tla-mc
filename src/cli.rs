@@ -1,6 +1,6 @@
-//! The command line, shared by `tlc-rs` and every generated checker.
+//! The command line, shared by `tla-mc` and every generated checker.
 //!
-//!   tlc-rs [-workers N] [-engine interp|closure] [-codegen DIR] [-config X.cfg]
+//!   tla-mc [-workers N] [-engine interp|closure] [-codegen DIR] [-config X.cfg]
 //!          [-metadir DIR] [-checkpoint MIN] [-recover DIR] [-queue-mem MB] [-fpmem MB] X.tla
 //!
 //! Disk: a BFS level (kept serialized) beyond `-queue-mem` (default 256 MB)
@@ -75,7 +75,7 @@ fn load(
         return Ok(());
     }
     // the spec's directory, then the library directories (`-lib`,
-    // TLCRS_LIB): where TLC's classpath finds CommunityModules
+    // TLAMC_LIB): where TLC's classpath finds CommunityModules
     let file = format!("{name}.tla");
     let found = std::iter::once(dir.to_path_buf())
         .chain(LIB_DIRS.get().into_iter().flatten().cloned())
@@ -203,12 +203,13 @@ fn run(generated: Option<Generated>) -> Result<bool, String> {
     let args: Vec<String> = std::env::args().skip(1).collect();
     let mut workers = std::thread::available_parallelism().map(|n| n.get()).unwrap_or(1);
     let (mut cfg_path, mut spec_path, mut engine, mut codegen_dir) = (None, None, "interp".to_string(), None);
+    let mut compile = false;
     let mut var_order: Option<String> = None;
     let mut print_var_order = false;
     let (mut metadir, mut recover, mut checkpoint_min, mut queue_mb): (Option<PathBuf>, bool, f64, u64) = (None, false, 30.0, 256);
-    // TLCRS_FPMEM_MB: the default -fpmem, for forcing spills in tests
-    let mut fp_mb: u64 = std::env::var("TLCRS_FPMEM_MB").ok().and_then(|v| v.parse().ok()).unwrap_or(1024);
-    let mut lib_dirs: Vec<PathBuf> = std::env::var_os("TLCRS_LIB").map(|v| std::env::split_paths(&v).collect()).unwrap_or_default();
+    // TLAMC_FPMEM_MB: the default -fpmem, for forcing spills in tests
+    let mut fp_mb: u64 = std::env::var("TLAMC_FPMEM_MB").ok().and_then(|v| v.parse().ok()).unwrap_or(1024);
+    let mut lib_dirs: Vec<PathBuf> = std::env::var_os("TLAMC_LIB").map(|v| std::env::split_paths(&v).collect()).unwrap_or_default();
     let mut i = 0;
     while i < args.len() {
         match args[i].as_str() {
@@ -261,12 +262,13 @@ fn run(generated: Option<Generated>) -> Result<bool, String> {
                 i += 1;
                 codegen_dir = Some(PathBuf::from(&args[i]));
             }
+            "-compile" => compile = true,
             a if a.ends_with(".tla") => spec_path = Some(PathBuf::from(a)),
             a => return Err(format!("unknown argument {a}")),
         }
         i += 1;
     }
-    let spec_path = spec_path.ok_or("usage: tlc-rs [-workers N] [-engine interp|closure] [-codegen DIR] [-lib DIR]... [-config X.cfg] X.tla")?;
+    let spec_path = spec_path.ok_or("usage: tla-mc [-workers N] [-engine interp|closure] [-compile] [-codegen DIR] [-lib DIR]... [-config X.cfg] X.tla")?;
     let cfg_path = cfg_path.unwrap_or_else(|| spec_path.with_extension("cfg"));
 
     let t0 = Instant::now();
@@ -290,7 +292,7 @@ fn run(generated: Option<Generated>) -> Result<bool, String> {
             }
             Ok(names) => return Err(format!("variable-order model found {} variables, the spec has {}", names.len(), l.prog.vars.len())),
             Err(e) => {
-                eprintln!("tlc-rs: TLC's variable order is unknown ({e}); declaration order is used, so SYMMETRY counts may differ from TLC's. Pass -var-order.");
+                eprintln!("tla-mc: TLC's variable order is unknown ({e}); declaration order is used, so SYMMETRY counts may differ from TLC's. Pass -var-order.");
             }
         }
     }
@@ -301,8 +303,8 @@ fn run(generated: Option<Generated>) -> Result<bool, String> {
     }
     let prog = &l.prog;
 
-    if std::env::var_os("TLCRS_DUMP_NAMES").is_some() {
-        // name, then the rank tlc-rs gives it: for checking TLC's token order
+    if std::env::var_os("TLAMC_DUMP_NAMES").is_some() {
+        // name, then the rank tla-mc gives it: for checking TLC's token order
         for (id, n) in crate::value::NAMES.get().unwrap().iter().enumerate() {
             println!("{n}\t{id}");
         }
@@ -310,8 +312,11 @@ fn run(generated: Option<Generated>) -> Result<bool, String> {
     }
     if let Some(dir) = codegen_dir {
         codegen::generate(&l, &dir)?;
-        println!("tlc-rs: generated a checker for {} in {} ({:.3}s)", l.name, dir.display(), t0.elapsed().as_secs_f64());
+        println!("tla-mc: generated a checker for {} in {} ({:.3}s)", l.name, dir.display(), t0.elapsed().as_secs_f64());
         return Ok(true);
+    }
+    if compile && generated.is_none() {
+        return compile_and_run(&l, &args);
     }
 
     let closures;
@@ -338,7 +343,7 @@ fn run(generated: Option<Generated>) -> Result<bool, String> {
         },
     };
     println!(
-        "tlc-rs: {} ({} variables, {} symmetry permutations), {} workers, {} engine; loaded in {:.3}s",
+        "tla-mc: {} ({} variables, {} symmetry permutations), {} workers, {} engine; loaded in {:.3}s",
         l.name,
         prog.vars.len(),
         prog.symmetry.len(),
@@ -349,11 +354,11 @@ fn run(generated: Option<Generated>) -> Result<bool, String> {
 
     let t1 = Instant::now();
     let checker = check::Checker::new(prog, e, workers)?;
-    if let Some(dump) = std::env::var_os("TLCRS_KEYS") {
+    if let Some(dump) = std::env::var_os("TLAMC_KEYS") {
         return keys_of_dump(&checker, Path::new(&dump), None);
     }
     let mut checker = checker;
-    if let Some(dump) = std::env::var_os("TLCRS_REFERENCE") {
+    if let Some(dump) = std::env::var_os("TLAMC_REFERENCE") {
         let mut keys = std::collections::HashSet::new();
         keys_of_dump(&checker, Path::new(&dump), Some(&mut keys))?;
         checker.reference = Some(keys);
@@ -414,6 +419,67 @@ fn run(generated: Option<Generated>) -> Result<bool, String> {
     Ok(ok)
 }
 
+/// `-compile`: generate the checker, build it in a cache shared by every
+/// spec (the tla-mc library is compiled once, not per spec: a build drops
+/// from ~20 s to ~8 s), keep the binary keyed by the spec's sources, its
+/// cfg and this tla-mc build, and run it with the same arguments. A rerun
+/// of the same world builds nothing. The cache is `$TLAMC_CACHE`, else
+/// `~/.cache/tla-mc`; building needs a Rust toolchain (`cargo`).
+fn compile_and_run(l: &Loaded, args: &[String]) -> Result<bool, String> {
+    let root = match std::env::var_os("TLAMC_CACHE") {
+        Some(d) => PathBuf::from(d),
+        None => PathBuf::from(std::env::var_os("HOME").ok_or("-compile: HOME is unset; set TLAMC_CACHE")?).join(".cache/tla-mc"),
+    };
+    // this tla-mc, as built: a rebuilt tla-mc must not reuse old checkers
+    let me = std::env::current_exe().map_err(|e| format!("-compile: {e}"))?;
+    let meta = std::fs::metadata(&me).map_err(|e| format!("-compile: {e}"))?;
+    let mut key = l.source_hash;
+    fnv(&mut key, env!("CARGO_PKG_VERSION").as_bytes());
+    fnv(&mut key, &meta.len().to_le_bytes());
+    if let Ok(d) = meta.modified().map(|t| t.duration_since(std::time::UNIX_EPOCH).unwrap_or_default()) {
+        fnv(&mut key, &d.as_nanos().to_le_bytes());
+    }
+    let pkg = codegen::package_name(l);
+    let bin = root.join("bin").join(format!("{pkg}-{key:016x}{}", std::env::consts::EXE_SUFFIX));
+    if !bin.exists() {
+        let t = Instant::now();
+        let crate_dir = root.join("gen").join(format!("{pkg}-{key:016x}"));
+        let _ = std::fs::remove_dir_all(&crate_dir);
+        codegen::generate(l, &crate_dir)?;
+        eprintln!("tla-mc: building a checker for {} (cache: {})", l.name, root.display());
+        let status = std::process::Command::new(std::env::var_os("CARGO").unwrap_or_else(|| "cargo".into()))
+            .args(["build", "--release", "--quiet"])
+            .current_dir(&crate_dir)
+            .env("CARGO_TARGET_DIR", root.join("target"))
+            .status()
+            .map_err(|e| format!("-compile: running cargo: {e} (building a checker needs a Rust toolchain)"))?;
+        if !status.success() {
+            return Err(format!("-compile: building the checker failed; its crate is in {}", crate_dir.display()));
+        }
+        let built = root.join("target/release").join(format!("tlcgen-{pkg}{}", std::env::consts::EXE_SUFFIX));
+        std::fs::create_dir_all(root.join("bin")).map_err(|e| format!("-compile: {e}"))?;
+        // copy, then rename into place: a concurrent run never sees half a binary
+        let tmp = bin.with_extension(format!("tmp{}", std::process::id()));
+        std::fs::copy(&built, &tmp).map_err(|e| format!("-compile: {}: {e}", built.display()))?;
+        std::fs::rename(&tmp, &bin).map_err(|e| format!("-compile: {e}"))?;
+        eprintln!("tla-mc: built in {:.1}s", t.elapsed().as_secs_f64());
+    }
+    let rest: Vec<&String> = args.iter().filter(|a| a.as_str() != "-compile").collect();
+    let mut cmd = std::process::Command::new(&bin);
+    cmd.args(rest);
+    #[cfg(unix)]
+    {
+        use std::os::unix::process::CommandExt;
+        let e = cmd.exec();
+        Err(format!("-compile: running {}: {e}", bin.display()))
+    }
+    #[cfg(not(unix))]
+    {
+        let status = cmd.status().map_err(|e| format!("-compile: running {}: {e}", bin.display()))?;
+        std::process::exit(status.code().unwrap_or(2));
+    }
+}
+
 pub fn main(generated: Option<Generated>) -> ExitCode {
     match run(generated) {
         Ok(true) => ExitCode::SUCCESS,
@@ -423,14 +489,14 @@ pub fn main(generated: Option<Generated>) -> ExitCode {
             ExitCode::from(10)
         }
         Err(e) => {
-            eprintln!("tlc-rs: {e}");
+            eprintln!("tla-mc: {e}");
             ExitCode::from(2)
         }
     }
 }
 
-/// Diagnostic: read a TLC `-dump` file, compute tlc-rs's key for every
-/// state in it, and report states TLC kept apart that tlc-rs would merge.
+/// Diagnostic: read a TLC `-dump` file, compute tla-mc's key for every
+/// state in it, and report states TLC kept apart that tla-mc would merge.
 fn keys_of_dump(checker: &check::Checker, path: &Path, mut out: Option<&mut std::collections::HashSet<u64>>) -> Result<bool, String> {
     use crate::value::Value;
     let text = std::fs::read_to_string(path).map_err(|e| e.to_string())?;
@@ -483,7 +549,7 @@ fn keys_of_dump(checker: &check::Checker, path: &Path, mut out: Option<&mut std:
         if let Some(&j) = seen.get(&k) {
             collisions += 1;
             if collisions <= 1 {
-                println!("=== TLC kept these apart; tlc-rs gives them one key ===");
+                println!("=== TLC kept these apart; tla-mc gives them one key ===");
                 // only the lines that differ
                 for (x, y) in states[j].lines().zip(states[n].lines()) {
                     if x != y {
@@ -495,6 +561,6 @@ fn keys_of_dump(checker: &check::Checker, path: &Path, mut out: Option<&mut std:
             seen.insert(k, n);
         }
     }
-    println!("{} states read, {} distinct tlc-rs keys, {} collisions", states.len(), seen.len(), collisions);
+    println!("{} states read, {} distinct tla-mc keys, {} collisions", states.len(), seen.len(), collisions);
     Ok(collisions == 0)
 }
