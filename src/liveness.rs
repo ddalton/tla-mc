@@ -431,7 +431,26 @@ fn each_record(path: &std::path::Path, words: usize, mut f: impl FnMut(u64, u64,
 /// Distinct fairness masks (there are few), so an edge carries 4 bytes.
 struct Palette {
     v: Vec<u128>,
-    map: HashMap<u128, u32>,
+    map: HashMap<u128, u32, std::hash::BuildHasherDefault<MaskHash>>,
+}
+
+/// The palette is probed for every edge, twice: a multiply and a fold per
+/// mask instead of SipHash.
+#[derive(Default)]
+struct MaskHash(u64);
+
+impl std::hash::Hasher for MaskHash {
+    fn finish(&self) -> u64 {
+        self.0 ^ (self.0 >> 29)
+    }
+    fn write(&mut self, bytes: &[u8]) {
+        for &b in bytes {
+            self.0 = (self.0 ^ b as u64).wrapping_mul(0x9E37_79B9_7F4A_7C15);
+        }
+    }
+    fn write_u128(&mut self, m: u128) {
+        self.0 = (self.0 ^ m as u64 ^ ((m >> 64) as u64).rotate_left(31)).wrapping_mul(0x9E37_79B9_7F4A_7C15);
+    }
 }
 
 impl Palette {
@@ -487,7 +506,7 @@ impl Graph {
             return Err(format!("the graph logs record the state with key {:016x} twice (logs not cut back to the checkpoint?)", rows[w[0] as usize].0));
         }
         let n = order.len();
-        let mut pal = Palette { v: vec![0], map: HashMap::from([(0, 0)]) };
+        let mut pal = Palette { v: vec![0], map: HashMap::from_iter([(0, 0)]) };
         let (mut keys, mut tidx, mut en, mut bits) = (Vec::with_capacity(n), Vec::with_capacity(n), Vec::with_capacity(n), Vec::with_capacity(n * words));
         let mut off = Vec::with_capacity(n + 1);
         off.push(0u64);
