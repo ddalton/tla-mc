@@ -525,7 +525,15 @@ pub fn encode(v: &Value, out: &mut Vec<u8>) {
 pub fn decode(b: &[u8], pos: &mut usize) -> R<Value> {
     let tag = *b.get(*pos).ok_or("truncated queue block")?;
     *pos += 1;
-    let many = |pos: &mut usize, n: u64| (0..n).map(|_| decode(b, pos)).collect::<R<Vec<Value>>>();
+    // collecting through R would drop the length hint and regrow the
+    // vector; every value takes at least a byte, which bounds n
+    let many = |pos: &mut usize, n: u64| -> R<Vec<Value>> {
+        let mut v = Vec::with_capacity((n as usize).min(b.len() - *pos));
+        for _ in 0..n {
+            v.push(decode(b, pos)?);
+        }
+        Ok(v)
+    };
     Ok(match tag {
         0 | 1 => Value::Bool(tag == 1),
         2 => {
@@ -560,8 +568,11 @@ pub fn decode_states(b: &[u8], count: usize, nvars: usize, out: &mut Vec<(u64, S
     let mut pos = 0;
     for _ in 0..count {
         let idx = get_var(b, &mut pos)?;
-        let st: State = (0..nvars).map(|_| decode(b, &mut pos)).collect::<R<_>>()?;
-        out.push((idx, st));
+        let mut st = Vec::with_capacity(nvars);
+        for _ in 0..nvars {
+            st.push(decode(b, &mut pos)?);
+        }
+        out.push((idx, st.into_boxed_slice()));
     }
     Ok(())
 }
