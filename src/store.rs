@@ -576,6 +576,28 @@ fn enc_slot(v: &Value) -> Option<usize> {
 const ENC_SLOTS: usize = 4096;
 
 thread_local! {
+    /// Hashes of the values this worker shares, by allocation (see
+    /// `ENCS`): every state expanded hashes each of its variables, and most
+    /// of them are values that many states share.
+    static HASHES: std::cell::RefCell<Vec<Option<(Value, u64)>>> = std::cell::RefCell::new(vec![None; ENC_SLOTS]);
+}
+
+/// `v.hash()`, remembered for a compound value by its allocation.
+pub fn hash_shared(v: &Value) -> u64 {
+    let Some(s) = enc_slot(v) else { return v.hash() };
+    let hit = HASHES.with(|c| match &c.borrow()[s] {
+        Some((w, h)) if same(w, v) => Some(*h),
+        _ => None,
+    });
+    if let Some(h) = hit {
+        return h;
+    }
+    let h = v.hash();
+    HASHES.with(|c| c.borrow_mut()[s] = Some((v.clone(), h)));
+    h
+}
+
+thread_local! {
     /// The compound values `VALS` shares, with their encoding, by
     /// allocation: a successor keeps most of its parent's values, and
     /// encoding one of those is a copy. An entry holds its value, so the

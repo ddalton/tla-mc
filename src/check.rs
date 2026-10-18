@@ -277,7 +277,7 @@ impl<'p> Checker<'p> {
         let early = keep_all && !self.steps.is_empty() && !self.needs_graph();
         let no_constraints = self.p.constraints.is_empty();
         hv.clear();
-        hv.extend(st.iter().map(var_hash));
+        hv.extend(st.iter().map(store::hash_shared));
         let pfp = combine(hv);
         let mut n = 0u64;
         let mut cx = bufs.cx(st, nvars, p.next.frame);
