@@ -524,7 +524,43 @@ pub fn encode(v: &Value, out: &mut Vec<u8>) {
 
 pub fn decode(b: &[u8], pos: &mut usize) -> R<Value> {
     let tag = *b.get(*pos).ok_or("truncated queue block")?;
-    *pos += 1;
+    if !(5..=7).contains(&tag) {
+        *pos += 1;
+        return decode_tagged(tag, b, pos);
+    }
+    // Most variables keep their value across many states: a compound value
+    // decoded before on this worker is shared, not built again.
+    let start = *pos;
+    skip(b, pos)?;
+    let enc = &b[start..*pos];
+    let slot = bytes_hash(enc) as usize % VAL_SLOTS;
+    let hit = VALS.with(|c| match &c.borrow()[slot] {
+        Some((k, v)) if **k == *enc => Some(v.clone()),
+        _ => None,
+    });
+    if let Some(v) = hit {
+        return Ok(v);
+    }
+    let v = decode_tagged(tag, b, &mut (start + 1))?;
+    VALS.with(|c| c.borrow_mut()[slot] = Some((enc.into(), v.clone())));
+    Ok(v)
+}
+
+fn bytes_hash(enc: &[u8]) -> u64 {
+    let h = enc.iter().fold(0xcbf2_9ce4_8422_2325_u64, |h, &x| (h ^ x as u64).wrapping_mul(0x100_0000_01b3));
+    h ^ (h >> 32)
+}
+
+const VAL_SLOTS: usize = 4096;
+
+thread_local! {
+    /// Compound values (sets, sequences, functions) by their encoding,
+    /// per worker (see `KEYS` for why per worker).
+    static VALS: std::cell::RefCell<Vec<Option<(Box<[u8]>, Value)>>> = std::cell::RefCell::new(vec![None; VAL_SLOTS]);
+}
+
+/// The value after its tag byte.
+fn decode_tagged(tag: u8, b: &[u8], pos: &mut usize) -> R<Value> {
     // collecting through R would drop the length hint and regrow the
     // vector; every value takes at least a byte, which bounds n
     let many = |pos: &mut usize, n: u64| -> R<Vec<Value>> {
@@ -554,8 +590,7 @@ pub fn decode(b: &[u8], pos: &mut usize) -> R<Value> {
                 skip(b, pos)?;
             }
             let enc = &b[start..*pos];
-            let h = enc.iter().fold(0xcbf2_9ce4_8422_2325_u64, |h, &x| (h ^ x as u64).wrapping_mul(0x100_0000_01b3));
-            let slot = (h ^ (h >> 32)) as usize % KEY_SLOTS;
+            let slot = bytes_hash(enc) as usize % KEY_SLOTS;
             // no borrow held across the decode: keys may be records
             let hit = KEYS.with(|c| match &c.borrow()[slot] {
                 Some((k, v)) if **k == *enc => Some(v.clone()),
