@@ -314,6 +314,14 @@ impl Gen<'_> {
         }
     }
 
+    /// Code of a set's elements, as a slice: borrowed when the set can be.
+    fn elems(&mut self, e: &Expr) -> String {
+        match self.r#ref(e) {
+            Some(r) => format!("({r}).elems_ref()?"),
+            None => format!("({}).elems()?", self.val(e)),
+        }
+    }
+
     fn bools(&mut self, v: &[Expr], op: &str) -> String {
         let parts: Vec<String> = v.iter().map(|x| format!("({})", self.boolean(x))).collect();
         if parts.is_empty() {
@@ -365,7 +373,7 @@ impl Gen<'_> {
         let mut code = body.to_string();
         for b in bs.iter().rev() {
             let n = self.fresh();
-            let set = self.val(&b.set);
+            let set = self.elems(&b.set);
             let bind = if b.tuple {
                 let mut s = format!("let t{n} = destructure(x{n}, {})?; ", b.slots.len());
                 for (j, slot) in b.slots.iter().enumerate() {
@@ -375,7 +383,7 @@ impl Gen<'_> {
             } else {
                 format!("let s{}: &Value = x{n}; ", b.slots[0])
             };
-            code = format!("{{ let set{n} = ({set}).elems()?; for x{n} in set{n}.iter() {{ {bind}{code} }} }}");
+            code = format!("{{ let set{n} = {set}; for x{n} in set{n}.iter() {{ {bind}{code} }} }}");
         }
         code
     }
@@ -634,9 +642,9 @@ impl Gen<'_> {
             }
             Act::AssignIn(var, s) => {
                 let n = self.fresh();
-                let set = self.val(s);
+                let set = self.elems(s);
                 let inner = self.assign(*var, &format!("x{n}.clone()"), k);
-                format!("{{ let set{n} = ({set}).elems()?; for x{n} in set{n}.iter() {{ {inner} }} }}")
+                format!("{{ let set{n} = {set}; for x{n} in set{n}.iter() {{ {inner} }} }}")
             }
             Act::Unchanged(vars) => {
                 let n = self.fresh();
