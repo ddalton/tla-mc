@@ -851,7 +851,7 @@ pub fn package_name(l: &Loaded) -> String {
 /// The state variables `e` is a tuple of, in order, through zero-argument
 /// operators and nested tuples (`vars == <<x, y, aux>>`, `aux == <<z>>`);
 /// false if it is anything else.
-fn tuple_vars(p: &Program, e: &Expr, out: &mut Vec<u32>, depth: usize) -> bool {
+pub(crate) fn tuple_vars(p: &Program, e: &Expr, out: &mut Vec<u32>, depth: usize) -> bool {
     if depth > 64 {
         return false;
     }
