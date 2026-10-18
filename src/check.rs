@@ -823,7 +823,7 @@ impl<'p> Checker<'p> {
     /// from the trace logs, since the graph keeps none.
     fn check_liveness(&self, glogs: &GraphLogs, meta: &Meta, trace: &Trace, init_keys: &[u64], partial: bool) -> Option<Failure> {
         let t0 = Instant::now();
-        let g = match Graph::load(glogs, meta, self.lay.words) {
+        let g = match Graph::load(glogs, meta, self.lay.words, self.workers) {
             Ok(g) => g,
             Err(e) => return Some(Failure::Eval(format!("loading the liveness graph: {e}"), None)),
         };
