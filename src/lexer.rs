@@ -1,6 +1,7 @@
 //! Tokens carry their column: TLA+'s `/\` and `\/` bullet lists are
 //! layout-sensitive, and the parser ends a list item at any token whose
-//! column is at or left of the bullet.
+//! column is at or left of the bullet. A tab advances the column to the next
+//! multiple of 8, as SANY counts it.
 
 #[derive(Clone, Debug, PartialEq)]
 pub enum Tok {
@@ -119,7 +120,7 @@ pub fn lex(src: &str) -> Result<Vec<Token>, String> {
             i += 1;
             continue;
         }
-        let col = (i - line_start) as u32;
+        let col = b[line_start..i].iter().fold(0u32, |c, &x| if x == b'\t' { (c / 8 + 1) * 8 } else { c + 1 });
         let push = |out: &mut Vec<Token>, tok| out.push(Token { tok, line, col });
         // Comments.
         if c == b'\\' && b.get(i + 1) == Some(&b'*') {
@@ -252,4 +253,23 @@ pub fn lex(src: &str) -> Result<Vec<Token>, String> {
     }
     out.push(Token { tok: Tok::Eof, line: line + 1, col: 0 });
     Ok(out)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn col_of(src: &str) -> u32 {
+        lex(src).unwrap().into_iter().find(|t| t.tok == Tok::Ident("X".into())).unwrap().col
+    }
+
+    #[test]
+    fn a_tab_advances_to_the_next_multiple_of_8() {
+        // SANY puts X at these columns: a bullet at column 8 ends at "\tX"
+        // and "  \tX", not at "\t X"
+        assert_eq!(col_of("\tX"), 8);
+        assert_eq!(col_of("  \tX"), 8);
+        assert_eq!(col_of("\t X"), 9);
+        assert_eq!(col_of("a\n\t\tX"), 16);
+    }
 }
