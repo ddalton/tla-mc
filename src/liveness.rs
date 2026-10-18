@@ -18,8 +18,9 @@
 use crate::eval::{Act, Bufs, Expr, FairTree, Program, TProp};
 use crate::store::{io, put_var, Meta};
 use crate::value::{same, Value, R};
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::io::Write;
+use std::sync::atomic::{AtomicU32, AtomicUsize, Ordering::Relaxed};
 
 pub type State = Box<[Value]>;
 
@@ -431,7 +432,7 @@ fn each_record(path: &std::path::Path, words: usize, mut f: impl FnMut(u64, u64,
 /// Distinct fairness masks (there are few), so an edge carries 4 bytes.
 struct Palette {
     v: Vec<u128>,
-    map: HashMap<u128, u32, std::hash::BuildHasherDefault<MaskHash>>,
+    map: HashMap<u128, u32, MaskHasher>,
 }
 
 /// The palette is probed for every edge, twice: a multiply and a fold per
@@ -464,6 +465,33 @@ impl Palette {
     }
 }
 
+type MaskHasher = std::hash::BuildHasherDefault<MaskHash>;
+
+/// `f` for every index below `n` on up to `threads` threads, taking
+/// indexes as they free up; the results in index order.
+fn par<T: Send>(threads: usize, n: usize, f: impl Fn(usize) -> R<T> + Sync) -> R<Vec<T>> {
+    let next = AtomicUsize::new(0);
+    let mut out: Vec<(usize, R<T>)> = std::thread::scope(|s| {
+        let hs: Vec<_> = (0..threads.clamp(1, n.max(1)))
+            .map(|_| {
+                s.spawn(|| {
+                    let mut mine = Vec::new();
+                    loop {
+                        let i = next.fetch_add(1, Relaxed);
+                        if i >= n {
+                            return mine;
+                        }
+                        mine.push((i, f(i)));
+                    }
+                })
+            })
+            .collect();
+        hs.into_iter().flat_map(|h| h.join().unwrap()).collect()
+    });
+    out.sort_unstable_by_key(|e| e.0);
+    out.into_iter().map(|e| e.1).collect()
+}
+
 /// The graph, compact: nodes by sorted key (the node id is the position),
 /// edges in one array (CSR), fairness masks through a small palette.
 pub struct Graph {
@@ -486,16 +514,27 @@ impl Graph {
     /// Two passes over the logs: the keys (sorted, they give the ids),
     /// then the edges, resolved to ids; an edge to a state that was never
     /// expanded (not admitted, or not reached yet) is dropped.
-    pub fn load(logs: &GraphLogs, meta: &Meta, words: usize) -> R<Graph> {
+    pub fn load(logs: &GraphLogs, meta: &Meta, words: usize, threads: usize) -> R<Graph> {
         let paths = logs.paths(meta);
-        let mut rows: Vec<(u64, u64, u128, u64)> = Vec::new(); // key, tidx, en, degree
-        let mut bits_by_row: Vec<u64> = Vec::new();
-        for p in &paths {
-            each_record(p, words, |tidx, key, en, bits, edges| {
+        // The logs are read twice, one thread per log at a time: the search
+        // is stopped while the graph loads, so every core is free.
+        let parts = par(threads, paths.len(), |i| {
+            let (mut rows, mut bits_by_row, mut masks) = (Vec::new(), Vec::new(), HashSet::<u128, MaskHasher>::default());
+            each_record(&paths[i], words, |tidx, key, en, bits, edges| {
                 rows.push((key, tidx, en, edges.len() as u64));
                 bits_by_row.extend_from_slice(bits);
+                masks.extend(edges.iter().map(|e| e.1));
                 Ok(())
             })?;
+            Ok((rows, bits_by_row, masks))
+        })?;
+        let mut rows: Vec<(u64, u64, u128, u64)> = Vec::new(); // key, tidx, en, degree
+        let mut bits_by_row: Vec<u64> = Vec::new();
+        let mut edge_masks = HashSet::<u128, MaskHasher>::default();
+        for (r, b, m) in parts {
+            rows.extend(r);
+            bits_by_row.extend(b);
+            edge_masks.extend(m);
         }
         let mut order: Vec<u32> = (0..rows.len() as u32).collect();
         order.sort_unstable_by_key(|&r| rows[r as usize].0);
@@ -520,6 +559,13 @@ impl Graph {
         }
         drop(rows);
         drop(bits_by_row);
+        // every edge mask in the palette before the edges are read in
+        // parallel, which then only looks masks up
+        let mut edge_masks: Vec<u128> = edge_masks.into_iter().collect();
+        edge_masks.sort_unstable();
+        edge_masks.into_iter().for_each(|m| {
+            pal.idx(m);
+        });
         // Every edge's target is looked up, and a binary search over all the
         // keys misses the cache at most of its steps. The keys are uniform
         // fingerprints: a directory on their top bits, about one bucket per
@@ -540,20 +586,24 @@ impl Graph {
             keys[lo..hi].iter().position(|&x| x == k).map(|i| (lo + i) as u32)
         };
         let total = *off.last().unwrap() as usize;
-        let (mut tgt, mut emask) = (vec![u32::MAX; total], vec![0u32; total]);
-        for p in &paths {
-            each_record(p, words, |_, key, _, _, edges| {
+        // each node is recorded once, so threads write disjoint ranges
+        let tgt: Vec<AtomicU32> = (0..total).map(|_| AtomicU32::new(u32::MAX)).collect();
+        let emask: Vec<AtomicU32> = (0..total).map(|_| AtomicU32::new(0)).collect();
+        par(threads, paths.len(), |i| {
+            each_record(&paths[i], words, |_, key, _, _, edges| {
                 let u = id(key).ok_or("graph log: a node without its key")? as usize;
                 let at = off[u] as usize;
                 for (j, &(t, m)) in edges.iter().enumerate() {
                     if let Some(v) = id(t) {
-                        tgt[at + j] = v;
-                        emask[at + j] = pal.idx(m);
+                        tgt[at + j].store(v, Relaxed);
+                        emask[at + j].store(pal.map[&m], Relaxed);
                     }
                 }
                 Ok(())
-            })?;
-        }
+            })
+        })?;
+        let tgt: Vec<u32> = tgt.into_iter().map(AtomicU32::into_inner).collect();
+        let emask: Vec<u32> = emask.into_iter().map(AtomicU32::into_inner).collect();
         // per node: edges to one target merged (their masks OR-ed), the
         // dropped ones (u32::MAX) removed
         let mut out_off = Vec::with_capacity(n + 1);
