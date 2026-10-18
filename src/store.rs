@@ -522,17 +522,41 @@ pub fn encode(v: &Value, out: &mut Vec<u8>) {
         }
         Value::Set(xs) | Value::Seq(xs) => {
             out.push(if matches!(v, Value::Set(_)) { 5 } else { 6 });
+            let at = begin_span(out);
             put_var(out, xs.len() as u64);
             xs.iter().for_each(|x| encode(x, out));
+            end_span(out, at);
         }
         Value::Func(f) => {
             out.push(7);
+            let at = begin_span(out);
             put_var(out, f.keys.len() as u64);
             f.keys.iter().for_each(|x| encode(x, out));
             f.vals.iter().for_each(|x| encode(x, out));
+            end_span(out, at);
         }
         Value::Lazy(_) => unreachable!("a state variable is never lazy"),
     }
+}
+
+/// A compound value's encoding carries the length of what follows its
+/// length, so a reader finds where it ends without walking it. The length
+/// is written once the contents are: one byte is kept for it, and the rare
+/// longer length moves the contents up.
+fn begin_span(out: &mut Vec<u8>) -> usize {
+    out.push(0);
+    out.len() - 1
+}
+
+fn end_span(out: &mut Vec<u8>, at: usize) {
+    let len = out.len() - at - 1;
+    if len < 0x80 {
+        out[at] = len as u8;
+        return;
+    }
+    let mut var = Vec::new();
+    put_var(&mut var, len as u64);
+    out.splice(at..at + 1, var);
 }
 
 pub fn decode(b: &[u8], pos: &mut usize) -> R<Value> {
@@ -605,8 +629,19 @@ thread_local! {
     static ENCS: std::cell::RefCell<Vec<Option<(Value, Rc<[u8]>)>>> = std::cell::RefCell::new(vec![None; ENC_SLOTS]);
 }
 
+/// For a table slot: a word at a time (a collision only costs a decode).
 fn bytes_hash(enc: &[u8]) -> u64 {
-    let h = enc.iter().fold(0xcbf2_9ce4_8422_2325_u64, |h, &x| (h ^ x as u64).wrapping_mul(0x100_0000_01b3));
+    let mut h = 0x9E37_79B9_7F4A_7C15_u64 ^ enc.len() as u64;
+    let mut words = enc.chunks_exact(8);
+    for w in &mut words {
+        h = (h ^ u64::from_le_bytes(w.try_into().unwrap())).wrapping_mul(0xbf58_476d_1ce4_e5b9).rotate_left(31);
+    }
+    let rest = words.remainder();
+    if !rest.is_empty() {
+        let mut w = [0u8; 8];
+        w[..rest.len()].copy_from_slice(rest);
+        h = (h ^ u64::from_le_bytes(w)).wrapping_mul(0x94d0_49bb_1331_11eb);
+    }
     h ^ (h >> 32)
 }
 
@@ -638,11 +673,13 @@ fn decode_tagged(tag: u8, b: &[u8], pos: &mut usize) -> R<Value> {
         3 => Value::Str(get_var(b, pos)? as u32),
         4 => Value::Model(get_var(b, pos)? as u32),
         5 | 6 => {
+            get_var(b, pos)?; // the span (see begin_span)
             let n = get_var(b, pos)?;
             let xs: Arc<[Value]> = many(pos, n)?.into();
             if tag == 5 { Value::Set(xs) } else { Value::Seq(xs) }
         }
         7 => {
+            get_var(b, pos)?; // the span (see begin_span)
             let n = get_var(b, pos)?;
             let start = *pos;
             for _ in 0..n {
@@ -690,15 +727,12 @@ fn skip(b: &[u8], pos: &mut usize) -> R<()> {
         2..=4 => {
             get_var(b, pos)?;
         }
-        5 | 6 => {
-            for _ in 0..get_var(b, pos)? {
-                skip(b, pos)?;
+        5..=7 => {
+            let len = get_var(b, pos)? as usize;
+            if len > b.len() - *pos {
+                return Err("truncated queue block".into());
             }
-        }
-        7 => {
-            for _ in 0..2 * get_var(b, pos)? {
-                skip(b, pos)?;
-            }
+            *pos += len;
         }
         t => return Err(format!("bad value tag {t} in a queue block")),
     }
@@ -921,7 +955,7 @@ pub fn checkpoint(
         io("checkpoint", fs::hard_link(src, tmp.join("queue-disk.bin")))?;
     }
     let mut m = String::new();
-    m += &format!("source_hash {source_hash}\ndepth {depth}\ngenerated {generated}\n");
+    m += &format!("source_hash {source_hash}\nqueue_format {QUEUE_FORMAT}\ndepth {depth}\ngenerated {generated}\n");
     for b in &level.mem {
         m += &format!("memblock {} {}\n", b.bytes.len(), b.count);
     }
@@ -965,10 +999,18 @@ pub fn check_recoverable(dir: &Path, source_hash: u64) -> R<()> {
     let m = dir.join("ckpt").join("meta.txt");
     let text = io(&format!("no checkpoint to recover ({})", m.display()), fs::read_to_string(&m))?;
     match text.lines().find_map(|l| l.strip_prefix("source_hash ")) {
-        Some(h) if h.trim() == source_hash.to_string() => Ok(()),
-        _ => Err(format!("the checkpoint in {} was written for different sources (spec or cfg changed); refusing to recover", dir.display())),
+        Some(h) if h.trim() == source_hash.to_string() => {}
+        _ => return Err(format!("the checkpoint in {} was written for different sources (spec or cfg changed); refusing to recover", dir.display())),
+    }
+    match text.lines().find_map(|l| l.strip_prefix("queue_format ")) {
+        Some(f) if f.trim() == QUEUE_FORMAT.to_string() => Ok(()),
+        _ => Err(format!("the checkpoint in {} keeps its queue in another format (an older tla-mc); refusing to recover", dir.display())),
     }
 }
+
+/// The encoding of queued states, as checkpoints record it: 2 since compound
+/// values carry their length (see `begin_span`).
+const QUEUE_FORMAT: u64 = 2;
 
 /// Load the checkpoint in `meta.dir`: fills `fps`, truncates and reopens
 /// the trace logs, and returns the level to expand next.
@@ -976,6 +1018,7 @@ pub fn recover(meta: &Meta, source_hash: u64, nvars: usize, fps: &FpSet, trace: 
     let ck = meta.dir.join("ckpt");
     let text = io(&format!("reading {}", ck.join("meta.txt").display()), fs::read_to_string(ck.join("meta.txt")))?;
     let (mut depth, mut generated, mut nmem, mut lens, mut blocks) = (0, 0, 0, Vec::new(), Vec::new());
+    let mut format_ok = false;
     let mut memblocks: Vec<(u64, u64)> = Vec::new();
     let (mut graph_logs, mut graph_inits) = (Vec::new(), Vec::new());
     for line in text.lines() {
@@ -987,6 +1030,8 @@ pub fn recover(meta: &Meta, source_hash: u64, nvars: usize, fps: &FpSet, trace: 
                 return Err("the checkpoint was written for different sources (spec or cfg changed); refusing to recover".into());
             }
             "source_hash" => {}
+            "queue_format" if nums[0] == QUEUE_FORMAT => format_ok = true,
+            "queue_format" => return Err("the checkpoint keeps its queue in another format (an older tla-mc); refusing to recover".into()),
             "depth" => depth = nums[0] as usize,
             "generated" => generated = nums[0],
             // an older checkpoint: the memory part as one run of states
@@ -998,6 +1043,9 @@ pub fn recover(meta: &Meta, source_hash: u64, nvars: usize, fps: &FpSet, trace: 
             "block" => blocks.push(Block { off: nums[0], len: nums[1], count: nums[2] }),
             _ => return Err(format!("bad checkpoint line: {line}")),
         }
+    }
+    if !format_ok {
+        return Err("the checkpoint keeps its queue in another format (an older tla-mc); refusing to recover".into());
     }
     *meta.made.lock().unwrap() = true;
     fps.load(&ck)?;
@@ -1043,4 +1091,27 @@ pub fn recover(meta: &Meta, source_hash: u64, nvars: usize, fps: &FpSet, trace: 
         Some((io("checkpoint", File::open(&p))?, PathBuf::new()))
     };
     Ok(Snapshot { depth, generated, level: Level { mem, blocks, file }, graph_logs, graph_inits })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn encode_decode_round_trip_with_long_spans() {
+        let ints = |n: i64| Value::Seq((0..n).map(Value::Int).collect::<Vec<_>>().into());
+        let func = |n: i64| {
+            let keys: Arc<[Value]> = (0..n).map(Value::Int).collect::<Vec<_>>().into();
+            Value::Func(Arc::new(Func { keys, vals: (0..n).map(|i| ints(i % 5)).collect::<Vec<_>>().into() }))
+        };
+        // spans under 128 bytes, just over, and far over (a two-byte length)
+        for v in [ints(3), ints(100), func(4), func(60), Value::Seq(vec![func(30), ints(200), Value::Bool(true)].into())] {
+            let mut out = Vec::new();
+            encode(&v, &mut out);
+            let (mut p, mut q) = (0, 0);
+            assert_eq!(decode(&out, &mut p).unwrap(), v);
+            skip(&out, &mut q).unwrap();
+            assert_eq!((p, q), (out.len(), out.len()));
+        }
+    }
 }
