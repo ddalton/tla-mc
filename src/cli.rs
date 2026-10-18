@@ -191,8 +191,13 @@ pub fn load_spec(spec_path: &Path, cfg_path: &Path) -> Result<Loaded, String> {
     };
     let init = c.rooted_act("Init", &init_ast, true)?;
     let next = c.rooted_act("Next", &next_ast, false)?;
-    let invariants = cfg.invariants.iter().map(|n| c.rooted_expr(n)).collect::<Result<_, _>>()?;
-    let constraints = cfg.constraints.iter().map(|n| c.rooted_expr(n)).collect::<Result<_, _>>()?;
+    let (mut invariants, mut constraints) = (Vec::new(), Vec::new());
+    for n in &cfg.invariants {
+        invariants.extend(c.rooted_parts(n)?);
+    }
+    for n in &cfg.constraints {
+        constraints.extend(c.rooted_parts(n)?);
+    }
     let assumes: Vec<ast::Ast> = modules.iter().flat_map(|m| m.assumes.iter().cloned()).collect();
     let symmetry = cfg.symmetry.as_ref().map(|n| c.rooted_expr(n)).transpose()?;
     let view = cfg.view.as_ref().map(|n| c.rooted_expr(n)).transpose()?;

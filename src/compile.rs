@@ -398,6 +398,37 @@ impl Compiler {
         Ok(Rooted { name: name.to_string(), frame: self.next_slot, body })
     }
 
+    /// A state predicate as its top-level conjuncts, through zero-argument
+    /// operators that are conjunctions themselves, each a root of its own
+    /// under `name`: the search checks a conjunct only in a state that
+    /// changed a variable the conjunct reads.
+    pub fn rooted_parts(&mut self, name: &str) -> R<Vec<Rooted<Expr>>> {
+        fn flatten(c: &Compiler, a: &Ast, out: &mut Vec<Ast>, depth: u32) {
+            match a {
+                Ast::And(v) => v.iter().for_each(|x| flatten(c, x, out, depth)),
+                Ast::Ident(n)
+                    if depth < 16
+                        && !c.subst.contains_key(n)
+                        && !c.consts.contains_key(n)
+                        && c.defs.get(n).is_some_and(|d| d.params.is_empty() && matches!(d.body, Ast::And(_))) =>
+                {
+                    flatten(c, &c.defs[n].body, out, depth + 1)
+                }
+                _ => out.push(a.clone()),
+            }
+        }
+        let mut parts = Vec::new();
+        flatten(self, &Ast::Ident(name.to_string()), &mut parts, 0);
+        parts
+            .iter()
+            .map(|a| {
+                self.next_slot = 0;
+                let body = self.expr(a, &mut vec![], false)?;
+                Ok(Rooted { name: name.to_string(), frame: self.next_slot, body })
+            })
+            .collect()
+    }
+
     pub fn rooted_act(&mut self, name: &str, a: &Ast, init: bool) -> R<Rooted<Act>> {
         self.next_slot = 0;
         let body = self.act(a, &mut vec![], init)?;
