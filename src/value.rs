@@ -45,6 +45,23 @@ pub enum Lazy {
     SeqOf(Value),
 }
 
+/// A finite set's elements (see `Value::elems_ref`).
+pub enum Elems<'a> {
+    Borrowed(&'a [Value]),
+    Owned(Arc<[Value]>),
+}
+
+impl std::ops::Deref for Elems<'_> {
+    type Target = [Value];
+
+    fn deref(&self) -> &[Value] {
+        match self {
+            Elems::Borrowed(s) => s,
+            Elems::Owned(s) => s,
+        }
+    }
+}
+
 // ---- interned names -----------------------------------------------------
 
 /// Strings and model-value names, frozen before checking starts.
@@ -175,6 +192,15 @@ impl Value {
                 _ => unreachable!(),
             },
             v => Err(format!("expected a set, got {v}")),
+        }
+    }
+
+    /// `elems()`, borrowing a set's elements instead of taking a reference
+    /// to them.
+    pub fn elems_ref(&self) -> R<Elems<'_>> {
+        match self {
+            Value::Set(s) => Ok(Elems::Borrowed(s)),
+            _ => self.elems().map(Elems::Owned),
         }
     }
 
