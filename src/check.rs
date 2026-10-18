@@ -4,7 +4,7 @@
 //! its memory budget spills to disk, and each BFS level is expanded by all
 //! workers in parallel. See `store`.
 
-use crate::eval::{Bufs, Engine, Program};
+use crate::eval::{Bufs, Engine, Expr, PathE, Program};
 use crate::liveness::{self, FairInst, Graph, GraphLogs, Inst, Layout};
 use crate::store::{self, FpSet, Level, LevelWriter, Meta, Trace, NO_PARENT};
 use crate::symkey::{Scratch, SymKey};
@@ -78,9 +78,76 @@ pub struct Checker<'p> {
     /// the indices in `props` of the step properties `[][A]_v`
     pub steps: Vec<usize>,
     pub fair: Vec<FairInst<'p>>,
+    /// per invariant (constraint) part: the variables it reads, None when
+    /// that is not known (see `reads`)
+    inv_reads: Vec<Option<Box<[u32]>>>,
+    con_reads: Vec<Option<Box<[u32]>>>,
     /// where each liveness instance's predicate bits sit in a graph node
     pub lay: Layout,
     pub disk: Disk,
+}
+
+/// Mark the state variables `e` reads, through operator bodies and LET
+/// definitions. False if it reads the next state or asks ENABLED, whose
+/// value depends on more than the variables named.
+fn reads(p: &Program, e: &Expr, out: &mut [bool], ops: &mut [bool], lets: &mut [bool]) -> bool {
+    let mut r = |x: &Expr| reads(p, x, out, ops, lets);
+    match e {
+        Expr::Var(i) => {
+            out[*i as usize] = true;
+            true
+        }
+        Expr::Primed(_) | Expr::Enabled(_) => false,
+        Expr::Const(_) | Expr::Local(_) => true,
+        Expr::Call(op, args) => {
+            if !args.iter().all(&mut r) {
+                return false;
+            }
+            if std::mem::replace(&mut ops[*op as usize], true) {
+                return true;
+            }
+            reads(p, &p.ops[*op as usize].body, out, ops, lets)
+        }
+        Expr::LetRef(_, id) => {
+            if std::mem::replace(&mut lets[*id as usize], true) {
+                return true;
+            }
+            reads(p, &p.lets[*id as usize], out, ops, lets)
+        }
+        Expr::Lazy(defs, body) => {
+            for &(_, id) in defs.iter() {
+                if !std::mem::replace(&mut lets[id as usize], true) && !reads(p, &p.lets[id as usize], out, ops, lets) {
+                    return false;
+                }
+            }
+            reads(p, body, out, ops, lets)
+        }
+        Expr::Memo(_, primed, x) => !primed && r(x),
+        Expr::And(v) | Expr::Or(v) | Expr::SetEnum(v) | Expr::Product(v) | Expr::Tuple(v) | Expr::Builtin(_, v) => v.iter().all(r),
+        Expr::Not(a) | Expr::Un(_, a) | Expr::Field(a, _) => r(a),
+        Expr::Implies(a, b) | Expr::FuncSet(a, b) | Expr::App(a, b) | Expr::Bin(_, a, b) | Expr::SelectSeq(a, _, b) => r(a) && r(b),
+        Expr::If(a, b, c) => r(a) && r(b) && r(c),
+        Expr::Case(arms, o) => arms.iter().all(|(a, b)| r(a) && r(b)) && o.as_deref().is_none_or(&mut r),
+        Expr::Let(defs, body) => defs.iter().all(|(_, d)| r(d)) && r(body),
+        Expr::Quant(_, bs, body) | Expr::SetMap(bs, body) | Expr::FuncCons(bs, body) => bs.iter().all(|b| r(&b.set)) && r(body),
+        Expr::Choose(b, body) | Expr::SetFilter(b, body) => r(&b.set) && r(body),
+        Expr::Record(fs) | Expr::RecSet(fs) => fs.iter().all(|(_, x)| r(x)),
+        Expr::Except(base, ups) => {
+            r(base)
+                && ups.iter().all(|u| u.path.iter().all(|q| if let PathE::Idx(x) = q { r(x) } else { true }) && r(&u.val))
+        }
+    }
+}
+
+/// Per predicate: the variables it reads, or None (see `reads`).
+fn read_sets(p: &Program, list: &[crate::eval::Rooted<Expr>]) -> Vec<Option<Box<[u32]>>> {
+    list.iter()
+        .map(|r| {
+            let mut out = vec![false; p.vars.len()];
+            let ok = reads(p, &r.body, &mut out, &mut vec![false; p.ops.len()], &mut vec![false; p.lets.len()]);
+            ok.then(|| (0..out.len() as u32).filter(|&i| out[i as usize]).collect())
+        })
+        .collect()
 }
 
 impl<'p> Checker<'p> {
@@ -96,7 +163,8 @@ impl<'p> Checker<'p> {
         };
         let lay = liveness::layout(&props);
         let steps = props.iter().enumerate().filter(|(_, i)| matches!(i.leaf, crate::eval::TProp::ActionBox(..))).map(|(k, _)| k).collect();
-        Ok(Checker { reference: None, p, e, sk: SymKey::new(p, e), vbufs: Default::default(), workers, pin: None, progress: true, props, steps, fair, lay, disk })
+        let (inv_reads, con_reads) = (read_sets(p, &p.invariants), read_sets(p, &p.constraints));
+        Ok(Checker { reference: None, p, e, sk: SymKey::new(p, e), vbufs: Default::default(), workers, pin: None, progress: true, props, steps, fair, inv_reads, con_reads, lay, disk })
     }
 
     fn needs_graph(&self) -> bool {
@@ -279,10 +347,17 @@ impl<'p> Checker<'p> {
     }
 
     /// The first of the invariants (or, with `constraints`, the state
-    /// constraints) that `st` violates.
-    fn holds(&self, constraints: bool, st: &[Value], bufs: &mut Bufs) -> Result<Option<String>, String> {
-        let list = if constraints { &self.p.constraints } else { &self.p.invariants };
+    /// constraints) that `st` violates. `changed`: which variables differ
+    /// from the parent's, which satisfied every part; a part that reads
+    /// none of them holds again.
+    fn holds(&self, constraints: bool, st: &[Value], changed: Option<&[bool]>, bufs: &mut Bufs) -> Result<Option<String>, String> {
+        let (list, reads) = if constraints { (&self.p.constraints, &self.con_reads) } else { (&self.p.invariants, &self.inv_reads) };
         for (i, r) in list.iter().enumerate() {
+            if let (Some(chg), Some(vars)) = (changed, &reads[i]) {
+                if !vars.iter().any(|&v| chg[v as usize]) {
+                    continue;
+                }
+            }
             let mut cx = bufs.cx(st, self.p.vars.len(), r.frame);
             let ok = if constraints { self.e.constraint(i, &mut cx) } else { self.e.invariant(i, &mut cx) };
             if !ok.map_err(|e| format!("evaluating {}: {e}", r.name))? {
@@ -405,7 +480,7 @@ impl<'p> Checker<'p> {
                     Ok(fp) => fp,
                     Err(e) => return done(generated, 0, Some(Failure::Eval(e, None))),
                 };
-                match self.holds(true, &s, &mut bufs) {
+                match self.holds(true, &s, None, &mut bufs) {
                     Ok(None) => {}
                     Ok(Some(_)) => continue,
                     Err(e) => return done(generated, 0, Some(Failure::Eval(e, None))),
@@ -424,7 +499,7 @@ impl<'p> Checker<'p> {
                         Ok(Some(name)) => return done(generated, 1, Some(Failure::InitProperty(name, idx))),
                         Err(e) => return done(generated, 1, Some(Failure::Eval(e, Some(idx)))),
                     }
-                    let held = self.holds(false, &s, &mut bufs).and_then(|r| match r {
+                    let held = self.holds(false, &s, None, &mut bufs).and_then(|r| match r {
                         None => self.always_ok(&s, &mut bufs),
                         some => Ok(some),
                     });
@@ -507,6 +582,8 @@ impl<'p> Checker<'p> {
                         let mut enc: Vec<u8> = Vec::new();
                         let mut decoded: Vec<(u64, State)> = Vec::new();
                         let mut local_next: Vec<(u64, State)> = Vec::new();
+                        // per variable: does the successor differ from its parent
+                        let mut chg: Vec<bool> = Vec::new();
                         // this worker's graph log, and the node being expanded
                         let mut glog = glogs.logs[w].lock().unwrap();
                         let (mut node_edges, mut node_bits): (Vec<(u64, u128)>, Vec<u64>) = (Vec::new(), Vec::new());
@@ -562,8 +639,10 @@ impl<'p> Checker<'p> {
                                         }
                                     }
                                 }
+                                chg.clear();
                                 if !self.p.constraints.is_empty() {
-                                    match self.holds(true, &s, &mut bufs) {
+                                    chg.extend(s.iter().zip(st).map(|(a, b)| !same(a, b)));
+                                    match self.holds(true, &s, Some(&chg), &mut bufs) {
                                         Ok(None) => {}
                                         Ok(Some(_)) => continue,
                                         Err(e) => return Some(Failure::Eval(e, Some(pidx))),
@@ -583,7 +662,10 @@ impl<'p> Checker<'p> {
                                         return Some(Failure::Eval("state not in the reference run".into(), Some(idx)));
                                     }
                                 }
-                                let held = self.holds(false, &s, &mut bufs).and_then(|r| match r {
+                                if chg.is_empty() {
+                                    chg.extend(s.iter().zip(st).map(|(a, b)| !same(a, b)));
+                                }
+                                let held = self.holds(false, &s, Some(&chg), &mut bufs).and_then(|r| match r {
                                     None => self.always_ok(&s, &mut bufs),
                                     some => Ok(some),
                                 });
