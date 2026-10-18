@@ -790,6 +790,33 @@ pub fn same(a: &Value, b: &Value) -> bool {
     }
 }
 
+/// `v` for an UNCHANGED slot of the next state, without taking a reference
+/// to it: a step leaves most variables unchanged. Built with unwinding, a
+/// plain clone.
+///
+/// # Safety
+///
+/// The slot must be cleared with `unalias()` before `v` can be dropped, on
+/// every path out, and nothing may drop or take the slot meanwhile.
+#[inline(always)]
+pub unsafe fn alias(v: &Value) -> Value {
+    #[cfg(panic = "abort")]
+    return unsafe { std::ptr::read(v) };
+    #[cfg(not(panic = "abort"))]
+    return v.clone();
+}
+
+/// Clears a slot `alias()` filled.
+#[inline(always)]
+pub fn unalias(slot: &mut Option<Value>) {
+    #[cfg(panic = "abort")]
+    std::mem::forget(slot.take());
+    #[cfg(not(panic = "abort"))]
+    {
+        *slot = None;
+    }
+}
+
 fn product(sets: &[Arc<[Value]>], cur: &mut Vec<Value>, f: &mut dyn FnMut(&[Value])) {
     if cur.len() == sets.len() {
         f(cur);

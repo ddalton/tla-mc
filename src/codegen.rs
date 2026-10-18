@@ -22,7 +22,7 @@ use std::path::Path;
 pub mod rt {
     pub use crate::cli::Generated;
     pub use crate::eval::{binop, boolean_set, builtin_apply, Bi, Bin, Cx, Engine, Program, K};
-    pub use crate::value::{Lazy, Value, R};
+    pub use crate::value::{alias, unalias, Lazy, Value, R};
     pub use std::cell::OnceCell;
     pub use std::sync::Arc;
 
@@ -658,15 +658,17 @@ impl Gen<'_> {
                 format!("{{ let set{n} = {set}; for x{n} in set{n}.iter() {{ {inner} }} }}")
             }
             Act::Unchanged(vars) => {
+                // the continuation runs in a closure, so an error out of it
+                // still clears the slots `alias()` filled
                 let n = self.fresh();
                 let list: Vec<String> = vars.iter().map(|v| format!("{v}usize")).collect();
                 format!(
                     "{{ let vs{n}: &[usize] = &[{}]; let mut m{n}: u128 = 0; let mut ok{n} = true; \
                      for (j, &v) in vs{n}.iter().enumerate() {{ match &cx.next[v] {{ \
-                       None => {{ cx.next[v] = Some(st[v].clone()); m{n} |= 1 << j; }} \
+                       None => {{ cx.next[v] = Some(unsafe {{ alias(&st[v]) }}); m{n} |= 1 << j; }} \
                        Some(o) => if *o != st[v] {{ ok{n} = false; break; }} }} }} \
-                     if ok{n} {{ {k} }} \
-                     for (j, &v) in vs{n}.iter().enumerate() {{ if m{n} & (1 << j) != 0 {{ cx.next[v] = None; }} }} }}",
+                     let r{n}: R<()> = if ok{n} {{ (|| {{ {k} Ok(()) }})() }} else {{ Ok(()) }}; \
+                     for (j, &v) in vs{n}.iter().enumerate() {{ if m{n} & (1 << j) != 0 {{ unalias(&mut cx.next[v]); }} }} r{n}?; }}",
                     list.join(", ")
                 )
             }
