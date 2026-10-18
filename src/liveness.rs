@@ -17,7 +17,7 @@
 
 use crate::eval::{Act, Bufs, Expr, FairTree, Program, TProp};
 use crate::store::{io, put_var, Meta};
-use crate::value::{Value, R};
+use crate::value::{same, Value, R};
 use std::collections::HashMap;
 use std::io::Write;
 
@@ -898,9 +898,13 @@ const STOP: &str = "\u{0}stop";
 
 /// ENABLED <<A>>_sub at `st`: some A-step changes sub. A variable A leaves
 /// unassigned is free (TLA+), so it can always be changed.
-pub fn enabled(p: &Program, f: &FairInst, st: &[Value], sub_vars: &[bool], bufs: &mut Bufs) -> R<bool> {
+pub fn enabled(p: &Program, f: &FairInst, sub: &Sub, st: &[Value], bufs: &mut Bufs) -> R<bool> {
     let nv = p.vars.len();
-    let sub0 = eval_env(p, f.sub, f.frame, &f.env, st, None, bufs)?;
+    let sub_vars = &sub.deps;
+    let sub0 = match sub.tuple {
+        Some(_) => Value::Bool(false),
+        None => eval_env(p, f.sub, f.frame, &f.env, st, None, bufs)?,
+    };
     let mut found = false;
     let mut tb = Bufs::default();
     let r = {
@@ -913,8 +917,18 @@ pub fn enabled(p: &Program, f: &FairInst, st: &[Value], sub_vars: &[bool], bufs:
                 found = true;
                 return Err(STOP.into());
             }
-            let t: Vec<Value> = (0..nv).map(|i| cx.next[i].clone().unwrap_or_else(|| st[i].clone())).collect();
-            if eval_env(p, f.sub, f.frame, &f.env, &t, None, &mut tb)? != sub0 {
+            let changed = match &sub.tuple {
+                // its variables are all assigned (checked above)
+                Some(vars) => vars.iter().any(|&v| {
+                    let (x, y) = (cx.next[v as usize].as_ref().unwrap(), &st[v as usize]);
+                    !same(x, y) && x != y
+                }),
+                None => {
+                    let t: Vec<Value> = (0..nv).map(|i| cx.next[i].clone().unwrap_or_else(|| st[i].clone())).collect();
+                    eval_env(p, f.sub, f.frame, &f.env, &t, None, &mut tb)? != sub0
+                }
+            };
+            if changed {
                 found = true;
                 return Err(STOP.into());
             }
@@ -946,25 +960,44 @@ pub fn a_step(p: &Program, f: &FairInst, st: &[Value], t: &[Value], bufs: &mut B
     }
 }
 
-/// Per fairness instance: the variables its subscript reads.
-pub fn sub_vars(p: &Program, fair: &[FairInst]) -> Vec<Vec<bool>> {
+/// A fairness instance's subscript: the variables it reads, and the
+/// variables themselves when it is a tuple of them (`vars`).
+pub struct Sub {
+    pub deps: Vec<bool>,
+    pub tuple: Option<Box<[u32]>>,
+}
+
+/// Per fairness instance: its subscript (see `Sub`).
+pub fn sub_vars(p: &Program, fair: &[FairInst]) -> Vec<Sub> {
     fair.iter()
         .map(|f| {
-            let mut acc = vec![false; p.vars.len()];
-            crate::symkey::deps(p, f.sub, &mut acc, &mut vec![false; p.ops.len()]);
-            acc
+            let mut deps = vec![false; p.vars.len()];
+            crate::symkey::deps(p, f.sub, &mut deps, &mut vec![false; p.ops.len()]);
+            let mut vars = Vec::new();
+            let tuple = crate::codegen::tuple_vars(p, f.sub, &mut vars, 0).then(|| vars.into());
+            Sub { deps, tuple }
         })
         .collect()
 }
 
+/// A subscript that is a tuple of variables changes exactly when one of
+/// them does: compared there, it is never built.
+fn moved(vars: &[u32], st: &[Value], t: &[Value]) -> bool {
+    vars.iter().any(|&v| !same(&st[v as usize], &t[v as usize]) && st[v as usize] != t[v as usize])
+}
+
 /// The fairness actions enabled at `st`, and their subscripts' values
-/// there (for judging the steps out of it).
-pub fn node_label(p: &Program, fair: &[FairInst], sv: &[Vec<bool>], st: &[Value], bufs: &mut Bufs) -> R<(u128, Vec<Value>)> {
+/// there (for judging the steps out of it; not kept for a tuple of
+/// variables).
+pub fn node_label(p: &Program, fair: &[FairInst], sv: &[Sub], st: &[Value], bufs: &mut Bufs) -> R<(u128, Vec<Value>)> {
     let mut en = 0u128;
     let mut subs = Vec::with_capacity(fair.len());
     for (j, f) in fair.iter().enumerate() {
-        subs.push(eval_env(p, f.sub, f.frame, &f.env, st, None, bufs)?);
-        if enabled(p, f, st, &sv[j], bufs)? {
+        subs.push(match sv[j].tuple {
+            Some(_) => Value::Bool(false),
+            None => eval_env(p, f.sub, f.frame, &f.env, st, None, bufs)?,
+        });
+        if enabled(p, f, &sv[j], st, bufs)? {
             en |= 1 << j;
         }
     }
@@ -972,13 +1005,17 @@ pub fn node_label(p: &Program, fair: &[FairInst], sv: &[Vec<bool>], st: &[Value]
 }
 
 /// The fairness actions the step st -> t is a step of.
-pub fn edge_label(p: &Program, fair: &[FairInst], en: u128, subs: &[Value], st: &[Value], t: &[Value], bufs: &mut Bufs) -> R<u128> {
+pub fn edge_label(p: &Program, fair: &[FairInst], sv: &[Sub], en: u128, subs: &[Value], st: &[Value], t: &[Value], bufs: &mut Bufs) -> R<u128> {
     let mut mask = 0u128;
     for (j, f) in fair.iter().enumerate() {
         if en & (1 << j) == 0 {
             continue;
         }
-        if eval_env(p, f.sub, f.frame, &f.env, t, None, bufs)? != subs[j] && a_step(p, f, st, t, bufs)? {
+        let changed = match &sv[j].tuple {
+            Some(vars) => moved(vars, st, t),
+            None => eval_env(p, f.sub, f.frame, &f.env, t, None, bufs)? != subs[j],
+        };
+        if changed && a_step(p, f, st, t, bufs)? {
             mask |= 1 << j;
         }
     }
