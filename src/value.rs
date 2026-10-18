@@ -304,28 +304,32 @@ impl Value {
         }
     }
 
+    /// `x` in `sorted` when it sits where a run of consecutive model values
+    /// or integers puts it. A domain is nearly always consecutive model
+    /// values (the processes), consecutive integers, or both: model values
+    /// sort first and integers after them.
+    #[inline(always)]
+    fn guess(sorted: &[Value], x: &Value) -> Option<usize> {
+        match (x, sorted.first(), sorted.last()) {
+            (Value::Model(a), Some(Value::Model(b)), _) => {
+                let i = a.wrapping_sub(*b) as usize;
+                matches!(sorted.get(i), Some(Value::Model(c)) if c == a).then_some(i)
+            }
+            (Value::Int(a), _, Some(Value::Int(b))) => {
+                let i = (sorted.len() - 1).wrapping_sub(b.wrapping_sub(*a) as usize);
+                matches!(sorted.get(i), Some(Value::Int(c)) if c == a).then_some(i)
+            }
+            _ => None,
+        }
+    }
+
     /// `x` in sorted, unique values (a set's elements, a function's keys).
     /// Most are scalars, compared inline instead of through `Ord::cmp`;
     /// any other kind sorts after every scalar.
     #[inline]
     fn find(sorted: &[Value], x: &Value) -> Option<usize> {
-        // A domain is nearly always consecutive model values (the
-        // processes), consecutive integers, or both. Model values sort first
-        // and integers after them, so x's place in such a run is tried first.
-        match (x, sorted.first(), sorted.last()) {
-            (Value::Model(a), Some(Value::Model(b)), _) => {
-                let i = a.wrapping_sub(*b) as usize;
-                if matches!(sorted.get(i), Some(Value::Model(c)) if c == a) {
-                    return Some(i);
-                }
-            }
-            (Value::Int(a), _, Some(Value::Int(b))) => {
-                let i = (sorted.len() - 1).wrapping_sub(b.wrapping_sub(*a) as usize);
-                if matches!(sorted.get(i), Some(Value::Int(c)) if c == a) {
-                    return Some(i);
-                }
-            }
-            _ => {}
+        if let Some(i) = Value::guess(sorted, x) {
+            return Some(i);
         }
         // A run of up to SCAN values (a function over the processes, mixing
         // model values and integers): a scan for the one equal scalar, its
@@ -435,9 +439,24 @@ impl Value {
         }
     }
 
-    /// `f[x]` without cloning f's other values.
-    #[inline]
+    /// `f[x]` without cloning f's other values. Inline only for the common
+    /// cases (see `guess()`), the rest a call.
+    #[inline(always)]
     pub fn apply_ref(&self, x: &Value) -> R<&Value> {
+        match (self, x) {
+            (Value::Func(f), _) => {
+                if let Some(i) = Value::guess(&f.keys, x) {
+                    return Ok(&f.vals[i]);
+                }
+            }
+            (Value::Seq(s), Value::Int(i)) if *i >= 1 && (*i as usize) <= s.len() => return Ok(&s[*i as usize - 1]),
+            _ => {}
+        }
+        self.apply_slow(x)
+    }
+
+    #[inline(never)]
+    fn apply_slow(&self, x: &Value) -> R<&Value> {
         match self {
             Value::Seq(s) => {
                 if let Value::Int(i) = x {
