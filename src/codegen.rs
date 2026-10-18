@@ -278,6 +278,15 @@ fn is_scalar(v: &Value) -> bool {
     matches!(v, Value::Bool(_) | Value::Int(_) | Value::Str(_) | Value::Model(_))
 }
 
+/// For `a = b` with one side a scalar constant: the other side and the
+/// constant.
+fn scalar_side<'e>(a: &'e Expr, b: &'e Expr) -> Option<(&'e Expr, &'e Value)> {
+    match (a, b) {
+        (x, Expr::Const(c)) | (Expr::Const(c), x) if is_scalar(c) => Some((x, c)),
+        _ => None,
+    }
+}
+
 fn scalar(v: &Value) -> String {
     match v {
         Value::Bool(b) => format!("Value::Bool({b})"),
@@ -349,6 +358,12 @@ impl Gen<'_> {
             Expr::Or(v) => self.bools(v, "||"),
             Expr::Implies(a, b) => format!("(!({}) || ({}))", self.boolean(a), self.boolean(b)),
             Expr::Bin(Bin::Equiv, a, b) => format!("(({}) == ({}))", self.boolean(a), self.boolean(b)),
+            // against a scalar constant, a pattern match rather than a call
+            Expr::Bin(op @ (Bin::Eq | Bin::Neq), a, b) if scalar_side(a, b).is_some() => {
+                let (x, c) = scalar_side(a, b).unwrap();
+                let not = if matches!(op, Bin::Neq) { "!" } else { "" };
+                format!("{not}matches!(*({}), {})", self.arg(x), scalar(c))
+            }
             Expr::Bin(Bin::Eq, a, b) => format!("(({}) == ({}))", self.arg(a), self.arg(b)),
             Expr::Bin(Bin::Neq, a, b) => format!("(({}) != ({}))", self.arg(a), self.arg(b)),
             Expr::Bin(Bin::In, a, b) => {
