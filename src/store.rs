@@ -565,11 +565,16 @@ pub fn decode(b: &[u8], pos: &mut usize) -> R<Value> {
         *pos += 1;
         return decode_tagged(tag, b, pos);
     }
-    // Most variables keep their value across many states: a compound value
-    // decoded before on this worker is shared, not built again.
     let start = *pos;
     skip(b, pos)?;
-    let enc = &b[start..*pos];
+    intern(tag, b, start, *pos)
+}
+
+/// The compound value encoded in `b[start..end]`. Most variables keep their
+/// value across many states: one decoded before on this worker is shared,
+/// not built again.
+fn intern(tag: u8, b: &[u8], start: usize, end: usize) -> R<Value> {
+    let enc = &b[start..end];
     let slot = bytes_hash(enc) as usize % VAL_SLOTS;
     let hit = VALS.with(|c| match &c.borrow()[slot] {
         Some((k, v)) if **k == *enc => Some(v.clone()),
@@ -748,11 +753,27 @@ fn encode_states(states: &[(u64, State)], out: &mut Vec<u8>) {
 
 pub fn decode_states(b: &[u8], count: usize, nvars: usize, out: &mut Vec<(u64, State)>) -> R<()> {
     let mut pos = 0;
-    for _ in 0..count {
+    // where each variable of the state before sits in `b`: a block's
+    // states come in runs of siblings, mostly equal byte for byte, and an
+    // equal one shares that state's value
+    let mut prev = vec![(0usize, 0usize); nvars];
+    for n in 0..count {
         let idx = get_var(b, &mut pos)?;
         let mut st = Vec::with_capacity(nvars);
-        for _ in 0..nvars {
-            st.push(decode(b, &mut pos)?);
+        for (i, span) in prev.iter_mut().enumerate() {
+            let start = pos;
+            let tag = *b.get(pos).ok_or("truncated queue block")?;
+            if !(5..=7).contains(&tag) {
+                st.push(decode(b, &mut pos)?);
+            } else {
+                skip(b, &mut pos)?;
+                if n > 0 && b[start..pos] == b[span.0..span.1] {
+                    st.push(out.last().unwrap().1[i].clone());
+                } else {
+                    st.push(intern(tag, b, start, pos)?);
+                }
+            }
+            *span = (start, pos);
         }
         out.push((idx, st.into_boxed_slice()));
     }
