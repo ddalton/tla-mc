@@ -15,7 +15,7 @@
 //!  - `<>[]P` fails iff some fair component contains a ~P node;
 //!  - `[]<>P` fails iff some fair component lies within ~P.
 
-use crate::eval::{Act, Bufs, Cx, Expr, FairTree, Program, TProp};
+use crate::eval::{Act, Bufs, Cx, Engine, Expr, FairTree, Program, TProp, K};
 use crate::store::{io, put_var, Meta};
 use crate::value::{same, Value, R};
 use std::collections::{HashMap, HashSet};
@@ -53,6 +53,9 @@ pub struct FairInst<'p> {
     pub strong: bool,
     pub sub: &'p Expr,
     pub act: &'p Act,
+    /// `act` among the distinct fairness actions, in order of first use
+    /// (the instances of one `\A p: WF(A(p))` share one)
+    pub act_id: usize,
     pub env: Vec<(u32, Value)>,
     pub frame: u32,
     pub label: String,
@@ -174,7 +177,7 @@ pub fn instances(p: &Program) -> R<(Vec<Inst<'_>>, Vec<FairInst<'_>>)> {
                     if *strong { "S" } else { "W" },
                     env.iter().map(|(_, v)| v.to_string()).collect::<Vec<_>>().join(", ")
                 );
-                out.push(FairInst { strong: *strong, sub, act, env: env.clone(), frame, label });
+                out.push(FairInst { strong: *strong, sub, act, act_id: 0, env: env.clone(), frame, label });
             }
         }
         Ok(())
@@ -184,6 +187,17 @@ pub fn instances(p: &Program) -> R<(Vec<Inst<'_>>, Vec<FairInst<'_>>)> {
     }
     if fair.len() > 128 {
         return Err(format!("{} fairness instances; at most 128 are supported", fair.len()));
+    }
+    let mut acts: Vec<*const Act> = Vec::new();
+    for f in &mut fair {
+        let a: *const Act = f.act;
+        f.act_id = match acts.iter().position(|&x| x == a) {
+            Some(i) => i,
+            None => {
+                acts.push(a);
+                acts.len() - 1
+            }
+        };
     }
     Ok((props, fair))
 }
@@ -948,7 +962,7 @@ const STOP: &str = "\u{0}stop";
 
 /// ENABLED <<A>>_sub at `st`: some A-step changes sub. A variable A leaves
 /// unassigned is free (TLA+), so it can always be changed.
-pub fn enabled(p: &Program, f: &FairInst, sub: &Sub, st: &[Value], bufs: &mut Bufs) -> R<bool> {
+pub fn enabled(e: &dyn Engine, p: &Program, f: &FairInst, sub: &Sub, st: &[Value], bufs: &mut Bufs) -> R<bool> {
     let nv = p.vars.len();
     let sub_vars = &sub.deps;
     let sub0 = match sub.tuple {
@@ -962,7 +976,7 @@ pub fn enabled(p: &Program, f: &FairInst, sub: &Sub, st: &[Value], bufs: &mut Bu
         for (s, v) in &f.env {
             cx.stack[*s as usize] = v.clone();
         }
-        p.run(f.act, &mut cx, &mut |cx| {
+        run_fair(e, p, f, &mut cx, &mut |cx| {
             if (0..nv).any(|i| sub_vars[i] && cx.next[i].is_none()) {
                 found = true;
                 return Err(STOP.into());
@@ -994,7 +1008,7 @@ pub fn enabled(p: &Program, f: &FairInst, sub: &Sub, st: &[Value], bufs: &mut Bu
 /// Is st -> t an A-step: A holds in `cx`, whose primed variables are all
 /// preset to t. An action never changes a primed variable that is already
 /// set, so one `cx` serves every instance.
-fn a_step(p: &Program, f: &FairInst, cx: &mut Cx) -> R<bool> {
+fn a_step(e: &dyn Engine, p: &Program, f: &FairInst, cx: &mut Cx) -> R<bool> {
     cx.memo.clear();
     cx.base = 0;
     cx.frame = f.frame as usize;
@@ -1002,12 +1016,20 @@ fn a_step(p: &Program, f: &FairInst, cx: &mut Cx) -> R<bool> {
         cx.stack[*s as usize] = v.clone();
     }
     let mut found = false;
-    match p.run(f.act, cx, &mut |_| {
+    match run_fair(e, p, f, cx, &mut |_| {
         found = true;
         Err(STOP.into())
     }) {
         Err(e) if e != STOP => Err(e),
         _ => Ok(found),
+    }
+}
+
+/// Fairness action `f` in `cx`, compiled when the engine has it.
+fn run_fair<'a>(e: &dyn Engine, p: &Program, f: &FairInst, cx: &mut Cx<'a>, k: K<'_, 'a>) -> R<()> {
+    match e.fair_act(f.act_id, cx, &mut *k) {
+        Some(r) => r,
+        None => p.run(f.act, cx, k),
     }
 }
 
@@ -1040,7 +1062,7 @@ fn moved(vars: &[u32], st: &[Value], t: &[Value]) -> bool {
 /// The fairness actions enabled at `st`, and their subscripts' values
 /// there (for judging the steps out of it; not kept for a tuple of
 /// variables).
-pub fn node_label(p: &Program, fair: &[FairInst], sv: &[Sub], st: &[Value], bufs: &mut Bufs) -> R<(u128, Vec<Value>)> {
+pub fn node_label(e: &dyn Engine, p: &Program, fair: &[FairInst], sv: &[Sub], st: &[Value], bufs: &mut Bufs) -> R<(u128, Vec<Value>)> {
     let mut en = 0u128;
     let mut subs = Vec::with_capacity(fair.len());
     for (j, f) in fair.iter().enumerate() {
@@ -1048,7 +1070,7 @@ pub fn node_label(p: &Program, fair: &[FairInst], sv: &[Sub], st: &[Value], bufs
             Some(_) => Value::Bool(false),
             None => eval_env(p, f.sub, f.frame, &f.env, st, None, bufs)?,
         });
-        if enabled(p, f, &sv[j], st, bufs)? {
+        if enabled(e, p, f, &sv[j], st, bufs)? {
             en |= 1 << j;
         }
     }
@@ -1056,7 +1078,8 @@ pub fn node_label(p: &Program, fair: &[FairInst], sv: &[Sub], st: &[Value], bufs
 }
 
 /// The fairness actions the step st -> t is a step of.
-pub fn edge_label(p: &Program, fair: &[FairInst], sv: &[Sub], en: u128, subs: &[Value], st: &[Value], t: &[Value], bufs: &mut Bufs) -> R<u128> {
+#[allow(clippy::too_many_arguments)]
+pub fn edge_label(e: &dyn Engine, p: &Program, fair: &[FairInst], sv: &[Sub], en: u128, subs: &[Value], st: &[Value], t: &[Value], bufs: &mut Bufs) -> R<u128> {
     // the instances whose subscript the step changes (nearly all share
     // vars, compared once)
     let mut changed = 0u128;
@@ -1089,7 +1112,7 @@ pub fn edge_label(p: &Program, fair: &[FairInst], sv: &[Sub], en: u128, subs: &[
     }
     let mut mask = 0u128;
     for (j, f) in fair.iter().enumerate() {
-        if changed & (1 << j) != 0 && a_step(p, f, &mut cx)? {
+        if changed & (1 << j) != 0 && a_step(e, p, f, &mut cx)? {
             mask |= 1 << j;
         }
     }
