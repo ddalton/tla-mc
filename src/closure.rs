@@ -798,7 +798,9 @@ fn assign<'a>(var: usize, v: Value, cx: &mut Cx<'a>, k: K<'_, 'a>) -> R<()> {
     match &cx.next[var] {
         None => {
             cx.next[var] = Some(v);
+            cx.assigned.push(var as u32);
             let r = k(cx);
+            cx.assigned.pop();
             cx.next[var] = None;
             r
         }

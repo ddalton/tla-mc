@@ -282,14 +282,17 @@ impl<'p> Checker<'p> {
         let mut cx = bufs.cx(st, nvars, p.next.frame);
         self.e.next(&mut cx, &mut |cx| {
             n += 1;
+            if let Some(i) = cx.next.iter().position(|v| v.is_none()) {
+                return Err(format!("a step of Next leaves {}' unassigned", p.vars[i]));
+            }
+            // only an assigned variable can differ from the parent's (see
+            // `Cx::assigned`)
             hs.clear();
             hs.extend_from_slice(hv);
-            for (i, v) in cx.next.iter().enumerate() {
-                let Some(v) = v else {
-                    return Err(format!("a step of Next leaves {}' unassigned", p.vars[i]));
-                };
-                if !same(v, &st[i]) {
-                    hs[i] = var_hash(v);
+            for &i in cx.assigned.iter() {
+                let v = cx.next[i as usize].as_ref().unwrap();
+                if !same(v, &st[i as usize]) {
+                    hs[i as usize] = var_hash(v);
                 }
             }
             let fp = combine(hs);
