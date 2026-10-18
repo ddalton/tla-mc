@@ -282,19 +282,36 @@ impl Value {
     /// Most are scalars, compared inline instead of through `Ord::cmp`;
     /// any other kind sorts after every scalar.
     #[inline]
-    fn find(sorted: &[Value], x: &Value) -> Result<usize, usize> {
+    fn find(sorted: &[Value], x: &Value) -> Option<usize> {
+        // A run of up to SCAN values (a function over the processes, mixing
+        // model values and integers): a scan for the one equal scalar, its
+        // kind fixed, rather than a search that dispatches on every probe's
+        // kind and branches unpredictably.
+        const SCAN: usize = 16;
+        if sorted.len() <= SCAN {
+            let at = match x {
+                Value::Model(a) => sorted.iter().position(|k| matches!(k, Value::Model(b) if b == a)),
+                Value::Int(a) => sorted.iter().position(|k| matches!(k, Value::Int(b) if b == a)),
+                Value::Str(a) => sorted.iter().position(|k| matches!(k, Value::Str(b) if b == a)),
+                Value::Bool(a) => sorted.iter().position(|k| matches!(k, Value::Bool(b) if b == a)),
+                _ => return sorted.binary_search(x).ok(),
+            };
+            return at;
+        }
         match x.scalar_key() {
-            Some(sx) => sorted.binary_search_by(|k| match k.scalar_key() {
-                Some(sk) => sk.cmp(&sx),
-                None => Ordering::Greater,
-            }),
-            None => sorted.binary_search(x),
+            Some(sx) => sorted
+                .binary_search_by(|k| match k.scalar_key() {
+                    Some(sk) => sk.cmp(&sx),
+                    None => Ordering::Greater,
+                })
+                .ok(),
+            None => sorted.binary_search(x).ok(),
         }
     }
 
     pub fn contains(&self, x: &Value) -> R<bool> {
         match self {
-            Value::Set(s) => Ok(Value::find(s, x).is_ok()),
+            Value::Set(s) => Ok(Value::find(s, x).is_some()),
             Value::Lazy(l) => match &**l {
                 Lazy::Nat => Ok(matches!(x, Value::Int(n) if *n >= 0)),
                 Lazy::Int => Ok(matches!(x, Value::Int(_))),
@@ -387,8 +404,8 @@ impl Value {
                 Err(format!("{x} is not in the domain of {self}"))
             }
             Value::Func(f) => match Value::find(&f.keys, x) {
-                Ok(i) => Ok(&f.vals[i]),
-                Err(_) => Err(format!("{x} is not in the domain of {self}")),
+                Some(i) => Ok(&f.vals[i]),
+                None => Err(format!("{x} is not in the domain of {self}")),
             },
             _ => Err(format!("applying a non-function {self}")),
         }
@@ -418,8 +435,8 @@ impl Value {
                 Err(format!("{x} is not in the domain of {self}"))
             }
             Value::Func(f) => match Value::find(&f.keys, x) {
-                Ok(i) => Ok(f.vals[i].clone()),
-                Err(_) => Err(format!("{x} is not in the domain of {self}")),
+                Some(i) => Ok(f.vals[i].clone()),
+                None => Err(format!("{x} is not in the domain of {self}")),
             },
             _ => Err(format!("applying a non-function {self}")),
         }
@@ -466,12 +483,12 @@ impl Value {
                 Ok(self.clone())
             }
             Value::Func(f) => match Value::find(&f.keys, k) {
-                Ok(i) => {
+                Some(i) => {
                     let mut vals = f.vals.clone();
                     vals[i] = v;
                     Ok(Value::Func(Arc::new(Func { keys: f.keys.clone(), vals })))
                 }
-                Err(_) => Ok(self.clone()),
+                None => Ok(self.clone()),
             },
             _ => Err(format!("EXCEPT on a non-function {self}")),
         }
@@ -866,7 +883,18 @@ mod tests {
         keys.sort();
         let probes = keys.iter().cloned().chain([Value::Model(5), Value::Int(0), Value::Int(4), Value::Int(10), Value::Str(1), tup(0, 0)]);
         for x in probes {
-            assert_eq!(Value::find(&keys, &x), keys.binary_search(&x), "{x}");
+            // every length, so both the scan and the search are checked
+            for n in 0..=keys.len() {
+                assert_eq!(Value::find(&keys[..n], &x), keys[..n].binary_search(&x).ok(), "{x} in {n}");
+            }
+        }
+        // longer runs, past the scan
+        let mut long: Vec<Value> = (0..20).map(|i| Value::Model(i * 2)).chain((0..20).map(|i| Value::Int(i * 3))).collect();
+        long.sort();
+        for x in (0..42).map(Value::Model).chain((-1..62).map(Value::Int)) {
+            for n in 0..=long.len() {
+                assert_eq!(Value::find(&long[..n], &x), long[..n].binary_search(&x).ok(), "{x} in {n}");
+            }
         }
     }
 
