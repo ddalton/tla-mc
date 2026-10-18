@@ -309,6 +309,24 @@ impl Value {
     /// any other kind sorts after every scalar.
     #[inline]
     fn find(sorted: &[Value], x: &Value) -> Option<usize> {
+        // A domain is nearly always consecutive model values (the
+        // processes), consecutive integers, or both. Model values sort first
+        // and integers after them, so x's place in such a run is tried first.
+        match (x, sorted.first(), sorted.last()) {
+            (Value::Model(a), Some(Value::Model(b)), _) => {
+                let i = a.wrapping_sub(*b) as usize;
+                if matches!(sorted.get(i), Some(Value::Model(c)) if c == a) {
+                    return Some(i);
+                }
+            }
+            (Value::Int(a), _, Some(Value::Int(b))) => {
+                let i = (sorted.len() - 1).wrapping_sub(b.wrapping_sub(*a) as usize);
+                if matches!(sorted.get(i), Some(Value::Int(c)) if c == a) {
+                    return Some(i);
+                }
+            }
+            _ => {}
+        }
         // A run of up to SCAN values (a function over the processes, mixing
         // model values and integers): a scan for the one equal scalar, its
         // kind fixed, rather than a search that dispatches on every probe's
@@ -920,6 +938,16 @@ mod tests {
         for x in (0..42).map(Value::Model).chain((-1..62).map(Value::Int)) {
             for n in 0..=long.len() {
                 assert_eq!(Value::find(&long[..n], &x), long[..n].binary_search(&x).ok(), "{x} in {n}");
+            }
+        }
+        // consecutive runs, where the first try finds the key
+        let mut runs: Vec<Value> = (5..17).map(Value::Model).chain((0..2).map(Value::Int)).chain((40..70).map(Value::Int)).collect();
+        runs.sort();
+        for x in (0..20).map(Value::Model).chain((-3..75).map(Value::Int)) {
+            for lo in 0..runs.len() {
+                for hi in lo..=runs.len() {
+                    assert_eq!(Value::find(&runs[lo..hi], &x), runs[lo..hi].binary_search(&x).ok(), "{x} in {lo}..{hi}");
+                }
             }
         }
     }
