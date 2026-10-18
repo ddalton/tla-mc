@@ -70,6 +70,8 @@ pub struct Checker<'p> {
     /// scratch buffers for evaluating VIEW beside an action in progress
     pub vbufs: Mutex<Vec<Scratch>>,
     pub workers: usize,
+    /// `-pin`: worker w runs on CPU `pin[w % len]` (see `topo`)
+    pub pin: Option<Vec<usize>>,
     pub progress: bool,
     /// property leaves, instantiated; fairness instances
     pub props: Vec<Inst<'p>>,
@@ -94,7 +96,7 @@ impl<'p> Checker<'p> {
         };
         let lay = liveness::layout(&props);
         let steps = props.iter().enumerate().filter(|(_, i)| matches!(i.leaf, crate::eval::TProp::ActionBox(..))).map(|(k, _)| k).collect();
-        Ok(Checker { reference: None, p, e, sk: SymKey::new(p, e), vbufs: Default::default(), workers, progress: true, props, steps, fair, lay, disk })
+        Ok(Checker { reference: None, p, e, sk: SymKey::new(p, e), vbufs: Default::default(), workers, pin: None, progress: true, props, steps, fair, lay, disk })
     }
 
     fn needs_graph(&self) -> bool {
@@ -493,6 +495,9 @@ impl<'p> Checker<'p> {
                     let (writer, failure, stop, gen_total, sv) = (&writer, &failure, &stop, &gen_total, &sv);
                     let (mem_cursor, blk_cursor) = (&mem_cursor, &blk_cursor);
                     s.spawn(move || {
+                        if let Some(cpus) = &self.pin {
+                            crate::topo::pin(cpus[w % cpus.len()]);
+                        }
                         let frontier = frontier_ref;
                         let mut log = trace.logs[w].lock().unwrap();
                         let mut bufs = Bufs::default();

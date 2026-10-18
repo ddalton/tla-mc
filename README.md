@@ -47,6 +47,7 @@ states/s per core on one model, against ~31,000 compiled).
 | option | |
 |---|---|
 | `-workers N` | threads (default: all cores) |
+| `-pin`, `-pin=ORDER` | keep each worker on one CPU, one hardware thread per core first; ORDER `compact` (default: fill one node, then the next), `spread` (deal workers to the nodes in turn) or `llc` (to the last-level caches in turn); Linux |
 | `-compile` | generate, build (cached) and run a native checker; needs `cargo` |
 | `-lib DIR` | where to find modules not beside the spec, e.g. the [CommunityModules](https://github.com/tlaplus/CommunityModules) `modules/` directory (also `TLAMC_LIB`) |
 | `-metadir DIR`, `-checkpoint MIN`, `-recover DIR` | where state spills and checkpoints go; resume a stopped run |

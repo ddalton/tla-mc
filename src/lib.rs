@@ -13,6 +13,7 @@ pub mod liveness;
 pub mod parser;
 pub mod store;
 pub mod symkey;
+pub mod topo;
 pub mod value;
 pub mod varorder;
 

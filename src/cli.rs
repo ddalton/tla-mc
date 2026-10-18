@@ -209,6 +209,7 @@ fn run(generated: Option<Generated>) -> Result<bool, String> {
     let mut workers = std::thread::available_parallelism().map(|n| n.get()).unwrap_or(1);
     let (mut cfg_path, mut spec_path, mut engine, mut codegen_dir) = (None, None, "interp".to_string(), None);
     let mut compile = false;
+    let mut pin: Option<crate::topo::Order> = None;
     let mut var_order: Option<String> = None;
     let mut print_var_order = false;
     let share = mem_share_mb();
@@ -271,6 +272,10 @@ fn run(generated: Option<Generated>) -> Result<bool, String> {
                 codegen_dir = Some(PathBuf::from(&args[i]));
             }
             "-compile" => compile = true,
+            "-pin" => pin = Some(crate::topo::Order::Compact),
+            a if a.starts_with("-pin=") => {
+                pin = Some(crate::topo::Order::parse(&a[5..]).ok_or("bad -pin= (compact, spread or llc)")?);
+            }
             "-version" | "--version" => {
                 println!("tla-mc {}", env!("CARGO_PKG_VERSION"));
                 return Ok(true);
@@ -370,6 +375,14 @@ fn run(generated: Option<Generated>) -> Result<bool, String> {
         return keys_of_dump(&checker, Path::new(&dump), None);
     }
     let mut checker = checker;
+    if let Some(order) = pin {
+        let cpus = crate::topo::cpu_order(order);
+        if cpus.is_empty() {
+            eprintln!("tla-mc: -pin: the CPU topology is unknown here; workers are not pinned");
+        } else {
+            checker.pin = Some(cpus);
+        }
+    }
     if let Some(dump) = std::env::var_os("TLAMC_REFERENCE") {
         let mut keys = std::collections::HashSet::new();
         keys_of_dump(&checker, Path::new(&dump), Some(&mut keys))?;
