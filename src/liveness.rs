@@ -501,7 +501,25 @@ impl Graph {
         }
         drop(rows);
         drop(bits_by_row);
-        let id = |k: u64| keys.binary_search(&k).ok().map(|i| i as u32);
+        // Every edge's target is looked up, and a binary search over all the
+        // keys misses the cache at most of its steps. The keys are uniform
+        // fingerprints: a directory on their top bits, about one bucket per
+        // two keys, leaves a scan of a key or two.
+        let dbits = (usize::BITS - n.leading_zeros()).saturating_sub(1).max(1);
+        let mut dir = vec![n as u32; (1 << dbits) + 1];
+        let mut next = 0;
+        for (i, &k) in keys.iter().enumerate() {
+            let b = (k >> (64 - dbits)) as usize;
+            while next <= b {
+                dir[next] = i as u32;
+                next += 1;
+            }
+        }
+        let id = |k: u64| {
+            let b = (k >> (64 - dbits)) as usize;
+            let (lo, hi) = (dir[b] as usize, dir[b + 1] as usize);
+            keys[lo..hi].iter().position(|&x| x == k).map(|i| (lo + i) as u32)
+        };
         let total = *off.last().unwrap() as usize;
         let (mut tgt, mut emask) = (vec![u32::MAX; total], vec![0u32; total]);
         for p in &paths {
