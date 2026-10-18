@@ -549,12 +549,66 @@ pub fn decode(b: &[u8], pos: &mut usize) -> R<Value> {
         }
         7 => {
             let n = get_var(b, pos)?;
-            let keys = many(pos, n)?;
+            let start = *pos;
+            for _ in 0..n {
+                skip(b, pos)?;
+            }
+            let enc = &b[start..*pos];
+            let h = enc.iter().fold(0xcbf2_9ce4_8422_2325_u64, |h, &x| (h ^ x as u64).wrapping_mul(0x100_0000_01b3));
+            let slot = (h ^ (h >> 32)) as usize % KEY_SLOTS;
+            // no borrow held across the decode: keys may be records
+            let hit = KEYS.with(|c| match &c.borrow()[slot] {
+                Some((k, v)) if **k == *enc => Some(v.clone()),
+                _ => None,
+            });
+            let keys = match hit {
+                Some(k) => k,
+                None => {
+                    let keys: Arc<[Value]> = many(&mut start.clone(), n)?.into();
+                    KEYS.with(|c| c.borrow_mut()[slot] = Some((enc.into(), keys.clone())));
+                    keys
+                }
+            };
             let vals = many(pos, n)?;
-            Value::Func(Arc::new(Func { keys: keys.into(), vals: vals.into() }))
+            Value::Func(Arc::new(Func { keys, vals: vals.into() }))
         }
         t => return Err(format!("bad value tag {t} in a queue block")),
     })
+}
+
+const KEY_SLOTS: usize = 256;
+
+thread_local! {
+    /// Function domains, by their encoding: nearly every function in a
+    /// state ranges over one of a few sets (the processes, the CPUs), and
+    /// decoding built each one's keys anew. A decoded value stays on its
+    /// worker until it is encoded again, so the shared keys' counts do not
+    /// bounce between cores.
+    static KEYS: std::cell::RefCell<Vec<Option<(Box<[u8]>, Arc<[Value]>)>>> = std::cell::RefCell::new(vec![None; KEY_SLOTS]);
+}
+
+/// Step over the value encoded at `pos` without building it.
+fn skip(b: &[u8], pos: &mut usize) -> R<()> {
+    let tag = *b.get(*pos).ok_or("truncated queue block")?;
+    *pos += 1;
+    match tag {
+        0 | 1 => {}
+        2..=4 => {
+            get_var(b, pos)?;
+        }
+        5 | 6 => {
+            for _ in 0..get_var(b, pos)? {
+                skip(b, pos)?;
+            }
+        }
+        7 => {
+            for _ in 0..2 * get_var(b, pos)? {
+                skip(b, pos)?;
+            }
+        }
+        t => return Err(format!("bad value tag {t} in a queue block")),
+    }
+    Ok(())
 }
 
 fn encode_states(states: &[(u64, State)], out: &mut Vec<u8>) {
