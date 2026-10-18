@@ -8,10 +8,11 @@
 //!  - a checkpoint (fingerprints, the level about to be expanded, the
 //!    trace logs' lengths) lets a killed run resume.
 
-use crate::value::{Func, Value, R};
+use crate::value::{same, Func, Value, R};
 use std::fs::{self, File, OpenOptions};
 use std::io::{BufReader, BufWriter, Read, Write};
 use std::path::{Path, PathBuf};
+use std::rc::Rc;
 use std::sync::atomic::{AtomicU64, Ordering};
 use std::sync::{Arc, Mutex, OnceLock};
 
@@ -493,6 +494,18 @@ pub(crate) fn get_var(b: &[u8], pos: &mut usize) -> R<u64> {
 }
 
 pub fn encode(v: &Value, out: &mut Vec<u8>) {
+    if let Some(s) = enc_slot(v) {
+        let hit = ENCS.with(|c| match &c.borrow()[s] {
+            Some((w, bytes)) if same(w, v) => {
+                out.extend_from_slice(bytes);
+                true
+            }
+            _ => false,
+        });
+        if hit {
+            return;
+        }
+    }
     match v {
         Value::Bool(b) => out.push(*b as u8),
         Value::Int(n) => {
@@ -542,8 +555,32 @@ pub fn decode(b: &[u8], pos: &mut usize) -> R<Value> {
         return Ok(v);
     }
     let v = decode_tagged(tag, b, &mut (start + 1))?;
-    VALS.with(|c| c.borrow_mut()[slot] = Some((enc.into(), v.clone())));
+    let bytes: Rc<[u8]> = enc.into();
+    if let Some(s) = enc_slot(&v) {
+        ENCS.with(|c| c.borrow_mut()[s] = Some((v.clone(), bytes.clone())));
+    }
+    VALS.with(|c| c.borrow_mut()[slot] = Some((bytes, v.clone())));
     Ok(v)
+}
+
+/// A compound value's place in `ENCS`, by its allocation.
+fn enc_slot(v: &Value) -> Option<usize> {
+    let p = match v {
+        Value::Set(x) | Value::Seq(x) => x.as_ptr() as usize,
+        Value::Func(f) => Arc::as_ptr(f) as usize,
+        _ => return None,
+    };
+    Some(((p >> 4).wrapping_mul(0x9E37_79B9_7F4A_7C15) >> 52) as usize % ENC_SLOTS)
+}
+
+const ENC_SLOTS: usize = 4096;
+
+thread_local! {
+    /// The compound values `VALS` shares, with their encoding, by
+    /// allocation: a successor keeps most of its parent's values, and
+    /// encoding one of those is a copy. An entry holds its value, so the
+    /// allocation is not reused for another value while it stands.
+    static ENCS: std::cell::RefCell<Vec<Option<(Value, Rc<[u8]>)>>> = std::cell::RefCell::new(vec![None; ENC_SLOTS]);
 }
 
 fn bytes_hash(enc: &[u8]) -> u64 {
@@ -556,7 +593,7 @@ const VAL_SLOTS: usize = 4096;
 thread_local! {
     /// Compound values (sets, sequences, functions) by their encoding,
     /// per worker (see `KEYS` for why per worker).
-    static VALS: std::cell::RefCell<Vec<Option<(Box<[u8]>, Value)>>> = std::cell::RefCell::new(vec![None; VAL_SLOTS]);
+    static VALS: std::cell::RefCell<Vec<Option<(Rc<[u8]>, Value)>>> = std::cell::RefCell::new(vec![None; VAL_SLOTS]);
 }
 
 /// The value after its tag byte.
