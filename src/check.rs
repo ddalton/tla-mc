@@ -266,16 +266,15 @@ impl<'p> Checker<'p> {
             })();
             return r;
         }
-        // hv[k * nvars + i]: the hash of variable i under permutation k
-        // (k = 0 is the identity). A successor's untouched variables reuse
-        // the parent's hash under every permutation, never re-permuted.
-        let np = 1;
         // every transition must meet the step properties, but with no
         // liveness graph a transition into a state already seen needs
         // nothing else (L4W3, 2026-10-06: building, then dropping, the
         // ~3 in 4 successors already seen was a quarter of the run)
         let early = keep_all && !self.steps.is_empty() && !self.needs_graph();
         let no_constraints = self.p.constraints.is_empty();
+        // hv[i]: the hash of variable i (with no SYMMETRY or VIEW, `sk` is
+        // None). A successor starts from the parent's hashes and rehashes
+        // only the variables it changed.
         hv.clear();
         hv.extend(st.iter().map(store::hash_shared));
         let pfp = combine(hv);
@@ -284,23 +283,16 @@ impl<'p> Checker<'p> {
         self.e.next(&mut cx, &mut |cx| {
             n += 1;
             hs.clear();
-            hs.resize(np * nvars, 0);
+            hs.extend_from_slice(hv);
             for (i, v) in cx.next.iter().enumerate() {
                 let Some(v) = v else {
                     return Err(format!("a step of Next leaves {}' unassigned", p.vars[i]));
                 };
-                if same(v, &st[i]) {
-                    for k in 0..np {
-                        hs[k * nvars + i] = hv[k * nvars + i];
-                    }
-                } else {
+                if !same(v, &st[i]) {
                     hs[i] = var_hash(v);
-                    for (k, q) in p.symmetry.iter().enumerate() {
-                        hs[(k + 1) * nvars + i] = var_hash(&v.permute(q));
-                    }
                 }
             }
-            let fp = (0..np).map(|k| combine(&hs[k * nvars..(k + 1) * nvars])).min().unwrap();
+            let fp = combine(hs);
             if early {
                 // the step properties on the successor as the action left
                 // it: one into a state already seen needs nothing more and
