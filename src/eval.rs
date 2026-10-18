@@ -306,6 +306,13 @@ pub trait Engine: Sync {
     fn view_part(&self, _c: usize, _st: &[Value]) -> Option<R<Value>> {
         None
     }
+    /// Fairness action `i` (`FairInst::act_id`) in `cx`, its instance's
+    /// bindings on the stack, when this engine compiled it; None leaves it
+    /// to the interpreter. Liveness runs one per fairness instance for
+    /// ENABLED at every state and again to label every step.
+    fn fair_act<'a>(&self, _i: usize, _cx: &mut Cx<'a>, _k: K<'_, 'a>) -> Option<R<()>> {
+        None
+    }
 }
 
 impl Engine for Program {

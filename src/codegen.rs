@@ -224,8 +224,19 @@ fn walk_program<'p>(p: &'p Program, f: &mut dyn FnMut(&'p Value)) {
         walk_expr(&v.body, f)
     }
     // Last, so the indices above do not move: the step properties the
-    // generator compiles (`[][A]_v`).
+    // generator compiles (`[][A]_v`), then the fairness actions.
     p.properties.iter().for_each(|pr| walk_tprop(&pr.body, f));
+    if let Some(fr) = &p.fairness {
+        walk_fair(&fr.body, f)
+    }
+}
+
+fn walk_fair<'p>(t: &'p FairTree, f: &mut dyn FnMut(&'p Value)) {
+    match t {
+        FairTree::ForAll(_, body) | FairTree::Let(_, body) => walk_fair(body, f),
+        FairTree::And(v) => v.iter().for_each(|x| walk_fair(x, f)),
+        FairTree::Fair { act, .. } => walk_act(act, f),
+    }
 }
 
 fn walk_tprop<'p>(t: &'p crate::eval::TProp, f: &mut dyn FnMut(&'p Value)) {
@@ -733,7 +744,7 @@ pub fn generate_as(l: &Loaded, dir: &Path, pkg: &str) -> Result<(), String> {
     // subscript `v` is a tuple of variables (`vars`), `v' = v` compares
     // those slots instead of building both tuples (L4W3, 2026-10-06: the
     // tuples were most of the step properties' 23% of the run).
-    let (insts, _) = crate::liveness::instances(p)?;
+    let (insts, fair) = crate::liveness::instances(p)?;
     let mut compiled = Vec::new();
     for (i, inst) in insts.iter().enumerate() {
         let crate::eval::TProp::ActionBox(a, sub) = inst.leaf else { continue };
@@ -793,6 +804,33 @@ pub fn generate_as(l: &Loaded, dir: &Path, pkg: &str) -> Result<(), String> {
             "fn {name}<'a>(g: &G, cx: &mut Cx<'a>, emit: K<'_, 'a>) -> R<()> {{ let st: &[Value] = cx.state; {body} Ok(()) }}\n"
         );
     }
+    // The fairness actions, one function per distinct action
+    // (`FairInst::act_id`), its instance's bindings taken from the stack:
+    // liveness runs one per instance for ENABLED at every state and again to
+    // label every step, and in the interpreter that was a third of the run.
+    // One that needs the interpreter is left to it whole.
+    let mut fairs = String::new();
+    let mut done = vec![false; fair.len()];
+    for f in &fair {
+        if std::mem::replace(&mut done[f.act_id], true) {
+            continue;
+        }
+        let mut binds = String::new();
+        for (s, _) in &f.env {
+            let _ = write!(binds, "let s{s}_o: Value = cx.stack[{s}].clone(); let s{s}: &Value = &s{s}_o; ");
+        }
+        let body = g.act(f.act, "emit(cx)?;");
+        if body.contains("UNSUPPORTED") {
+            continue;
+        }
+        let id = f.act_id;
+        let _ = writeln!(
+            code,
+            "// {} (fairness)\nfn fair_{id}<'a>(g: &G, cx: &mut Cx<'a>, emit: K<'_, 'a>) -> R<()> {{ let st: &[Value] = cx.state; {binds}{body} Ok(()) }}\n",
+            f.label.replace('\n', " ")
+        );
+        let _ = write!(fairs, "{id} => Some(fair_{id}(self.g.local(), cx, k)), ");
+    }
     // A formula the generator could not compile returns UNSUPPORTED; that
     // one is answered by the interpreter (`self.p`), the rest stay compiled.
     let aprops: String = compiled
@@ -824,6 +862,7 @@ pub fn generate_as(l: &Loaded, dir: &Path, pkg: &str) -> Result<(), String> {
          fn step_prop(&self, i: usize, s: &[Value], t: &[Value]) -> Option<R<bool>> {{ match i {{ {aprops}_ => None }} }}\n\
          fn step_prop_nx(&self, i: usize, s: &[Value], nx: &[Option<Value>]) -> Option<R<bool>> {{ match i {{ {aprops_nx}_ => None }} }}\n\
          fn view_part(&self, c: usize, st: &[Value]) -> Option<R<Value>> {{ match c {{ {vparts}_ => None }} }}\n\
+         fn fair_act<'a>(&self, i: usize, cx: &mut Cx<'a>, k: K<'_, 'a>) -> Option<R<()>> {{ match i {{ {fairs}_ => None }} }}\n\
          }}\n\n\
          fn make(p: &Program) -> Box<dyn Engine + '_> {{ Box::new(E {{ g: G::new(p), p }}) }}\n\n\
          fn main() -> std::process::ExitCode {{ tla_mc::cli::main(Some(Generated {{ source_hash: {:#x}, make }})) }}\n",

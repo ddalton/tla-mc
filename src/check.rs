@@ -608,7 +608,7 @@ impl<'p> Checker<'p> {
                             }
                             local_gen += n;
                             let (en, subs) = if graph && !self.fair.is_empty() {
-                                match liveness::node_label(self.p, &self.fair, sv, st, &mut bufs) {
+                                match liveness::node_label(self.e, self.p, &self.fair, sv, st, &mut bufs) {
                                     Ok(l) => l,
                                     Err(e) => return Some(Failure::Eval(format!("evaluating fairness: {e}"), Some(pidx))),
                                 }
@@ -632,7 +632,7 @@ impl<'p> Checker<'p> {
                                         }
                                     }
                                     if graph {
-                                        let mask = if en == 0 { Ok(0) } else { liveness::edge_label(self.p, &self.fair, sv, en, &subs, st, &s, &mut bufs) };
+                                        let mask = if en == 0 { Ok(0) } else { liveness::edge_label(self.e, self.p, &self.fair, sv, en, &subs, st, &s, &mut bufs) };
                                         match mask {
                                             Ok(m) => node_edges.push((fp, m)),
                                             Err(e) => return Some(Failure::Eval(format!("evaluating fairness: {e}"), Some(pidx))),
