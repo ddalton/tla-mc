@@ -745,9 +745,25 @@ fn skip(b: &[u8], pos: &mut usize) -> R<()> {
 }
 
 fn encode_states(states: &[(u64, State)], out: &mut Vec<u8>) {
+    // where each variable of the state before was written: successors of
+    // one state come in runs, and a compound value they share is copied
+    let mut prev: Option<&State> = None;
+    let mut spans = Vec::new();
     for (idx, st) in states {
         put_var(out, *idx);
-        st.iter().for_each(|v| encode(v, out));
+        spans.resize(st.len(), (0, 0));
+        for (i, v) in st.iter().enumerate() {
+            let start = out.len();
+            match prev {
+                Some(p) if matches!(v, Value::Set(_) | Value::Seq(_) | Value::Func(_)) && same(v, &p[i]) => {
+                    let (s, e) = spans[i];
+                    out.extend_from_within(s..e);
+                }
+                _ => encode(v, out),
+            }
+            spans[i] = (start, out.len());
+        }
+        prev = Some(st);
     }
 }
 
