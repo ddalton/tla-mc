@@ -347,13 +347,23 @@ impl<'p> Checker<'p> {
     /// none of them holds again.
     fn holds(&self, constraints: bool, st: &[Value], changed: Option<&[bool]>, bufs: &mut Bufs) -> Result<Option<String>, String> {
         let (list, reads) = if constraints { (&self.p.constraints, &self.con_reads) } else { (&self.p.invariants, &self.inv_reads) };
+        let needed = |i: usize| match (changed, &reads[i]) {
+            (Some(chg), Some(vars)) => vars.iter().any(|&v| chg[v as usize]),
+            _ => true,
+        };
+        if !(0..list.len()).any(needed) {
+            return Ok(None);
+        }
+        // one context for every part: they read the same state, and none
+        // writes the next state
+        let frame = list.iter().map(|r| r.frame).max().unwrap_or(0);
+        let mut cx = bufs.cx(st, self.p.vars.len(), frame);
         for (i, r) in list.iter().enumerate() {
-            if let (Some(chg), Some(vars)) = (changed, &reads[i]) {
-                if !vars.iter().any(|&v| chg[v as usize]) {
-                    continue;
-                }
+            if !needed(i) {
+                continue;
             }
-            let mut cx = bufs.cx(st, self.p.vars.len(), r.frame);
+            cx.base = 0;
+            cx.frame = r.frame as usize;
             let ok = if constraints { self.e.constraint(i, &mut cx) } else { self.e.invariant(i, &mut cx) };
             if !ok.map_err(|e| format!("evaluating {}: {e}", r.name))? {
                 return Ok(Some(r.name.clone()));
