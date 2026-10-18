@@ -232,6 +232,11 @@ pub struct Program {
 pub struct Cx<'a> {
     pub state: &'a [Value],
     pub next: &'a mut Vec<Option<Value>>,
+    /// The variables the action assigned on the way to the continuation,
+    /// UNCHANGED aside: every engine pushes one when it fills its empty
+    /// slot and pops it after the continuation. The other filled slots
+    /// hold the current values.
+    pub assigned: &'a mut Vec<u32>,
     pub memo: &'a mut Vec<Option<Value>>,
     /// the next state is complete and will not change under this context
     /// (a step property), so primed memo slots may be used
@@ -247,6 +252,7 @@ pub struct Cx<'a> {
 #[derive(Default)]
 pub struct Bufs {
     pub next: Vec<Option<Value>>,
+    pub assigned: Vec<u32>,
     pub memo: Vec<Option<Value>>,
     pub stack: Vec<Value>,
     pub ok: Vec<bool>,
@@ -256,12 +262,13 @@ impl Bufs {
     pub fn cx<'a>(&'a mut self, state: &'a [Value], nvars: usize, frame: u32) -> Cx<'a> {
         self.next.clear();
         self.next.resize(nvars, None);
+        self.assigned.clear();
         self.memo.clear();
         if self.stack.len() < frame as usize {
             self.stack.resize(frame as usize, Value::Bool(false));
             self.ok.resize(frame as usize, false);
         }
-        Cx { state, next: &mut self.next, memo: &mut self.memo, next_fixed: false, stack: &mut self.stack, ok: &mut self.ok, base: 0, frame: frame as usize }
+        Cx { state, next: &mut self.next, assigned: &mut self.assigned, memo: &mut self.memo, next_fixed: false, stack: &mut self.stack, ok: &mut self.ok, base: 0, frame: frame as usize }
     }
 }
 
@@ -837,7 +844,9 @@ impl Program {
         match &cx.next[slot] {
             None => {
                 cx.next[slot] = Some(v);
+                cx.assigned.push(var);
                 let r = k(cx);
+                cx.assigned.pop();
                 cx.next[slot] = None;
                 r
             }
