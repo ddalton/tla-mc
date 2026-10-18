@@ -15,7 +15,7 @@
 //!  - `<>[]P` fails iff some fair component contains a ~P node;
 //!  - `[]<>P` fails iff some fair component lies within ~P.
 
-use crate::eval::{Act, Bufs, Expr, FairTree, Program, TProp};
+use crate::eval::{Act, Bufs, Cx, Expr, FairTree, Program, TProp};
 use crate::store::{io, put_var, Meta};
 use crate::value::{same, Value, R};
 use std::collections::{HashMap, HashSet};
@@ -991,17 +991,18 @@ pub fn enabled(p: &Program, f: &FairInst, sub: &Sub, st: &[Value], bufs: &mut Bu
     }
 }
 
-/// Is st -> t an A-step: A holds with every primed variable preset to t.
-pub fn a_step(p: &Program, f: &FairInst, st: &[Value], t: &[Value], bufs: &mut Bufs) -> R<bool> {
-    let mut cx = bufs.cx(st, p.vars.len(), f.frame);
+/// Is st -> t an A-step: A holds in `cx`, whose primed variables are all
+/// preset to t. An action never changes a primed variable that is already
+/// set, so one `cx` serves every instance.
+fn a_step(p: &Program, f: &FairInst, cx: &mut Cx) -> R<bool> {
+    cx.memo.clear();
+    cx.base = 0;
+    cx.frame = f.frame as usize;
     for (s, v) in &f.env {
         cx.stack[*s as usize] = v.clone();
     }
-    for (i, v) in t.iter().enumerate() {
-        cx.next[i] = Some(v.clone());
-    }
     let mut found = false;
-    match p.run(f.act, &mut cx, &mut |_| {
+    match p.run(f.act, cx, &mut |_| {
         found = true;
         Err(STOP.into())
     }) {
@@ -1056,16 +1057,39 @@ pub fn node_label(p: &Program, fair: &[FairInst], sv: &[Sub], st: &[Value], bufs
 
 /// The fairness actions the step st -> t is a step of.
 pub fn edge_label(p: &Program, fair: &[FairInst], sv: &[Sub], en: u128, subs: &[Value], st: &[Value], t: &[Value], bufs: &mut Bufs) -> R<u128> {
-    let mut mask = 0u128;
+    // the instances whose subscript the step changes (nearly all share
+    // vars, compared once)
+    let mut changed = 0u128;
+    let mut last: Option<(&[u32], bool)> = None;
     for (j, f) in fair.iter().enumerate() {
         if en & (1 << j) == 0 {
             continue;
         }
-        let changed = match &sv[j].tuple {
-            Some(vars) => moved(vars, st, t),
+        let ch = match &sv[j].tuple {
+            Some(vars) => match last {
+                Some((l, m)) if l == &vars[..] => m,
+                _ => {
+                    let m = moved(vars, st, t);
+                    last = Some((vars, m));
+                    m
+                }
+            },
             None => eval_env(p, f.sub, f.frame, &f.env, t, None, bufs)? != subs[j],
         };
-        if changed && a_step(p, f, st, t, bufs)? {
+        if ch {
+            changed |= 1 << j;
+        }
+    }
+    let Some(frame) = fair.iter().enumerate().filter(|&(j, _)| changed & (1 << j) != 0).map(|(_, f)| f.frame).max() else {
+        return Ok(0);
+    };
+    let mut cx = bufs.cx(st, p.vars.len(), frame);
+    for (i, v) in t.iter().enumerate() {
+        cx.next[i] = Some(v.clone());
+    }
+    let mut mask = 0u128;
+    for (j, f) in fair.iter().enumerate() {
+        if changed & (1 << j) != 0 && a_step(p, f, &mut cx)? {
             mask |= 1 << j;
         }
     }
