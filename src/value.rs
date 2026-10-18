@@ -266,9 +266,35 @@ impl Value {
         })
     }
 
+    /// A scalar's place in `Ord` as (kind, payload), comparable inline.
+    #[inline(always)]
+    fn scalar_key(&self) -> Option<(u8, i64)> {
+        match self {
+            Value::Model(s) => Some((0, *s as i64)),
+            Value::Bool(b) => Some((1, *b as i64)),
+            Value::Int(n) => Some((2, *n)),
+            Value::Str(s) => Some((3, *s as i64)),
+            _ => None,
+        }
+    }
+
+    /// `x` in sorted, unique values (a set's elements, a function's keys).
+    /// Most are scalars, compared inline instead of through `Ord::cmp`;
+    /// any other kind sorts after every scalar.
+    #[inline]
+    fn find(sorted: &[Value], x: &Value) -> Result<usize, usize> {
+        match x.scalar_key() {
+            Some(sx) => sorted.binary_search_by(|k| match k.scalar_key() {
+                Some(sk) => sk.cmp(&sx),
+                None => Ordering::Greater,
+            }),
+            None => sorted.binary_search(x),
+        }
+    }
+
     pub fn contains(&self, x: &Value) -> R<bool> {
         match self {
-            Value::Set(s) => Ok(s.binary_search(x).is_ok()),
+            Value::Set(s) => Ok(Value::find(s, x).is_ok()),
             Value::Lazy(l) => match &**l {
                 Lazy::Nat => Ok(matches!(x, Value::Int(n) if *n >= 0)),
                 Lazy::Int => Ok(matches!(x, Value::Int(_))),
@@ -360,7 +386,7 @@ impl Value {
                 }
                 Err(format!("{x} is not in the domain of {self}"))
             }
-            Value::Func(f) => match f.keys.binary_search(x) {
+            Value::Func(f) => match Value::find(&f.keys, x) {
                 Ok(i) => Ok(&f.vals[i]),
                 Err(_) => Err(format!("{x} is not in the domain of {self}")),
             },
@@ -391,7 +417,7 @@ impl Value {
                 }
                 Err(format!("{x} is not in the domain of {self}"))
             }
-            Value::Func(f) => match f.keys.binary_search(x) {
+            Value::Func(f) => match Value::find(&f.keys, x) {
                 Ok(i) => Ok(f.vals[i].clone()),
                 Err(_) => Err(format!("{x} is not in the domain of {self}")),
             },
@@ -439,7 +465,7 @@ impl Value {
                 }
                 Ok(self.clone())
             }
-            Value::Func(f) => match f.keys.binary_search(k) {
+            Value::Func(f) => match Value::find(&f.keys, k) {
                 Ok(i) => {
                     let mut vals = f.vals.clone();
                     vals[i] = v;
@@ -831,6 +857,18 @@ impl fmt::Debug for Value {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn find_agrees_with_ord() {
+        let tup = |a: i64, b: i64| Value::Seq(vec![Value::Int(a), Value::Int(b)].into());
+        let mut keys = vec![Value::Model(3), Value::Model(7), Value::Bool(false), Value::Bool(true), Value::Int(-5), Value::Int(1)];
+        keys.extend([Value::Int(2), Value::Int(3), Value::Int(9), Value::Str(4), tup(1, 2), tup(1, 3)]);
+        keys.sort();
+        let probes = keys.iter().cloned().chain([Value::Model(5), Value::Int(0), Value::Int(4), Value::Int(10), Value::Str(1), tup(0, 0)]);
+        for x in probes {
+            assert_eq!(Value::find(&keys, &x), keys.binary_search(&x), "{x}");
+        }
+    }
 
     /// Every reference-counted node of `a`, in visiting order, as addresses.
     fn nodes(v: &Value, out: &mut Vec<usize>) {
