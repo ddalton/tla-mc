@@ -481,6 +481,11 @@ impl Parser {
             self.expect_op(")")?;
         }
         self.expect_op("==")?;
+        if self.is_kw("INSTANCE") {
+            // a definition with parameters whose body is INSTANCE: a
+            // parameterized instance, which has no equivalent here
+            return self.err("parameterized instances (F(x) == INSTANCE M) are not supported");
+        }
         let body = self.expr(0)?;
         Ok(vec![Rc::new(Def { name, params, op_arity, body })])
     }
