@@ -1094,6 +1094,19 @@ pub fn parse_cfg(toks: Vec<Token>) -> R<Cfg> {
             Tok::Ident(s) if section_words.contains(&s.as_str()) => {
                 p.bump();
                 section = s;
+                if section == "ALIAS" || section == "POSTCONDITION" {
+                    // TLC does two things here: ALIAS renames the operators a
+                    // trace is written with, POSTCONDITION states a property
+                    // of the finished trace. Nothing here models them, so the
+                    // cfg is refused, never checked without them.
+                    while let Tok::Ident(n) = p.peek().clone() {
+                        if section_words.contains(&n.as_str()) {
+                            break;
+                        }
+                        p.bump();
+                    }
+                    return Err(format!("{section} is not supported"));
+                }
                 if section == "CHECK_DEADLOCK" {
                     c.check_deadlock = p.ident()? == "TRUE";
                 }
