@@ -12,6 +12,7 @@ specifications/CoffeeCan/CoffeeCan1000Beans.cfg  # success 501500 2.9s
 specifications/CoffeeCan/CoffeeCan100Beans.cfg  # success 5150 0.0s
 specifications/DieHard/DieHard.cfg  # safety failure 0.0s
 specifications/DieHard/MCDieHarder.cfg  # safety failure 0.0s
+specifications/DiningPhilosophers/DiningPhilosophers.cfg  # success 58 0.0s (ENABLED in an invariant: 0.2.0 crashed loading it)
 specifications/DiningPhilosophers/DiningPhilosophersPCal.cfg  # success 67 0.0s
 specifications/DiningPhilosophers/DiningPhilosophers_anim.cfg  # success 58 0.0s CommunityModules
 specifications/Disruptor/MCDisruptor_MPMC.cfg  # success 112929 0.3s

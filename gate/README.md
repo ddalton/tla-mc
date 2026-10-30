@@ -8,7 +8,7 @@ cannot merge until they pass.
 | job | what runs | what it is held to |
 |---|---|---|
 | `tests` | `cargo test --release` | its own tests |
-| `examples` | the 113 [tlaplus/Examples](https://github.com/tlaplus/Examples) models in `examples.txt`, through the interpreter, the [CommunityModules](https://github.com/tlaplus/CommunityModules) on `TLAMC_LIB` | the result each model's manifest records from TLC: verdict and distinct states (a violated `[][A]_v` counts as either kind of failure: TLC finds it in its liveness pass, tla-mc as an action property) |
+| `examples` | the 114 [tlaplus/Examples](https://github.com/tlaplus/Examples) models in `examples.txt`, through the interpreter, the [CommunityModules](https://github.com/tlaplus/CommunityModules) on `TLAMC_LIB` | the result each model's manifest records from TLC: verdict and distinct states (a violated `[][A]_v` counts as either kind of failure: TLC finds it in its liveness pass, tla-mc as an action property) |
 | `flint` | the 343 [flint](https://github.com/ddalton/flint) gate entries in `flint-only.txt` through the interpreter, the 3 in `flint-compiled.txt` through `-compile` | `flint-baseline.jsonl`: the verdict of every entry, and the distinct count of every strict and liveness run (a mutation run stops at its first violation, so its count moves with the workers) |
 
 The three trees are pinned, in the workflow's `env`, to the commits the

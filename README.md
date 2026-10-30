@@ -127,7 +127,8 @@ This is one machine and seven models; the logs are in the results directory, and
   recorded result** (verdict and distinct states). Of the rest, it refuses 60 with a
   message — it never checks less than the cfg asks —, does not finish 6 in 10 minutes
   (TLC's recorded runtimes for four of them are 50 minutes to 7 hours), and crashes
-  loading one: an `ENABLED` in an invariant (DiningPhilosophers.cfg, in 0.1.2 too).
+  loading one: an `ENABLED` in an invariant (DiningPhilosophers.cfg, in 0.1.2 too;
+  fixed since).
 - **Against TLC directly**: the 446 entries of [flint](https://github.com/ddalton/flint)'s
   TLA+ gate — **443 decided, all with the gate's expected verdict**, by the interpreter
   and the compiled checker alike; every planted bug caught; on the must-hold runs TLC
@@ -153,7 +154,7 @@ This is one machine and seven models; the logs are in the results directory, and
   [`results/validation-2026-10-30/`](results/validation-2026-10-30/SUMMARY.md).
 - **Its own tests**, several of them checked to fail with the code they guard
   disabled.
-- **On every pull request** ([`gate/`](gate/README.md)): the tests; the 113 Examples
+- **On every pull request** ([`gate/`](gate/README.md)): the tests; the 114 Examples
   models it accepts in under 30 s, against their manifests; and the 343 fast entries of
   flint's gate, three of them through `-compile`, against the verdicts and exact counts
   recorded on 0.2.0. A change that refuses a model it checked before, or checks one to

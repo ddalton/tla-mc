@@ -1540,7 +1540,11 @@ impl Compiler {
         let mut is_const = vec![None::<bool>; n];
         fn expr_const(e: &Expr, p: &Program, memo: &mut Vec<Option<bool>>) -> bool {
             match e {
-                Expr::Var(_) | Expr::Primed(_) => false,
+                // ENABLED asks whether an action can step from the current
+                // state; `visit` does not walk into the action, so it would
+                // look constant, and `NoDeadlock == ENABLED Next` was run
+                // here against no state at all (an index out of bounds)
+                Expr::Var(_) | Expr::Primed(_) | Expr::Enabled(_) => false,
                 Expr::LetRef(_, id) => expr_const(&p.lets[*id as usize], p, memo),
                 Expr::Memo(_, _, e) => expr_const(e, p, memo),
                 Expr::Call(op, args) => {
