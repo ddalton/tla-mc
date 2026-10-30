@@ -1,0 +1,39 @@
+[16:41:58] leg 1: interpreter sweep, 343 fast entries, main and pr-2 concurrently
+[16:44:49] leg 1 done
+[16:44:49] leg 2: slow exact-count entries, interpreter, main then pr-2, one at a time
+interp-main formal/FlintTierSession.cfg real=40.75s rss=852MB 10698103 distinct states found  rc=0
+interp-pr2 formal/FlintTierSession.cfg real=23.72s rss=1084MB 10698103 distinct states found  rc=0
+interp-main formal/FlintReplicationBounceRaceFixed.cfg real=49.76s rss=629MB 7767872 distinct states found  rc=0
+interp-pr2 formal/FlintReplicationBounceRaceFixed.cfg real=26.11s rss=696MB 7767872 distinct states found  rc=0
+interp-main formal/FlintCompositionWitness.cfg real=30.83s rss=641MB 6368894 distinct states found  rc=0
+interp-pr2 formal/FlintCompositionWitness.cfg real=13.45s rss=777MB 6368894 distinct states found  rc=0
+interp-main lean/formal/LeanImmutableSyncQueueShippedInvs.cfg real=48.83s rss=673MB 2522269 distinct states found  rc=0
+interp-pr2 lean/formal/LeanImmutableSyncQueueShippedInvs.cfg real=42.97s rss=752MB 2522269 distinct states found  rc=0
+interp-main lean/formal/LeanBarrierLeaseSameBytesVerified.cfg real=48.05s rss=769MB 2400030 distinct states found  rc=0
+interp-pr2 lean/formal/LeanBarrierLeaseSameBytesVerified.cfg real=37.93s rss=872MB 2400030 distinct states found  rc=0
+interp-main formal/FlintTierSessionLive.cfg real=30.77s rss=666MB 2603207 distinct states found  rc=0
+interp-pr2 formal/FlintTierSessionLive.cfg real=18.70s rss=951MB 2603207 distinct states found  rc=0
+interp-main formal/ForgeSyncLive.cfg real=44.68s rss=511MB 1781559 distinct states found  rc=0
+interp-pr2 formal/ForgeSyncLive.cfg real=12.87s rss=689MB 1781559 distinct states found  rc=0
+interp-main lean/formal/LeanCoreCitesBlind.cfg real=18.67s rss=711MB 2592350 distinct states found Invariant Inv_CitationsLive is violated rc=0
+interp-pr2 lean/formal/LeanCoreCitesBlind.cfg real=16.91s rss=703MB 2593659 distinct states found Invariant Inv_CitationsLive is violated rc=0
+[16:53:15] leg 2 done
+[16:53:15] leg 3: -compile, fresh caches; first run builds, second run is cached
+compile-main-build formal/FlintTierSessionNoFence.cfg real=21.96s rss=80MB 140307 distinct states found  rc=0
+compile-main formal/FlintTierSessionNoFence.cfg real=0.72s rss=76MB 140307 distinct states found  rc=0
+compile-pr2-build formal/FlintTierSessionNoFence.cfg real=20.78s rss=97MB 140307 distinct states found  rc=0
+compile-pr2 formal/FlintTierSessionNoFence.cfg real=0.23s rss=91MB 140307 distinct states found  rc=0
+compile-main-build formal/FlintTierSession.cfg real=26.66s rss=914MB 10698103 distinct states found  rc=0
+compile-main formal/FlintTierSession.cfg real=18.48s rss=899MB 10698103 distinct states found  rc=0
+compile-pr2-build formal/FlintTierSession.cfg real=19.81s rss=1023MB 10698103 distinct states found  rc=0
+compile-pr2 formal/FlintTierSession.cfg real=9.11s rss=940MB 10698103 distinct states found  rc=0
+compile-main-build formal/FlintTierSessionLive.cfg real=34.79s rss=606MB 2603207 distinct states found  rc=0
+compile-main formal/FlintTierSessionLive.cfg real=23.50s rss=609MB 2603207 distinct states found  rc=0
+compile-pr2-build formal/FlintTierSessionLive.cfg real=18.43s rss=929MB 2603207 distinct states found  rc=0
+compile-pr2 formal/FlintTierSessionLive.cfg real=7.40s rss=911MB 2603207 distinct states found  rc=0
+compile-main-build lean/formal/LeanImmutableSyncQueueShippedInvs.cfg real=94.56s rss=695MB 2522269 distinct states found  rc=0
+compile-main lean/formal/LeanImmutableSyncQueueShippedInvs.cfg real=29.18s rss=701MB 2522269 distinct states found  rc=0
+compile-pr2-build lean/formal/LeanImmutableSyncQueueShippedInvs.cfg real=88.05s rss=800MB 2522269 distinct states found  rc=0
+compile-pr2 lean/formal/LeanImmutableSyncQueueShippedInvs.cfg real=21.82s rss=828MB 2522269 distinct states found  rc=0
+[17:00:31] leg 3 done
+ALLDONE

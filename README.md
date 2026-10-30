@@ -137,6 +137,12 @@ This is one machine and seven models; the logs are in the results directory, and
   re-run on the 343 of those entries that take under 5 s, plus 10 through
   `-compile`: every verdict the same, and every must-hold and liveness count:
   [`results/validation-2026-10-12/`](results/validation-2026-10-12/SUMMARY.md).
+  0.2.0 (the performance series — 1.1–3.5× faster on flint's models at 8 workers,
+  a new queue format, so 0.1.2 checkpoints are refused — and tabs counted as SANY
+  does) was run side by side with 0.1.2 on those 343 entries, the 8 slowest
+  exact-count models and 4 through `-compile`: every verdict the same, every
+  exact count equal; the full gate and tlaplus/Examples are still to run:
+  [`results/validation-2026-10-29/`](results/validation-2026-10-29/SUMMARY.md).
 - **Its own tests**, several of them checked to fail with the code they guard
   disabled.
 
