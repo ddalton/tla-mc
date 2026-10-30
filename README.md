@@ -122,13 +122,13 @@ This is one machine and seven models; the logs are in the results directory, and
 
 ## How it is checked
 
-- **tlaplus/Examples**: tla-mc 0.2.0 accepts **124 of the 191** exhaustive-search
-  models (Examples `bce9f21`, 2026-10-30), and **every one it accepts matches TLC's
-  recorded result** (verdict and distinct states). Of the rest, it refuses 60 with a
-  message — it never checks less than the cfg asks —, does not finish 6 in 10 minutes
-  (TLC's recorded runtimes for four of them are 50 minutes to 7 hours), and crashes
-  loading one: an `ENABLED` in an invariant (DiningPhilosophers.cfg, in 0.1.2 too;
-  fixed since).
+- **tlaplus/Examples**: tla-mc accepts **125 of the 191** exhaustive-search models
+  (Examples `bce9f21`), and **every one it accepts matches TLC's recorded result**
+  (verdict and distinct states). Of the rest, it refuses 60 with a message — it
+  never checks less than the cfg asks — and does not finish 6 in 10 minutes (TLC's
+  recorded runtimes for four of them are 50 minutes to 7 hours). 0.2.0 accepted 124
+  (2026-10-30): it crashed loading DiningPhilosophers.cfg, whose invariant is
+  `ENABLED Next`, as 0.1.2 did; 0.2.1 checks it.
 - **Against TLC directly**: the 446 entries of [flint](https://github.com/ddalton/flint)'s
   TLA+ gate — **443 decided, all with the gate's expected verdict**, by the interpreter
   and the compiled checker alike; every planted bug caught; on the must-hold runs TLC
@@ -152,6 +152,10 @@ This is one machine and seven models; the logs are in the results directory, and
   `VIEW` worlds; 2.0× faster on flint's models and 1.2× on lean's interpreted, 1.6×
   and 1.4× compiled (geometric means), peak memory up 24–48%:
   [`results/validation-2026-10-30/`](results/validation-2026-10-30/SUMMARY.md).
+  0.2.1 changes one thing: an invariant that is `ENABLED` of an action and names no
+  variable itself is evaluated in each state, not once at load, where it crashed;
+  nothing changes for a model that loaded before. The gate passed on it: the tests,
+  114 Examples models, DiningPhilosophers.cfg among them, and the 343 flint entries.
 - **Its own tests**, several of them checked to fail with the code they guard
   disabled.
 - **On every pull request** ([`gate/`](gate/README.md)): the tests; the 114 Examples
