@@ -143,6 +143,9 @@ pub fn load_spec(spec_path: &Path, cfg_path: &Path) -> Result<Loaded, String> {
     // model values are interned as it reads them.
     let cfg_src = std::fs::read_to_string(cfg_path).map_err(|e| format!("{}: {e}", cfg_path.display()))?;
     let mut cfg = parser::parse_cfg(lexer::lex(&cfg_src)?)?;
+    if let Some(a) = &cfg.alias {
+        eprintln!("tla-mc: ALIAS {a} ignored: traces are printed without it");
+    }
     let mut order = Vec::new();
     fn cfg_names(v: &parser::CfgVal, order: &mut Vec<String>) {
         match v {

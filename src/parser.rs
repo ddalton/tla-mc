@@ -1076,6 +1076,9 @@ pub struct Cfg {
     pub symmetry: Option<String>,
     pub view: Option<String>,
     pub check_deadlock: bool,
+    /// `ALIAS`: the operator TLC writes a trace through. tla-mc writes the
+    /// variables; the name is kept to say so.
+    pub alias: Option<String>,
 }
 
 pub fn parse_cfg(toks: Vec<Token>) -> R<Cfg> {
@@ -1094,18 +1097,13 @@ pub fn parse_cfg(toks: Vec<Token>) -> R<Cfg> {
             Tok::Ident(s) if section_words.contains(&s.as_str()) => {
                 p.bump();
                 section = s;
-                if section == "ALIAS" || section == "POSTCONDITION" {
-                    // TLC does two things here: ALIAS renames the operators a
-                    // trace is written with, POSTCONDITION states a property
-                    // of the finished trace. Nothing here models them, so the
-                    // cfg is refused, never checked without them.
-                    while let Tok::Ident(n) = p.peek().clone() {
-                        if section_words.contains(&n.as_str()) {
-                            break;
-                        }
-                        p.bump();
-                    }
-                    return Err(format!("{section} is not supported"));
+                if section == "POSTCONDITION" {
+                    // a property of the finished trace, which TLC checks once
+                    // the search is done. Nothing here models it, so the cfg
+                    // is refused, never checked without it. (ALIAS, by
+                    // contrast, changes only how a trace is written: see
+                    // `Cfg::alias`.)
+                    return Err("POSTCONDITION is not supported".into());
                 }
                 if section == "CHECK_DEADLOCK" {
                     c.check_deadlock = p.ident()? == "TRUE";
@@ -1150,6 +1148,7 @@ pub fn parse_cfg(toks: Vec<Token>) -> R<Cfg> {
                     "ACTION_CONSTRAINT" | "ACTION_CONSTRAINTS" => c.action_constraints.push(name),
                     "SYMMETRY" => c.symmetry = Some(name),
                     "VIEW" => c.view = Some(name),
+                    "ALIAS" => c.alias = Some(name),
                     _ => {}
                 }
             }
