@@ -1,0 +1,79 @@
+# The gates: every pull request and every push to main must give the same
+# verdicts and the same exact state counts as before. See gate/README.md.
+name: gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: gate-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+  # the trees the baselines in gate/ were recorded on (gate/README.md says how to move them)
+  EXAMPLES_REF: bce9f215e212691b22d4396f5481f6fac873d004 # tlaplus/Examples master, 2026-10-29
+  COMMUNITY_REF: 1805e9d5e1cef05d74806309fb87788e69b48f26 # tlaplus/CommunityModules master, 2026-10-29
+  FLINT_REF: cad362d940afc12b30fc9acd15bf03c00a6690eb # ddalton/flint main, 2026-10-29
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - run: rustup update stable --no-self-update && rustup default stable
+      - run: cargo test --release
+
+  # tlaplus/Examples (with the CommunityModules on the library path): every
+  # model tla-mc accepts, against the result its manifest records from TLC. A model refused, or checked to another verdict
+  # or count, fails: tla-mc never checks less than the cfg asks.
+  examples:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: tlaplus/Examples
+          ref: ${{ env.EXAMPLES_REF }}
+          path: examples
+      - uses: actions/checkout@v4
+        with:
+          repository: tlaplus/CommunityModules
+          ref: ${{ env.COMMUNITY_REF }}
+          path: community
+      - run: rustup update stable --no-self-update && rustup default stable
+      - run: cargo build --release
+      - run: WORKERS=4 TIMEOUT=600 python3 scripts/examples-gate.py examples target/release/tla-mc gate/examples.txt
+        env:
+          TLAMC_LIB: ${{ github.workspace }}/community/modules
+
+  # flint's TLA+ gate: the fast entries through the interpreter, three through
+  # a compiled checker, against gate/flint-baseline.jsonl (verdicts, and the
+  # distinct counts of the strict and liveness runs).
+  flint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: ddalton/flint
+          ref: ${{ env.FLINT_REF }}
+          path: flint
+      - run: rustup update stable --no-self-update && rustup default stable
+      - run: cargo build --release
+      - name: interpreter
+        run: |
+          FLINT_ROOT=$PWD/flint ONLY=$PWD/gate/flint-only.txt \
+            python3 flint/formal/tla-mc-gate/sweep.py $PWD/target/release/tla-mc 600 interp.jsonl | grep -v '^agree ' || true
+          python3 scripts/flint-gate-compare.py gate/flint-baseline.jsonl interp.jsonl
+      - name: compiled checker
+        run: |
+          FLINT_ROOT=$PWD/flint ONLY=$PWD/gate/flint-compiled.txt TLAMC=$PWD/target/release/tla-mc TLAMC_CACHE=$PWD/compile-cache \
+            python3 flint/formal/tla-mc-gate/sweep.py $PWD/scripts/tla-mc-compile.sh 1500 compiled.jsonl
+          python3 scripts/flint-gate-compare.py gate/flint-baseline.jsonl compiled.jsonl gate/flint-compiled.txt

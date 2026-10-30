@@ -1,0 +1,117 @@
+# tlaplus/Examples models tla-mc accepts and checks as their manifests record, finishing under
+# 30 s on an M1 at 4 workers (tla-mc 0.2.0, Examples bce9f215 with CommunityModules 1805e9d5 on
+# TLAMC_LIB, 2026-10-29). scripts/examples-gate.py reads the first word of a line. The comment:
+# the manifest's result and distinct count, the time. See gate/README.md to refresh.
+specifications/Bakery-Boulangerie/MCBakery.cfg  # success 655200 11.4s
+specifications/CarTalkPuzzle/CarTalkPuzzle.toolbox/Model_1/MC.cfg  # success 0.0s
+specifications/CarTalkPuzzle/CarTalkPuzzle.toolbox/Model_2/MC.cfg  # success 0.7s
+specifications/Chameneos/Chameneos.cfg  # success 34534 0.2s
+specifications/CheckpointCoordination/MCCheckpointCoordinationFailure.cfg  # safety failure 1.3s
+specifications/CigaretteSmokers/CigaretteSmokers.cfg  # success 6 0.0s
+specifications/CoffeeCan/CoffeeCan1000Beans.cfg  # success 501500 2.9s
+specifications/CoffeeCan/CoffeeCan100Beans.cfg  # success 5150 0.0s
+specifications/DieHard/DieHard.cfg  # safety failure 0.0s
+specifications/DieHard/MCDieHarder.cfg  # safety failure 0.0s
+specifications/DiningPhilosophers/DiningPhilosophersPCal.cfg  # success 67 0.0s
+specifications/DiningPhilosophers/DiningPhilosophers_anim.cfg  # success 58 0.0s CommunityModules
+specifications/Disruptor/MCDisruptor_MPMC.cfg  # success 112929 0.3s
+specifications/Disruptor/MCDisruptor_MPMC_liveliness.cfg  # success 14365 0.2s
+specifications/Disruptor/MCDisruptor_SPMC.cfg  # success 8496 0.1s
+specifications/FlashProtocol/MCFlashWithMutex.cfg  # success 2024 0.0s
+specifications/FlashProtocol/MCFlashWithMutexLive.cfg  # success 8096 0.1s
+specifications/GameOfLife/GameOfLife.cfg  # success 65536 7.6s
+specifications/GermanProtocol/MCGermanCMPWithMutex.cfg  # success 1107 0.0s
+specifications/GermanProtocol/MCGermanControl.cfg  # success 735 0.0s
+specifications/GermanProtocol/MCGermanData.cfg  # success 852 0.0s
+specifications/KeyValueStore/MCKVSSafetySmall.cfg  # success 19.6s
+specifications/LearnProofs/MCFindHighest.cfg  # success 742 0.0s
+specifications/LeastCircularSubstring/MCLeastCircularSubstringMedium.cfg  # success 0.7s
+specifications/LeastCircularSubstring/MCLeastCircularSubstringSmall.cfg  # success 8554 0.0s
+specifications/LoopInvariance/MCBinarySearch.cfg  # success 27953 0.5s
+specifications/LoopInvariance/MCQuicksort.cfg  # success 4548 0.9s
+specifications/Majority/MCMajority.cfg  # success 2733 0.0s
+specifications/MisraReachability/MCReachable.cfg  # success 0.0s
+specifications/MissionariesAndCannibals/MissionariesAndCannibals.cfg  # safety failure 0.0s
+specifications/Moving_Cat_Puzzle/CatEvenBoxes.cfg  # success 48 0.0s
+specifications/Moving_Cat_Puzzle/CatOddBoxes.cfg  # success 30 0.0s
+specifications/MultiCarElevator/ElevatorLivenessMedium.cfg  # success 4122 0.1s
+specifications/MultiCarElevator/ElevatorSafetySmall.cfg  # success 4122 0.0s
+specifications/MultiPaxos-SMR/MultiPaxos_MC_small.cfg  # success 343796 3.2s
+specifications/N-Queens/Queens.toolbox/FourQueens/MC.cfg  # safety failure 0.0s
+specifications/N-Queens/QueensPluscal.toolbox/FourQueens/MC.cfg  # safety failure 0.0s
+specifications/Paxos/MCConsensus.cfg  # success 4 0.0s
+specifications/Paxos/MCPaxos.cfg  # success 25 0.0s
+specifications/Paxos/MCVoting.cfg  # success 77 0.0s
+specifications/PaxosHowToWinATuringAward/MCConsensus.cfg  # success 4 0.0s
+specifications/PaxosHowToWinATuringAward/MCPaxosSmall.cfg  # success 18.6s
+specifications/PaxosHowToWinATuringAward/MCPaxosTiny.cfg  # success 3921 0.2s
+specifications/PaxosHowToWinATuringAward/MCVoting.cfg  # success 6752 0.2s
+specifications/Prisoners/Prisoners.cfg  # success 214 0.0s
+specifications/Prisoners_Single_Switch/Prisoner.cfg  # success 16 0.0s
+specifications/Prisoners_Single_Switch/PrisonerLightUnknown.cfg  # success 62 0.0s
+specifications/Prisoners_Single_Switch/PrisonerSolo.cfg  # success 2 0.0s
+specifications/Prisoners_Single_Switch/PrisonerSoloLightUnknown.cfg  # success 4 0.0s
+specifications/ReadersWriters/MC.cfg  # success 21527 0.1s
+specifications/SimplifiedFastPaxos/FastPaxos.cfg  # success 25617 19.1s
+specifications/SimplifiedFastPaxos/Paxos.cfg  # success 1207 0.3s
+specifications/SingleLaneBridge/MC.cfg  # success 3605 0.1s
+specifications/SlidingPuzzles/SlidingPuzzles.cfg  # safety failure 0.2s
+specifications/SlidingPuzzles/SlidingPuzzles_anim.cfg  # safety failure 0.2s CommunityModules
+specifications/SlushProtocol/SlushSmall.cfg  # success 274678 0.9s
+specifications/SpanningTree/SpanTree.cfg  # success 1236 0.0s
+specifications/SpecificationRefinement/abstract.cfg  # success 4 0.0s
+specifications/SpecificationRefinement/bad.cfg  # liveness failure 0.0s (tla-mc: an action property)
+specifications/SpecificationRefinement/good.cfg  # success 9 0.0s
+specifications/SpecifyingSystems/AdvancedExamples/MCInnerSequential.cfg  # success 3528 0.0s
+specifications/SpecifyingSystems/AsynchronousInterface/AsynchInterface.cfg  # success 12 0.0s
+specifications/SpecifyingSystems/AsynchronousInterface/Channel.cfg  # success 12 0.0s
+specifications/SpecifyingSystems/AsynchronousInterface/PrintValues.cfg  # success 0.0s
+specifications/SpecifyingSystems/CachingMemory/MCInternalMemory.cfg  # success 4408 0.0s
+specifications/SpecifyingSystems/CachingMemory/MCWriteThroughCache.cfg  # success 5196 0.1s
+specifications/SpecifyingSystems/FIFO/MCInnerFIFO.cfg  # success 3864 0.0s
+specifications/SpecifyingSystems/HourClock/HourClock.cfg  # success 12 0.0s
+specifications/SpecifyingSystems/HourClock/HourClock2.cfg  # success 12 0.0s
+specifications/SpecifyingSystems/SimpleMath/SimpleMath.cfg  # success 0.0s
+specifications/SpecifyingSystems/TLC/ABCorrectness.cfg  # success 20 0.0s
+specifications/StaleViewShrink/StaleShrink.cfg  # success 16848 0.0s
+specifications/StaleViewShrink/StaleShrinkV3Cascade.cfg  # safety failure 0.0s
+specifications/StaleViewShrink/StaleShrinkV6TooShort.cfg  # safety failure 0.0s
+specifications/StaleViewShrink/StaleShrinkV6Wait2x.cfg  # success 43348 0.1s
+specifications/Stones/Stones.cfg  # success 0.0s
+specifications/TeachingConcurrency/Simple.cfg  # success 723 0.0s
+specifications/TeachingConcurrency/SimpleRegular.cfg  # success 277726 1.0s
+specifications/TwoPhase/MCTwoPhase.cfg  # success 4 0.0s
+specifications/acp/ACP_NB_TLC.cfg  # success 4284 0.1s
+specifications/acp/ACP_NB_WRONG_TLC.cfg  # safety failure 0.0s
+specifications/acp/ACP_SB_TLC.cfg  # success 54944 0.1s
+specifications/allocator/SchedulingAllocator.cfg  # success 1690 0.0s
+specifications/allocator/SimpleAllocator.cfg  # success 400 0.0s
+specifications/barriers/Barrier.cfg  # success 64 0.0s
+specifications/barriers/Barriers.cfg  # success 29279 0.3s
+specifications/btree/MCbtree.cfg  # success 374727 0.8s CommunityModules
+specifications/btree/kvstore.cfg  # success 2641 0.0s
+specifications/byihive/VoucherCancel.cfg  # success 4199 0.1s
+specifications/byihive/VoucherIssue.cfg  # success 4199 0.1s
+specifications/byihive/VoucherLifeCycle.cfg  # success 64 0.0s
+specifications/byihive/VoucherRedeem.cfg  # success 4199 0.1s
+specifications/byihive/VoucherTransfer.cfg  # success 4197 0.1s
+specifications/byzpaxos/Consensus.cfg  # success 4 0.0s
+specifications/byzpaxos/VoteProof.cfg  # success 6962 0.2s
+specifications/dijkstra-mutex/DijkstraMutex.toolbox/LSpec-model/MC.cfg  # success 0.4s
+specifications/echo/MCEcho.cfg  # success 75 0.1s
+specifications/ewd426/TokenRing.cfg  # success 46656 0.2s
+specifications/ewd998/EWD998PCal.cfg  # success 321370 6.8s CommunityModules
+specifications/glowingRaccoon/clean.cfg  # success 63 0.0s
+specifications/glowingRaccoon/stages.cfg  # success 83 0.0s
+specifications/lamport_mutex/MCLamportMutex.cfg  # success 724274 2.9s
+specifications/locks_auxiliary_vars/Lock.cfg  # success 12 0.0s
+specifications/locks_auxiliary_vars/LockHS.cfg  # success 28 0.0s
+specifications/locks_auxiliary_vars/Peterson.cfg  # success 42 0.0s
+specifications/nbacc_ray97/nbacc_ray97.cfg  # success 3016 0.0s
+specifications/spanning/MC_spanning.cfg  # safety failure 0.0s
+specifications/tower_of_hanoi/Hanoi.toolbox/Model_1/MC.cfg  # safety failure 0.0s
+specifications/tower_of_hanoi/Hanoi_anim.cfg  # safety failure 0.0s CommunityModules
+specifications/transaction_commit/2PCwithBTM.cfg  # success 1245 0.0s
+specifications/transaction_commit/PaxosCommit.cfg  # success 1321761 16.5s
+specifications/transaction_commit/TCommit.cfg  # success 34 0.0s
+specifications/transaction_commit/TwoPhase.cfg  # success 288 0.0s

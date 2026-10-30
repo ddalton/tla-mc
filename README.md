@@ -145,6 +145,11 @@ This is one machine and seven models; the logs are in the results directory, and
   [`results/validation-2026-10-29/`](results/validation-2026-10-29/SUMMARY.md).
 - **Its own tests**, several of them checked to fail with the code they guard
   disabled.
+- **On every pull request** ([`gate/`](gate/README.md)): the tests; the 113 Examples
+  models it accepts in under 30 s, against their manifests; and the 343 fast entries of
+  flint's gate, three of them through `-compile`, against the verdicts and exact counts
+  recorded on 0.2.0. A change that refuses a model it checked before, or checks one to
+  another result, cannot merge.
 
 ## What it supports
 
