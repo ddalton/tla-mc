@@ -1,0 +1,1622 @@
+14:16:03 start: 446 gate entries, 34 big by the 10-07 times; 192 cores; 368 GB available
+14:16:03 phase 1: 1083 jobs
+14:16:16 done 0337-interp-0.2.0-ForgeSyncLive.cfg agree 12.75s 0.551GB 1781559  
+14:16:21 done 0063-interp-0.2.0-FlintReplicationA2Staging.cfg agree 17.358s 0.474GB 1261953  
+14:16:30 done 0123-interp-0.2.0-FlintReplicationBounceRaceFixed.cfg agree 26.806s 0.609GB 7767872  
+14:16:35 done 0319-interp-0.2.0-FlintTierEpoch.cfg agree 31.97s 1.466GB 16869043  
+14:16:42 done 0605-interp-0.2.0-LeanCoreCommitBlindReverts.cfg agree 38.709s 2.006GB 4107072 Prop_NoSilentRevert 
+14:16:44 done 0841-interp-0.2.0-LeanImmutableSyncQueueHolds.cfg agree 41.066s 0.777GB 2497941  
+14:16:45 done 0845-interp-0.2.0-LeanImmutableSyncQueueShippedInvs.cfg agree 42.012s 0.779GB 2522269  
+14:16:50 done 0781-interp-0.2.0-LeanBarrierLeaseOrphanTracked.cfg agree 47.008s 1.003GB 2657152  
+14:16:54 done 0064-interp-0.1.2-FlintReplicationA2Staging.cfg agree 50.411s 0.294GB 1261953  
+14:16:54 done 0606-interp-0.1.2-LeanCoreCommitBlindReverts.cfg agree 50.563s 1.727GB 4183750 Prop_NoSilentRevert 
+14:16:54 done 0842-interp-0.1.2-LeanImmutableSyncQueueHolds.cfg agree 51.022s 0.61GB 2497941  
+14:16:55 done 1048-examples-0.2.0-MC.cfg success 51.665s 1.528GB 33288512  tla-mc: MC (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:16:55 done 0124-interp-0.1.2-FlintReplicationBounceRaceFixed.cfg agree 51.786s 0.55GB 7767872  
+14:16:55 done 0846-interp-0.1.2-LeanImmutableSyncQueueShippedInvs.cfg agree 52.135s 0.629GB 2522269  
+14:16:56 done 0385-interp-0.2.0-ForgeSyncCodeLive.cfg agree 10.838s 0.481GB 1500985  
+14:16:58 done 0338-interp-0.1.2-ForgeSyncLive.cfg agree 55.075s 0.387GB 1781559  
+14:16:58 done 0782-interp-0.1.2-LeanBarrierLeaseOrphanTracked.cfg agree 55.238s 0.79GB 2657152  
+14:17:01 done 0320-interp-0.1.2-FlintTierEpoch.cfg agree 58.013s 1.329GB 16869043  
+14:17:06 done 0389-interp-0.2.0-ForgeSyncCodeKeptSetAnyDrop.cfg agree 35.572s 0.693GB 2555318 Inv_AckedIsDurable 
+14:17:07 done 1038-examples-0.2.0-PConProof.cfg success 63.76s 0.317GB 1009133  tla-mc: PConProof (4 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.003s
+14:17:19 done 0603-interp-0.2.0-LeanCoreCommitBlind.cfg agree 37.221s 2.714GB 6160368 Inv_AckedNamed 
+14:17:21 done 0417-interp-0.2.0-FlintTierSession.cfg agree 26.204s 0.8GB 10698103  
+14:17:23 done 0390-interp-0.1.2-ForgeSyncCodeKeptSetAnyDrop.cfg agree 47.859s 0.592GB 2504661 Inv_AckedIsDurable 
+14:17:26 done 0604-interp-0.1.2-LeanCoreCommitBlind.cfg agree 41.429s 2.373GB 6042027 Inv_AckedNamed 
+14:17:26 done 0894-examples-0.2.0-MCBoulanger.cfg success 27.68s 0.421GB 7866982  tla-mc: MCBoulanger (7 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:17:30 done 0611-interp-0.2.0-LeanCorePendingDropped.cfg agree 36.378s 2.718GB 6024160 Inv_AckedNamed 
+14:17:31 done 0699-interp-0.2.0-LeanBarrierLeaseSameBytesVerified.cfg agree 36.641s 0.983GB 2400030  
+14:17:34 done 0369-interp-0.2.0-ForgeSyncFoldReachableCoverage.cfg agree 28.482s 0.676GB 2092258 Inv_LandedPackComplete 
+14:17:36 done 0386-interp-0.1.2-ForgeSyncCodeLive.cfg agree 46.302s 0.349GB 1500985  
+14:17:38 done 0633-interp-0.2.0-LeanRefineQueue.cfg agree 38.949s 0.391GB 606916  
+14:17:39 done 0612-interp-0.1.2-LeanCorePendingDropped.cfg agree 45.688s 2.375GB 6394573 Inv_AckedNamed 
+14:17:40 done 0700-interp-0.1.2-LeanBarrierLeaseSameBytesVerified.cfg agree 45.184s 0.803GB 2400030  
+14:17:42 done 0418-interp-0.1.2-FlintTierSession.cfg agree 46.438s 0.742GB 10698103  
+14:17:43 done 0634-interp-0.1.2-LeanRefineQueue.cfg agree 41.321s 0.305GB 606916  
+14:17:44 done 0944-examples-0.2.0-ElevatorSafetyMedium.cfg success 101.099s 0.925GB 17997111  tla-mc: Elevator (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:17:46 done 0904-examples-0.2.0-CoffeeCan3000Beans.cfg success 103.342s 1.947GB 4504500  tla-mc: CoffeeCan (1 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:17:47 done 0419-interp-0.2.0-FlintTierSessionLive.cfg agree 20.936s 0.833GB 2603207  
+14:17:50 done 0370-interp-0.1.2-ForgeSyncFoldReachableCoverage.cfg agree 43.386s 0.61GB 2115768 Inv_LandedPackComplete 
+14:17:51 done 0287-interp-0.2.0-FlintCompositionWitness.cfg agree 13.433s 0.574GB 6368894  
+14:17:58 done 0825-interp-0.2.0-LeanProbeCarrierAck.cfg agree 38.393s 3.052GB 4306653 ProbeCarrierAck 
+14:18:00 done 0367-interp-0.2.0-ForgeSyncFoldSupersedesArrivals.cfg agree 29.579s 0.665GB 2079774 Inv_LandedPackComplete 
+14:18:00 done 0573-interp-0.2.0-LeanSentinelDeposal.cfg agree 26.001s 0.768GB 1497754  
+14:18:01 done 0925-examples-0.2.0-MCKVSSafetyMedium.cfg success 117.576s 1.381GB 17220672  tla-mc: MCKVS (5 variables, 1 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:18:01 done 0909-examples-0.2.0-DiningPhilosophersPCal.cfg success 0.028s 0.058GB 67  tla-mc: DiningPhilosophersPCal (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:18:01 done 0910-examples-0.2.0-DiningPhilosophers_anim.cfg success 0.016s 0.064GB 58  tla-mc: DiningPhilosophers_anim (2 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.002s
+14:18:02 done 0974-examples-0.2.0-SlushMedium.cfg success 39.142s 0.461GB 9886336  tla-mc: Slush (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:18:03 done 0941-examples-0.2.0-ElevatorLivenessLarge.cfg success 0.912s 0.156GB 50653  tla-mc: Elevator (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:18:03 done 0950-examples-0.2.0-MCNanoLarge.cfg unsupported 0.009s 0.014GB None  tla-mc: Nano.tla: line 31 col 34: expected `\in` (at Op(":"))
+14:18:04 done 0420-interp-0.1.2-FlintTierSessionLive.cfg agree 38.16s 0.498GB 2603207  
+14:18:04 done 0979-examples-0.2.0-SpanTreeTest5Nodes.cfg unsupported 0.008s 0.014GB None  tla-mc: Randomization.tla: No such file or directory (os error 2)
+14:18:05 done 0980-examples-0.2.0-abstract.cfg success 0.014s 0.031GB 4  tla-mc: abstract (2 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:18:05 done 0981-examples-0.2.0-bad.cfg action failure 0.012s 0.039GB 12  Error: Action property Refinement is violated by the last step above.
+14:18:05 done 0982-examples-0.2.0-good.cfg success 0.011s 0.045GB 9  tla-mc: good (4 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:18:06 done 1000-examples-0.2.0-StaleShrink.cfg success 0.049s 0.109GB 16848  tla-mc: StaleShrink (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:18:06 done 1001-examples-0.2.0-StaleShrinkV6Wait2x.cfg success 0.076s 0.09GB 43348  tla-mc: StaleShrink (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:18:06 done 0826-interp-0.1.2-LeanProbeCarrierAck.cfg agree 44.864s 2.492GB 4386551 ProbeCarrierAck 
+14:18:06 done 1003-examples-0.2.0-StaleShrinkV6TooShort.cfg safety failure 0.02s 0.082GB 2136  Error: Invariant Safety is violated.
+14:18:06 done 1002-examples-0.2.0-StaleShrinkV3Cascade.cfg safety failure 0.042s 0.082GB 31598  Error: Invariant Safety is violated.
+14:18:07 done 1006-examples-0.2.0-TestMCReachability.cfg unsupported 0.009s 0.014GB None  tla-mc: PROPERTY Live: unsupported temporal formula Bin("=>", Bin("#", Ident("MCReachability!__sub_ViolationStates"), SetEnum([])), Temporal("<>", [Temporal("[]", [And([Bin("#", Ident("counterexample"
+14:18:07 done 1026-examples-0.2.0-bcastFolklore.cfg unsupported 0.01s 0.014GB None  tla-mc: PROPERTY UnforgLtl: unsupported temporal formula Bin("=>", Quant(true, [Bound { names: ["i"], tuple: false, set: Ident("Corr") }], Bin("=", App(Ident("pc"), [Ident("i")]), Str("V0"))), Tempora
+14:18:07 done 1036-examples-0.2.0-BPConProof.cfg unsupported 0.02s 0.025GB None  tla-mc: cannot enumerate the infinite set Nat
+14:18:07 done 1045-examples-0.2.0-TLCSailfish2.cfg unsupported 0.009s 0.014GB None  tla-mc: cannot enumerate the infinite set Nat
+14:18:08 done 0368-interp-0.1.2-ForgeSyncFoldSupersedesArrivals.cfg agree 36.371s 0.566GB 2067345 Inv_LandedPackComplete 
+14:18:08 done 1049-examples-0.2.0-MC_HDiskSynod.cfg unsupported 0.009s 0.014GB None  tla-mc: Synod.tla: line 14 col 40: expected `==` (at Ident("Inner"))
+14:18:08 done 1057-examples-0.2.0-EWD998.cfg unsupported 0.01s 0.014GB None  tla-mc: PROPERTY TDSpec: unsupported temporal formula Temporal("WF", [Ident("TD!vars"), Ident("TD!DetectTermination")])
+14:18:08 done 1061-examples-0.2.0-EWD998ChanID_export.cfg unsupported 0.011s 0.014GB None  tla-mc: TLCExt.tla: No such file or directory (os error 2)
+14:18:09 done 1062-examples-0.2.0-EWD998ChanID_shiviz.cfg unsupported 0.011s 0.014GB None  tla-mc: TLCExt.tla: No such file or directory (os error 2)
+14:18:09 done 1065-examples-0.2.0-SmokeEWD998_SC.cfg unsupported 0.009s 0.014GB None  tla-mc: unknown operator RandomElement
+14:18:09 done 0574-interp-0.1.2-LeanSentinelDeposal.cfg agree 32.638s 0.702GB 1497754  
+14:18:10 done 0208-build-0.1.2-FlintExtentsCommit.cfg built 29.287s 0.434GB None  
+14:18:12 done 0288-interp-0.1.2-FlintCompositionWitness.cfg agree 31.869s 0.468GB 6368894  
+14:18:22 done 0117-build-0.2.0-FlintReplicationBounce.cfg built 41.291s 0.704GB None  
+14:18:24 done 1087-tlc-tlc-FlintCompositionWitness.cfg done 32.71s 3.558GB 6368894  
+14:18:31 done 0395-interp-0.2.0-ForgeSyncCodeKeptSetNoRenew.cfg agree 19.102s 0.49GB 1562581 Inv_NoStragglerLandAfterRestore 
+14:18:34 done 0207-build-0.2.0-FlintExtentsCommit.cfg built 53.402s 0.441GB None  
+14:18:34 done 0336-build-0.1.2-ForgeSync.cfg built 54.122s 0.574GB None  
+14:18:38 done 0821-interp-0.2.0-LeanBarrierLeaseAckAfterRestart.cfg agree 28.517s 1.694GB 2387896 Inv_AckImpliesCited 
+14:18:39 done 0822-interp-0.1.2-LeanBarrierLeaseAckAfterRestart.cfg agree 29.706s 1.261GB 2200710 Inv_AckImpliesCited 
+14:18:45 done 0193-build-0.2.0-FlintExtentsTarget.cfg built 64.72s 0.448GB None  
+14:18:46 done 0095-interp-0.2.0-FlintReplicationRollRecordBarrierDeep.cfg agree 6.727s 0.309GB 640688  
+14:18:50 done 0393-interp-0.2.0-ForgeSyncCodeKeptSetWhileServing.cfg agree 15.126s 0.488GB 1364727 Inv_LandedPackComplete 
+14:18:53 done 0118-build-0.1.2-FlintReplicationBounce.cfg built 72.873s 0.74GB None  
+14:18:55 done 1088-tlc-tlc-ForgeSyncCodeKeptSetNoRenew.cfg done 24.569s 3.354GB 2085529 Inv_NoStragglerLandAfterRestore 
+14:18:58 done 0396-interp-0.1.2-ForgeSyncCodeKeptSetNoRenew.cfg agree 34.106s 0.48GB 1759069 Inv_NoStragglerLandAfterRestore 
+14:19:01 done 0394-interp-0.1.2-ForgeSyncCodeKeptSetWhileServing.cfg agree 23.0s 0.409GB 1387707 Inv_LandedPackComplete 
+14:19:03 done 0194-build-0.1.2-FlintExtentsTarget.cfg built 82.96s 0.413GB None  
+14:19:05 done 1086-tlc-tlc-ForgeSyncCodeLive.cfg done 129.127s 6.218GB 1500985  
+14:19:06 done 0027-interp-0.2.0-FlintReplicationMaintDeep.cfg agree 7.032s 0.274GB 640688  
+14:19:08 done 1090-tlc-tlc-ForgeSyncCodeKeptSetWhileServing.cfg done 18.482s 3.259GB 1458630 Inv_LandedPackComplete 
+14:19:11 done 1084-tlc-tlc-ForgeSyncLive.cfg done 174.677s 6.973GB 1781559  
+14:19:14 done 0897-examples-0.2.0-MC.cfg killed 73.256s 120.09GB None  
+14:19:16 done 0335-build-0.2.0-ForgeSync.cfg built 96.169s 0.635GB None  
+14:19:18 done 0096-interp-0.1.2-FlintReplicationRollRecordBarrierDeep.cfg agree 22.43s 0.17GB 640688  
+14:19:21 done 0507-interp-0.2.0-LeanSubtree.cfg agree 15.927s 0.802GB 1199635  
+14:19:23 done 0028-interp-0.1.2-FlintReplicationMaintDeep.cfg agree 22.467s 0.177GB 640688  
+14:19:29 done 0376-build-0.1.2-ForgeSyncReclaimUnlinksServing.cfg built 106.728s 0.623GB None  
+14:19:31 done 0508-interp-0.1.2-LeanSubtree.cfg agree 22.685s 0.713GB 1199635  
+14:19:31 done 0177-interp-0.2.0-FlintExtents.cfg agree 17.345s 0.339GB 2481424  
+14:19:32 done 0926-examples-0.2.0-MCKVSSafetySmall.cfg success 20.98s 0.328GB 3409605  tla-mc: MCKVS (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:19:41 done 0759-interp-0.2.0-LeanBarrierLeaseCollectorOffNoTombstone.cfg agree 17.125s 1.462GB 1523553 Inv_NoDeleteResurrected 
+14:19:42 done 0178-interp-0.1.2-FlintExtents.cfg agree 23.458s 0.24GB 2481424  
+14:19:42 done 1092-tlc-tlc-LeanSubtree.cfg done 20.649s 3.308GB 1199635  
+14:19:47 done 0899-examples-0.2.0-MCCheckpointCoordination.cfg success 15.01s 0.15GB 901692  tla-mc: MCCheckpointCoordination (11 variables, 5 symmetry permutations), 8 workers, interp engine; loaded in 0.002s
+14:19:48 done 0361-build-0.2.0-ForgeSyncListingKeepsRetained.cfg built 126.262s 0.619GB None  
+14:19:51 done 0760-interp-0.1.2-LeanBarrierLeaseCollectorOffNoTombstone.cfg agree 19.343s 1.355GB 1419433 Inv_NoDeleteResurrected 
+14:19:51 done 1093-tlc-tlc-FlintExtents.cfg done 19.389s 3.31GB 2481424  
+14:19:53 done 0351-interp-0.2.0-ForgeSyncFoldNoRenew.cfg agree 10.95s 0.31GB 859448 Inv_NoStragglerLandAfterRestore 
+14:19:57 done 0366-build-0.1.2-ForgeSyncFoldCommitMidBatch.cfg built 135.058s 0.624GB None  
+14:19:59 done 0352-interp-0.1.2-ForgeSyncFoldNoRenew.cfg agree 16.803s 0.29GB 980101 Inv_NoStragglerLandAfterRestore 
+14:20:03 done 0613-interp-0.2.0-LeanCoreCitesBlind.cfg agree 16.366s 1.147GB 2592151 Inv_CitationsLive 
+14:20:08 done 1094-tlc-tlc-LeanBarrierLeaseCollectorOffNoTombstone.cfg done 27.084s 3.374GB 1579141 Inv_NoDeleteResurrected 
+14:20:08 done 0957-examples-0.2.0-MCPaxosSmall.cfg success 17.292s 0.146GB 185369  tla-mc: MCPaxos (4 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:20:10 done 0614-interp-0.1.2-LeanCoreCitesBlind.cfg agree 19.188s 1.008GB 2591999 Inv_CitationsLive 
+14:20:10 done 1095-tlc-tlc-ForgeSyncFoldNoRenew.cfg done 17.607s 3.239GB 1212255 Inv_NoStragglerLandAfterRestore 
+14:20:15 done 0627-interp-0.2.0-LeanCoreProbeRemovalOutranked.cfg agree 15.85s 1.306GB 2767055 ProbeRemovalOutranked 
+14:20:18 done 0093-interp-0.2.0-FlintReplicationRollRecordBarrier3.cfg agree 7.401s 0.26GB 2144037  
+14:20:21 done 1085-tlc-tlc-FlintReplicationA2Staging.cfg done 240.176s 5.901GB 1261953  
+14:20:21 done 0881-interp-0.2.0-LeanImmutableOrphanCollected.cfg agree 13.037s 0.406GB 879516  
+14:20:22 done 0375-build-0.2.0-ForgeSyncReclaimUnlinksServing.cfg built 160.2s 0.634GB None  
+14:20:23 done 0362-build-0.1.2-ForgeSyncListingKeepsRetained.cfg built 161.471s 0.624GB None  
+14:20:24 done 0628-interp-0.1.2-LeanCoreProbeRemovalOutranked.cfg agree 16.013s 1.118GB 2406814 ProbeRemovalOutranked 
+14:20:24 done 1089-tlc-tlc-FlintReplicationRollRecordBarrierDeep.cfg done 98.16s 4.185GB 640688  
+14:20:27 done 0882-interp-0.1.2-LeanImmutableOrphanCollected.cfg agree 16.796s 0.319GB 879516  
+14:20:27 done 0057-interp-0.2.0-FlintReplicationMobileStrict.cfg agree 4.797s 0.256GB 420785  
+14:20:36 done 0094-interp-0.1.2-FlintReplicationRollRecordBarrier3.cfg agree 15.234s 0.217GB 2144037  
+14:20:38 done 1081-examples-0.2.0-PaxosCommit.cfg success 13.672s 0.427GB 1321761  tla-mc: PaxosCommit (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:20:39 done 0058-interp-0.1.2-FlintReplicationMobileStrict.cfg agree 15.378s 0.143GB 420785  
+14:20:40 done 0873-interp-0.2.0-LeanImmutableCasOverridesUI.cfg agree 12.609s 1.149GB 1030260 Inv_HITLDurable 
+14:20:41 done 1099-tlc-tlc-LeanImmutableOrphanCollected.cfg done 19.035s 3.195GB 879516  
+14:20:42 done 1091-tlc-tlc-FlintReplicationMaintDeep.cfg done 95.846s 4.32GB 640688  
+14:20:42 done 1098-tlc-tlc-FlintReplicationRollRecordBarrier3.cfg done 23.678s 3.278GB 2144037  
+14:20:42 done 1096-tlc-tlc-LeanCoreCitesBlind.cfg done 38.675s 4.179GB 2506980 Inv_CitationsLive 
+14:20:45 done 0135-interp-0.2.0-FlintReplicationBouncePlannerScoped.cfg agree 6.446s 0.231GB 1466932  
+14:20:50 done 0372-build-0.1.2-ForgeSyncReclaimWhileServing.cfg built 187.937s 0.616GB None  
+14:20:50 done 0874-interp-0.1.2-LeanImmutableCasOverridesUI.cfg agree 13.658s 1.034GB 991049 Inv_HITLDurable 
+14:20:51 done 0693-interp-0.2.0-LeanBarrierLeaseRotationOnly.cfg agree 9.622s 0.423GB 619637  
+14:20:51 done 1097-tlc-tlc-LeanCoreProbeRemovalOutranked.cfg done 36.008s 4.017GB 2316247 ProbeRemovalOutranked 
+14:20:52 done 0136-interp-0.1.2-FlintReplicationBouncePlannerScoped.cfg agree 11.864s 0.188GB 1466932  
+14:20:53 done 0219-interp-0.2.0-FlintExtentsNoCommitGrace.cfg agree 10.986s 0.249GB 1819698  
+14:20:54 done 0220-interp-0.1.2-FlintExtentsNoCommitGrace.cfg agree 11.317s 0.188GB 1819698  
+14:20:54 done 0694-interp-0.1.2-LeanBarrierLeaseRotationOnly.cfg agree 12.653s 0.336GB 619637  
+14:20:57 done 0371-build-0.2.0-ForgeSyncReclaimWhileServing.cfg built 195.473s 0.646GB None  
+14:21:00 done 0689-interp-0.2.0-LeanBarrierLeaseDeposal.cfg agree 9.746s 0.403GB 619637  
+14:21:01 done 0691-interp-0.2.0-LeanBarrierLeaseEpochOnly.cfg agree 9.627s 0.382GB 588943  
+14:21:02 done 1102-tlc-tlc-FlintReplicationBouncePlannerScoped.cfg done 17.196s 3.189GB 1466932  
+14:21:04 done 0509-interp-0.2.0-LeanSubtreeTakeover.cfg agree 8.885s 0.41GB 566405  
+14:21:04 done 0690-interp-0.1.2-LeanBarrierLeaseDeposal.cfg agree 12.793s 0.342GB 619637  
+14:21:06 done 1103-tlc-tlc-LeanBarrierLeaseRotationOnly.cfg done 15.116s 3.208GB 619637  
+14:21:06 done 0692-interp-0.1.2-LeanBarrierLeaseEpochOnly.cfg agree 12.32s 0.352GB 588943  
+14:21:08 done 1101-tlc-tlc-LeanImmutableCasOverridesUI.cfg done 28.403s 3.738GB 1135849 Inv_HITLDurable 
+14:21:08 done 1104-tlc-tlc-FlintExtentsNoCommitGrace.cfg done 15.258s 3.175GB 1819698  
+14:21:12 done 0181-interp-0.2.0-FlintExtentsMergeMin.cfg agree 8.122s 0.237GB 1127282  
+14:21:14 done 0510-interp-0.1.2-LeanSubtreeTakeover.cfg agree 11.381s 0.354GB 566405  
+14:21:15 done 0943-examples-0.2.0-ElevatorSafetyLarge.cfg success 311.589s 1.97GB 59007145  tla-mc: Elevator (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:21:15 done 1105-tlc-tlc-LeanBarrierLeaseDeposal.cfg done 14.715s 3.207GB 619637  
+14:21:16 done 1106-tlc-tlc-LeanBarrierLeaseEpochOnly.cfg done 14.178s 3.205GB 588943  
+14:21:16 done 1027-examples-0.2.0-bosco.cfg success 312.815s 0.205GB 1072452  tla-mc: bosco (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:21:16 done 0569-interp-0.2.0-LeanSentinelHolds.cfg agree 7.714s 0.443GB 512322  
+14:21:17 done 0893-examples-0.2.0-MCBakery.cfg success 10.506s 0.234GB 655200  tla-mc: MCBakery (6 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:21:17 done 0378-build-0.1.2-ForgeSyncReclaimAtRestore.cfg built 214.704s 0.622GB None  
+14:21:17 done 0182-interp-0.1.2-FlintExtentsMergeMin.cfg agree 11.523s 0.146GB 1127282  
+14:21:18 done 1107-tlc-tlc-LeanSubtreeTakeover.cfg done 13.683s 3.204GB 566405  
+14:21:18 done 0570-interp-0.1.2-LeanSentinelHolds.cfg agree 9.826s 0.372GB 512322  
+14:21:22 done 0301-interp-0.2.0-FlintCompositionLiveWitness.cfg agree 6.012s 0.228GB 420361  
+14:21:22 done 1108-tlc-tlc-FlintExtentsMergeMin.cfg done 9.961s 3.104GB 1127282  
+14:21:23 done 0701-interp-0.2.0-LeanBarrierLeaseSyncOverlayHolds.cfg agree 7.937s 0.356GB 456475  
+14:21:24 done 0595-interp-0.2.0-LeanSentinelClockHolds.cfg agree 7.47s 0.451GB 512322  
+14:21:24 done 0968-examples-0.2.0-FastPaxos.cfg success 10.255s 0.091GB 25617  tla-mc: FastPaxos (6 variables, 143 symmetry permutations), 8 workers, interp engine; loaded in 0.006s
+14:21:25 done 0702-interp-0.1.2-LeanBarrierLeaseSyncOverlayHolds.cfg agree 10.114s 0.301GB 456506  
+14:21:25 done 0629-interp-0.2.0-LeanCoreWithheldHolds.cfg agree 7.05s 0.256GB 812004  
+14:21:26 done 1109-tlc-tlc-LeanSentinelHolds.cfg done 10.253s 3.086GB 512322  
+14:21:27 done 0596-interp-0.1.2-LeanSentinelClockHolds.cfg agree 9.268s 0.371GB 512322  
+14:21:27 done 0302-interp-0.1.2-FlintCompositionLiveWitness.cfg agree 11.044s 0.146GB 420361  
+14:21:28 done 1064-examples-0.2.0-EWD998PCal.cfg success 10.404s 0.111GB 321370  tla-mc: EWD998PCal (4 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.002s
+14:21:29 done 0025-interp-0.2.0-FlintReplicationMaint.cfg agree 4.047s 0.199GB 1096137  
+14:21:29 done 0365-build-0.2.0-ForgeSyncFoldCommitMidBatch.cfg built 227.533s 0.621GB None  
+14:21:30 done 1100-tlc-tlc-FlintReplicationMobileStrict.cfg done 63.243s 3.702GB 420785  
+14:21:32 done 0793-interp-0.2.0-LeanProbeBaseRestored.cfg agree 5.577s 0.829GB 687194 ProbeBaseRestored 
+14:21:33 done 0794-interp-0.1.2-LeanProbeBaseRestored.cfg agree 5.48s 0.57GB 550904 ProbeBaseRestored 
+14:21:33 done 0630-interp-0.1.2-LeanCoreWithheldHolds.cfg agree 10.435s 0.175GB 812004  
+14:21:33 done 0665-interp-0.2.0-LeanRemovalHolds.cfg agree 5.965s 0.431GB 358635  
+14:21:34 done 0026-interp-0.1.2-FlintReplicationMaint.cfg agree 8.431s 0.147GB 1096137  
+14:21:34 done 0001-interp-0.2.0-FlintReplication.cfg agree 1.646s 0.191GB 159651  
+14:21:35 done 1112-tlc-tlc-LeanSentinelClockHolds.cfg done 10.344s 3.107GB 512322  
+14:21:35 done 1113-tlc-tlc-LeanCoreWithheldHolds.cfg done 9.846s 2.971GB 812004  
+14:21:36 done 0666-interp-0.1.2-LeanRemovalHolds.cfg agree 7.786s 0.334GB 358635  
+14:21:36 done 1111-tlc-tlc-LeanBarrierLeaseSyncOverlayHolds.cfg done 12.998s 3.216GB 455427  
+14:21:38 done 0919-examples-0.2.0-GameOfLife.cfg success 7.403s 0.122GB 65536  tla-mc: GameOfLife (1 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:21:39 done 0779-interp-0.2.0-LeanBarrierLeaseOrphanResurrects.cfg agree 5.462s 0.522GB 397945 Inv_NoDeleteResurrected 
+14:21:40 done 0002-interp-0.1.2-FlintReplication.cfg agree 6.945s 0.116GB 159651  
+14:21:40 done 0381-interp-0.2.0-ForgeSyncFoldTicksBatchSensor.cfg agree 4.851s 0.182GB 328920 Inv_NoRenewOverWedge 
+14:21:42 done 0391-interp-0.2.0-ForgeSyncCodeKeptSetVsOriginal.cfg agree 5.288s 0.227GB 474583 Inv_LandedPackComplete 
+14:21:42 done 1114-tlc-tlc-FlintReplicationMaint.cfg done 12.932s 3.123GB 1096137  
+14:21:42 done 0780-interp-0.1.2-LeanBarrierLeaseOrphanResurrects.cfg agree 7.382s 0.39GB 459591 Inv_NoDeleteResurrected 
+14:21:43 done 0382-interp-0.1.2-ForgeSyncFoldTicksBatchSensor.cfg agree 6.843s 0.165GB 376711 Inv_NoRenewOverWedge 
+14:21:43 done 1116-tlc-tlc-LeanRemovalHolds.cfg done 9.779s 3.117GB 358635  
+14:21:43 done 1029-examples-0.2.0-MCbtree.cfg success 1.059s 0.236GB 374727  tla-mc: MCbtree (12 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:21:45 done 1115-tlc-tlc-LeanProbeBaseRestored.cfg done 12.226s 3.137GB 717808 ProbeBaseRestored 
+14:21:45 done 0721-interp-0.2.0-LeanBarrierLeaseHitlOverAnyUnverified.cfg agree 4.721s 0.603GB 438931 Inv_HITLDurable 
+14:21:47 done 0392-interp-0.1.2-ForgeSyncCodeKeptSetVsOriginal.cfg agree 8.6s 0.2GB 477330 Inv_LandedPackComplete 
+14:21:48 done 1119-tlc-tlc-ForgeSyncFoldTicksBatchSensor.cfg done 7.525s 2.939GB 369910 Inv_NoRenewOverWedge 
+14:21:48 done 0631-interp-0.2.0-LeanCoreWithheldReverts.cfg agree 5.181s 0.242GB 561819 Prop_NoSilentRevert 
+14:21:48 done 0722-interp-0.1.2-LeanBarrierLeaseHitlOverAnyUnverified.cfg agree 6.565s 0.559GB 497092 Inv_HITLDurable 
+14:21:49 done 1118-tlc-tlc-LeanBarrierLeaseOrphanResurrects.cfg done 9.408s 3.067GB 422763 Inv_NoDeleteResurrected 
+14:21:49 done 0083-interp-0.2.0-FlintReplicationA2AdoptBelted.cfg agree 5.388s 0.205GB 1261953  
+14:21:50 done 1120-tlc-tlc-ForgeSyncCodeKeptSetVsOriginal.cfg done 8.072s 2.915GB 500919 Inv_LandedPackComplete 
+14:21:50 done 0632-interp-0.1.2-LeanCoreWithheldReverts.cfg agree 6.723s 0.179GB 558448 Prop_NoSilentRevert 
+14:21:51 done 0084-interp-0.1.2-FlintReplicationA2AdoptBelted.cfg agree 5.92s 0.131GB 1261953  
+14:21:52 done 0843-interp-0.2.0-LeanImmutableSyncQueueRegress.cfg agree 5.639s 0.443GB 428513 Inv_ConsumeNeverRegresses 
+14:21:54 done 0145-interp-0.2.0-FlintReplicationKubeToothLatched.cfg agree 5.364s 0.206GB 1389168  
+14:21:54 done 0844-interp-0.1.2-LeanImmutableSyncQueueRegress.cfg agree 6.05s 0.332GB 390436 Inv_ConsumeNeverRegresses 
+14:21:55 done 0729-interp-0.2.0-LeanBarrierLeaseSyncOverlayStale.cfg agree 4.841s 0.357GB 331416 Inv_NoForeignLost 
+14:21:55 done 1121-tlc-tlc-LeanBarrierLeaseHitlOverAnyUnverified.cfg done 9.843s 3.046GB 453484 Inv_HITLDurable 
+14:21:55 done 0555-interp-0.2.0-LeanScopedSyncHolds.cfg agree 4.129s 0.304GB 246151  
+14:21:55 done 1122-tlc-tlc-LeanCoreWithheldReverts.cfg done 6.549s 2.902GB 509461  
+14:21:55 done 0146-interp-0.1.2-FlintReplicationKubeToothLatched.cfg agree 6.084s 0.116GB 1389168  
+14:21:55 done 1117-tlc-tlc-FlintReplication.cfg done 20.708s 3.116GB 159651  
+14:21:56 done 0730-interp-0.1.2-LeanBarrierLeaseSyncOverlayStale.cfg agree 5.763s 0.296GB 333365 Inv_NoForeignLost 
+14:21:58 done 0139-interp-0.2.0-FlintReplicationBounceBounded.cfg agree 1.251s 0.222GB 154336  
+14:21:59 done 0279-interp-0.2.0-FlintCompositionLive.cfg agree 3.944s 0.244GB 286788  
+14:22:00 done 0556-interp-0.1.2-LeanScopedSyncHolds.cfg agree 5.641s 0.241GB 246151  
+14:22:01 done 0695-interp-0.2.0-LeanBarrierLeaseAdoptVerified.cfg agree 5.21s 0.328GB 322846  
+14:22:01 done 0280-interp-0.1.2-FlintCompositionLive.cfg agree 6.277s 0.125GB 286788  
+14:22:02 done 0696-interp-0.1.2-LeanBarrierLeaseAdoptVerified.cfg agree 6.647s 0.245GB 322846  
+14:22:03 done 1127-tlc-tlc-LeanScopedSyncHolds.cfg done 8.269s 3.0GB 246151  
+14:22:04 done 1123-tlc-tlc-FlintReplicationA2AdoptBelted.cfg done 14.505s 3.131GB 1261953  
+14:22:04 done 1124-tlc-tlc-LeanImmutableSyncQueueRegress.cfg done 11.909s 3.231GB 404320 Inv_ConsumeNeverRegresses 
+14:22:05 done 0140-interp-0.1.2-FlintReplicationBounceBounded.cfg agree 5.217s 0.096GB 154336  
+14:22:05 done 1126-tlc-tlc-LeanBarrierLeaseSyncOverlayStale.cfg done 10.406s 3.095GB 340019 Inv_NoForeignLost 
+14:22:06 done 0902-examples-0.2.0-CoffeeCan1000Beans.cfg success 4.96s 0.277GB 501500  tla-mc: CoffeeCan (1 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:22:07 done 0875-interp-0.2.0-LeanImmutableCasOverridesPeer.cfg agree 4.515s 0.459GB 318450 Inv_NoStaleOverride 
+14:22:08 done 0359-interp-0.2.0-ForgeSyncProveFromDiskRetention.cfg agree 3.744s 0.198GB 264430 Inv_ProofNeverRestsOnRetention 
+14:22:08 done 0600-build-0.1.2-LeanCoreHoldsSmall.cfg built 265.1s 4.215GB None  
+14:22:09 done 0876-interp-0.1.2-LeanImmutableCasOverridesPeer.cfg agree 5.187s 0.367GB 318916 Inv_NoStaleOverride 
+14:22:09 done 1128-tlc-tlc-FlintReplicationBounceBounded.cfg done 11.594s 2.929GB 154336  
+14:22:10 done 1125-tlc-tlc-FlintReplicationKubeToothLatched.cfg done 15.689s 3.2GB 1389168  
+14:22:10 done 1130-tlc-tlc-LeanBarrierLeaseAdoptVerified.cfg done 8.783s 3.041GB 322846  
+14:22:10 done 0360-interp-0.1.2-ForgeSyncProveFromDiskRetention.cfg agree 5.276s 0.17GB 265734 Inv_ProofNeverRestsOnRetention 
+14:22:10 done 0799-interp-0.2.0-LeanBarrierLeaseStragglerGCFenced.cfg agree 4.578s 0.293GB 278064  
+14:22:11 done 0017-interp-0.2.0-FlintReplicationGateReal.cfg agree 1.383s 0.187GB 132778  
+14:22:11 done 0800-interp-0.1.2-LeanBarrierLeaseStragglerGCFenced.cfg agree 5.762s 0.213GB 278064  
+14:22:12 done 0787-interp-0.2.0-LeanBarrierLeaseOrphanStaleCopy.cfg agree 5.162s 0.491GB 364308 Inv_TreesConverged 
+14:22:13 done 1132-tlc-tlc-ForgeSyncProveFromDiskRetention.cfg done 5.478s 2.891GB 267443 Inv_ProofNeverRestsOnRetention 
+14:22:13 done 0861-interp-0.2.0-LeanImmutableCasVerifies.cfg agree 3.9s 0.24GB 194894  
+14:22:14 done 0018-interp-0.1.2-FlintReplicationGateReal.cfg agree 4.625s 0.105GB 132778  
+14:22:15 done 0788-interp-0.1.2-LeanBarrierLeaseOrphanStaleCopy.cfg agree 5.74s 0.355GB 369770 Inv_TreesConverged 
+14:22:15 done 0862-interp-0.1.2-LeanImmutableCasVerifies.cfg agree 5.056s 0.216GB 194894  
+14:22:15 done 0571-interp-0.2.0-LeanSentinelRestart.cfg agree 3.562s 0.304GB 218762  
+14:22:17 done 1131-tlc-tlc-LeanImmutableCasOverridesPeer.cfg done 10.0s 3.075GB 300123 Inv_NoStaleOverride 
+14:22:18 done 0572-interp-0.1.2-LeanSentinelRestart.cfg agree 4.5s 0.255GB 218762  
+14:22:18 done 0357-interp-0.2.0-ForgeSyncFoldCasFromDisk.cfg agree 3.368s 0.198GB 261251 Inv_NamedIsUploaded 
+14:22:19 done 0867-interp-0.2.0-LeanImmutableGCUnconditional.cfg agree 3.969s 0.244GB 194894  
+14:22:20 done 1133-tlc-tlc-LeanBarrierLeaseStragglerGCFenced.cfg done 9.348s 2.993GB 278064  
+14:22:20 done 0358-interp-0.1.2-ForgeSyncFoldCasFromDisk.cfg agree 5.369s 0.161GB 255979 Inv_NamedIsUploaded 
+14:22:21 done 0637-interp-0.2.0-LeanChunkGC.cfg agree 3.303s 0.297GB 3080892  
+14:22:21 done 0003-interp-0.2.0-FlintReplicationDeep.cfg agree 1.028s 0.186GB 120006  
+14:22:22 done 0868-interp-0.1.2-LeanImmutableGCUnconditional.cfg agree 4.881s 0.21GB 194894  
+14:22:22 done 0599-build-0.2.0-LeanCoreHoldsSmall.cfg built 279.336s 4.218GB None  
+14:22:22 done 1137-tlc-tlc-LeanSentinelRestart.cfg done 6.843s 2.935GB 218762  
+14:22:22 done 1135-tlc-tlc-LeanBarrierLeaseOrphanStaleCopy.cfg done 10.418s 3.259GB 369985 Inv_TreesConverged 
+14:22:23 done 1136-tlc-tlc-LeanImmutableCasVerifies.cfg done 9.225s 3.015GB 194894  
+14:22:24 done 0638-interp-0.1.2-LeanChunkGC.cfg agree 4.266s 0.21GB 3080892  
+14:22:24 done 1138-tlc-tlc-ForgeSyncFoldCasFromDisk.cfg done 5.932s 2.902GB 272166 Inv_NamedIsUploaded 
+14:22:25 done 0869-interp-0.2.0-LeanImmutableAdoptBlind.cfg agree 3.218s 0.254GB 184539  
+14:22:26 done 1134-tlc-tlc-FlintReplicationGateReal.cfg done 14.163s 2.984GB 132778  
+14:22:26 done 0004-interp-0.1.2-FlintReplicationDeep.cfg agree 3.82s 0.1GB 120006  
+14:22:26 done 0947-examples-0.2.0-MultiPaxos_MC_small.cfg success 2.12s 0.248GB 343796  tla-mc: MultiPaxos_MC (5 variables, 5 symmetry permutations), 8 workers, interp engine; loaded in 0.002s
+14:22:27 done 0767-interp-0.2.0-LeanBarrierLeaseQueueDropped.cfg agree 3.719s 0.564GB 387783 Inv_AckBoundaryCoherent 
+14:22:27 done 0870-interp-0.1.2-LeanImmutableAdoptBlind.cfg agree 4.278s 0.178GB 184539  
+14:22:28 done 0353-interp-0.2.0-ForgeSyncRacyGrace.cfg agree 2.106s 0.182GB 176673 Inv_AckedIsDurable 
+14:22:28 done 0768-interp-0.1.2-LeanBarrierLeaseQueueDropped.cfg agree 3.865s 0.426GB 351545 Inv_AckBoundaryCoherent 
+14:22:28 done 1139-tlc-tlc-LeanImmutableGCUnconditional.cfg done 9.203s 3.016GB 194894  
+14:22:29 done 0705-interp-0.2.0-LeanBarrierLeaseLiveCrash.cfg agree 2.701s 0.24GB 118754  
+14:22:30 done 0354-interp-0.1.2-ForgeSyncRacyGrace.cfg agree 3.63s 0.157GB 180878 Inv_AckedIsDurable 
+14:22:30 done 0706-interp-0.1.2-LeanBarrierLeaseLiveCrash.cfg agree 3.365s 0.166GB 118754  
+14:22:31 done 0747-interp-0.2.0-LeanProbeAdoptWithheld.cfg agree 2.864s 0.422GB 346306 ProbeAdoptWithheld 
+14:22:32 done 1069-examples-0.2.0-MCLamportMutex.cfg success 3.287s 0.165GB 724274  tla-mc: MCLamportMutex (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:22:32 done 0265-interp-0.2.0-FlintCompositionRejoin.cfg agree 1.496s 0.183GB 583657  
+14:22:33 done 1141-tlc-tlc-FlintReplicationDeep.cfg done 11.203s 2.941GB 120006  
+14:22:33 done 1144-tlc-tlc-ForgeSyncRacyGrace.cfg done 5.312s 2.879GB 221401 Inv_AckedIsDurable 
+14:22:33 done 1140-tlc-tlc-LeanChunkGC.cfg done 11.714s 3.142GB 3080892  
+14:22:33 done 1143-tlc-tlc-LeanBarrierLeaseQueueDropped.cfg done 6.721s 2.93GB 284018 Inv_AckBoundaryCoherent 
+14:22:34 done 0748-interp-0.1.2-LeanProbeAdoptWithheld.cfg agree 3.555s 0.292GB 335312 ProbeAdoptWithheld 
+14:22:34 done 1142-tlc-tlc-LeanImmutableAdoptBlind.cfg done 8.157s 2.938GB 184539  
+14:22:34 done 0089-interp-0.2.0-FlintReplicationRollRecordBarrier.cfg agree 0.741s 0.191GB 89082  
+14:22:35 done 0380-build-0.1.2-ForgeSyncReclaimBySet.cfg built 292.354s 0.626GB None  
+14:22:35 done 0266-interp-0.1.2-FlintCompositionRejoin.cfg agree 3.786s 0.104GB 583657  
+14:22:36 done 0829-interp-0.2.0-LeanImmutableQueueHolds.cfg agree 2.442s 0.195GB 139912  
+14:22:36 done 0715-interp-0.2.0-LeanBarrierLeaseAdoptBlind.cfg agree 2.269s 0.315GB 193428 Inv_NoDangling 
+14:22:36 done 0090-interp-0.1.2-FlintReplicationRollRecordBarrier.cfg agree 2.883s 0.08GB 89082  
+14:22:37 done 0830-interp-0.1.2-LeanImmutableQueueHolds.cfg agree 2.966s 0.165GB 139912  
+14:22:37 done 0716-interp-0.1.2-LeanBarrierLeaseAdoptBlind.cfg agree 2.667s 0.245GB 193410 Inv_NoDangling 
+14:22:37 done 0719-interp-0.2.0-LeanBarrierLeaseSameBytesOverride.cfg agree 1.979s 0.33GB 163467 Inv_NoStaleOverride 
+14:22:37 done 1147-tlc-tlc-FlintCompositionRejoin.cfg done 5.045s 2.802GB 583657  
+14:22:38 done 0720-interp-0.1.2-LeanBarrierLeaseSameBytesOverride.cfg agree 2.165s 0.265GB 160267 Inv_NoStaleOverride 
+14:22:38 done 0717-interp-0.2.0-LeanBarrierLeaseSameBytesUnverified.cfg agree 1.906s 0.318GB 161082 Inv_NoDangling 
+14:22:38 done 0753-interp-0.2.0-LeanBarrierLeaseQueueHolds.cfg agree 1.663s 0.195GB 94278  
+14:22:39 done 0929-examples-0.2.0-MCLeastCircularSubstringMedium.cfg success 0.685s 0.176GB 1007232  tla-mc: MCLeastCircularSubstring (7 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.004s
+14:22:39 done 0718-interp-0.1.2-LeanBarrierLeaseSameBytesUnverified.cfg agree 2.296s 0.26GB 169091 Inv_NoDangling 
+14:22:39 done 1146-tlc-tlc-LeanProbeAdoptWithheld.cfg done 7.459s 3.021GB 319838 ProbeAdoptWithheld 
+14:22:39 done 0754-interp-0.1.2-LeanBarrierLeaseQueueHolds.cfg agree 1.842s 0.136GB 94278  
+14:22:41 done 0847-interp-0.2.0-LeanImmutableRepairRecites.cfg agree 2.168s 0.479GB 230821 Inv_OneName 
+14:22:42 done 1151-tlc-tlc-LeanBarrierLeaseSameBytesOverride.cfg done 4.413s 2.61GB 114448 Inv_NoStaleOverride 
+14:22:42 done 0848-interp-0.1.2-LeanImmutableRepairRecites.cfg agree 2.973s 0.456GB 265496 Inv_OneName 
+14:22:42 done 0853-interp-0.2.0-LeanImmutableProbePending.cfg agree 2.989s 0.844GB 423960 ProbePendingKept 
+14:22:42 done 1150-tlc-tlc-LeanBarrierLeaseAdoptBlind.cfg done 6.169s 2.916GB 200231 Inv_NoDangling 
+14:22:43 done 1129-tlc-tlc-FlintCompositionLive.cfg done 43.257s 3.211GB 286788  
+14:22:43 done 1152-tlc-tlc-LeanBarrierLeaseSameBytesUnverified.cfg done 4.53s 2.902GB 143400 Inv_NoDangling 
+14:22:43 done 1149-tlc-tlc-LeanImmutableQueueHolds.cfg done 7.171s 2.906GB 139912  
+14:22:43 done 0513-interp-0.2.0-LeanEpochOnlyHolds.cfg agree 1.523s 0.185GB 92863  
+14:22:43 done 1153-tlc-tlc-LeanBarrierLeaseQueueHolds.cfg done 4.906s 2.715GB 94278  
+14:22:44 done 0854-interp-0.1.2-LeanImmutableProbePending.cfg agree 4.473s 0.836GB 503972 ProbePendingKept 
+14:22:44 done 0514-interp-0.1.2-LeanEpochOnlyHolds.cfg agree 1.904s 0.158GB 92863  
+14:22:44 done 0143-interp-0.2.0-FlintReplicationKubeToothSocket.cfg agree 1.681s 0.176GB 436660  
+14:22:45 done 0795-interp-0.2.0-LeanProbeLeakApplied.cfg agree 2.028s 0.497GB 266702 ProbeLeakApplied 
+14:22:45 done 0144-interp-0.1.2-FlintReplicationKubeToothSocket.cfg agree 1.905s 0.095GB 436660  
+14:22:45 done 0796-interp-0.1.2-LeanProbeLeakApplied.cfg agree 2.423s 0.328GB 256924 ProbeLeakApplied 
+14:22:45 done 1145-tlc-tlc-LeanBarrierLeaseLiveCrash.cfg done 15.738s 3.071GB 118754  
+14:22:45 done 0811-interp-0.2.0-LeanBarrierLeaseLeakRestoreOnly.cfg agree 1.559s 0.156GB 95313  
+14:22:46 done 0812-interp-0.1.2-LeanBarrierLeaseLeakRestoreOnly.cfg agree 1.893s 0.093GB 95313  
+14:22:46 done 0583-interp-0.2.0-LeanSentinelStaleMergeBase.cfg agree 1.641s 0.328GB 151500 Inv_AckImpliesCited 
+14:22:47 done 0584-interp-0.1.2-LeanSentinelStaleMergeBase.cfg agree 2.02s 0.271GB 151313 Inv_AckImpliesCited 
+14:22:47 done 0807-interp-0.2.0-LeanBarrierLeaseLeakHolds.cfg agree 1.786s 0.15GB 90381  
+14:22:48 done 0808-interp-0.1.2-LeanBarrierLeaseLeakHolds.cfg agree 2.071s 0.096GB 90381  
+14:22:48 done 1156-tlc-tlc-LeanEpochOnlyHolds.cfg done 4.482s 2.813GB 92863  
+14:22:48 done 0815-interp-0.2.0-LeanBarrierLeaseLeakRuleConverges.cfg agree 1.862s 0.139GB 90381  
+14:22:48 done 0107-interp-0.2.0-FlintReplicationMaintParkFixed.cfg agree 0.439s 0.144GB 43875  
+14:22:48 done 1110-tlc-tlc-FlintCompositionLiveWitness.cfg done 86.353s 4.22GB 420361  
+14:22:49 done 1148-tlc-tlc-FlintReplicationRollRecordBarrier.cfg done 14.504s 2.914GB 89082  
+14:22:49 done 1159-tlc-tlc-LeanBarrierLeaseLeakRestoreOnly.cfg done 3.886s 2.7GB 95313  
+14:22:50 done 0816-interp-0.1.2-LeanBarrierLeaseLeakRuleConverges.cfg agree 2.184s 0.093GB 90381  
+14:22:50 done 0858-interp-0.1.2-LeanImmutableRetirePerPath.cfg agree 1.086s 0.283GB 108874 Inv_NoDangling 
+14:22:50 done 0108-interp-0.1.2-FlintReplicationMaintParkFixed.cfg agree 1.821s 0.065GB 43875  
+14:22:50 done 0857-interp-0.2.0-LeanImmutableRetirePerPath.cfg agree 1.521s 0.443GB 180277 Inv_NoDangling 
+14:22:50 done 0900-examples-0.2.0-MCCheckpointCoordinationFailure.cfg safety failure 1.023s 0.119GB 91238  Error: Invariant SafetyInvariant is violated.
+14:22:51 done 1160-tlc-tlc-LeanSentinelStaleMergeBase.cfg done 4.605s 2.895GB 141418 Inv_AckImpliesCited 
+14:22:51 done 1157-tlc-tlc-FlintReplicationKubeToothSocket.cfg done 6.491s 2.886GB 436660  
+14:22:51 done 0877-interp-0.2.0-LeanImmutableLeakHolds.cfg agree 1.397s 0.134GB 64955  
+14:22:51 done 0809-interp-0.2.0-LeanBarrierLeaseLeakRetiredOnly.cfg agree 1.521s 0.143GB 91229  
+14:22:51 done 0878-interp-0.1.2-LeanImmutableLeakHolds.cfg agree 1.672s 0.103GB 64955  
+14:22:52 done 1158-tlc-tlc-LeanProbeLeakApplied.cfg done 6.982s 2.974GB 270192 ProbeLeakApplied 
+14:22:52 done 1161-tlc-tlc-LeanBarrierLeaseLeakHolds.cfg done 4.447s 2.808GB 90381  
+14:22:52 done 0109-interp-0.2.0-FlintReplicationExpand.cfg agree 0.36s 0.148GB 40284  
+14:22:52 done 0810-interp-0.1.2-LeanBarrierLeaseLeakRetiredOnly.cfg agree 1.704s 0.106GB 91229  
+14:22:53 done 0345-interp-0.2.0-ForgeSyncNoRotate.cfg agree 1.546s 0.146GB 102630 Inv_NoStragglerLandAfterRestore 
+14:22:53 done 1162-tlc-tlc-LeanBarrierLeaseLeakRuleConverges.cfg done 4.405s 2.789GB 90381  
+14:22:53 done 0932-examples-0.2.0-MCQuicksort.cfg success 1.331s 0.092GB 4548  tla-mc: MCQuicksort (4 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:22:53 done 0110-interp-0.1.2-FlintReplicationExpand.cfg agree 1.489s 0.072GB 40284  
+14:22:53 done 0346-interp-0.1.2-ForgeSyncNoRotate.cfg agree 2.171s 0.107GB 103208 Inv_NoStragglerLandAfterRestore 
+14:22:54 done 0887-interp-0.2.0-LeanImmutableProbeUploadWithheld.cfg agree 1.234s 0.297GB 112926 ProbeUploadWithheld 
+14:22:54 done 0421-interp-0.2.0-FlintTierSessionNoDepose.cfg agree 0.627s 0.193GB 124965 ZombieOwnershipResolves 
+14:22:54 done 0888-interp-0.1.2-LeanImmutableProbeUploadWithheld.cfg agree 1.455s 0.206GB 112675 ProbeUploadWithheld 
+14:22:55 done 0422-interp-0.1.2-FlintTierSessionNoDepose.cfg agree 1.171s 0.115GB 124965 ZombieOwnershipResolves 
+14:22:55 done 0433-interp-0.2.0-FlintClientIdentityDeep.cfg agree 1.119s 0.191GB 407098  
+14:22:55 done 0377-build-0.2.0-ForgeSyncReclaimAtRestore.cfg built 312.489s 0.631GB None  
+14:22:55 done 1166-tlc-tlc-LeanBarrierLeaseLeakRetiredOnly.cfg done 3.699s 2.42GB 91229  
+14:22:55 done 1165-tlc-tlc-LeanImmutableLeakHolds.cfg done 4.033s 2.698GB 64955  
+14:22:55 done 0434-interp-0.1.2-FlintClientIdentityDeep.cfg agree 1.202s 0.107GB 407098  
+14:22:56 done 0931-examples-0.2.0-MCBinarySearch.cfg success 1.117s 0.245GB 27953  tla-mc: MCBinarySearch (6 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 1.038s
+14:22:56 done 1008-examples-0.2.0-SimpleRegular.cfg success 0.858s 0.158GB 277726  tla-mc: SimpleRegular (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:22:56 done 0355-interp-0.2.0-ForgeSyncFoldCasBeforeUpload.cfg agree 0.492s 0.107GB 44483 Inv_AckedIsDurable 
+14:22:57 done 0055-interp-0.2.0-FlintReplicationRefusalSticky.cfg agree 0.999s 0.162GB 239639  
+14:22:57 done 0356-interp-0.1.2-ForgeSyncFoldCasBeforeUpload.cfg agree 0.833s 0.086GB 56123 Inv_AckedIsDurable 
+14:22:57 done 0056-interp-0.1.2-FlintReplicationRefusalSticky.cfg agree 1.146s 0.08GB 239639  
+14:22:57 done 0111-interp-0.2.0-FlintReplicationExpandWedge.cfg agree 0.259s 0.131GB 32964 ExpansionCompletes 
+14:22:57 done 1168-tlc-tlc-ForgeSyncNoRotate.cfg done 4.221s 2.72GB 127383 Inv_NoStragglerLandAfterRestore 
+14:22:58 done 0423-interp-0.2.0-FlintTierSessionNoFence.cfg agree 0.833s 0.182GB 140307 ZombieOwnershipResolves 
+14:22:58 done 0424-interp-0.1.2-FlintTierSessionNoFence.cfg agree 1.29s 0.112GB 140307 ZombieOwnershipResolves 
+14:22:58 done 0112-interp-0.1.2-FlintReplicationExpandWedge.cfg agree 1.087s 0.073GB 32964 ExpansionCompletes 
+14:22:58 done 1163-tlc-tlc-FlintReplicationMaintParkFixed.cfg done 9.863s 2.819GB 43875  
+14:22:58 done 0703-interp-0.2.0-LeanBarrierLeaseLive.cfg agree 0.858s 0.156GB 28091  
+14:22:59 done 1169-tlc-tlc-LeanImmutableProbeUploadWithheld.cfg done 4.674s 2.9GB 107360 ProbeUploadWithheld 
+14:22:59 done 1170-tlc-tlc-FlintTierSessionNoDepose.cfg done 4.497s 2.765GB 118730 temporal 
+14:22:59 done 0859-interp-0.2.0-LeanImmutableCasCitesBlind.cfg agree 0.892s 0.221GB 61546 Inv_NoDangling 
+14:22:59 done 0704-interp-0.1.2-LeanBarrierLeaseLive.cfg agree 0.998s 0.086GB 28091  
+14:22:59 done 1171-tlc-tlc-FlintClientIdentityDeep.cfg done 3.892s 2.83GB 407098  
+14:22:59 done 1172-tlc-tlc-ForgeSyncFoldCasBeforeUpload.cfg done 2.976s 2.243GB 62734 Inv_AckedIsDurable 
+14:23:00 done 0860-interp-0.1.2-LeanImmutableCasCitesBlind.cfg agree 1.022s 0.169GB 61822 Inv_NoDangling 
+14:23:00 done 0653-interp-0.2.0-LeanChunkGCSlowReader.cfg agree 0.665s 0.232GB 920183 Inv_NoTornRead 
+14:23:00 done 0975-examples-0.2.0-SlushSmall.cfg success 1.082s 0.122GB 274678  tla-mc: Slush (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:00 done 0654-interp-0.1.2-LeanChunkGCSlowReader.cfg agree 0.856s 0.156GB 913948 Inv_NoTornRead 
+14:23:00 done 0797-interp-0.2.0-LeanBarrierLeaseStragglerGC.cfg agree 0.708s 0.238GB 66774 Inv_NoDangling 
+14:23:01 done 0731-interp-0.2.0-LeanBarrierLeaseRandomArbitration.cfg agree 0.785s 0.125GB 23545 NoStarvation 
+14:23:01 done 0798-interp-0.1.2-LeanBarrierLeaseStragglerGC.cfg agree 0.921s 0.166GB 77321 Inv_NoDangling 
+14:23:01 done 1173-tlc-tlc-FlintReplicationRefusalSticky.cfg done 4.308s 2.811GB 239639  
+14:23:02 done 0239-interp-0.2.0-FlintComposition.cfg agree 0.264s 0.127GB 128939  
+14:23:02 done 0732-interp-0.1.2-LeanBarrierLeaseRandomArbitration.cfg agree 0.89s 0.082GB 23545 NoStarvation 
+14:23:02 done 0655-interp-0.2.0-LeanChunkGCProbeRestart.cfg agree 0.637s 0.236GB 915941 Probe_Restarted 
+14:23:02 done 0240-interp-0.1.2-FlintComposition.cfg agree 0.719s 0.076GB 128939  
+14:23:02 done 0656-interp-0.1.2-LeanChunkGCProbeRestart.cfg agree 0.837s 0.15GB 915940 Probe_Restarted 
+14:23:03 done 0321-interp-0.2.0-FlintTierEpochLive.cfg agree 0.285s 0.178GB 73521  
+14:23:03 done 0879-interp-0.2.0-LeanImmutableStragglerGC.cfg agree 0.699s 0.125GB 42835  
+14:23:03 done 1174-tlc-tlc-FlintReplicationExpandWedge.cfg done 4.501s 2.787GB 26760 temporal 
+14:23:03 done 0880-interp-0.1.2-LeanImmutableStragglerGC.cfg agree 0.887s 0.086GB 42835  
+14:23:04 done 0322-interp-0.1.2-FlintTierEpochLive.cfg agree 0.744s 0.098GB 73521  
+14:23:04 done 1177-tlc-tlc-LeanImmutableCasCitesBlind.cfg done 4.143s 2.415GB 60960 Inv_NoDangling 
+14:23:04 done 0241-interp-0.2.0-FlintCompositionEpochKeyedToo.cfg agree 0.284s 0.135GB 128939  
+14:23:04 done 1175-tlc-tlc-FlintTierSessionNoFence.cfg done 4.856s 2.767GB 120897 temporal 
+14:23:04 done 0242-interp-0.1.2-FlintCompositionEpochKeyedToo.cfg agree 0.682s 0.082GB 128939  
+14:23:04 done 0713-interp-0.2.0-LeanBarrierLeaseGCUnconditional.cfg agree 0.521s 0.162GB 41565 Inv_NoDangling 
+14:23:04 done 0384-build-0.1.2-ForgeSyncCode.cfg built 321.609s 0.627GB None  
+14:23:04 done 0714-interp-0.1.2-LeanBarrierLeaseGCUnconditional.cfg agree 0.712s 0.133GB 47509 Inv_NoDangling 
+14:23:05 done 1176-tlc-tlc-LeanBarrierLeaseLive.cfg done 6.179s 2.807GB 28091  
+14:23:05 done 0291-interp-0.2.0-FlintCompositionFenceLocal.cfg agree 0.564s 0.17GB 433316 Inv_NoStaleExtentWrite 
+14:23:05 done 0292-interp-0.1.2-FlintCompositionFenceLocal.cfg agree 0.673s 0.139GB 412685 Inv_NoStaleExtentWrite 
+14:23:05 done 1047-examples-0.2.0-MC.cfg success 0.55s 0.183GB 90882  tla-mc: MC (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:05 done 1178-tlc-tlc-LeanChunkGCSlowReader.cfg done 4.916s 2.432GB 1139613 Inv_NoTornRead 
+14:23:05 done 0751-interp-0.2.0-LeanBarrierLeaseQueueTombstoneOverHitl.cfg agree 0.479s 0.168GB 42409 Inv_HITLTracked 
+14:23:06 done 0911-examples-0.2.0-MCDisruptor_MPMC.cfg success 0.425s 0.107GB 112929  tla-mc: MCDisruptor_MPMC (7 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:06 done 0752-interp-0.1.2-LeanBarrierLeaseQueueTombstoneOverHitl.cfg agree 0.524s 0.096GB 38282 Inv_HITLTracked 
+14:23:06 done 1039-examples-0.2.0-VoteProof.cfg success 0.316s 0.098GB 6962  tla-mc: VoteProof (2 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.002s
+14:23:06 done 1180-tlc-tlc-LeanBarrierLeaseRandomArbitration.cfg done 4.579s 2.798GB 18383 temporal 
+14:23:06 done 0817-interp-0.2.0-LeanBarrierLeaseLeakSkippedGeneration.cfg agree 0.448s 0.111GB 28631 Inv_TreesConverged 
+14:23:06 done 0818-interp-0.1.2-LeanBarrierLeaseLeakSkippedGeneration.cfg agree 0.504s 0.092GB 28751 Inv_TreesConverged 
+14:23:06 done 0349-interp-0.2.0-ForgeSyncProbeToldFailed.cfg agree 0.209s 0.086GB 21920 Inv_NoToldFailedButDurable 
+14:23:07 done 1184-tlc-tlc-LeanImmutableStragglerGC.cfg done 2.884s 1.303GB 42835  
+14:23:07 done 0350-interp-0.1.2-ForgeSyncProbeToldFailed.cfg agree 0.358s 0.062GB 22554 Inv_NoToldFailedButDurable 
+14:23:07 done 0457-interp-0.2.0-FlintClientIdentityLeaseHandshake.cfg agree 0.374s 0.113GB 142399  
+14:23:07 done 0458-interp-0.1.2-FlintClientIdentityLeaseHandshake.cfg agree 0.441s 0.08GB 142399  
+14:23:07 done 0801-interp-0.2.0-LeanBarrierLeaseStragglerLoadsSuccessor.cfg agree 0.368s 0.162GB 35949 Inv_NoStragglerInstall 
+14:23:08 done 0896-examples-0.2.0-MC.cfg success 0.419s 0.019GB 0  tla-mc: MC (0 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.409s
+14:23:08 done 0802-interp-0.1.2-LeanBarrierLeaseStragglerLoadsSuccessor.cfg agree 0.445s 0.102GB 37318 Inv_NoStragglerInstall 
+14:23:08 done 1179-tlc-tlc-LeanBarrierLeaseStragglerGC.cfg done 4.334s 2.402GB 82795 Inv_NoDangling 
+14:23:08 done 0105-interp-0.2.0-FlintReplicationMaintPark.cfg agree 0.114s 0.121GB 12929 StandbyAdmissionNotParked 
+14:23:08 done 0283-interp-0.2.0-FlintCompositionStaticTraddr.cfg agree 0.169s 0.125GB 39545 FenceEventuallyConfirmed 
+14:23:08 done 0106-interp-0.1.2-FlintReplicationMaintPark.cfg agree 0.42s 0.062GB 12929 StandbyAdmissionNotParked 
+14:23:08 done 1186-tlc-tlc-LeanBarrierLeaseGCUnconditional.cfg done 2.735s 1.389GB 37667 Inv_NoDangling 
+14:23:08 done 0912-examples-0.2.0-MCDisruptor_MPMC_liveliness.cfg success 0.333s 0.103GB 14365  tla-mc: MCDisruptor_MPMC (7 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:08 done 1182-tlc-tlc-LeanChunkGCProbeRestart.cfg done 4.63s 2.504GB 1177343 Probe_Restarted 
+14:23:08 done 0284-interp-0.1.2-FlintCompositionStaticTraddr.cfg agree 0.365s 0.084GB 39545 FenceEventuallyConfirmed 
+14:23:08 done 1187-tlc-tlc-FlintCompositionFenceLocal.cfg done 3.456s 2.394GB 555986 Inv_NoStaleExtentWrite 
+14:23:09 done 1188-tlc-tlc-LeanBarrierLeaseQueueTombstoneOverHitl.cfg done 2.487s 1.41GB 38296 Inv_HITLTracked 
+14:23:09 done 1023-examples-0.2.0-Barriers.cfg success 0.372s 0.09GB 29279  tla-mc: Barriers (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.002s
+14:23:09 done 0213-interp-0.2.0-FlintExtentsBlindProvision.cfg agree 0.365s 0.137GB 95463 Inv_NoPriorOwnerDisclosure 
+14:23:09 done 0214-interp-0.1.2-FlintExtentsBlindProvision.cfg agree 0.411s 0.09GB 91535 Inv_NoPriorOwnerDisclosure 
+14:23:09 done 1189-tlc-tlc-LeanBarrierLeaseLeakSkippedGeneration.cfg done 2.285s 1.399GB 28156 Inv_TreesConverged 
+14:23:09 done 0733-interp-0.2.0-LeanBarrierLeaseDeadHandoffWedge.cfg agree 0.229s 0.131GB 8712 NoStarvation 
+14:23:10 done 0734-interp-0.1.2-LeanBarrierLeaseDeadHandoffWedge.cfg agree 0.253s 0.066GB 8712 NoStarvation 
+14:23:10 done 1051-examples-0.2.0-TokenRing.cfg success 0.252s 0.137GB 46656  tla-mc: TokenRing (1 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:10 done 0803-interp-0.2.0-LeanProbeStragglerGCFenced.cfg agree 0.275s 0.19GB 34146 ProbeFenceAbandoned 
+14:23:10 done 0804-interp-0.1.2-LeanProbeStragglerGCFenced.cfg agree 0.294s 0.104GB 31635 ProbeFenceAbandoned 
+14:23:10 done 0615-interp-0.2.0-LeanCoreSweepLeaseFree.cfg agree 0.345s 0.176GB 62625 Inv_CitationsLive 
+14:23:10 done 0616-interp-0.1.2-LeanCoreSweepLeaseFree.cfg agree 0.45s 0.133GB 75188 Inv_CitationsLive 
+14:23:10 done 1191-tlc-tlc-FlintClientIdentityLeaseHandshake.cfg done 2.096s 1.326GB 142399  
+14:23:10 done 0765-interp-0.2.0-LeanProbeStaleInboxAdopt.cfg agree 0.241s 0.135GB 23245 ProbeStaleInboxAdopt 
+14:23:10 done 0601-interp-0.2.0-LeanCoreRepairRecites.cfg agree 0.277s 0.189GB 59884 Inv_OneName 
+14:23:10 done 0766-interp-0.1.2-LeanProbeStaleInboxAdopt.cfg agree 0.293s 0.107GB 25910 ProbeStaleInboxAdopt 
+14:23:11 done 0602-interp-0.1.2-LeanCoreRepairRecites.cfg agree 0.375s 0.127GB 59786 Inv_OneName 
+14:23:11 done 1195-tlc-tlc-FlintExtentsBlindProvision.cfg done 1.335s 0.725GB 18898 Inv_NoPriorOwnerDisclosure 
+14:23:11 done 1185-tlc-tlc-FlintCompositionEpochKeyedToo.cfg done 2.083s 1.222GB 128939  
+14:23:11 done 0749-interp-0.2.0-LeanProbeUploadWithheld.cfg agree 0.222s 0.166GB 22414 ProbeUploadWithheld 
+14:23:11 done 0750-interp-0.1.2-LeanProbeUploadWithheld.cfg agree 0.273s 0.103GB 25157 ProbeUploadWithheld 
+14:23:11 done 1192-tlc-tlc-LeanBarrierLeaseStragglerLoadsSuccessor.cfg done 2.504s 1.446GB 39533 Inv_NoStragglerInstall 
+14:23:11 done 1181-tlc-tlc-FlintComposition.cfg done 1.947s 1.218GB 128939  
+14:23:11 done 0958-examples-0.2.0-MCPaxosTiny.cfg success 0.228s 0.084GB 3921  tla-mc: MCPaxos (4 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:11 done 0813-interp-0.2.0-LeanBarrierLeaseLeakFlaps.cfg agree 0.218s 0.125GB 12140 Inv_TreesConverged 
+14:23:11 done 0971-examples-0.2.0-SlidingPuzzles.cfg safety failure 0.25s 0.088GB 24005  Error: Invariant KlotskiGoal is violated.
+14:23:11 done 0091-interp-0.2.0-FlintReplicationRollWedged.cfg agree 0.077s 0.109GB 7126  
+14:23:11 done 0814-interp-0.1.2-LeanBarrierLeaseLeakFlaps.cfg agree 0.209s 0.064GB 11807 Inv_TreesConverged 
+14:23:11 done 0092-interp-0.1.2-FlintReplicationRollWedged.cfg agree 0.233s 0.053GB 7126  
+14:23:12 done 0007-interp-0.2.0-FlintReplicationRejoin.cfg agree 0.165s 0.144GB 67761 Inv_NoDivergentServing 
+14:23:12 done 0008-interp-0.1.2-FlintReplicationRejoin.cfg agree 0.191s 0.084GB 69228 Inv_NoDivergentServing 
+14:23:12 done 0969-examples-0.2.0-Paxos.cfg success 0.233s 0.086GB 1207  tla-mc: Paxos (5 variables, 143 symmetry permutations), 8 workers, interp engine; loaded in 0.005s
+14:23:12 done 0205-interp-0.2.0-FlintExtentsProbeMerge.cfg agree 0.209s 0.121GB 37408 ProbeMergeFires 
+14:23:12 done 0972-examples-0.2.0-SlidingPuzzles_anim.cfg safety failure 0.288s 0.086GB 24010  Error: Invariant KlotskiGoal is violated.
+14:23:12 done 0959-examples-0.2.0-MCVoting.cfg success 0.308s 0.097GB 6752  tla-mc: MCVoting (2 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:12 done 0387-interp-0.2.0-ForgeSyncCodeNeededQueued.cfg agree 0.144s 0.088GB 12820 Inv_NamedIsLanded 
+14:23:12 done 0206-interp-0.1.2-FlintExtentsProbeMerge.cfg agree 0.168s 0.074GB 39626 ProbeMergeFires 
+14:23:12 done 0388-interp-0.1.2-ForgeSyncCodeNeededQueued.cfg agree 0.22s 0.06GB 12500 Inv_NamedIsLanded 
+14:23:12 done 0113-interp-0.2.0-FlintReplicationExpandGuard.cfg agree 0.093s 0.098GB 21978 Inv_NoDeviceShrink 
+14:23:13 done 0114-interp-0.1.2-FlintReplicationExpandGuard.cfg agree 0.194s 0.058GB 22586 Inv_NoDeviceShrink 
+14:23:13 done 0221-interp-0.2.0-FlintExtentsQuarantineBlindRelease.cfg agree 0.204s 0.129GB 42918 Inv_NoStaleExtentWrite 
+14:23:13 done 0677-interp-0.2.0-LeanRenameNoDestinationGuard.cfg agree 0.165s 0.15GB 19280 Inv_RenameNoHole 
+14:23:13 done 0222-interp-0.1.2-FlintExtentsQuarantineBlindRelease.cfg agree 0.237s 0.08GB 44217 Inv_NoStaleExtentWrite 
+14:23:13 done 0678-interp-0.1.2-LeanRenameNoDestinationGuard.cfg agree 0.225s 0.094GB 25964 Inv_RenameNoHole 
+14:23:13 done 0429-interp-0.2.0-FlintTierSessionProbeStale.cfg agree 0.153s 0.142GB 103335 Inv_NoStaleLand 
+14:23:13 done 1050-examples-0.2.0-MCEcho.cfg success 0.199s 0.068GB 75  tla-mc: MCEcho (6 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.006s
+14:23:13 done 0430-interp-0.1.2-FlintTierSessionProbeStale.cfg agree 0.201s 0.09GB 121583 Inv_NoStaleLand 
+14:23:13 done 1198-tlc-tlc-LeanCoreSweepLeaseFree.cfg done 3.291s 2.693GB 49944 Inv_CitationsLive 
+14:23:13 done 0711-interp-0.2.0-LeanBarrierLeaseNoRotate.cfg agree 0.157s 0.103GB 12495 Inv_NoStragglerInstall 
+14:23:14 done 0707-interp-0.2.0-LeanBarrierLeaseEpochReused.cfg agree 0.179s 0.107GB 13718 Inv_CommitExclusive 
+14:23:14 done 0708-interp-0.1.2-LeanBarrierLeaseEpochReused.cfg agree 0.181s 0.07GB 13856 Inv_CommitExclusive 
+14:23:14 done 1199-tlc-tlc-LeanProbeStaleInboxAdopt.cfg done 2.397s 1.327GB 26159 ProbeStaleInboxAdopt 
+14:23:14 done 1197-tlc-tlc-LeanProbeStragglerGCFenced.cfg done 2.734s 1.3GB 38163 ProbeFenceAbandoned 
+14:23:14 done 0965-examples-0.2.0-MC.cfg success 0.159s 0.121GB 21527  tla-mc: MC (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:14 done 0805-interp-0.2.0-LeanBarrierLeaseLeakResurrects.cfg agree 0.154s 0.104GB 11351 Inv_NoDeleteResurrected 
+14:23:14 done 0712-interp-0.1.2-LeanBarrierLeaseNoRotate.cfg agree 0.175s 0.066GB 12341 Inv_NoStragglerInstall 
+14:23:14 done 0511-interp-0.2.0-LeanNoWindowHolds.cfg agree 0.136s 0.096GB 7790  
+14:23:14 done 0512-interp-0.1.2-LeanNoWindowHolds.cfg agree 0.165s 0.057GB 7790  
+14:23:14 done 0806-interp-0.1.2-LeanBarrierLeaseLeakResurrects.cfg agree 0.177s 0.064GB 11651 Inv_NoDeleteResurrected 
+14:23:14 done 1167-tlc-tlc-FlintReplicationExpand.cfg done 22.108s 2.855GB 40284  
+14:23:14 done 1200-tlc-tlc-LeanCoreRepairRecites.cfg done 3.484s 2.833GB 68447 Inv_OneName 
+14:23:14 done 0167-interp-0.2.0-FlintTruncateMarkOverwrite.cfg agree 0.101s 0.097GB 40450  
+14:23:14 done 1034-examples-0.2.0-VoucherRedeem.cfg success 0.135s 0.101GB 4199  tla-mc: VoucherRedeem (7 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:14 done 0168-interp-0.1.2-FlintTruncateMarkOverwrite.cfg agree 0.139s 0.053GB 40450  
+14:23:15 done 0743-interp-0.2.0-LeanProbeFenceAbandoned.cfg agree 0.134s 0.119GB 12439 ProbeFenceAbandoned 
+14:23:15 done 0744-interp-0.1.2-LeanProbeFenceAbandoned.cfg agree 0.16s 0.076GB 12904 ProbeFenceAbandoned 
+14:23:15 done 0191-interp-0.2.0-FlintExtentsTgtAmnesia.cfg agree 0.142s 0.119GB 33413 Inv_NoStaleExtentWrite 
+14:23:15 done 1183-tlc-tlc-FlintTierEpochLive.cfg done 6.209s 2.772GB 73521  
+14:23:15 done 1205-tlc-tlc-FlintExtentsProbeMerge.cfg done 0.396s 0.065GB None  
+14:23:15 done 0192-interp-0.1.2-FlintExtentsTgtAmnesia.cfg agree 0.159s 0.07GB 33472 Inv_NoStaleExtentWrite 
+14:23:15 done 0618-interp-0.1.2-LeanCoreRetirePerPath.cfg agree 0.139s 0.064GB 25193 Inv_CitationsLive 
+14:23:15 done 0617-interp-0.2.0-LeanCoreRetirePerPath.cfg agree 0.163s 0.143GB 32721 Inv_CitationsLive 
+14:23:15 done 0777-interp-0.2.0-LeanBarrierLeaseOrphanDiverges.cfg agree 0.135s 0.098GB 7361 Inv_QuiescentConverged 
+14:23:15 done 0913-examples-0.2.0-MCDisruptor_SPMC.cfg success 0.144s 0.103GB 8496  tla-mc: MCDisruptor_SPMC (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:15 done 0778-interp-0.1.2-LeanBarrierLeaseOrphanDiverges.cfg agree 0.139s 0.064GB 7492 Inv_QuiescentConverged 
+14:23:16 done 1202-tlc-tlc-LeanBarrierLeaseLeakFlaps.cfg done 1.945s 1.182GB 12513 Inv_TreesConverged 
+14:23:16 done 1201-tlc-tlc-LeanProbeUploadWithheld.cfg done 1.96s 0.859GB 21885 ProbeUploadWithheld 
+14:23:16 done 1196-tlc-tlc-LeanBarrierLeaseDeadHandoffWedge.cfg done 4.483s 2.82GB 25289 temporal 
+14:23:16 done 0129-interp-0.2.0-FlintReplicationBouncePodFixed.cfg agree 0.057s 0.096GB 3314  
+14:23:16 done 0130-interp-0.1.2-FlintReplicationBouncePodFixed.cfg agree 0.127s 0.047GB 3314  
+14:23:16 done 1032-examples-0.2.0-VoucherIssue.cfg success 0.13s 0.101GB 4199  tla-mc: VoucherIssue (7 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:16 done 1190-tlc-tlc-ForgeSyncProbeToldFailed.cfg done 2.097s 1.182GB 28544 Inv_NoToldFailedButDurable 
+14:23:16 done 1208-tlc-tlc-FlintExtentsQuarantineBlindRelease.cfg done 1.33s 0.662GB 15164 Inv_NoStaleExtentWrite 
+14:23:16 done 0341-interp-0.2.0-ForgeSyncNoIdxGate.cfg agree 0.1s 0.088GB 6790 Inv_NamedIsUploaded 
+14:23:16 done 0223-interp-0.2.0-FlintExtentsQuarantineVisible.cfg agree 0.108s 0.125GB 19314 Inv_RecallCompletesBeforeReuse 
+14:23:16 done 0342-interp-0.1.2-ForgeSyncNoIdxGate.cfg agree 0.125s 0.049GB 7285 Inv_NamedIsUploaded 
+14:23:16 done 0918-examples-0.2.0-MCFlashWithMutexLive.cfg success 0.077s 0.103GB 8096  tla-mc: MCFlashWithMutexLive (17 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.002s
+14:23:16 done 1017-examples-0.2.0-ACP_SB_TLC.cfg success 0.081s 0.117GB 54944  tla-mc: ACP_SB_TLC (2 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:16 done 0224-interp-0.1.2-FlintExtentsQuarantineVisible.cfg agree 0.108s 0.056GB 19224 Inv_RecallCompletesBeforeReuse 
+14:23:17 done 0373-interp-0.2.0-ForgeSyncForgetPushPack.cfg agree 0.059s 0.084GB 4445 Inv_LandedPackComplete 
+14:23:17 done 0374-interp-0.1.2-ForgeSyncForgetPushPack.cfg agree 0.097s 0.053GB 4779 Inv_LandedPackComplete 
+14:23:17 done 1031-examples-0.2.0-VoucherCancel.cfg success 0.135s 0.098GB 4199  tla-mc: VoucherCancel (7 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:17 done 0011-interp-0.2.0-FlintReplicationF43.cfg agree 0.051s 0.098GB 3382 AdmissionNotStarved 
+14:23:17 done 1212-tlc-tlc-LeanBarrierLeaseEpochReused.cfg done 2.018s 0.958GB 19313 Inv_CommitExclusive 
+14:23:17 done 0179-interp-0.2.0-FlintExtentsMergeHeld.cfg agree 0.097s 0.111GB 17401 Inv_RecallCompletesBeforeReuse 
+14:23:17 done 0180-interp-0.1.2-FlintExtentsMergeHeld.cfg agree 0.098s 0.056GB 20611 Inv_RecallCompletesBeforeReuse 
+14:23:17 done 0012-interp-0.1.2-FlintReplicationF43.cfg agree 0.097s 0.051GB 3382 AdmissionNotStarved 
+14:23:17 done 0561-interp-0.2.0-LeanNarrowHolds.cfg agree 0.108s 0.094GB 4349  
+14:23:17 done 0562-interp-0.1.2-LeanNarrowHolds.cfg agree 0.123s 0.055GB 4349  
+14:23:18 done 0737-interp-0.2.0-LeanProbeHandoff.cfg agree 0.093s 0.096GB 7180 ProbeHandoffFired 
+14:23:18 done 0738-interp-0.1.2-LeanProbeHandoff.cfg agree 0.091s 0.066GB 5837 ProbeHandoffFired 
+14:23:18 done 0267-interp-0.2.0-FlintCompositionSelfRejoin.cfg agree 0.087s 0.125GB 51336 Inv_NoDoomedAck 
+14:23:18 done 1204-tlc-tlc-FlintReplicationRejoin.cfg done 1.987s 1.292GB 69889 Inv_NoDivergentServing 
+14:23:18 done 1211-tlc-tlc-LeanBarrierLeaseNoRotate.cfg done 1.997s 1.044GB 18094 Inv_NoStragglerInstall 
+14:23:18 done 0898-examples-0.2.0-Chameneos.cfg success 0.079s 0.09GB 34534  tla-mc: Chameneos (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:18 done 0942-examples-0.2.0-ElevatorLivenessMedium.cfg success 0.081s 0.088GB 4122  tla-mc: Elevator (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:18 done 0268-interp-0.1.2-FlintCompositionSelfRejoin.cfg agree 0.095s 0.082GB 50846 Inv_NoDoomedAck 
+14:23:18 done 1213-tlc-tlc-LeanBarrierLeaseLeakResurrects.cfg done 1.861s 0.732GB 11147 Inv_NoDeleteResurrected 
+14:23:18 done 0547-interp-0.2.0-LeanSyncHolds.cfg agree 0.094s 0.1GB 4399  
+14:23:18 done 0548-interp-0.1.2-LeanSyncHolds.cfg agree 0.112s 0.057GB 4399  
+14:23:18 done 1035-examples-0.2.0-VoucherTransfer.cfg success 0.122s 0.09GB 4197  tla-mc: VoucherTransfer (7 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:18 done 1209-tlc-tlc-LeanRenameNoDestinationGuard.cfg done 2.502s 2.086GB 57971 Inv_RenameNoHole 
+14:23:18 done 1210-tlc-tlc-FlintTierSessionProbeStale.cfg done 1.32s 0.655GB 84480 Inv_NoStaleLand 
+14:23:19 done 0189-interp-0.2.0-FlintExtentsLostFence.cfg agree 0.082s 0.109GB 18328 Inv_NoStaleExtentWrite 
+14:23:19 done 0163-interp-0.2.0-FlintTruncate.cfg agree 0.109s 0.103GB 35079  
+14:23:19 done 0164-interp-0.1.2-FlintTruncate.cfg agree 0.108s 0.043GB 35079  
+14:23:19 done 0190-interp-0.1.2-FlintExtentsLostFence.cfg agree 0.067s 0.058GB 18245 Inv_NoStaleExtentWrite 
+14:23:19 done 0989-examples-0.2.0-MCWriteThroughCache.cfg success 0.077s 0.088GB 5196  tla-mc: MCWriteThroughCache (6 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:19 done 0761-interp-0.2.0-LeanProbeCollectorLeaked.cfg agree 0.086s 0.09GB 6418 ProbeCollectorLeaked 
+14:23:19 done 1218-tlc-tlc-LeanCoreRetirePerPath.cfg done 3.034s 2.681GB 42097 Inv_CitationsLive 
+14:23:19 done 0115-interp-0.2.0-FlintReplicationExpandShrinkReal.cfg agree 0.069s 0.107GB 20196 Inv_NoDeviceShrink 
+14:23:19 done 0762-interp-0.1.2-LeanProbeCollectorLeaked.cfg agree 0.085s 0.068GB 6062 ProbeCollectorLeaked 
+14:23:19 done 0116-interp-0.1.2-FlintReplicationExpandShrinkReal.cfg agree 0.077s 0.056GB 22220 Inv_NoDeviceShrink 
+14:23:19 done 1217-tlc-tlc-FlintExtentsTgtAmnesia.cfg done 1.29s 0.749GB 19328 Inv_NoStaleExtentWrite 
+14:23:19 done 0657-interp-0.2.0-LeanChunkMerge.cfg agree 0.083s 0.062GB 32768  
+14:23:19 done 0771-interp-0.2.0-LeanProbeEmptyInstall.cfg agree 0.071s 0.117GB 5601 ProbeEmptyInstall 
+14:23:19 done 0658-interp-0.1.2-LeanChunkMerge.cfg agree 0.089s 0.041GB 32768  
+14:23:20 done 1194-tlc-tlc-FlintCompositionStaticTraddr.cfg done 4.317s 2.734GB 61816 temporal 
+14:23:20 done 1214-tlc-tlc-LeanNoWindowHolds.cfg done 1.5s 0.644GB 7790  
+14:23:20 done 0103-interp-0.2.0-FlintReplicationRollerRaceFixed.cfg agree 0.055s 0.094GB 5688  
+14:23:20 done 0772-interp-0.1.2-LeanProbeEmptyInstall.cfg agree 0.076s 0.064GB 5714 ProbeEmptyInstall 
+14:23:20 done 0104-interp-0.1.2-FlintReplicationRollerRaceFixed.cfg agree 0.083s 0.045GB 5688  
+14:23:20 done 1206-tlc-tlc-ForgeSyncCodeNeededQueued.cfg done 1.791s 0.706GB 18423 Inv_NamedIsLanded 
+14:23:20 done 0257-interp-0.2.0-FlintCompositionNoReplay.cfg agree 0.073s 0.117GB 38044 Inv_NoStaleExtentWrite 
+14:23:20 done 0970-examples-0.2.0-MC.cfg success 0.087s 0.101GB 3605  tla-mc: MC (2 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:20 done 0258-interp-0.1.2-FlintCompositionNoReplay.cfg agree 0.078s 0.07GB 34219 Inv_NoStaleExtentWrite 
+14:23:20 done 1219-tlc-tlc-LeanBarrierLeaseOrphanDiverges.cfg done 1.827s 0.727GB 6959 Inv_QuiescentConverged 
+14:23:20 done 0119-interp-0.2.0-FlintReplicationBounceRisk.cfg agree 0.035s 0.121GB 7947 Inv_NoBounceInducedRisk 
+14:23:20 done 0775-interp-0.2.0-LeanProbeTombstoneSuperseded.cfg agree 0.074s 0.129GB 6317 ProbeTombstoneSuperseded 
+14:23:20 done 0776-interp-0.1.2-LeanProbeTombstoneSuperseded.cfg agree 0.085s 0.066GB 6574 ProbeTombstoneSuperseded 
+14:23:21 done 1216-tlc-tlc-LeanProbeFenceAbandoned.cfg done 1.951s 1.048GB 19020 ProbeFenceAbandoned 
+14:23:21 done 0120-interp-0.1.2-FlintReplicationBounceRisk.cfg agree 0.069s 0.051GB 8388 Inv_NoBounceInducedRisk 
+14:23:21 done 0579-interp-0.2.0-LeanSentinelFencedAck.cfg agree 0.07s 0.102GB 5299 Inv_NoFencedOkAck 
+14:23:21 done 0580-interp-0.1.2-LeanSentinelFencedAck.cfg agree 0.061s 0.057GB 4254 Inv_NoFencedOkAck 
+14:23:21 done 1231-tlc-tlc-FlintTruncate.cfg done 1.157s 0.525GB 35079  
+14:23:21 done 1222-tlc-tlc-FlintExtentsQuarantineVisible.cfg done 1.174s 0.434GB 6293 Inv_RecallCompletesBeforeReuse 
+14:23:21 done 0619-interp-0.2.0-LeanCoreProbeRenamed.cfg agree 0.07s 0.107GB 12709 ProbeRenamed 
+14:23:21 done 0620-interp-0.1.2-LeanCoreProbeRenamed.cfg agree 0.069s 0.06GB 10311 ProbeRenamed 
+14:23:21 done 0597-interp-0.2.0-LeanSentinelClockUnstamped.cfg agree 0.067s 0.096GB 5526 Inv_BoundaryNamesItsClock 
+14:23:21 done 1215-tlc-tlc-FlintTruncateMarkOverwrite.cfg done 1.117s 0.565GB 40450  
+14:23:21 done 1226-tlc-tlc-LeanNarrowHolds.cfg done 1.508s 0.588GB 4349  
+14:23:21 done 0598-interp-0.1.2-LeanSentinelClockUnstamped.cfg agree 0.069s 0.06GB 5528 Inv_BoundaryNamesItsClock 
+14:23:21 done 0785-interp-0.2.0-LeanProbeOrphanOutlived.cfg agree 0.076s 0.107GB 5745 ProbeOrphanOutlived 
+14:23:21 done 0786-interp-0.1.2-LeanProbeOrphanOutlived.cfg agree 0.071s 0.06GB 4855 ProbeOrphanOutlived 
+14:23:22 done 0121-interp-0.2.0-FlintReplicationBounceRace.cfg agree 0.033s 0.111GB 7464 Inv_NoBounceInducedRisk 
+14:23:22 done 0559-interp-0.2.0-LeanProbeScopedDeferral.cfg agree 0.047s 0.098GB 3153 ProbeScopedDeferral 
+14:23:22 done 0122-interp-0.1.2-FlintReplicationBounceRace.cfg agree 0.072s 0.051GB 9749 Inv_NoBounceInducedRisk 
+14:23:22 done 1221-tlc-tlc-ForgeSyncNoIdxGate.cfg done 1.614s 0.696GB 11726 Inv_NamedIsUploaded 
+14:23:22 done 0289-interp-0.2.0-FlintCompositionLocalMark.cfg agree 0.051s 0.094GB 32285 Inv_NoDoomedAck 
+14:23:22 done 0560-interp-0.1.2-LeanProbeScopedDeferral.cfg agree 0.063s 0.056GB 3562 ProbeScopedDeferral 
+14:23:22 done 0290-interp-0.1.2-FlintCompositionLocalMark.cfg agree 0.066s 0.068GB 33031 Inv_NoDoomedAck 
+14:23:22 done 1225-tlc-tlc-FlintExtentsMergeHeld.cfg done 1.232s 0.63GB 12127 Inv_RecallCompletesBeforeReuse 
+14:23:22 done 0033-interp-0.2.0-FlintReplicationRollLease.cfg agree 0.031s 0.092GB 1754 MaintenanceEventuallyLifts 
+14:23:22 done 0863-interp-0.2.0-LeanImmutableSweepLeaseFree.cfg agree 0.056s 0.09GB 2655 Inv_NoDangling 
+14:23:22 done 0864-interp-0.1.2-LeanImmutableSweepLeaseFree.cfg agree 0.059s 0.057GB 2526 Inv_NoDangling 
+14:23:22 done 1229-tlc-tlc-LeanSyncHolds.cfg done 1.358s 0.649GB 4399  
+14:23:22 done 1207-tlc-tlc-FlintReplicationExpandGuard.cfg done 1.476s 0.787GB 24422 Inv_NoDeviceShrink 
+14:23:23 done 1228-tlc-tlc-FlintCompositionSelfRejoin.cfg done 1.197s 0.595GB 33543 Inv_NoDoomedAck 
+14:23:23 done 0085-interp-0.2.0-FlintReplicationA2AdoptArmed.cfg agree 0.037s 0.09GB 2238  
+14:23:23 done 0086-interp-0.1.2-FlintReplicationA2AdoptArmed.cfg agree 0.041s 0.029GB 2238  
+14:23:23 done 0034-interp-0.1.2-FlintReplicationRollLease.cfg agree 0.057s 0.047GB 1754 MaintenanceEventuallyLifts 
+14:23:23 done 0175-interp-0.2.0-FlintTruncateNoStaleServe.cfg agree 0.05s 0.086GB 13457  
+14:23:23 done 0745-interp-0.2.0-LeanProbeDeadHandoffSkipped.cfg agree 0.061s 0.107GB 4378 ProbeDeadHandoffSkipped 
+14:23:23 done 0746-interp-0.1.2-LeanProbeDeadHandoffSkipped.cfg agree 0.069s 0.055GB 4457 ProbeDeadHandoffSkipped 
+14:23:23 done 1227-tlc-tlc-LeanProbeHandoff.cfg done 1.706s 0.738GB 9143 ProbeHandoffFired 
+14:23:23 done 1234-tlc-tlc-LeanChunkMerge.cfg done 0.971s 0.219GB 32768  
+14:23:23 done 0176-interp-0.1.2-FlintTruncateNoStaleServe.cfg agree 0.056s 0.035GB 13457  
+14:23:23 done 0774-interp-0.1.2-LeanProbeTombstoneApplied.cfg agree 0.061s 0.058GB 4068 ProbeTombstoneApplied 
+14:23:23 done 0773-interp-0.2.0-LeanProbeTombstoneApplied.cfg agree 0.068s 0.101GB 3966 ProbeTombstoneApplied 
+14:23:23 done 1193-tlc-tlc-FlintReplicationMaintPark.cfg done 4.33s 2.741GB 23058 temporal 
+14:23:24 done 1230-tlc-tlc-FlintExtentsLostFence.cfg done 1.012s 0.365GB 4092 Inv_NoStaleExtentWrite 
+14:23:24 done 0741-interp-0.2.0-LeanProbeDeposalMidCommit.cfg agree 0.058s 0.09GB 3811 ProbeDeposalMidCommit 
+14:23:24 done 0930-examples-0.2.0-MCLeastCircularSubstringSmall.cfg success 0.052s 0.096GB 8554  tla-mc: MCLeastCircularSubstring (7 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:24 done 0742-interp-0.1.2-LeanProbeDeposalMidCommit.cfg agree 0.071s 0.059GB 3929 ProbeDeposalMidCommit 
+14:23:24 done 1016-examples-0.2.0-ACP_NB_WRONG_TLC.cfg safety failure 0.043s 0.1GB 12164  Error: Invariant AC1 is violated.
+14:23:24 done 0281-interp-0.2.0-FlintCompositionNoActor.cfg agree 0.037s 0.113GB 6867 ClientEventuallyRedirected 
+14:23:24 done 1015-examples-0.2.0-ACP_NB_TLC.cfg success 0.065s 0.101GB 4284  tla-mc: ACP_NB_TLC (2 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:24 done 1232-tlc-tlc-LeanProbeCollectorLeaked.cfg done 1.667s 0.746GB 10042 ProbeCollectorLeaked 
+14:23:24 done 1203-tlc-tlc-FlintReplicationRollWedged.cfg done 1.576s 0.888GB 7126  
+14:23:24 done 1243-tlc-tlc-LeanProbeOrphanOutlived.cfg done 1.617s 0.586GB 4970 ProbeOrphanOutlived 
+14:23:24 done 0282-interp-0.1.2-FlintCompositionNoActor.cfg agree 0.055s 0.051GB 6867 ClientEventuallyRedirected 
+14:23:24 done 0557-interp-0.2.0-LeanScopedSyncWholeBase.cfg agree 0.054s 0.09GB 2967 Inv_NoForeignLost 
+14:23:24 done 0558-interp-0.1.2-LeanScopedSyncWholeBase.cfg agree 0.067s 0.058GB 3837 Inv_NoForeignLost 
+14:23:25 done 0137-interp-0.2.0-FlintReplicationBounceStarve.cfg agree 0.031s 0.099GB 1840 RemediationNotStarved 
+14:23:25 done 0517-interp-0.2.0-LeanDirectMergeInsufficient.cfg agree 0.052s 0.096GB 2404 Inv_HITLDurable 
+14:23:25 done 0518-interp-0.1.2-LeanDirectMergeInsufficient.cfg agree 0.055s 0.051GB 2655 Inv_HITLDurable 
+14:23:25 done 1239-tlc-tlc-LeanProbeTombstoneSuperseded.cfg done 1.522s 0.648GB 7164 ProbeTombstoneSuperseded 
+14:23:25 done 1237-tlc-tlc-FlintCompositionNoReplay.cfg done 1.244s 0.649GB 40673 Inv_NoStaleExtentWrite 
+14:23:25 done 0138-interp-0.1.2-FlintReplicationBounceStarve.cfg agree 0.051s 0.047GB 1840 RemediationNotStarved 
+14:23:25 done 0835-interp-0.2.0-LeanImmutableNarrowUnlinkFirst.cfg agree 0.055s 0.092GB 3158 Inv_NarrowNeverDeletes 
+14:23:25 done 0836-interp-0.1.2-LeanImmutableNarrowUnlinkFirst.cfg agree 0.06s 0.057GB 3039 Inv_NarrowNeverDeletes 
+14:23:25 done 1235-tlc-tlc-LeanProbeEmptyInstall.cfg done 1.546s 0.665GB 7814 ProbeEmptyInstall 
+14:23:25 done 0187-interp-0.2.0-FlintExtentsStaleSnapshotFree.cfg agree 0.046s 0.115GB 8021 Inv_RecallCompletesBeforeReuse 
+14:23:25 done 0188-interp-0.1.2-FlintExtentsStaleSnapshotFree.cfg agree 0.051s 0.035GB 8006 Inv_RecallCompletesBeforeReuse 
+14:23:25 done 0331-interp-0.2.0-FlintTierEpochNoStampCheck.cfg agree 0.047s 0.107GB 33971 Inv_NoSuccessorOverwrite 
+14:23:25 done 0332-interp-0.1.2-FlintTierEpochNoStampCheck.cfg agree 0.05s 0.06GB 32478 Inv_NoSuccessorOverwrite 
+14:23:25 done 0937-examples-0.2.0-MCReachable.cfg success 0.048s 0.037GB 8  tla-mc: MCReachable (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.024s
+14:23:26 done 0945-examples-0.2.0-ElevatorSafetySmall.cfg success 0.042s 0.101GB 4122  tla-mc: Elevator (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:26 done 0983-examples-0.2.0-MCInnerSequential.cfg success 0.046s 0.109GB 3528  tla-mc: MCInnerSequential (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:26 done 1004-examples-0.2.0-Stones.cfg success 0.045s 0.019GB 0  tla-mc: Stones (0 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.037s
+14:23:26 done 1020-examples-0.2.0-SchedulingAllocator.cfg success 0.048s 0.098GB 1690  tla-mc: SchedulingAllocator (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:26 done 1233-tlc-tlc-FlintReplicationExpandShrinkReal.cfg done 1.66s 0.721GB 23296 Inv_NoDeviceShrink 
+14:23:26 done 1252-tlc-tlc-LeanProbeTombstoneApplied.cfg done 1.353s 0.626GB 4173 ProbeTombstoneApplied 
+14:23:26 done 1240-tlc-tlc-LeanSentinelFencedAck.cfg done 2.036s 1.165GB 21787 Inv_NoFencedOkAck 
+14:23:26 done 1251-tlc-tlc-LeanProbeDeadHandoffSkipped.cfg done 1.271s 0.574GB 5217 ProbeDeadHandoffSkipped 
+14:23:26 done 0037-interp-0.2.0-FlintReplicationRollProcessed.cfg agree 0.027s 0.088GB 335  
+14:23:26 done 0038-interp-0.1.2-FlintReplicationRollProcessed.cfg agree 0.031s 0.043GB 335  
+14:23:26 done 0225-interp-0.2.0-FlintExtentsProbeQuarantineRelease.cfg agree 0.045s 0.107GB 11821 ProbeQuarantineReleaseFires 
+14:23:26 done 1241-tlc-tlc-LeanCoreProbeRenamed.cfg done 1.988s 1.168GB 14107 ProbeRenamed 
+14:23:26 done 1242-tlc-tlc-LeanSentinelClockUnstamped.cfg done 1.426s 0.692GB 9347 Inv_BoundaryNamesItsClock 
+14:23:26 done 0303-interp-0.2.0-FlintCompositionNoWitness.cfg agree 0.034s 0.101GB 4601 PromotionCompletes 
+14:23:26 done 0226-interp-0.1.2-FlintExtentsProbeQuarantineRelease.cfg agree 0.048s 0.039GB 11112 ProbeQuarantineReleaseFires 
+14:23:26 done 0304-interp-0.1.2-FlintCompositionNoWitness.cfg agree 0.055s 0.035GB 4601 PromotionCompletes 
+14:23:27 done 1223-tlc-tlc-ForgeSyncForgetPushPack.cfg done 1.458s 0.592GB 6422 Inv_LandedPackComplete 
+14:23:27 done 0647-interp-0.2.0-LeanChunkGCAdoptSkips.cfg agree 0.042s 0.113GB 40339 Inv_LiveComplete 
+14:23:27 done 0648-interp-0.1.2-LeanChunkGCAdoptSkips.cfg agree 0.045s 0.062GB 42346 Inv_LiveComplete 
+14:23:27 done 0251-interp-0.2.0-FlintCompositionElectStale.cfg agree 0.043s 0.092GB 16526 Inv_NoDoomedAck 
+14:23:27 done 1255-tlc-tlc-LeanScopedSyncWholeBase.cfg done 0.386s 0.088GB None  
+14:23:27 done 0252-interp-0.1.2-FlintCompositionElectStale.cfg agree 0.032s 0.045GB 11279 Inv_NoDoomedAck 
+14:23:27 done 0819-interp-0.2.0-LeanProbeTombstoneOverLeak.cfg agree 0.043s 0.119GB 1804 ProbeTombstoneApplied 
+14:23:27 done 0820-interp-0.1.2-LeanProbeTombstoneOverLeak.cfg agree 0.046s 0.049GB 1877 ProbeTombstoneApplied 
+14:23:27 done 0201-interp-0.2.0-FlintExtentsProbeResnapshot.cfg agree 0.051s 0.105GB 8018 ProbeResnapshotGrows 
+14:23:27 done 0347-interp-0.2.0-ForgeSyncCasBeforePacks.cfg agree 0.035s 0.082GB 1224 Inv_LandedPackComplete 
+14:23:27 done 0202-interp-0.1.2-FlintExtentsProbeResnapshot.cfg agree 0.053s 0.039GB 8282 ProbeResnapshotGrows 
+14:23:28 done 1220-tlc-tlc-FlintReplicationBouncePodFixed.cfg done 1.436s 0.68GB 3314  
+14:23:28 done 1253-tlc-tlc-LeanProbeDeposalMidCommit.cfg done 1.516s 0.653GB 6323 ProbeDeposalMidCommit 
+14:23:28 done 1236-tlc-tlc-FlintReplicationRollerRaceFixed.cfg done 1.277s 0.677GB 5688  
+14:23:28 done 0348-interp-0.1.2-ForgeSyncCasBeforePacks.cfg agree 0.039s 0.047GB 1178 Inv_LandedPackComplete 
+14:23:28 done 0065-interp-0.2.0-FlintReplicationA2Armed.cfg agree 0.05s 0.1GB 2238  
+14:23:28 done 0066-interp-0.1.2-FlintReplicationA2Armed.cfg agree 0.051s 0.039GB 2238  
+14:23:28 done 0379-build-0.2.0-ForgeSyncReclaimBySet.cfg built 345.33s 0.647GB None  
+14:23:28 done 0195-interp-0.2.0-FlintExtentsProbeReuse.cfg agree 0.045s 0.092GB 8008 ProbeReuseFires 
+14:23:28 done 0343-interp-0.2.0-ForgeSyncNoTickOnHash.cfg agree 0.03s 0.088GB 1078 Inv_NoSkipOverMovement 
+14:23:28 done 1248-tlc-tlc-LeanImmutableSweepLeaseFree.cfg done 2.001s 0.587GB 3663 Inv_NoDangling 
+14:23:28 done 0196-interp-0.1.2-FlintExtentsProbeReuse.cfg agree 0.044s 0.035GB 7973 ProbeReuseFires 
+14:23:28 done 1257-tlc-tlc-LeanDirectMergeInsufficient.cfg done 1.363s 0.599GB 3859 Inv_HITLDurable 
+14:23:28 done 0344-interp-0.1.2-ForgeSyncNoTickOnHash.cfg agree 0.037s 0.049GB 1271 Inv_NoSkipOverMovement 
+14:23:28 done 0735-interp-0.2.0-LeanProbeWritersInterleave.cfg agree 0.041s 0.094GB 1411 ProbeWritersInterleave 
+14:23:28 done 0736-interp-0.1.2-LeanProbeWritersInterleave.cfg agree 0.047s 0.051GB 1372 ProbeWritersInterleave 
+14:23:29 done 1258-tlc-tlc-LeanImmutableNarrowUnlinkFirst.cfg done 2.199s 0.832GB 8176 Inv_NarrowNeverDeletes 
+14:23:29 done 1224-tlc-tlc-FlintReplicationF43.cfg done 1.569s 0.694GB 4714 temporal 
+14:23:29 done 1250-tlc-tlc-FlintTruncateNoStaleServe.cfg done 1.006s 0.245GB 13457  
+14:23:29 done 0047-interp-0.2.0-FlintReplicationRaidReconcile.cfg agree 0.025s 0.094GB 347  
+14:23:29 done 0048-interp-0.1.2-FlintReplicationRaidReconcile.cfg agree 0.034s 0.041GB 347  
+14:23:29 done 0051-interp-0.2.0-FlintReplicationRaidSeenFixed.cfg agree 0.029s 0.103GB 406  
+14:23:29 done 1267-tlc-tlc-FlintExtentsProbeResnapshot.cfg done 1.08s 0.363GB 2658 ProbeResnapshotGrows 
+14:23:29 done 0052-interp-0.1.2-FlintReplicationRaidSeenFixed.cfg agree 0.033s 0.043GB 406  
+14:23:29 done 0903-examples-0.2.0-CoffeeCan100Beans.cfg success 0.033s 0.088GB 5150  tla-mc: CoffeeCan (1 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.002s
+14:23:29 done 0917-examples-0.2.0-MCFlashWithMutex.cfg success 0.029s 0.074GB 2024  tla-mc: MCFlashWithMutex (17 variables, 3 symmetry permutations), 8 workers, interp engine; loaded in 0.002s
+14:23:29 done 1246-tlc-tlc-FlintCompositionLocalMark.cfg done 1.458s 0.716GB 74790 Inv_NoDoomedAck 
+14:23:29 done 0015-interp-0.2.0-FlintReplicationP4.cfg agree 0.021s 0.101GB 308 EventuallyWritable 
+14:23:29 done 0922-examples-0.2.0-MCGermanData.cfg success 0.036s 0.056GB 852  tla-mc: MCGermanData (11 variables, 3 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:29 done 0976-examples-0.2.0-SpanTree.cfg success 0.037s 0.084GB 1236  tla-mc: SpanTree (2 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:30 done 1269-tlc-tlc-FlintReplicationA2Armed.cfg done 1.195s 0.425GB 2238  
+14:23:30 done 1259-tlc-tlc-FlintExtentsStaleSnapshotFree.cfg done 0.927s 0.239GB 1719 Inv_RecallCompletesBeforeReuse 
+14:23:30 done 1245-tlc-tlc-LeanProbeScopedDeferral.cfg done 1.289s 0.569GB 3336 ProbeScopedDeferral 
+14:23:30 done 1260-tlc-tlc-FlintTierEpochNoStampCheck.cfg done 0.984s 0.246GB 14214 Inv_NoSuccessorOverwrite 
+14:23:30 done 0016-interp-0.1.2-FlintReplicationP4.cfg agree 0.028s 0.041GB 308 EventuallyWritable 
+14:23:30 done 0035-interp-0.2.0-FlintReplicationRollWedge.cfg agree 0.026s 0.072GB 79 RollProcessedNodeRolls 
+14:23:30 done 0036-interp-0.1.2-FlintReplicationRollWedge.cfg agree 0.025s 0.041GB 79 RollProcessedNodeRolls 
+14:23:30 done 1270-tlc-tlc-FlintExtentsProbeReuse.cfg done 0.892s 0.21GB 1261 ProbeReuseFires 
+14:23:30 done 0581-interp-0.2.0-LeanSentinelFastPathUnguarded.cfg agree 0.034s 0.066GB 1759 Inv_AckBoundaryCoherent 
+14:23:30 done 0582-interp-0.1.2-LeanSentinelFastPathUnguarded.cfg agree 0.034s 0.053GB 1468 Inv_AckBoundaryCoherent 
+14:23:30 done 0589-interp-0.2.0-LeanProbeAckAfterCrash.cfg agree 0.033s 0.082GB 1694 ProbeAckAfterCrash 
+14:23:30 done 1262-tlc-tlc-FlintExtentsProbeQuarantineRelease.cfg done 1.03s 0.308GB 3610 ProbeQuarantineReleaseFires 
+14:23:30 done 1265-tlc-tlc-FlintCompositionElectStale.cfg done 0.983s 0.32GB 12506 Inv_NoDoomedAck 
+14:23:30 done 0590-interp-0.1.2-LeanProbeAckAfterCrash.cfg agree 0.036s 0.053GB 1807 ProbeAckAfterCrash 
+14:23:30 done 0671-interp-0.2.0-LeanRemovalViaWalk.cfg agree 0.034s 0.084GB 1562 Inv_RenameAtomic 
+14:23:30 done 0672-interp-0.1.2-LeanRemovalViaWalk.cfg agree 0.033s 0.051GB 1579 Inv_RenameAtomic 
+14:23:31 done 0050-interp-0.1.2-FlintReplicationRaidSeenBlind.cfg agree 0.029s 0.043GB 103 RaidEventuallyReassembled 
+14:23:31 done 0049-interp-0.2.0-FlintReplicationRaidSeenBlind.cfg agree 0.036s 0.09GB 103 RaidEventuallyReassembled 
+14:23:31 done 0285-interp-0.2.0-FlintCompositionWaitsPrice.cfg agree 0.029s 0.092GB 3230 PromotionCompletesUnconditional 
+14:23:31 done 1264-tlc-tlc-LeanChunkGCAdoptSkips.cfg done 1.077s 0.421GB 59229 Inv_LiveComplete 
+14:23:31 done 0286-interp-0.1.2-FlintCompositionWaitsPrice.cfg agree 0.033s 0.035GB 3230 PromotionCompletesUnconditional 
+14:23:31 done 0739-interp-0.2.0-LeanProbeEnqueued.cfg agree 0.031s 0.088GB 1022 ProbeEnqueued 
+14:23:31 done 0740-interp-0.1.2-LeanProbeEnqueued.cfg agree 0.034s 0.051GB 1102 ProbeEnqueued 
+14:23:31 done 1266-tlc-tlc-LeanProbeTombstoneOverLeak.cfg done 1.384s 0.471GB 2340 ProbeTombstoneApplied 
+14:23:31 done 1249-tlc-tlc-FlintReplicationA2AdoptArmed.cfg done 1.111s 0.452GB 2238  
+14:23:31 done 1272-tlc-tlc-LeanProbeWritersInterleave.cfg done 1.275s 0.513GB 2062 ProbeWritersInterleave 
+14:23:31 done 0023-interp-0.2.0-FlintReplicationMonitorLag.cfg agree 0.02s 0.086GB 1349 Inv_NoSilentLoss 
+14:23:31 done 0024-interp-0.1.2-FlintReplicationMonitorLag.cfg agree 0.021s 0.033GB 1790 Inv_NoSilentLoss 
+14:23:31 done 0403-interp-0.2.0-FlintTierMarker.cfg agree 0.026s 0.053GB 3554  
+14:23:32 done 0404-interp-0.1.2-FlintTierMarker.cfg agree 0.033s 0.039GB 3554  
+14:23:32 done 0883-interp-0.2.0-LeanImmutableProbeSwept.cfg agree 0.038s 0.106GB 1832 ProbeSwept 
+14:23:32 done 1238-tlc-tlc-FlintReplicationBounceRisk.cfg done 1.342s 0.689GB 11341 Inv_NoBounceInducedRisk 
+14:23:32 done 0884-interp-0.1.2-LeanImmutableProbeSwept.cfg agree 0.037s 0.049GB 1869 ProbeSwept 
+14:23:32 done 1268-tlc-tlc-ForgeSyncCasBeforePacks.cfg done 1.184s 0.371GB 1781 Inv_LandedPackComplete 
+14:23:32 done 0885-interp-0.2.0-LeanImmutableProbeGC.cfg agree 0.037s 0.092GB 920 ProbeGC 
+14:23:32 done 0323-interp-0.2.0-FlintTierEpochNoSweep.cfg agree 0.032s 0.101GB 12695 Inv_NoPreSweepMpuLand 
+14:23:32 done 0886-interp-0.1.2-LeanImmutableProbeGC.cfg agree 0.042s 0.051GB 1271 ProbeGC 
+14:23:32 done 1280-tlc-tlc-FlintReplicationRaidSeenBlind.cfg done 1.073s 0.258GB 103 temporal 
+14:23:32 done 0324-interp-0.1.2-FlintTierEpochNoSweep.cfg agree 0.028s 0.045GB 9910 Inv_NoPreSweepMpuLand 
+14:23:32 done 0435-interp-0.2.0-FlintClientIdentityNconnect3.cfg agree 0.037s 0.09GB 4375  
+14:23:32 done 0436-interp-0.1.2-FlintClientIdentityNconnect3.cfg agree 0.034s 0.029GB 4375  
+14:23:32 done 1277-tlc-tlc-LeanSentinelFastPathUnguarded.cfg done 1.261s 0.452GB 3170 Inv_AckBoundaryCoherent 
+14:23:33 done 0021-interp-0.2.0-FlintReplicationGateRealStale.cfg agree 0.034s 0.082GB 1489 Inv_NoStaleServe 
+14:23:33 done 0022-interp-0.1.2-FlintReplicationGateRealStale.cfg agree 0.036s 0.033GB 1759 Inv_NoStaleServe 
+14:23:33 done 0045-interp-0.2.0-FlintReplicationRaidRefuse.cfg agree 0.032s 0.101GB 201  
+14:23:33 done 1279-tlc-tlc-LeanRemovalViaWalk.cfg done 1.55s 0.58GB 2706 Inv_RenameAtomic 
+14:23:33 done 0046-interp-0.1.2-FlintReplicationRaidRefuse.cfg agree 0.029s 0.039GB 201  
+14:23:33 done 0133-interp-0.2.0-FlintReplicationBouncePlanner.cfg agree 0.033s 0.09GB 4314 Inv_NoDoomedBounce 
+14:23:33 done 0134-interp-0.1.2-FlintReplicationBouncePlanner.cfg agree 0.038s 0.035GB 4277 Inv_NoDoomedBounce 
+14:23:33 done 0155-interp-0.2.0-FlintSnapshots.cfg agree 0.025s 0.107GB 2233  
+14:23:33 done 0156-interp-0.1.2-FlintSnapshots.cfg agree 0.035s 0.029GB 2233  
+14:23:33 done 0545-interp-0.2.0-LeanProbeAdoptOwn.cfg agree 0.034s 0.098GB 680 ProbeAdoptOwn 
+14:23:33 done 1244-tlc-tlc-FlintReplicationBounceRace.cfg done 1.398s 0.689GB 13102 Inv_NoBounceInducedRisk 
+14:23:34 done 1285-tlc-tlc-LeanImmutableProbeSwept.cfg done 1.629s 0.376GB 1690 ProbeSwept 
+14:23:34 done 0546-interp-0.1.2-LeanProbeAdoptOwn.cfg agree 0.035s 0.047GB 773 ProbeAdoptOwn 
+14:23:34 done 0585-interp-0.2.0-LeanProbeSentinelHonored.cfg agree 0.032s 0.076GB 971 ProbeSentinelHonored 
+14:23:34 done 0586-interp-0.1.2-LeanProbeSentinelHonored.cfg agree 0.031s 0.051GB 971 ProbeSentinelHonored 
+14:23:34 done 1288-tlc-tlc-FlintClientIdentityNconnect3.cfg done 1.122s 0.342GB 4375  
+14:23:34 done 0528-interp-0.1.2-LeanNoEpochCheck.cfg agree 0.026s 0.051GB 641 Inv_NoDeposedPut 
+14:23:34 done 0527-interp-0.2.0-LeanNoEpochCheck.cfg agree 0.025s 0.088GB 491 Inv_NoDeposedPut 
+14:23:34 done 0607-interp-0.2.0-LeanCoreSweepTakesNamed.cfg agree 0.025s 0.092GB 2422 Inv_AckedNamed 
+14:23:34 done 1289-tlc-tlc-FlintReplicationGateRealStale.cfg done 1.088s 0.371GB 2269 Inv_NoStaleServe 
+14:23:34 done 1286-tlc-tlc-LeanImmutableProbeGC.cfg done 1.774s 0.543GB 2160 ProbeGC 
+14:23:34 done 0141-interp-0.2.0-FlintClaims.cfg agree 0.018s 0.084GB 150  
+14:23:34 done 0142-interp-0.1.2-FlintClaims.cfg agree 0.018s 0.025GB 150  
+14:23:34 done 0608-interp-0.1.2-LeanCoreSweepTakesNamed.cfg agree 0.031s 0.049GB 3426 Inv_AckedNamed 
+14:23:34 done 1254-tlc-tlc-FlintCompositionNoActor.cfg done 4.297s 2.634GB 76397 temporal 
+14:23:34 done 0211-interp-0.2.0-FlintExtentsForgedCommit.cfg agree 0.031s 0.105GB 4799 Inv_NoForgedCommit 
+14:23:34 done 0327-interp-0.2.0-FlintTierEpochNoFence.cfg agree 0.024s 0.101GB 2529 DeposedEventuallyFenced 
+14:23:34 done 0212-interp-0.1.2-FlintExtentsForgedCommit.cfg agree 0.031s 0.043GB 5256 Inv_NoForgedCommit 
+14:23:35 done 1293-tlc-tlc-LeanProbeAdoptOwn.cfg done 1.23s 0.35GB 1004 ProbeAdoptOwn 
+14:23:35 done 0328-interp-0.1.2-FlintTierEpochNoFence.cfg agree 0.028s 0.033GB 2529 DeposedEventuallyFenced 
+14:23:35 done 0563-interp-0.2.0-LeanNarrowUnlinkFirst.cfg agree 0.03s 0.086GB 732 Inv_NarrowNeverDeletes 
+14:23:35 done 0564-interp-0.1.2-LeanNarrowUnlinkFirst.cfg agree 0.03s 0.051GB 723 Inv_NarrowNeverDeletes 
+14:23:35 done 1291-tlc-tlc-FlintReplicationBouncePlanner.cfg done 1.264s 0.589GB 4849 Inv_NoDoomedBounce 
+14:23:35 done 0147-interp-0.2.0-FlintReplicationKubeToothVolume.cfg agree 0.015s 0.07GB 104 Inv_ProbeNeverReddensLive 
+14:23:35 done 0659-interp-0.2.0-LeanChunkMergeSplice.cfg agree 0.023s 0.029GB 39 Inv_ChunkedMergeMatches 
+14:23:35 done 0660-interp-0.1.2-LeanChunkMergeSplice.cfg agree 0.023s 0.029GB 39 Inv_ChunkedMergeMatches 
+14:23:35 done 1278-tlc-tlc-LeanProbeAckAfterCrash.cfg done 1.349s 0.582GB 4206 ProbeAckAfterCrash 
+14:23:35 done 1287-tlc-tlc-FlintTierEpochNoSweep.cfg done 1.041s 0.207GB 10552 Inv_NoPreSweepMpuLand 
+14:23:35 done 1290-tlc-tlc-FlintReplicationRaidRefuse.cfg done 1.266s 0.46GB 201  
+14:23:35 done 0148-interp-0.1.2-FlintReplicationKubeToothVolume.cfg agree 0.014s 0.031GB 95 Inv_ProbeNeverReddensLive 
+14:23:35 done 1263-tlc-tlc-FlintCompositionNoWitness.cfg done 4.2s 2.63GB 98316 temporal 
+14:23:35 done 0209-interp-0.2.0-FlintExtentsUngatedSize.cfg agree 0.024s 0.101GB 5582 Inv_SizeCommitCoupled 
+14:23:35 done 0210-interp-0.1.2-FlintExtentsUngatedSize.cfg agree 0.022s 0.035GB 4898 Inv_SizeCommitCoupled 
+14:23:36 done 1294-tlc-tlc-LeanProbeSentinelHonored.cfg done 1.219s 0.424GB 2696 ProbeSentinelHonored 
+14:23:36 done 0587-interp-0.2.0-LeanProbeRefusedAck.cfg agree 0.037s 0.098GB 550 ProbeRefusedAck 
+14:23:36 done 0588-interp-0.1.2-LeanProbeRefusedAck.cfg agree 0.04s 0.047GB 605 ProbeRefusedAck 
+14:23:36 done 0988-examples-0.2.0-MCInternalMemory.cfg success 0.034s 0.098GB 4408  tla-mc: MCInternalMemory (4 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:36 done 1030-examples-0.2.0-kvstore.cfg success 0.021s 0.086GB 2641  tla-mc: kvstore (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:36 done 1073-examples-0.2.0-nbacc_ray97.cfg success 0.031s 0.086GB 3016  tla-mc: nbacc_ray97 (4 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:36 done 1078-examples-0.2.0-MC.cfg safety failure 0.03s 0.076GB 237  Error: Invariant NotSolved is violated.
+14:23:36 done 1298-tlc-tlc-FlintExtentsForgedCommit.cfg done 0.953s 0.248GB 1767 Inv_NoForgedCommit 
+14:23:36 done 0060-interp-0.1.2-FlintReplicationA2Naive.cfg agree 0.018s 0.027GB 34 Inv_A2AssemblesOnlyAtTruth 
+14:23:36 done 0059-interp-0.2.0-FlintReplicationA2Naive.cfg agree 0.023s 0.045GB 34 Inv_A2AssemblesOnlyAtTruth 
+14:23:36 done 0071-interp-0.2.0-FlintReplicationUncontrolledBlind.cfg agree 0.023s 0.072GB 402  
+14:23:37 done 1247-tlc-tlc-FlintReplicationRollLease.cfg done 1.783s 1.157GB 6884 temporal 
+14:23:37 done 1282-tlc-tlc-LeanProbeEnqueued.cfg done 1.272s 0.449GB 1933 ProbeEnqueued 
+14:23:37 done 0072-interp-0.1.2-FlintReplicationUncontrolledBlind.cfg agree 0.02s 0.031GB 402  
+14:23:37 done 0099-interp-0.2.0-FlintReplicationRollerRace.cfg agree 0.02s 0.082GB 104 Inv_PlannedRollBoundedImpact 
+14:23:37 done 0100-interp-0.1.2-FlintReplicationRollerRace.cfg agree 0.015s 0.031GB 111 Inv_PlannedRollBoundedImpact 
+14:23:37 done 1271-tlc-tlc-ForgeSyncNoTickOnHash.cfg done 1.128s 0.397GB 2268 Inv_NoSkipOverMovement 
+14:23:37 done 1300-tlc-tlc-LeanNarrowUnlinkFirst.cfg done 1.16s 0.342GB 1044 Inv_NarrowNeverDeletes 
+14:23:37 done 1274-tlc-tlc-FlintReplicationRaidSeenFixed.cfg done 1.237s 0.328GB 406  
+14:23:37 done 0439-interp-0.2.0-FlintClientIdentityIndexBlind.cfg agree 0.016s 0.07GB 578 Inv_IndexCoversLiveOwners 
+14:23:37 done 0440-interp-0.1.2-FlintClientIdentityIndexBlind.cfg agree 0.017s 0.029GB 559 Inv_IndexCoversLiveOwners 
+14:23:37 done 0515-interp-0.2.0-LeanAmputation.cfg agree 0.026s 0.094GB 280 Inv_HITLDurable 
+14:23:37 done 0516-interp-0.1.2-LeanAmputation.cfg agree 0.024s 0.051GB 282 Inv_HITLDurable 
+14:23:37 done 0663-interp-0.2.0-LeanChunkMergeProbeBoth.cfg agree 0.024s 0.029GB 34 Probe_BothWrote 
+14:23:37 done 0664-interp-0.1.2-LeanChunkMergeProbeBoth.cfg agree 0.024s 0.029GB 34 Probe_BothWrote 
+14:23:38 done 1304-tlc-tlc-LeanProbeRefusedAck.cfg done 1.144s 0.3GB 648 ProbeRefusedAck 
+14:23:38 done 0005-interp-0.2.0-FlintReplicationF36c.cfg agree 0.024s 0.096GB 2728 Inv_NoSilentLoss 
+14:23:38 done 0006-interp-0.1.2-FlintReplicationF36c.cfg agree 0.021s 0.033GB 2089 Inv_NoSilentLoss 
+14:23:38 done 0031-interp-0.2.0-FlintReplicationRollBarrier.cfg agree 0.018s 0.072GB 91 Inv_PlannedRollBoundedImpact 
+14:23:38 done 1261-tlc-tlc-FlintReplicationRollProcessed.cfg done 1.259s 0.478GB 335  
+14:23:38 done 0032-interp-0.1.2-FlintReplicationRollBarrier.cfg agree 0.015s 0.031GB 106 Inv_PlannedRollBoundedImpact 
+14:23:38 done 0183-interp-0.2.0-FlintExtentsReuseUnderGrant.cfg agree 0.02s 0.09GB 2383 Inv_NoStaleExtentWrite 
+14:23:38 done 0184-interp-0.1.2-FlintExtentsReuseUnderGrant.cfg agree 0.019s 0.029GB 2380 Inv_NoStaleExtentWrite 
+14:23:38 done 1284-tlc-tlc-FlintTierMarker.cfg done 1.021s 0.226GB 3554  
+14:23:38 done 1276-tlc-tlc-FlintReplicationRollWedge.cfg done 1.151s 0.294GB 79 temporal 
+14:23:38 done 1273-tlc-tlc-FlintReplicationRaidReconcile.cfg done 1.282s 0.4GB 347  
+14:23:38 done 0455-interp-0.2.0-FlintClientIdentityLeaseNotifyUnique.cfg agree 0.029s 0.086GB 3142  
+14:23:38 done 0456-interp-0.1.2-FlintClientIdentityLeaseNotifyUnique.cfg agree 0.029s 0.029GB 3142  
+14:23:38 done 0593-interp-0.2.0-LeanProbeFastPathHonor.cfg agree 0.026s 0.064GB 328 ProbeFastPathHonor 
+14:23:39 done 0594-interp-0.1.2-LeanProbeFastPathHonor.cfg agree 0.023s 0.049GB 328 ProbeFastPathHonor 
+14:23:39 done 0661-interp-0.2.0-LeanChunkMergeProbeDiverge.cfg agree 0.025s 0.029GB 2 Probe_BoundariesDiverged 
+14:23:39 done 0662-interp-0.1.2-LeanChunkMergeProbeDiverge.cfg agree 0.03s 0.029GB 2 Probe_BoundariesDiverged 
+14:23:39 done 1309-tlc-tlc-LeanAmputation.cfg done 1.145s 0.298GB 416 Inv_HITLDurable 
+14:23:39 done 1292-tlc-tlc-FlintSnapshots.cfg done 0.917s 0.163GB 2233  
+14:23:39 done 0838-interp-0.1.2-LeanImmutableNarrowUncieFirst.cfg agree 0.022s 0.049GB 286 Inv_NarrowNeverRecites 
+14:23:39 done 0009-interp-0.2.0-FlintReplicationF48.cfg agree 0.018s 0.08GB 276 Inv_NoDivergentServing 
+14:23:39 done 0837-interp-0.2.0-LeanImmutableNarrowUncieFirst.cfg agree 0.027s 0.088GB 300 Inv_NarrowNeverRecites 
+14:23:39 done 0010-interp-0.1.2-FlintReplicationF48.cfg agree 0.016s 0.033GB 212 Inv_NoDivergentServing 
+14:23:39 done 0029-interp-0.2.0-FlintReplicationRollUnfenced.cfg agree 0.017s 0.074GB 129 Inv_PlannedRollNeverCausesOutage 
+14:23:39 done 0030-interp-0.1.2-FlintReplicationRollUnfenced.cfg agree 0.015s 0.031GB 123 Inv_PlannedRollNeverCausesOutage 
+14:23:39 done 1295-tlc-tlc-LeanNoEpochCheck.cfg done 1.134s 0.299GB 504 Inv_NoDeposedPut 
+14:23:39 done 1256-tlc-tlc-FlintReplicationBounceStarve.cfg done 4.35s 2.779GB 55511 temporal 
+14:23:40 done 0041-interp-0.2.0-FlintReplicationRaidLost.cfg agree 0.02s 0.086GB 103 RaidEventuallyReassembled 
+14:23:40 done 0042-interp-0.1.2-FlintReplicationRaidLost.cfg agree 0.022s 0.029GB 103 RaidEventuallyReassembled 
+14:23:40 done 0443-interp-0.2.0-FlintClientIdentityNoCollide.cfg agree 0.02s 0.088GB 1015  
+14:23:40 done 1314-tlc-tlc-FlintClientIdentityLeaseNotifyUnique.cfg done 1.007s 0.294GB 3142  
+14:23:40 done 1296-tlc-tlc-LeanCoreSweepTakesNamed.cfg done 1.355s 0.612GB 2186 Inv_AckedNamed 
+14:23:40 done 1316-tlc-tlc-LeanChunkMergeProbeDiverge.cfg done 0.818s 0.112GB None Probe_BoundariesDiverged 
+14:23:40 done 0444-interp-0.1.2-FlintClientIdentityNoCollide.cfg agree 0.026s 0.029GB 1015  
+14:23:40 done 0525-interp-0.2.0-LeanNoRotate.cfg agree 0.031s 0.084GB 269 Inv_NoStragglerInstall 
+14:23:40 done 0526-interp-0.1.2-LeanNoRotate.cfg agree 0.031s 0.051GB 329 Inv_NoStragglerInstall 
+14:23:40 done 1315-tlc-tlc-LeanProbeFastPathHonor.cfg done 1.17s 0.318GB 1140 ProbeFastPathHonor 
+14:23:40 done 0783-interp-0.2.0-LeanProbeOrphanTracked.cfg agree 0.024s 0.102GB 228 ProbeOrphanTracked 
+14:23:40 done 0784-interp-0.1.2-LeanProbeOrphanTracked.cfg agree 0.023s 0.049GB 260 ProbeOrphanTracked 
+14:23:40 done 0865-interp-0.2.0-LeanImmutableSweepTakesTracked.cfg agree 0.025s 0.086GB 172 Inv_HITLDurable 
+14:23:41 done 0866-interp-0.1.2-LeanImmutableSweepTakesTracked.cfg agree 0.023s 0.051GB 182 Inv_HITLDurable 
+14:23:41 done 0889-interp-0.2.0-LeanImmutableProbeHITLCited.cfg agree 0.026s 0.103GB 445 ProbeHITLCited 
+14:23:41 done 0890-interp-0.1.2-LeanImmutableProbeHITLCited.cfg agree 0.024s 0.051GB 499 ProbeHITLCited 
+14:23:41 done 1310-tlc-tlc-LeanChunkMergeProbeBoth.cfg done 0.868s 0.11GB None Probe_BothWrote 
+14:23:41 done 1155-tlc-tlc-LeanImmutableProbePending.cfg done 58.571s 4.234GB 529141 ProbePendingKept 
+14:23:41 done 1303-tlc-tlc-FlintExtentsUngatedSize.cfg done 0.982s 0.236GB 849 Inv_SizeCommitCoupled 
+14:23:41 done 0039-interp-0.2.0-FlintReplicationRaidLifetime.cfg agree 0.017s 0.047GB 14 Inv_PlannedRollNeverCausesOutage 
+14:23:41 done 0040-interp-0.1.2-FlintReplicationRaidLifetime.cfg agree 0.015s 0.025GB 14 Inv_PlannedRollNeverCausesOutage 
+14:23:41 done 0053-interp-0.2.0-FlintReplicationRefusalClears.cfg agree 0.017s 0.092GB 296 Inv_RefusalNeverClears 
+14:23:41 done 1281-tlc-tlc-FlintCompositionWaitsPrice.cfg done 4.224s 2.637GB 113334 temporal 
+14:23:41 done 1311-tlc-tlc-FlintReplicationF36c.cfg done 1.14s 0.334GB 2495 Inv_NoSilentLoss 
+14:23:41 done 1318-tlc-tlc-LeanImmutableNarrowUncieFirst.cfg done 1.478s 0.586GB 2172 Inv_NarrowNeverRecites 
+14:23:41 done 0054-interp-0.1.2-FlintReplicationRefusalClears.cfg agree 0.019s 0.033GB 297 Inv_RefusalNeverClears 
+14:23:41 done 0101-interp-0.2.0-FlintReplicationRollerRaceUngated.cfg agree 0.02s 0.084GB 102 Inv_PlannedRollBoundedImpact 
+14:23:41 done 0102-interp-0.1.2-FlintReplicationRollerRaceUngated.cfg agree 0.015s 0.031GB 115 Inv_PlannedRollBoundedImpact 
+14:23:41 done 1322-tlc-tlc-LeanNoRotate.cfg done 1.09s 0.299GB 433 Inv_NoStragglerInstall 
+14:23:41 done 0253-interp-0.2.0-FlintCompositionDegradeBlind.cfg agree 0.027s 0.096GB 8563 Inv_NoDoomedAck 
+14:23:41 done 0254-interp-0.1.2-FlintCompositionDegradeBlind.cfg agree 0.024s 0.031GB 5670 Inv_NoDoomedAck 
+14:23:41 done 0425-interp-0.2.0-FlintTierSessionNoRotate.cfg agree 0.021s 0.084GB 6259 Inv_NoBeatingSessionDeposed 
+14:23:42 done 0426-interp-0.1.2-FlintTierSessionNoRotate.cfg agree 0.022s 0.035GB 7448 Inv_NoBeatingSessionDeposed 
+14:23:42 done 0431-interp-0.2.0-FlintClientIdentity.cfg agree 0.025s 0.099GB 2082  
+14:23:42 done 0432-interp-0.1.2-FlintClientIdentity.cfg agree 0.024s 0.029GB 2082  
+14:23:42 done 1302-tlc-tlc-LeanChunkMergeSplice.cfg done 0.802s 0.109GB None Inv_ChunkedMergeMatches 
+14:23:42 done 1324-tlc-tlc-LeanImmutableSweepTakesTracked.cfg done 1.165s 0.324GB 505 Inv_HITLDurable 
+14:23:42 done 1305-tlc-tlc-FlintReplicationA2Naive.cfg done 0.965s 0.179GB 65 Inv_A2AssemblesOnlyAtTruth 
+14:23:42 done 1325-tlc-tlc-LeanImmutableProbeHITLCited.cfg done 1.296s 0.369GB 791 ProbeHITLCited 
+14:23:42 done 0519-interp-0.2.0-LeanLocalWins.cfg agree 0.021s 0.086GB 172 Inv_HITLDurable 
+14:23:42 done 0520-interp-0.1.2-LeanLocalWins.cfg agree 0.02s 0.053GB 181 Inv_HITLDurable 
+14:23:42 done 0521-interp-0.2.0-LeanGCUnguarded.cfg agree 0.022s 0.094GB 193 Inv_HITLDurable 
+14:23:42 done 1306-tlc-tlc-FlintReplicationUncontrolledBlind.cfg done 1.039s 0.212GB 402  
+14:23:42 done 1323-tlc-tlc-LeanProbeOrphanTracked.cfg done 1.157s 0.304GB 590 ProbeOrphanTracked 
+14:23:42 done 0522-interp-0.1.2-LeanGCUnguarded.cfg agree 0.02s 0.053GB 181 Inv_HITLDurable 
+14:23:42 done 0537-interp-0.2.0-LeanProbeStragglerAttempt.cfg agree 0.023s 0.098GB 346 ProbeStragglerAttempt 
+14:23:42 done 0538-interp-0.1.2-LeanProbeStragglerAttempt.cfg agree 0.021s 0.049GB 276 ProbeStragglerAttempt 
+14:23:43 done 1275-tlc-tlc-FlintReplicationP4.cfg done 1.105s 0.281GB 308 temporal 
+14:23:43 done 0576-interp-0.1.2-LeanSentinelOrphan.cfg agree 0.029s 0.051GB 328 Inv_NoNonceOrphan 
+14:23:43 done 0575-interp-0.2.0-LeanSentinelOrphan.cfg agree 0.032s 0.09GB 328 Inv_NoNonceOrphan 
+14:23:43 done 0577-interp-0.2.0-LeanSentinelAckEarly.cfg agree 0.025s 0.07GB 273 Inv_AckImpliesCited 
+14:23:43 done 1299-tlc-tlc-FlintTierEpochNoFence.cfg done 3.255s 2.145GB 63601 temporal 
+14:23:43 done 1329-tlc-tlc-FlintCompositionDegradeBlind.cfg done 0.963s 0.225GB 5966 Inv_NoDoomedAck 
+14:23:43 done 0578-interp-0.1.2-LeanSentinelAckEarly.cfg agree 0.023s 0.049GB 288 Inv_AckImpliesCited 
+14:23:43 done 1331-tlc-tlc-FlintClientIdentity.cfg done 0.988s 0.242GB 2082  
+14:23:43 done 0591-interp-0.2.0-LeanProbeCoalescedAck.cfg agree 0.025s 0.082GB 328 ProbeCoalescedAck 
+14:23:43 done 0592-interp-0.1.2-LeanProbeCoalescedAck.cfg agree 0.024s 0.051GB 328 ProbeCoalescedAck 
+14:23:43 done 1330-tlc-tlc-FlintTierSessionNoRotate.cfg done 0.946s 0.178GB 4720 Inv_NoBeatingSessionDeposed 
+14:23:43 done 0669-interp-0.2.0-LeanRemovalOverreaches.cfg agree 0.024s 0.07GB 311 Inv_RemovalNamesItsVersion 
+14:23:43 done 0069-interp-0.2.0-FlintA2ProbeDeath.cfg agree 0.015s 0.031GB 7 ProbeTgtDeathReachable 
+14:23:43 done 0670-interp-0.1.2-LeanRemovalOverreaches.cfg agree 0.023s 0.053GB 220 Inv_RemovalNamesItsVersion 
+14:23:43 done 1283-tlc-tlc-FlintReplicationMonitorLag.cfg done 1.02s 0.281GB 2185 Inv_NoSilentLoss 
+14:23:43 done 1332-tlc-tlc-LeanLocalWins.cfg done 1.028s 0.242GB 285 Inv_HITLDurable 
+14:23:43 done 1333-tlc-tlc-LeanGCUnguarded.cfg done 1.07s 0.283GB 312 Inv_HITLDurable 
+14:23:44 done 0070-interp-0.1.2-FlintA2ProbeDeath.cfg agree 0.016s 0.023GB 7 ProbeTgtDeathReachable 
+14:23:44 done 0079-interp-0.2.0-FlintReplicationA2AdoptBlind.cfg agree 0.017s 0.064GB 292 Inv_NoAdoptOfA2Composition 
+14:23:44 done 0080-interp-0.1.2-FlintReplicationA2AdoptBlind.cfg agree 0.018s 0.039GB 286 Inv_NoAdoptOfA2Composition 
+14:23:44 done 1334-tlc-tlc-LeanProbeStragglerAttempt.cfg done 1.043s 0.264GB 556 ProbeStragglerAttempt 
+14:23:44 done 0097-interp-0.2.0-FlintReplicationRollNoBelt.cfg agree 0.021s 0.086GB 1115 Inv_NoSilentLoss 
+14:23:44 done 0098-interp-0.1.2-FlintReplicationRollNoBelt.cfg agree 0.021s 0.033GB 1473 Inv_NoSilentLoss 
+14:23:44 done 0531-interp-0.2.0-LeanProbeBarrier.cfg agree 0.022s 0.07GB 43 ProbeBarrierDone 
+14:23:44 done 1335-tlc-tlc-LeanSentinelOrphan.cfg done 1.208s 0.325GB 993 Inv_NoNonceOrphan 
+14:23:44 done 1307-tlc-tlc-FlintReplicationRollerRace.cfg done 0.961s 0.192GB 172 Inv_PlannedRollBoundedImpact 
+14:23:44 done 0532-interp-0.1.2-LeanProbeBarrier.cfg agree 0.023s 0.043GB 43 ProbeBarrierDone 
+14:23:44 done 0541-interp-0.2.0-LeanProbeGC.cfg agree 0.023s 0.084GB 81 ProbeGC 
+14:23:44 done 0542-interp-0.1.2-LeanProbeGC.cfg agree 0.022s 0.047GB 81 ProbeGC 
+14:23:44 done 1336-tlc-tlc-LeanSentinelAckEarly.cfg done 1.116s 0.286GB 420 Inv_AckImpliesCited 
+14:23:45 done 1337-tlc-tlc-LeanProbeCoalescedAck.cfg done 1.137s 0.312GB 1055 ProbeCoalescedAck 
+14:23:45 done 1313-tlc-tlc-FlintExtentsReuseUnderGrant.cfg done 0.876s 0.166GB 719 Inv_NoStaleExtentWrite 
+14:23:45 done 0549-interp-0.2.0-LeanSyncStaleDirt.cfg agree 0.022s 0.06GB 65 Inv_SyncNeverDestroysDirty 
+14:23:45 done 0550-interp-0.1.2-LeanSyncStaleDirt.cfg agree 0.02s 0.043GB 66 Inv_SyncNeverDestroysDirty 
+14:23:45 done 0553-interp-0.2.0-LeanProbeSyncConflict.cfg agree 0.019s 0.062GB 59 ProbeSyncConflict 
+14:23:45 done 1320-tlc-tlc-FlintReplicationRaidLost.cfg done 1.063s 0.257GB 103 temporal 
+14:23:45 done 1338-tlc-tlc-LeanRemovalOverreaches.cfg done 1.167s 0.322GB 554 Inv_RemovalNamesItsVersion 
+14:23:45 done 1321-tlc-tlc-FlintClientIdentityNoCollide.cfg done 0.956s 0.167GB 1015  
+14:23:45 done 0554-interp-0.1.2-LeanProbeSyncConflict.cfg agree 0.021s 0.037GB 57 ProbeSyncConflict 
+14:23:45 done 0565-interp-0.2.0-LeanNarrowUncieFirst.cfg agree 0.023s 0.082GB 85 Inv_NarrowNeverRecites 
+14:23:45 done 0566-interp-0.1.2-LeanNarrowUncieFirst.cfg agree 0.022s 0.049GB 104 Inv_NarrowNeverRecites 
+14:23:45 done 0681-interp-0.2.0-LeanProbeRemovalRefused.cfg agree 0.022s 0.096GB 273 ProbeRemovalRefused 
+14:23:45 done 0682-interp-0.1.2-LeanProbeRemovalRefused.cfg agree 0.021s 0.051GB 262 ProbeRemovalRefused 
+14:23:45 done 0683-interp-0.2.0-LeanProbeRename.cfg agree 0.02s 0.09GB 102 ProbeRenameApplied 
+14:23:45 done 1342-tlc-tlc-LeanProbeBarrier.cfg done 1.036s 0.228GB 137 ProbeBarrierDone 
+14:23:45 done 1341-tlc-tlc-FlintReplicationRollNoBelt.cfg done 1.065s 0.322GB 1811 Inv_NoSilentLoss 
+14:23:46 done 1297-tlc-tlc-FlintClaims.cfg done 0.829s 0.126GB 150  
+14:23:46 done 1328-tlc-tlc-FlintReplicationRollerRaceUngated.cfg done 0.92s 0.188GB 173 Inv_PlannedRollBoundedImpact 
+14:23:46 done 0684-interp-0.1.2-LeanProbeRename.cfg agree 0.018s 0.049GB 147 ProbeRenameApplied 
+14:23:46 done 0709-interp-0.2.0-LeanBarrierLeaseClaimUnstamped.cfg agree 0.021s 0.082GB 134 Inv_CellHeldByHolder 
+14:23:46 done 0710-interp-0.1.2-LeanBarrierLeaseClaimUnstamped.cfg agree 0.02s 0.051GB 134 Inv_CellHeldByHolder 
+14:23:46 done 1343-tlc-tlc-LeanProbeGC.cfg done 1.055s 0.26GB 110 ProbeGC 
+14:23:46 done 1312-tlc-tlc-FlintReplicationRollBarrier.cfg done 0.941s 0.192GB 133 Inv_PlannedRollBoundedImpact 
+14:23:46 done 0019-interp-0.2.0-FlintReplicationGateRealHollow.cfg agree 0.021s 0.078GB 176 Inv_NoFalseRisk 
+14:23:46 done 0020-interp-0.1.2-FlintReplicationGateRealHollow.cfg agree 0.02s 0.031GB 117 Inv_NoFalseRisk 
+14:23:46 done 1344-tlc-tlc-LeanSyncStaleDirt.cfg done 0.991s 0.213GB 99 Inv_SyncNeverDestroysDirty 
+14:23:46 done 0277-interp-0.2.0-FlintCompositionProbeFailBack.cfg agree 0.023s 0.094GB 3888 ProbeFailBackCompletes 
+14:23:46 done 1345-tlc-tlc-LeanProbeSyncConflict.cfg done 1.011s 0.217GB 97 ProbeSyncConflict 
+14:23:46 done 0278-interp-0.1.2-FlintCompositionProbeFailBack.cfg agree 0.019s 0.031GB 3845 ProbeFailBackCompletes 
+14:23:46 done 0293-interp-0.2.0-FlintCompositionWitnessDeadman.cfg agree 0.017s 0.094GB 1185 Inv_NoStaleServe 
+14:23:46 done 0294-interp-0.1.2-FlintCompositionWitnessDeadman.cfg agree 0.017s 0.029GB 1145 Inv_NoStaleServe 
+14:23:47 done 1317-tlc-tlc-FlintReplicationF48.cfg done 0.961s 0.207GB 717 Inv_NoDivergentServing 
+14:23:47 done 0523-interp-0.2.0-LeanDanglingOrder.cfg agree 0.022s 0.057GB 40 Inv_NoDangling 
+14:23:47 done 0524-interp-0.1.2-LeanDanglingOrder.cfg agree 0.021s 0.041GB 40 Inv_NoDangling 
+14:23:47 done 0533-interp-0.2.0-LeanProbeHITLCited.cfg agree 0.02s 0.078GB 68 ProbeHITLCited 
+14:23:47 done 1346-tlc-tlc-LeanNarrowUncieFirst.cfg done 1.042s 0.273GB 258 Inv_NarrowNeverRecites 
+14:23:47 done 1347-tlc-tlc-LeanProbeRemovalRefused.cfg done 1.044s 0.281GB 270 ProbeRemovalRefused 
+14:23:47 done 1348-tlc-tlc-LeanProbeRename.cfg done 1.074s 0.292GB 377 ProbeRenameApplied 
+14:23:47 done 1319-tlc-tlc-FlintReplicationRollUnfenced.cfg done 0.992s 0.201GB 192 Inv_PlannedRollNeverCausesOutage 
+14:23:47 done 0534-interp-0.1.2-LeanProbeHITLCited.cfg agree 0.017s 0.049GB 65 ProbeHITLCited 
+14:23:47 done 0539-interp-0.2.0-LeanProbePark.cfg agree 0.02s 0.062GB 47 ProbePark 
+14:23:47 done 0540-interp-0.1.2-LeanProbePark.cfg agree 0.019s 0.031GB 43 ProbePark 
+14:23:47 done 1349-tlc-tlc-LeanBarrierLeaseClaimUnstamped.cfg done 1.174s 0.298GB 452 Inv_CellHeldByHolder 
+14:23:47 done 1351-tlc-tlc-FlintCompositionProbeFailBack.cfg done 0.983s 0.208GB 4315 ProbeFailBackCompletes 
+14:23:47 done 1350-tlc-tlc-FlintReplicationGateRealHollow.cfg done 0.987s 0.204GB 302 Inv_NoFalseRisk 
+14:23:47 done 0673-interp-0.2.0-LeanEarlyInboxDropLosesHitl.cfg agree 0.019s 0.082GB 136 Inv_HITLTracked 
+14:23:47 done 0674-interp-0.1.2-LeanEarlyInboxDropLosesHitl.cfg agree 0.019s 0.049GB 138 Inv_HITLTracked 
+14:23:47 done 0675-interp-0.2.0-LeanEarlyInboxDropLosesRename.cfg agree 0.022s 0.072GB 151 Inv_HITLTracked 
+14:23:48 done 1326-tlc-tlc-FlintReplicationRaidLifetime.cfg done 0.884s 0.183GB 58 Inv_PlannedRollNeverCausesOutage 
+14:23:48 done 1154-tlc-tlc-LeanImmutableRepairRecites.cfg done 66.296s 4.339GB 564681 Inv_OneName 
+14:23:48 done 0676-interp-0.1.2-LeanEarlyInboxDropLosesRename.cfg agree 0.021s 0.049GB 134 Inv_HITLTracked 
+14:23:48 done 0073-interp-0.2.0-FlintReplicationUncontrolledA1.cfg agree 0.016s 0.07GB 148 Inv_RaidRecoveryUnreachable 
+14:23:48 done 0074-interp-0.1.2-FlintReplicationUncontrolledA1.cfg agree 0.017s 0.031GB 133 Inv_RaidRecoveryUnreachable 
+14:23:48 done 1355-tlc-tlc-LeanProbePark.cfg done 0.363s 0.103GB None  
+14:23:48 done 1353-tlc-tlc-LeanDanglingOrder.cfg done 0.984s 0.233GB 62 Inv_NoDangling 
+14:23:48 done 0081-interp-0.2.0-FlintReplicationA2AdoptValidated.cfg agree 0.019s 0.084GB 959 Inv_NoValidateFlap 
+14:23:48 done 0082-interp-0.1.2-FlintReplicationA2AdoptValidated.cfg agree 0.02s 0.041GB 825 Inv_NoValidateFlap 
+14:23:48 done 0125-interp-0.2.0-FlintReplicationBounceLoop.cfg agree 0.021s 0.082GB 357 Inv_NoPointlessRebounce 
+14:23:48 done 1327-tlc-tlc-FlintReplicationRefusalClears.cfg done 0.999s 0.228GB 717 Inv_RefusalNeverClears 
+14:23:48 done 1354-tlc-tlc-LeanProbeHITLCited.cfg done 1.005s 0.233GB 169 ProbeHITLCited 
+14:23:48 done 1340-tlc-tlc-FlintReplicationA2AdoptBlind.cfg done 0.941s 0.224GB 837 Inv_NoAdoptOfA2Composition 
+14:23:48 done 0126-interp-0.1.2-FlintReplicationBounceLoop.cfg agree 0.021s 0.031GB 357 Inv_NoPointlessRebounce 
+14:23:48 done 0255-interp-0.2.0-FlintCompositionFreeEarly.cfg agree 0.02s 0.103GB 4317 Inv_NoStaleExtentWrite 
+14:23:48 done 0256-interp-0.1.2-FlintCompositionFreeEarly.cfg agree 0.017s 0.029GB 3172 Inv_NoStaleExtentWrite 
+14:23:48 done 1308-tlc-tlc-FlintClientIdentityIndexBlind.cfg done 0.856s 0.186GB 666 Inv_IndexCoversLiveOwners 
+14:23:49 done 1352-tlc-tlc-FlintCompositionWitnessDeadman.cfg done 0.967s 0.17GB 1663 Inv_NoStaleServe 
+14:23:49 done 0463-interp-0.2.0-FlintDelegRecallLive.cfg agree 0.017s 0.047GB 1978  
+14:23:49 done 0464-interp-0.1.2-FlintDelegRecallLive.cfg agree 0.018s 0.031GB 1978  
+14:23:49 done 0485-interp-0.2.0-FlintCsiMountDeep.cfg agree 0.019s 0.092GB 759  
+14:23:49 done 1356-tlc-tlc-LeanEarlyInboxDropLosesHitl.cfg done 1.025s 0.246GB 356 Inv_HITLTracked 
+14:23:49 done 1357-tlc-tlc-LeanEarlyInboxDropLosesRename.cfg done 1.146s 0.38GB 856 Inv_HITLTracked 
+14:23:49 done 0486-interp-0.1.2-FlintCsiMountDeep.cfg agree 0.019s 0.029GB 759  
+14:23:49 done 0529-interp-0.2.0-LeanRematerialize.cfg agree 0.018s 0.041GB 14 Prop_NoResurrection 
+14:23:49 done 0530-interp-0.1.2-LeanRematerialize.cfg agree 0.018s 0.031GB 14 Prop_NoResurrection 
+14:23:49 done 1358-tlc-tlc-FlintReplicationUncontrolledA1.cfg done 0.991s 0.191GB 288 Inv_RaidRecoveryUnreachable 
+14:23:49 done 0543-interp-0.2.0-LeanProbeRefusal.cfg agree 0.019s 0.055GB 20 ProbeRefusal 
+14:23:49 done 1339-tlc-tlc-FlintA2ProbeDeath.cfg done 0.958s 0.177GB 37 ProbeTgtDeathReachable 
+14:23:49 done 1301-tlc-tlc-FlintReplicationKubeToothVolume.cfg done 0.971s 0.193GB 283 Inv_ProbeNeverReddensLive 
+14:23:49 done 0544-interp-0.1.2-LeanProbeRefusal.cfg agree 0.017s 0.031GB 20 ProbeRefusal 
+14:23:49 done 0551-interp-0.2.0-LeanProbeSyncApplied.cfg agree 0.018s 0.053GB 29 ProbeSyncApplied 
+14:23:49 done 0552-interp-0.1.2-LeanProbeSyncApplied.cfg agree 0.017s 0.033GB 29 ProbeSyncApplied 
+14:23:49 done 1360-tlc-tlc-FlintReplicationBounceLoop.cfg done 1.011s 0.209GB 400 Inv_NoPointlessRebounce 
+14:23:49 done 1359-tlc-tlc-FlintReplicationA2AdoptValidated.cfg done 1.045s 0.265GB 2496 Inv_NoValidateFlap 
+14:23:49 done 1361-tlc-tlc-FlintCompositionFreeEarly.cfg done 0.9s 0.202GB 3736 Inv_NoStaleExtentWrite 
+14:23:50 done 0567-interp-0.2.0-LeanProbeNarrow.cfg agree 0.023s 0.029GB 5 ProbeNarrow 
+14:23:50 done 0568-interp-0.1.2-LeanProbeNarrow.cfg agree 0.016s 0.025GB 5 ProbeNarrow 
+14:23:50 done 0679-interp-0.2.0-LeanProbeRemoval.cfg agree 0.019s 0.084GB 132 ProbeRemovalApplied 
+14:23:50 done 0680-interp-0.1.2-LeanProbeRemoval.cfg agree 0.02s 0.045GB 102 ProbeRemovalApplied 
+14:23:50 done 0769-interp-0.2.0-LeanProbePullOnly.cfg agree 0.019s 0.076GB 61 ProbePullOnly 
+14:23:50 done 0770-interp-0.1.2-LeanProbePullOnly.cfg agree 0.02s 0.041GB 61 ProbePullOnly 
+14:23:50 done 0891-interp-0.2.0-LeanImmutableProbeRename.cfg agree 0.018s 0.086GB 141 ProbeRenameApplied 
+14:23:50 done 1362-tlc-tlc-FlintDelegRecallLive.cfg done 0.85s 0.182GB 1978  
+14:23:50 done 1363-tlc-tlc-FlintCsiMountDeep.cfg done 0.91s 0.214GB 759  
+14:23:50 done 0892-interp-0.1.2-LeanImmutableProbeRename.cfg agree 0.018s 0.049GB 116 ProbeRenameApplied 
+14:23:50 done 0013-interp-0.2.0-FlintReplicationResurrect.cfg agree 0.019s 0.084GB 390 Inv_NoFalseRisk 
+14:23:50 done 0014-interp-0.1.2-FlintReplicationResurrect.cfg agree 0.017s 0.031GB 369 Inv_NoFalseRisk 
+14:23:50 done 0061-interp-0.2.0-FlintReplicationA2SoleOwner.cfg agree 0.017s 0.062GB 34 Inv_A2AssemblesOnlyAtTruth 
+14:23:50 done 0062-interp-0.1.2-FlintReplicationA2SoleOwner.cfg agree 0.014s 0.027GB 34 Inv_A2AssemblesOnlyAtTruth 
+14:23:50 done 1364-tlc-tlc-LeanRematerialize.cfg done 0.95s 0.224GB 75  
+14:23:50 done 1365-tlc-tlc-LeanProbeRefusal.cfg done 0.959s 0.225GB 39 ProbeRefusal 
+14:23:50 done 0075-interp-0.2.0-FlintReplicationUncontrolledA2.cfg agree 0.018s 0.054GB 25 Inv_RaidRecoveryUnreachable 
+14:23:50 done 0076-interp-0.1.2-FlintReplicationUncontrolledA2.cfg agree 0.018s 0.029GB 25 Inv_RaidRecoveryUnreachable 
+14:23:50 done 0127-interp-0.2.0-FlintReplicationBouncePod.cfg agree 0.021s 0.088GB 293 Inv_BounceNotSilentlyDefeated 
+14:23:50 done 0128-interp-0.1.2-FlintReplicationBouncePod.cfg agree 0.017s 0.031GB 298 Inv_BounceNotSilentlyDefeated 
+14:23:50 done 0131-interp-0.2.0-FlintReplicationBounceTimeout.cfg agree 0.019s 0.092GB 274 Inv_BounceNotSilentlyDefeated 
+14:23:51 done 1366-tlc-tlc-LeanProbeSyncApplied.cfg done 0.989s 0.226GB 98 ProbeSyncApplied 
+14:23:51 done 0132-interp-0.1.2-FlintReplicationBounceTimeout.cfg agree 0.017s 0.031GB 298 Inv_BounceNotSilentlyDefeated 
+14:23:51 done 0249-interp-0.2.0-FlintCompositionAssembly.cfg agree 0.019s 0.088GB 3073 Inv_NoStaleServe 
+14:23:51 done 0250-interp-0.1.2-FlintCompositionAssembly.cfg agree 0.018s 0.029GB 2491 Inv_NoStaleServe 
+14:23:51 done 1367-tlc-tlc-LeanProbeNarrow.cfg done 0.978s 0.221GB 65 ProbeNarrow 
+14:23:51 done 1368-tlc-tlc-LeanProbeRemoval.cfg done 0.992s 0.245GB 263 ProbeRemovalApplied 
+14:23:51 done 1369-tlc-tlc-LeanProbePullOnly.cfg done 0.988s 0.24GB 203 ProbePullOnly 
+14:23:51 done 0535-interp-0.2.0-LeanProbeTakeover.cfg agree 0.017s 0.043GB 16 ProbeTakeover 
+14:23:51 done 0536-interp-0.1.2-LeanProbeTakeover.cfg agree 0.016s 0.031GB 16 ProbeTakeover 
+14:23:51 done 0839-interp-0.2.0-LeanImmutableProbeNarrow.cfg agree 0.017s 0.029GB 6 ProbeNarrow 
+14:23:51 done 1370-tlc-tlc-LeanImmutableProbeRename.cfg done 1.223s 0.536GB 1022 ProbeRenameApplied 
+14:23:51 done 1371-tlc-tlc-FlintReplicationResurrect.cfg done 0.938s 0.227GB 642 Inv_NoFalseRisk 
+14:23:51 done 1372-tlc-tlc-FlintReplicationA2SoleOwner.cfg done 0.973s 0.186GB 75 Inv_A2AssemblesOnlyAtTruth 
+14:23:51 done 0840-interp-0.1.2-LeanImmutableProbeNarrow.cfg agree 0.017s 0.025GB 6 ProbeNarrow 
+14:23:51 done 0245-interp-0.2.0-FlintCompositionLegGate.cfg agree 0.014s 0.084GB 640 Inv_NoDivergentServing 
+14:23:51 done 0246-interp-0.1.2-FlintCompositionLegGate.cfg agree 0.016s 0.029GB 494 Inv_NoDivergentServing 
+14:23:51 done 0247-interp-0.2.0-FlintCompositionDeadman.cfg agree 0.015s 0.074GB 1438 Inv_NoStaleServe 
+14:23:51 done 0248-interp-0.1.2-FlintCompositionDeadman.cfg agree 0.012s 0.027GB 1128 Inv_NoStaleServe 
+14:23:51 done 1375-tlc-tlc-FlintReplicationBounceTimeout.cfg done 0.919s 0.212GB 335 Inv_BounceNotSilentlyDefeated 
+14:23:51 done 0263-interp-0.2.0-FlintCompositionProbeFree.cfg agree 0.016s 0.088GB 1954 ProbePostFailoverFreeReachable 
+14:23:51 done 1374-tlc-tlc-FlintReplicationBouncePod.cfg done 0.981s 0.204GB 341 Inv_BounceNotSilentlyDefeated 
+14:23:51 done 0325-interp-0.2.0-FlintTierEpochNoRotate.cfg agree 0.017s 0.09GB 934 Inv_NoRenewingHolderDeposed 
+14:23:51 done 0264-interp-0.1.2-FlintCompositionProbeFree.cfg agree 0.015s 0.029GB 1836 ProbePostFailoverFreeReachable 
+14:23:51 done 0326-interp-0.1.2-FlintTierEpochNoRotate.cfg agree 0.014s 0.029GB 1087 Inv_NoRenewingHolderDeposed 
+14:23:51 done 0339-interp-0.2.0-ForgeSyncEarlyAck.cfg agree 0.016s 0.082GB 111 Inv_AckedIsDurable 
+14:23:52 done 1376-tlc-tlc-FlintCompositionAssembly.cfg done 0.873s 0.176GB 2493 Inv_NoStaleServe 
+14:23:52 done 1373-tlc-tlc-FlintReplicationUncontrolledA2.cfg done 0.877s 0.18GB 97 Inv_RaidRecoveryUnreachable 
+14:23:52 done 0340-interp-0.1.2-ForgeSyncEarlyAck.cfg agree 0.015s 0.047GB 115 Inv_AckedIsDurable 
+14:23:52 done 0363-interp-0.2.0-ForgeSyncProveFromDisk.cfg agree 0.017s 0.078GB 116 Inv_ProofIsOfTheBucket 
+14:23:52 done 0364-interp-0.1.2-ForgeSyncProveFromDisk.cfg agree 0.018s 0.047GB 116 Inv_ProofIsOfTheBucket 
+14:23:52 done 0451-interp-0.2.0-FlintClientIdentityLeaseAtomic.cfg agree 0.016s 0.094GB 473  
+14:23:52 done 0452-interp-0.1.2-FlintClientIdentityLeaseAtomic.cfg agree 0.014s 0.029GB 473  
+14:23:52 done 1377-tlc-tlc-LeanProbeTakeover.cfg done 0.953s 0.217GB 40 ProbeTakeover 
+14:23:52 done 1378-tlc-tlc-LeanImmutableProbeNarrow.cfg done 0.981s 0.212GB 45 ProbeNarrow 
+14:23:52 done 0461-interp-0.2.0-FlintDelegRecall.cfg agree 0.021s 0.025GB 1978  
+14:23:52 done 0462-interp-0.1.2-FlintDelegRecall.cfg agree 0.017s 0.029GB 1978  
+14:23:52 done 0499-interp-0.2.0-FlintCsiMountCrash.cfg agree 0.018s 0.068GB 292  
+14:23:52 done 0500-interp-0.1.2-FlintCsiMountCrash.cfg agree 0.018s 0.029GB 292  
+14:23:52 done 0043-interp-0.2.0-FlintReplicationRaidFenceAB.cfg agree 0.015s 0.047GB 14 Inv_MaintFenceStrict 
+14:23:52 done 1379-tlc-tlc-FlintCompositionLegGate.cfg done 0.832s 0.147GB 826 Inv_NoDivergentServing 
+14:23:52 done 1380-tlc-tlc-FlintCompositionDeadman.cfg done 0.874s 0.169GB 1361 Inv_NoStaleServe 
+14:23:52 done 0044-interp-0.1.2-FlintReplicationRaidFenceAB.cfg agree 0.017s 0.025GB 14 Inv_MaintFenceStrict 
+14:23:52 done 0077-interp-0.2.0-FlintReplicationUncontrolledStrike.cfg agree 0.014s 0.054GB 25 Inv_RaidRecoveryUnreachable 
+14:23:52 done 0078-interp-0.1.2-FlintReplicationUncontrolledStrike.cfg agree 0.013s 0.025GB 25 Inv_RaidRecoveryUnreachable 
+14:23:52 done 0149-interp-0.2.0-FlintReplicationKubeToothSelfLive.cfg agree 0.014s 0.031GB 8 Inv_ProbeNeverReddensLive 
+14:23:52 done 0610-build-0.1.2-LeanCoreForeignFlat.cfg built 368.239s 4.2GB None  
+14:23:53 done 1382-tlc-tlc-FlintTierEpochNoRotate.cfg done 0.827s 0.157GB 1810 Inv_NoRenewingHolderDeposed 
+14:23:53 done 1381-tlc-tlc-FlintCompositionProbeFree.cfg done 0.897s 0.211GB 4507 ProbePostFailoverFreeReachable 
+14:23:53 done 1383-tlc-tlc-ForgeSyncEarlyAck.cfg done 0.932s 0.233GB 342 Inv_AckedIsDurable 
+14:23:53 done 0150-interp-0.1.2-FlintReplicationKubeToothSelfLive.cfg agree 0.012s 0.023GB 8 Inv_ProbeNeverReddensLive 
+14:23:53 done 0203-interp-0.2.0-FlintExtentsProbeDelivered.cfg agree 0.018s 0.084GB 1315 ProbeDeliveredFreeFires 
+14:23:53 done 0204-interp-0.1.2-FlintExtentsProbeDelivered.cfg agree 0.016s 0.029GB 1554 ProbeDeliveredFreeFires 
+14:23:53 done 0307-interp-0.2.0-FlintShareDiskLive.cfg agree 0.014s 0.023GB 168  
+14:23:53 done 0308-interp-0.1.2-FlintShareDiskLive.cfg agree 0.012s 0.025GB 168  
+14:23:53 done 1385-tlc-tlc-FlintClientIdentityLeaseAtomic.cfg done 0.851s 0.204GB 473  
+14:23:53 done 1384-tlc-tlc-ForgeSyncProveFromDisk.cfg done 0.959s 0.227GB 247 Inv_ProofIsOfTheBucket 
+14:23:53 done 0330-interp-0.1.2-FlintTierEpochProbeStale.cfg agree 0.018s 0.029GB 1920 Inv_NoStalePublishLand 
+14:23:53 done 0329-interp-0.2.0-FlintTierEpochProbeStale.cfg agree 0.016s 0.088GB 2634 Inv_NoStalePublishLand 
+14:23:53 done 0437-interp-0.2.0-FlintClientIdentityCaseFour.cfg agree 0.017s 0.07GB 574 Inv_OneConfirmedPerOwner 
+14:23:53 done 0438-interp-0.1.2-FlintClientIdentityCaseFour.cfg agree 0.015s 0.029GB 545 Inv_OneConfirmedPerOwner 
+14:23:53 done 0441-interp-0.2.0-FlintClientIdentityLockLeak.cfg agree 0.015s 0.084GB 757 Inv_NoOrphanLocks 
+14:23:53 done 1386-tlc-tlc-FlintDelegRecall.cfg done 0.802s 0.154GB 1978  
+14:23:53 done 1387-tlc-tlc-FlintCsiMountCrash.cfg done 0.875s 0.156GB 292  
+14:23:53 done 1388-tlc-tlc-FlintReplicationRaidFenceAB.cfg done 0.886s 0.183GB 67 Inv_MaintFenceStrict 
+14:23:53 done 0442-interp-0.1.2-FlintClientIdentityLockLeak.cfg agree 0.016s 0.029GB 766 Inv_NoOrphanLocks 
+14:23:53 done 0477-interp-0.2.0-FlintDelegRecallRearmStale.cfg agree 0.02s 0.025GB 1543  
+14:23:53 done 0478-interp-0.1.2-FlintDelegRecallRearmStale.cfg agree 0.017s 0.027GB 1543  
+14:23:53 done 0905-examples-0.2.0-DieHard.cfg safety failure 0.012s 0.019GB 14  Error: Invariant NotSolved is violated.
+14:23:53 done 0906-examples-0.2.0-MCDieHarder.cfg safety failure 0.01s 0.037GB 14  Error: Invariant NotSolved is violated.
+14:23:54 done 1390-tlc-tlc-FlintReplicationKubeToothSelfLive.cfg done 0.881s 0.174GB 52 Inv_ProbeNeverReddensLive 
+14:23:54 done 1389-tlc-tlc-FlintReplicationUncontrolledStrike.cfg done 0.887s 0.178GB 92 Inv_RaidRecoveryUnreachable 
+14:23:54 done 0920-examples-0.2.0-MCGermanCMPWithMutex.cfg success 0.016s 0.07GB 1107  tla-mc: MCGermanCMPWithMutex (9 variables, 1 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:54 done 0928-examples-0.2.0-MCFindHighest.cfg success 0.014s 0.064GB 742  tla-mc: MCFindHighest (4 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:54 done 0921-examples-0.2.0-MCGermanControl.cfg success 0.019s 0.064GB 735  tla-mc: MCGermanControl (9 variables, 1 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:54 done 0933-examples-0.2.0-MCMajority.cfg success 0.017s 0.088GB 2733  tla-mc: MCMajority (4 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:54 done 0938-examples-0.2.0-MissionariesAndCannibals.cfg safety failure 0.013s 0.06GB 61  Error: Invariant Solution is violated.
+14:23:54 done 1392-tlc-tlc-FlintShareDiskLive.cfg done 0.796s 0.132GB 168  
+14:23:54 done 1391-tlc-tlc-FlintExtentsProbeDelivered.cfg done 0.856s 0.207GB 723 ProbeDeliveredFreeFires 
+14:23:54 done 0954-examples-0.2.0-MCPaxos.cfg success 0.015s 0.049GB 25  tla-mc: MCPaxos (4 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:54 done 0948-examples-0.2.0-MC.cfg safety failure 0.012s 0.064GB 44  Error: Invariant NoSolutions is violated.
+14:23:54 done 0949-examples-0.2.0-MC.cfg safety failure 0.013s 0.06GB 44  Error: Invariant NoSolutions is violated.
+14:23:54 done 0955-examples-0.2.0-MCVoting.cfg success 0.016s 0.06GB 77  tla-mc: MCVoting (2 variables, 11 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:54 done 0960-examples-0.2.0-Prisoners.cfg success 0.015s 0.068GB 214  tla-mc: Prisoners (4 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:54 done 0961-examples-0.2.0-Prisoner.cfg success 0.011s 0.043GB 16  tla-mc: Prisoner (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:54 done 0962-examples-0.2.0-PrisonerLightUnknown.cfg success 0.011s 0.058GB 62  tla-mc: Prisoner (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:54 done 1393-tlc-tlc-FlintTierEpochProbeStale.cfg done 0.824s 0.163GB 2145 Inv_NoStalePublishLand 
+14:23:54 done 1394-tlc-tlc-FlintClientIdentityCaseFour.cfg done 0.863s 0.204GB 758 Inv_OneConfirmedPerOwner 
+14:23:54 done 1395-tlc-tlc-FlintClientIdentityLockLeak.cfg done 0.887s 0.21GB 831 Inv_NoOrphanLocks 
+14:23:54 done 1013-examples-0.2.0-YoYoAllGraphs.cfg unsupported 0.013s 0.021GB 0  Error: cannot enumerate the infinite set Seq({1})
+14:23:54 done 0964-examples-0.2.0-PrisonerSoloLightUnknown.cfg success 0.01s 0.033GB 4  tla-mc: Prisoner (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:54 done 0990-examples-0.2.0-MCInnerFIFO.cfg success 0.016s 0.084GB 3864  tla-mc: MCInnerFIFO (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:54 done 1007-examples-0.2.0-Simple.cfg success 0.016s 0.086GB 723  tla-mc: Simple (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:54 done 1043-examples-0.2.0-BlockDagTest.cfg unsupported 0.009s 0.019GB None  tla-mc: cannot enumerate the infinite set Nat
+14:23:54 done 1021-examples-0.2.0-SimpleAllocator.cfg success 0.021s 0.084GB 400  tla-mc: SimpleAllocator (2 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:54 done 1060-examples-0.2.0-EWD998ChanID.cfg unsupported 0.012s 0.019GB None  tla-mc: PROPERTY EWD998ChanSpec: unsupported temporal formula Temporal("WF", [Ident("EWD998Chan!vars"), Ident("EWD998Chan!System")])
+14:23:54 done 1033-examples-0.2.0-VoucherLifeCycle.cfg success 0.012s 0.062GB 64  tla-mc: VoucherLifeCycle (2 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:54 done 1066-examples-0.2.0-clean.cfg success 0.009s 0.019GB 63  tla-mc: clean (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:54 done 1068-examples-0.2.0-stages.cfg success 0.011s 0.021GB 83  tla-mc: stages (7 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:55 done 1396-tlc-tlc-FlintDelegRecallRearmStale.cfg done 0.804s 0.138GB 1543  
+14:23:55 done 1072-examples-0.2.0-Peterson.cfg success 0.011s 0.049GB 42  tla-mc: Peterson (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:23:55 done 1083-examples-0.2.0-TwoPhase.cfg success 0.013s 0.062GB 288  tla-mc: TwoPhase (4 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:55 done 1071-examples-0.2.0-LockHS.cfg success 0.013s 0.043GB 28  tla-mc: LockHS (4 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.002s
+14:23:55 done 0068-interp-0.1.2-FlintA2ProbeArmed.cfg agree 0.012s 0.027GB 22 ProbeA2Fires 
+14:23:55 done 0067-interp-0.2.0-FlintA2ProbeArmed.cfg agree 0.015s 0.051GB 22 ProbeA2Fires 
+14:23:55 done 1079-examples-0.2.0-Hanoi_anim.cfg safety failure 0.012s 0.047GB 27  Error: Invariant NotSolved is violated.
+14:23:55 done 0087-interp-0.2.0-FlintA2ProbeAdoptArmed.cfg agree 0.014s 0.053GB 22 ProbeA2Fires 
+14:23:55 done 1080-examples-0.2.0-2PCwithBTM.cfg success 0.017s 0.066GB 1245  tla-mc: 2PCwithBTM (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:23:55 done 0088-interp-0.1.2-FlintA2ProbeAdoptArmed.cfg agree 0.013s 0.025GB 22 ProbeA2Fires 
+14:23:55 done 0159-interp-0.2.0-FlintSnapshotsOrder.cfg agree 0.009s 0.06GB 194 Inv_SessionFaithful 
+14:23:55 done 0160-interp-0.1.2-FlintSnapshotsOrder.cfg agree 0.009s 0.025GB 231 Inv_SessionFaithful 
+14:23:55 done 0165-interp-0.2.0-FlintTruncateBlindClear.cfg agree 0.011s 0.066GB 687 Inv_ClearImpliesFlushed 
+14:23:55 done 0166-interp-0.1.2-FlintTruncateBlindClear.cfg agree 0.012s 0.027GB 685 Inv_ClearImpliesFlushed 
+14:23:55 done 0243-interp-0.2.0-FlintCompositionSkew.cfg agree 0.015s 0.09GB 1561 Inv_NoStaleServe 
+14:23:55 done 0244-interp-0.1.2-FlintCompositionSkew.cfg agree 0.013s 0.027GB 1219 Inv_NoStaleServe 
+14:23:55 done 0260-interp-0.1.2-FlintCompositionProbeFailover.cfg agree 0.013s 0.027GB 452 ProbeFailoverCompletes 
+14:23:55 done 0259-interp-0.2.0-FlintCompositionProbeFailover.cfg agree 0.015s 0.088GB 666 ProbeFailoverCompletes 
+14:23:55 done 0271-interp-0.2.0-FlintCompositionAncestryBlind.cfg agree 0.012s 0.08GB 391 Inv_NoSplitRead 
+14:23:55 done 0272-interp-0.1.2-FlintCompositionAncestryBlind.cfg agree 0.01s 0.027GB 436 Inv_NoSplitRead 
+14:23:55 done 0445-interp-0.2.0-FlintClientIdentityNconnect1.cfg agree 0.019s 0.084GB 543  
+14:23:55 done 0446-interp-0.1.2-FlintClientIdentityNconnect1.cfg agree 0.018s 0.029GB 543  
+14:23:55 done 0453-interp-0.2.0-FlintClientIdentityLeaseNotify.cfg agree 0.018s 0.086GB 464 Inv_LockLossIsDetectable 
+14:23:55 done 0454-interp-0.1.2-FlintClientIdentityLeaseNotify.cfg agree 0.018s 0.029GB 491 Inv_LockLossIsDetectable 
+14:23:56 done 0501-interp-0.2.0-FlintCsiMountCrashStuck.cfg agree 0.014s 0.062GB 159 EventuallyServed 
+14:23:56 done 0502-interp-0.1.2-FlintCsiMountCrashStuck.cfg agree 0.014s 0.027GB 159 EventuallyServed 
+14:23:56 done 1399-tlc-tlc-FlintSnapshotsOrder.cfg done 0.768s 0.119GB 345 Inv_SessionFaithful 
+14:23:56 done 1397-tlc-tlc-FlintA2ProbeArmed.cfg done 0.877s 0.173GB 112 ProbeA2Fires 
+14:23:56 done 1398-tlc-tlc-FlintA2ProbeAdoptArmed.cfg done 0.889s 0.179GB 102 ProbeA2Fires 
+14:23:56 done 0623-interp-0.2.0-LeanCoreProbeRefused.cfg agree 0.018s 0.09GB 163 ProbeRefused 
+14:23:56 done 0624-interp-0.1.2-LeanCoreProbeRefused.cfg agree 0.013s 0.043GB 172 ProbeRefused 
+14:23:56 done 0153-interp-0.2.0-FlintClaimsNoLeader.cfg agree 0.013s 0.07GB 188  
+14:23:56 done 0154-interp-0.1.2-FlintClaimsNoLeader.cfg agree 0.013s 0.027GB 188  
+14:23:56 done 1400-tlc-tlc-FlintTruncateBlindClear.cfg done 0.791s 0.135GB 513 Inv_ClearImpliesFlushed 
+14:23:56 done 1402-tlc-tlc-FlintCompositionProbeFailover.cfg done 0.83s 0.147GB 577 ProbeFailoverCompletes 
+14:23:56 done 1401-tlc-tlc-FlintCompositionSkew.cfg done 0.877s 0.169GB 1340 Inv_NoStaleServe 
+14:23:56 done 1403-tlc-tlc-FlintCompositionAncestryBlind.cfg done 0.911s 0.172GB 1609 Inv_NoSplitRead 
+14:23:56 done 0169-interp-0.2.0-FlintTruncateHeldLayout.cfg agree 0.013s 0.078GB 554 Inv_NoStaleServe 
+14:23:56 done 0170-interp-0.1.2-FlintTruncateHeldLayout.cfg agree 0.013s 0.029GB 486 Inv_NoStaleServe 
+14:23:56 done 0227-interp-0.2.0-FlintExtentsProbeTruncate.cfg agree 0.016s 0.064GB 244 ProbeTruncateFires 
+14:23:56 done 0228-interp-0.1.2-FlintExtentsProbeTruncate.cfg agree 0.014s 0.027GB 188 ProbeTruncateFires 
+14:23:56 done 0229-interp-0.2.0-FlintAdmission.cfg agree 0.011s 0.041GB 41  
+14:23:56 done 0230-interp-0.1.2-FlintAdmission.cfg agree 0.01s 0.019GB 41  
+14:23:57 done 1404-tlc-tlc-FlintClientIdentityNconnect1.cfg done 0.827s 0.167GB 543  
+14:23:57 done 1405-tlc-tlc-FlintClientIdentityLeaseNotify.cfg done 0.824s 0.188GB 500 Inv_LockLossIsDetectable 
+14:23:57 done 0231-interp-0.2.0-FlintAdmissionZombie.cfg agree 0.013s 0.043GB 38 Inv_NoStaleDeviceWrite 
+14:23:57 done 0232-interp-0.1.2-FlintAdmissionZombie.cfg agree 0.014s 0.021GB 36 Inv_NoStaleDeviceWrite 
+14:23:57 done 0305-interp-0.2.0-FlintShareDisk.cfg agree 0.015s 0.021GB 168  
+14:23:57 done 0306-interp-0.1.2-FlintShareDisk.cfg agree 0.011s 0.021GB 168  
+14:23:57 done 0317-interp-0.2.0-FlintShareDiskAbortOnWake.cfg agree 0.012s 0.025GB 176 RebuildCompletes 
+14:23:57 done 1406-tlc-tlc-FlintCsiMountCrashStuck.cfg done 0.826s 0.148GB 159 temporal 
+14:23:57 done 0318-interp-0.1.2-FlintShareDiskAbortOnWake.cfg agree 0.013s 0.025GB 176 RebuildCompletes 
+14:23:57 done 0413-interp-0.2.0-FlintTierMarkerCycleBlind.cfg agree 0.013s 0.025GB 632 Inv_NoStubServed 
+14:23:57 done 0414-interp-0.1.2-FlintTierMarkerCycleBlind.cfg agree 0.012s 0.025GB 643 Inv_NoStubServed 
+14:23:57 done 1408-tlc-tlc-FlintClaimsNoLeader.cfg done 0.827s 0.142GB 188  
+14:23:57 done 1407-tlc-tlc-LeanCoreProbeRefused.cfg done 0.947s 0.212GB 137 ProbeRefused 
+14:23:57 done 0415-interp-0.2.0-FlintTierMarkerInsertBlind.cfg agree 0.013s 0.025GB 578 Inv_NoStubServed 
+14:23:57 done 0416-interp-0.1.2-FlintTierMarkerInsertBlind.cfg agree 0.015s 0.025GB 540 Inv_NoStubServed 
+14:23:57 done 0447-interp-0.2.0-FlintClientIdentityLeaseOrphan.cfg agree 0.012s 0.07GB 116 Inv_NoOrphanLocks 
+14:23:57 done 0448-interp-0.1.2-FlintClientIdentityLeaseOrphan.cfg agree 0.011s 0.025GB 117 Inv_NoOrphanLocks 
+14:23:57 done 1411-tlc-tlc-FlintAdmission.cfg done 0.749s 0.113GB 41  
+14:23:57 done 1409-tlc-tlc-FlintTruncateHeldLayout.cfg done 0.787s 0.132GB 1185 Inv_NoStaleServe 
+14:23:58 done 1410-tlc-tlc-FlintExtentsProbeTruncate.cfg done 0.818s 0.166GB 341 ProbeTruncateFires 
+14:23:58 done 0459-interp-0.2.0-FlintClientIdentityLeaseHandshakeProbe.cfg agree 0.014s 0.068GB 83 Probe_SweepLandsMidHandshake 
+14:23:58 done 0460-interp-0.1.2-FlintClientIdentityLeaseHandshakeProbe.cfg agree 0.012s 0.025GB 96 Probe_SweepLandsMidHandshake 
+14:23:58 done 0483-interp-0.2.0-FlintCsiMount.cfg agree 0.015s 0.066GB 117  
+14:23:58 done 0484-interp-0.1.2-FlintCsiMount.cfg agree 0.013s 0.027GB 117  
+14:23:58 done 0491-interp-0.2.0-FlintCsiMountDevGuarded.cfg agree 0.012s 0.06GB 117  
+14:23:58 done 1412-tlc-tlc-FlintAdmissionZombie.cfg done 0.746s 0.119GB 46 Inv_NoStaleDeviceWrite 
+14:23:58 done 1413-tlc-tlc-FlintShareDisk.cfg done 0.774s 0.126GB 168  
+14:23:58 done 1414-tlc-tlc-FlintShareDiskAbortOnWake.cfg done 0.783s 0.132GB 176 temporal 
+14:23:58 done 0493-interp-0.2.0-FlintCsiMountPassthrough.cfg agree 0.019s 0.064GB 117  
+14:23:58 done 0494-interp-0.1.2-FlintCsiMountPassthrough.cfg agree 0.014s 0.025GB 117  
+14:23:58 done 0492-interp-0.1.2-FlintCsiMountDevGuarded.cfg agree 0.014s 0.025GB 117  
+14:23:58 done 0639-interp-0.2.0-LeanChunkGCStaleRefs.cfg agree 0.014s 0.082GB 2807 Inv_LiveComplete 
+14:23:58 done 0640-interp-0.1.2-LeanChunkGCStaleRefs.cfg agree 0.012s 0.029GB 2592 Inv_LiveComplete 
+14:23:58 done 1415-tlc-tlc-FlintTierMarkerCycleBlind.cfg done 0.784s 0.142GB 1431 Inv_NoStubServed 
+14:23:58 done 0643-interp-0.2.0-LeanChunkGCNoGrace.cfg agree 0.011s 0.07GB 990 Inv_LiveComplete 
+14:23:58 done 0644-interp-0.1.2-LeanChunkGCNoGrace.cfg agree 0.012s 0.029GB 844 Inv_LiveComplete 
+14:23:58 done 0649-interp-0.2.0-LeanChunkGCProbeCollect.cfg agree 0.013s 0.086GB 2306 Probe_Collected 
+14:23:58 done 0650-interp-0.1.2-LeanChunkGCProbeCollect.cfg agree 0.012s 0.029GB 2447 Probe_Collected 
+14:23:58 done 1416-tlc-tlc-FlintTierMarkerInsertBlind.cfg done 0.775s 0.14GB 893 Inv_NoStubServed 
+14:23:58 done 1417-tlc-tlc-FlintClientIdentityLeaseOrphan.cfg done 0.807s 0.17GB 208 Inv_NoOrphanLocks 
+14:23:59 done 0151-interp-0.2.0-FlintClaimsNoGrace.cfg agree 0.011s 0.049GB 62 Inv_NoColdAdmission 
+14:23:59 done 0152-interp-0.1.2-FlintClaimsNoGrace.cfg agree 0.013s 0.021GB 62 Inv_NoColdAdmission 
+14:23:59 done 0171-interp-0.2.0-FlintTruncateLostRecall.cfg agree 0.012s 0.07GB 577 Inv_NoStaleServe 
+14:23:59 done 0172-interp-0.1.2-FlintTruncateLostRecall.cfg agree 0.011s 0.027GB 384 Inv_NoStaleServe 
+14:23:59 done 1420-tlc-tlc-FlintCsiMountDevGuarded.cfg done 0.769s 0.129GB 117  
+14:23:59 done 1418-tlc-tlc-FlintClientIdentityLeaseHandshakeProbe.cfg done 0.8s 0.163GB 156 Probe_SweepLandsMidHandshake 
+14:23:59 done 1419-tlc-tlc-FlintCsiMount.cfg done 0.815s 0.139GB 117  
+14:23:59 done 0185-interp-0.2.0-FlintExtentsGrantOverlap.cfg agree 0.012s 0.068GB 304 Inv_NoConflictingGrants 
+14:23:59 done 0186-interp-0.1.2-FlintExtentsGrantOverlap.cfg agree 0.014s 0.029GB 308 Inv_NoConflictingGrants 
+14:23:59 done 0197-interp-0.2.0-FlintExtentsProbeFence.cfg agree 0.015s 0.066GB 373 ProbeFenceFires 
+14:23:59 done 0198-interp-0.1.2-FlintExtentsProbeFence.cfg agree 0.012s 0.027GB 404 ProbeFenceFires 
+14:23:59 done 0217-interp-0.2.0-FlintExtentsProbeCommitAfterReturn.cfg agree 0.012s 0.066GB 226 ProbeCommitAfterReturn 
+14:23:59 done 1421-tlc-tlc-FlintCsiMountPassthrough.cfg done 0.764s 0.126GB 117  
+14:23:59 done 1422-tlc-tlc-LeanChunkGCStaleRefs.cfg done 0.798s 0.169GB 5092 Inv_LiveComplete 
+14:23:59 done 0218-interp-0.1.2-FlintExtentsProbeCommitAfterReturn.cfg agree 0.012s 0.029GB 227 ProbeCommitAfterReturn 
+14:23:59 done 0233-interp-0.2.0-FlintAdmissionCrossHost.cfg agree 0.015s 0.053GB 76  
+14:23:59 done 0234-interp-0.1.2-FlintAdmissionCrossHost.cfg agree 0.014s 0.021GB 76  
+14:23:59 done 0235-interp-0.2.0-FlintAdmissionProbeSweep.cfg agree 0.012s 0.043GB 22 ProbeSweepFires 
+14:23:59 done 1423-tlc-tlc-LeanChunkGCNoGrace.cfg done 0.791s 0.134GB 2636 Inv_LiveComplete 
+14:23:59 done 1424-tlc-tlc-LeanChunkGCProbeCollect.cfg done 0.805s 0.154GB 3342 Probe_Collected 
+14:24:00 done 0236-interp-0.1.2-FlintAdmissionProbeSweep.cfg agree 0.011s 0.021GB 22 ProbeSweepFires 
+14:24:00 done 0261-interp-0.2.0-FlintCompositionProbeZombie.cfg agree 0.014s 0.074GB 124 ProbeZombieWriteReachable 
+14:24:00 done 0262-interp-0.1.2-FlintCompositionProbeZombie.cfg agree 0.011s 0.025GB 76 ProbeZombieWriteReachable 
+14:24:00 done 0269-interp-0.2.0-FlintCompositionUncleanBlind.cfg agree 0.013s 0.062GB 169 Inv_NoSplitRead 
+14:24:00 done 1425-tlc-tlc-FlintClaimsNoGrace.cfg done 0.755s 0.131GB 86 Inv_NoColdAdmission 
+14:24:00 done 1426-tlc-tlc-FlintTruncateLostRecall.cfg done 0.786s 0.134GB 1081 Inv_NoStaleServe 
+14:24:00 done 0270-interp-0.1.2-FlintCompositionUncleanBlind.cfg agree 0.012s 0.025GB 125 Inv_NoSplitRead 
+14:24:00 done 0273-interp-0.2.0-FlintCompositionProbeRejoin.cfg agree 0.013s 0.064GB 170 ProbeRejoinCompletes 
+14:24:00 done 0274-interp-0.1.2-FlintCompositionProbeRejoin.cfg agree 0.011s 0.025GB 70 ProbeRejoinCompletes 
+14:24:00 done 0275-interp-0.2.0-FlintCompositionProbeTorn.cfg agree 0.009s 0.025GB 9 ProbeTornReachable 
+14:24:00 done 1164-tlc-tlc-LeanImmutableRetirePerPath.cfg done 70.031s 4.521GB 641461 Inv_NoDangling 
+14:24:00 done 1427-tlc-tlc-FlintExtentsGrantOverlap.cfg done 0.815s 0.151GB 151 Inv_NoConflictingGrants 
+14:24:00 done 1429-tlc-tlc-FlintExtentsProbeCommitAfterReturn.cfg done 0.812s 0.161GB 323 ProbeCommitAfterReturn 
+14:24:00 done 1428-tlc-tlc-FlintExtentsProbeFence.cfg done 0.832s 0.156GB 286 ProbeFenceFires 
+14:24:00 done 0276-interp-0.1.2-FlintCompositionProbeTorn.cfg agree 0.012s 0.019GB 9 ProbeTornReachable 
+14:24:00 done 0295-interp-0.2.0-FlintCompositionProbeCutFailover.cfg agree 0.015s 0.07GB 295 ProbeCutFailoverCompletes 
+14:24:00 done 0297-interp-0.2.0-FlintCompositionProbeMarkFirst.cfg agree 0.013s 0.051GB 25 ProbeMarkFirst 
+14:24:00 done 0296-interp-0.1.2-FlintCompositionProbeCutFailover.cfg agree 0.016s 0.029GB 216 ProbeCutFailoverCompletes 
+14:24:00 done 0298-interp-0.1.2-FlintCompositionProbeMarkFirst.cfg agree 0.011s 0.021GB 25 ProbeMarkFirst 
+14:24:00 done 0309-interp-0.2.0-FlintShareDiskVacuity.cfg agree 0.01s 0.021GB 79 NoRebuildEverHappened 
+14:24:00 done 1430-tlc-tlc-FlintAdmissionCrossHost.cfg done 0.741s 0.119GB 76  
+14:24:00 done 1431-tlc-tlc-FlintAdmissionProbeSweep.cfg done 0.747s 0.118GB 24 ProbeSweepFires 
+14:24:01 done 0310-interp-0.1.2-FlintShareDiskVacuity.cfg agree 0.01s 0.021GB 83 NoRebuildEverHappened 
+14:24:01 done 0315-interp-0.2.0-FlintShareDiskNoAdoptGuard.cfg agree 0.012s 0.021GB 143 Inv_NeverDeleteAdopted 
+14:24:01 done 0316-interp-0.1.2-FlintShareDiskNoAdoptGuard.cfg agree 0.011s 0.023GB 147 Inv_NeverDeleteAdopted 
+14:24:01 done 0407-interp-0.2.0-FlintTierMarkerNoRecheck.cfg agree 0.011s 0.021GB 124 Inv_NoStubServed 
+14:24:01 done 0408-interp-0.1.2-FlintTierMarkerNoRecheck.cfg agree 0.009s 0.021GB 107 Inv_NoStubServed 
+14:24:01 done 1432-tlc-tlc-FlintCompositionProbeZombie.cfg done 0.816s 0.144GB 240 ProbeZombieWriteReachable 
+14:24:01 done 1433-tlc-tlc-FlintCompositionUncleanBlind.cfg done 0.856s 0.161GB 695 Inv_NoSplitRead 
+14:24:01 done 0411-interp-0.2.0-FlintTierMarkerNoFlag.cfg agree 0.012s 0.021GB 194 Inv_TruthfulAttrs 
+14:24:01 done 0412-interp-0.1.2-FlintTierMarkerNoFlag.cfg agree 0.013s 0.023GB 211 Inv_TruthfulAttrs 
+14:24:01 done 0427-interp-0.2.0-FlintTierSessionNoDrain.cfg agree 0.014s 0.076GB 331 Inv_NoStragglerLand 
+14:24:01 done 0428-interp-0.1.2-FlintTierSessionNoDrain.cfg agree 0.012s 0.029GB 392 Inv_NoStragglerLand 
+14:24:01 done 0449-interp-0.2.0-FlintClientIdentityLeaseSilent.cfg agree 0.012s 0.068GB 185 Inv_LockLossIsDetectable 
+14:24:01 done 1434-tlc-tlc-FlintCompositionProbeRejoin.cfg done 0.817s 0.148GB 230 ProbeRejoinCompletes 
+14:24:01 done 1435-tlc-tlc-FlintCompositionProbeTorn.cfg done 0.819s 0.158GB 142 ProbeTornReachable 
+14:24:01 done 0450-interp-0.1.2-FlintClientIdentityLeaseSilent.cfg agree 0.017s 0.027GB 181 Inv_LockLossIsDetectable 
+14:24:01 done 0473-interp-0.2.0-FlintDelegRecallNoRecheck.cfg agree 0.015s 0.023GB 250 Inv_RevokeOnlyFromRecall 
+14:24:01 done 0474-interp-0.1.2-FlintDelegRecallNoRecheck.cfg agree 0.012s 0.025GB 250 Inv_RevokeOnlyFromRecall 
+14:24:01 done 0621-interp-0.2.0-LeanCoreProbeGone.cfg agree 0.015s 0.053GB 27 ProbeGone 
+14:24:01 done 1438-tlc-tlc-FlintShareDiskVacuity.cfg done 0.777s 0.122GB 128 NoRebuildEverHappened 
+14:24:01 done 1437-tlc-tlc-FlintCompositionProbeMarkFirst.cfg done 0.823s 0.145GB 165 ProbeMarkFirst 
+14:24:01 done 1436-tlc-tlc-FlintCompositionProbeCutFailover.cfg done 0.84s 0.153GB 564 ProbeCutFailoverCompletes 
+14:24:02 done 0622-interp-0.1.2-LeanCoreProbeGone.cfg agree 0.011s 0.029GB 27 ProbeGone 
+14:24:02 done 0625-interp-0.2.0-LeanCoreProbePending.cfg agree 0.014s 0.027GB 5 ProbePending 
+14:24:02 done 0626-interp-0.1.2-LeanCoreProbePending.cfg agree 0.011s 0.021GB 5 ProbePending 
+14:24:02 done 0641-interp-0.2.0-LeanChunkGCRefsFirst.cfg agree 0.014s 0.09GB 1653 Inv_LiveComplete 
+14:24:02 done 0642-interp-0.1.2-LeanChunkGCRefsFirst.cfg agree 0.015s 0.029GB 2164 Inv_LiveComplete 
+14:24:02 done 1440-tlc-tlc-FlintTierMarkerNoRecheck.cfg done 0.757s 0.123GB 314 Inv_NoStubServed 
+14:24:02 done 1439-tlc-tlc-FlintShareDiskNoAdoptGuard.cfg done 0.778s 0.131GB 152 Inv_NeverDeleteAdopted 
+14:24:02 done 0645-interp-0.2.0-LeanChunkGCRacyGrace.cfg agree 0.016s 0.088GB 4639 Inv_LiveComplete 
+14:24:02 done 0646-interp-0.1.2-LeanChunkGCRacyGrace.cfg agree 0.016s 0.029GB 2768 Inv_LiveComplete 
+14:24:02 done 0157-interp-0.2.0-FlintSnapshotsSplit.cfg agree 0.015s 0.06GB 77 Inv_SessionFaithful 
+14:24:02 done 0158-interp-0.1.2-FlintSnapshotsSplit.cfg agree 0.012s 0.023GB 81 Inv_SessionFaithful 
+14:24:02 done 0161-interp-0.2.0-FlintSnapshotsBareDelete.cfg agree 0.01s 0.062GB 198 Inv_SessionFaithful 
+14:24:02 done 1441-tlc-tlc-FlintTierMarkerNoFlag.cfg done 0.767s 0.139GB 430 Inv_TruthfulAttrs 
+14:24:02 done 1442-tlc-tlc-FlintTierSessionNoDrain.cfg done 0.83s 0.147GB 1623 Inv_NoStragglerLand 
+14:24:02 done 1443-tlc-tlc-FlintClientIdentityLeaseSilent.cfg done 0.825s 0.173GB 268 Inv_LockLossIsDetectable 
+14:24:02 done 0383-build-0.2.0-ForgeSyncCode.cfg built 379.425s 0.629GB None  
+14:24:02 done 0162-interp-0.1.2-FlintSnapshotsBareDelete.cfg agree 0.011s 0.025GB 219 Inv_SessionFaithful 
+14:24:02 done 0173-interp-0.2.0-FlintTruncateGrantRace.cfg agree 0.016s 0.074GB 475 Inv_NoStaleServe 
+14:24:02 done 0174-interp-0.1.2-FlintTruncateGrantRace.cfg agree 0.014s 0.029GB 418 Inv_NoStaleServe 
+14:24:02 done 0199-interp-0.2.0-FlintExtentsProbeRestart.cfg agree 0.011s 0.025GB 16 ProbeTgtRestarts 
+14:24:02 done 0200-interp-0.1.2-FlintExtentsProbeRestart.cfg agree 0.013s 0.019GB 16 ProbeTgtRestarts 
+14:24:02 done 1444-tlc-tlc-FlintDelegRecallNoRecheck.cfg done 0.761s 0.122GB 554 Inv_RevokeOnlyFromRecall 
+14:24:02 done 1445-tlc-tlc-LeanCoreProbeGone.cfg done 0.854s 0.17GB 54 ProbeGone 
+14:24:03 done 0215-interp-0.2.0-FlintExtentsProbeCommit.cfg agree 0.011s 0.07GB 64 ProbeCommitFires 
+14:24:03 done 0216-interp-0.1.2-FlintExtentsProbeCommit.cfg agree 0.015s 0.025GB 52 ProbeCommitFires 
+14:24:03 done 0299-interp-0.2.0-FlintCompositionProbeBill.cfg agree 0.012s 0.035GB 16 ProbeHealthySuspend 
+14:24:03 done 0300-interp-0.1.2-FlintCompositionProbeBill.cfg agree 0.013s 0.021GB 16 ProbeHealthySuspend 
+14:24:03 done 0311-interp-0.2.0-FlintShareDiskNoDrain.cfg agree 0.011s 0.021GB 152 Inv_NoUnverifiedDelete 
+14:24:03 done 1447-tlc-tlc-LeanChunkGCRefsFirst.cfg done 0.819s 0.161GB 2990 Inv_LiveComplete 
+14:24:03 done 1446-tlc-tlc-LeanCoreProbePending.cfg done 0.882s 0.172GB 59 ProbePending 
+14:24:03 done 0313-interp-0.2.0-FlintShareDiskNoGuard.cfg agree 0.013s 0.023GB 220 Inv_ShrinkHonoured 
+14:24:03 done 0312-interp-0.1.2-FlintShareDiskNoDrain.cfg agree 0.013s 0.021GB 147 Inv_NoUnverifiedDelete 
+14:24:03 done 0314-interp-0.1.2-FlintShareDiskNoGuard.cfg agree 0.012s 0.023GB 216 Inv_ShrinkHonoured 
+14:24:03 done 0333-interp-0.2.0-FlintTierEpochReleaseBeforeFence.cfg agree 0.012s 0.062GB 157 Inv_NoPostReleaseLand 
+14:24:03 done 1449-tlc-tlc-FlintSnapshotsSplit.cfg done 0.766s 0.116GB 151 Inv_SessionFaithful 
+14:24:03 done 1450-tlc-tlc-FlintSnapshotsBareDelete.cfg done 0.811s 0.118GB 373 Inv_SessionFaithful 
+14:24:03 done 1448-tlc-tlc-LeanChunkGCRacyGrace.cfg done 0.845s 0.17GB 6103 Inv_LiveComplete 
+14:24:03 done 0334-interp-0.1.2-FlintTierEpochReleaseBeforeFence.cfg agree 0.014s 0.025GB 130 Inv_NoPostReleaseLand 
+14:24:03 done 0402-interp-0.1.2-ForgeMergeChainNoCoalesce.cfg agree 0.011s 0.019GB 2 Inv_LocalAgreesWithBucket 
+14:24:03 done 0401-interp-0.2.0-ForgeMergeChainNoCoalesce.cfg agree 0.012s 0.025GB 2 Inv_LocalAgreesWithBucket 
+14:24:03 done 0409-interp-0.2.0-FlintTierMarkerRowLate.cfg agree 0.01s 0.023GB 53 Inv_TruthfulAttrs 
+14:24:03 done 0410-interp-0.1.2-FlintTierMarkerRowLate.cfg agree 0.009s 0.025GB 68 Inv_TruthfulAttrs 
+14:24:03 done 1451-tlc-tlc-FlintTruncateGrantRace.cfg done 0.789s 0.125GB 646 Inv_NoStaleServe 
+14:24:03 done 1452-tlc-tlc-FlintExtentsProbeRestart.cfg done 0.803s 0.138GB 57 ProbeTgtRestarts 
+14:24:04 done 0475-interp-0.2.0-FlintDelegRecallRearmWorks.cfg agree 0.014s 0.021GB 112 Inv_NoDeliveryAfterRebind 
+14:24:04 done 0476-interp-0.1.2-FlintDelegRecallRearmWorks.cfg agree 0.011s 0.021GB 92 Inv_NoDeliveryAfterRebind 
+14:24:04 done 0487-interp-0.2.0-FlintCsiMountDevOracle.cfg agree 0.011s 0.041GB 14 Inv_NoTreeLoss 
+14:24:04 done 0488-interp-0.1.2-FlintCsiMountDevOracle.cfg agree 0.011s 0.021GB 13 Inv_NoTreeLoss 
+14:24:04 done 0489-interp-0.2.0-FlintCsiMountDevDurability.cfg agree 0.013s 0.066GB 137 Inv_NoAckedLoss 
+14:24:04 done 1455-tlc-tlc-FlintShareDiskNoDrain.cfg done 0.756s 0.131GB 184 Inv_NoUnverifiedDelete 
+14:24:04 done 1453-tlc-tlc-FlintExtentsProbeCommit.cfg done 0.797s 0.135GB 78 ProbeCommitFires 
+14:24:04 done 1454-tlc-tlc-FlintCompositionProbeBill.cfg done 0.81s 0.135GB 58 ProbeHealthySuspend 
+14:24:04 done 0490-interp-0.1.2-FlintCsiMountDevDurability.cfg agree 0.012s 0.025GB 143 Inv_NoAckedLoss 
+14:24:04 done 0495-interp-0.2.0-FlintCsiMountNoLease.cfg agree 0.013s 0.049GB 44 Inv_SingleWriter 
+14:24:04 done 0496-interp-0.1.2-FlintCsiMountNoLease.cfg agree 0.015s 0.023GB 44 Inv_SingleWriter 
+14:24:04 done 0497-interp-0.2.0-FlintCsiMountReleaseFirst.cfg agree 0.012s 0.062GB 66 Inv_NoLostDrain 
+14:24:04 done 0498-interp-0.1.2-FlintCsiMountReleaseFirst.cfg agree 0.012s 0.023GB 58 Inv_NoLostDrain 
+14:24:04 done 1456-tlc-tlc-FlintShareDiskNoGuard.cfg done 0.77s 0.137GB 242 Inv_ShrinkHonoured 
+14:24:04 done 1457-tlc-tlc-FlintTierEpochReleaseBeforeFence.cfg done 0.791s 0.138GB 501 Inv_NoPostReleaseLand 
+14:24:04 done 1460-tlc-tlc-FlintDelegRecallRearmWorks.cfg done 0.277s 0.068GB None  
+14:24:04 done 0503-interp-0.2.0-FlintCsiMountProbeHandoff.cfg agree 0.012s 0.051GB 78 Probe_HandoffReachable 
+14:24:04 done 0504-interp-0.1.2-FlintCsiMountProbeHandoff.cfg agree 0.013s 0.023GB 76 Probe_HandoffReachable 
+14:24:04 done 0651-interp-0.2.0-LeanChunkGCProbeAdopt.cfg agree 0.012s 0.094GB 373 Probe_Adopted 
+14:24:04 done 0652-interp-0.1.2-LeanChunkGCProbeAdopt.cfg agree 0.016s 0.027GB 226 Probe_Adopted 
+14:24:04 done 0237-interp-0.2.0-FlintAdmissionProbeReadmit.cfg agree 0.012s 0.041GB 29 ProbeReadmitFires 
+14:24:04 done 0238-interp-0.1.2-FlintAdmissionProbeReadmit.cfg agree 0.01s 0.021GB 29 ProbeReadmitFires 
+14:24:04 done 1459-tlc-tlc-FlintTierMarkerRowLate.cfg done 0.763s 0.126GB 193 Inv_TruthfulAttrs 
+14:24:04 done 1458-tlc-tlc-ForgeMergeChainNoCoalesce.cfg done 0.788s 0.118GB 2 Inv_LocalAgreesWithBucket 
+14:24:05 done 0397-interp-0.2.0-ForgeMergeChain.cfg agree 0.011s 0.037GB 5  
+14:24:05 done 0398-interp-0.1.2-ForgeMergeChain.cfg agree 0.009s 0.019GB 5  
+14:24:05 done 0405-interp-0.2.0-FlintTierMarkerMarkLate.cfg agree 0.013s 0.021GB 14 Inv_TruthfulAttrs 
+14:24:05 done 0406-interp-0.1.2-FlintTierMarkerMarkLate.cfg agree 0.008s 0.021GB 14 Inv_TruthfulAttrs 
+14:24:05 done 0465-interp-0.2.0-FlintDelegRecallNoGuard.cfg agree 0.009s 0.019GB 16 Inv_NoAdmittedWriterUnderLiveDeleg 
+14:24:05 done 1461-tlc-tlc-FlintCsiMountDevOracle.cfg done 0.767s 0.128GB 16 Inv_NoTreeLoss 
+14:24:05 done 1462-tlc-tlc-FlintCsiMountDevDurability.cfg done 0.793s 0.129GB 220 Inv_NoAckedLoss 
+14:24:05 done 0466-interp-0.1.2-FlintDelegRecallNoGuard.cfg agree 0.011s 0.019GB 16 Inv_NoAdmittedWriterUnderLiveDeleg 
+14:24:05 done 0467-interp-0.2.0-FlintDelegRecallNoFence.cfg agree 0.013s 0.019GB 23 Inv_NoUnsignalledStaleness 
+14:24:05 done 0468-interp-0.1.2-FlintDelegRecallNoFence.cfg agree 0.01s 0.021GB 31 Inv_NoUnsignalledStaleness 
+14:24:05 done 0469-interp-0.2.0-FlintDelegRecallDisownDrop.cfg agree 0.01s 0.021GB 73 Inv_BelieverHasEvidence 
+14:24:05 done 1464-tlc-tlc-FlintCsiMountReleaseFirst.cfg done 0.767s 0.131GB 88 Inv_NoLostDrain 
+14:24:05 done 1463-tlc-tlc-FlintCsiMountNoLease.cfg done 0.774s 0.128GB 85 Inv_SingleWriter 
+14:24:05 done 0470-interp-0.1.2-FlintDelegRecallDisownDrop.cfg agree 0.011s 0.021GB 77 Inv_BelieverHasEvidence 
+14:24:05 done 0471-interp-0.2.0-FlintDelegRecallNoEvidence.cfg agree 0.012s 0.021GB 86 Inv_NoUnsignalledStaleness 
+14:24:05 done 0472-interp-0.1.2-FlintDelegRecallNoEvidence.cfg agree 0.01s 0.021GB 104 Inv_NoUnsignalledStaleness 
+14:24:05 done 0479-interp-0.2.0-FlintDelegRecallProbeDisown.cfg agree 0.01s 0.019GB 23 Probe_DisownRaceReachable 
+14:24:05 done 1467-tlc-tlc-FlintAdmissionProbeReadmit.cfg done 0.732s 0.117GB 35 ProbeReadmitFires 
+14:24:05 done 1466-tlc-tlc-LeanChunkGCProbeAdopt.cfg done 0.758s 0.123GB 344 Probe_Adopted 
+14:24:05 done 1465-tlc-tlc-FlintCsiMountProbeHandoff.cfg done 0.772s 0.126GB 95 Probe_HandoffReachable 
+14:24:06 done 0480-interp-0.1.2-FlintDelegRecallProbeDisown.cfg agree 0.012s 0.021GB 23 Probe_DisownRaceReachable 
+14:24:06 done 0481-interp-0.2.0-FlintDelegRecallProbeStale.cfg agree 0.014s 0.021GB 86 Probe_StaleSignalledReachable 
+14:24:06 done 0482-interp-0.1.2-FlintDelegRecallProbeStale.cfg agree 0.014s 0.023GB 119 Probe_StaleSignalledReachable 
+14:24:06 done 0505-interp-0.2.0-FlintCsiMountProbeCleanup.cfg agree 0.011s 0.041GB 14 Probe_CleanupReachable 
+14:24:06 done 0506-interp-0.1.2-FlintCsiMountProbeCleanup.cfg agree 0.01s 0.021GB 13 Probe_CleanupReachable 
+14:24:06 done 1468-tlc-tlc-ForgeMergeChain.cfg done 0.746s 0.115GB 5  
+14:24:06 done 1470-tlc-tlc-FlintDelegRecallNoGuard.cfg done 0.748s 0.123GB 149 Inv_NoAdmittedWriterUnderLiveDeleg 
+14:24:06 done 1469-tlc-tlc-FlintTierMarkerMarkLate.cfg done 0.757s 0.125GB 117 Inv_TruthfulAttrs 
+14:24:06 done 0399-interp-0.2.0-ForgeMergeChainExcludeBase.cfg agree 0.008s 0.025GB 2 Inv_RestorableFromBucket 
+14:24:06 done 0400-interp-0.1.2-ForgeMergeChainExcludeBase.cfg agree 0.009s 0.019GB 2 Inv_RestorableFromBucket 
+14:24:06 done 0901-examples-0.2.0-CigaretteSmokers.cfg success 0.012s 0.035GB 6  tla-mc: CigaretteSmokers (2 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:06 done 0895-examples-0.2.0-MC.cfg success 0.013s 0.019GB 0  tla-mc: MC (0 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:06 done 0907-examples-0.2.0-MCDieHardest.cfg unsupported 0.008s 0.019GB None  tla-mc: unknown operator TLCGet
+14:24:06 done 0914-examples-0.2.0-MCCRDT.cfg unsupported 0.006s 0.019GB None  tla-mc: MCCRDT.tla: line 19: unsupported operator \cdot
+14:24:06 done 1472-tlc-tlc-FlintDelegRecallDisownDrop.cfg done 0.749s 0.129GB 280 Inv_BelieverHasEvidence 
+14:24:06 done 1471-tlc-tlc-FlintDelegRecallNoFence.cfg done 0.753s 0.126GB 140 Inv_NoUnsignalledStaleness 
+14:24:06 done 0916-examples-0.2.0-MCReplicatedLog.cfg unsupported 0.01s 0.019GB None  tla-mc: MCReplicatedLog.tla: line 22: unsupported operator \cdot
+14:24:06 done 0915-examples-0.2.0-MCDistributedReplicatedLog.cfg unsupported 0.007s 0.019GB None  tla-mc: PROPERTY AllExtending: unsupported shape under []
+14:24:06 done 0927-examples-0.2.0-MCKVsnap.cfg unsupported 0.008s 0.019GB None  tla-mc: in CC!INTERSECTION: unknown operator op
+14:24:06 done 0923-examples-0.2.0-Huang.cfg unsupported 0.007s 0.019GB None  tla-mc: unknown operator choose
+14:24:06 done 0934-examples-0.2.0-MCParReach.cfg unsupported 0.007s 0.019GB None  tla-mc: PROPERTY Refines: unsupported temporal formula Temporal("WF", [Ident("R!vars"), Ident("R!Next")])
+14:24:06 done 0935-examples-0.2.0-MCReachabilityTestAllGraphs.cfg unsupported 0.007s 0.019GB None  tla-mc: ReachabilityTest.tla: line 46 col 12: parameterized instances (F(x) == INSTANCE M) are not supported (at Ident("INSTANCE"))
+14:24:06 done 0936-examples-0.2.0-MCReachabilityTestRandomGraphs.cfg unsupported 0.005s 0.019GB None  tla-mc: ReachabilityTest.tla: line 46 col 12: parameterized instances (F(x) == INSTANCE M) are not supported (at Ident("INSTANCE"))
+14:24:06 done 1473-tlc-tlc-FlintDelegRecallNoEvidence.cfg done 0.758s 0.134GB 380 Inv_NoUnsignalledStaleness 
+14:24:06 done 1474-tlc-tlc-FlintDelegRecallProbeDisown.cfg done 0.757s 0.126GB 157 Probe_DisownRaceReachable 
+14:24:06 done 0951-examples-0.2.0-MCNanoMedium.cfg unsupported 0.011s 0.019GB None  tla-mc: Nano.tla: line 31 col 34: expected `\in` (at Op(":"))
+14:24:07 done 0953-examples-0.2.0-MCConsensus.cfg success 0.008s 0.027GB 4  tla-mc: MCConsensus (1 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:07 done 0940-examples-0.2.0-CatOddBoxes.cfg success 0.008s 0.021GB 30  tla-mc: Cat (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:07 done 0952-examples-0.2.0-MCNanoSmall.cfg unsupported 0.007s 0.019GB None  tla-mc: Nano.tla: line 31 col 34: expected `\in` (at Op(":"))
+14:24:07 done 0939-examples-0.2.0-CatEvenBoxes.cfg success 0.01s 0.019GB 48  tla-mc: Cat (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:07 done 0963-examples-0.2.0-PrisonerSolo.cfg success 0.01s 0.027GB 2  tla-mc: Prisoner (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:07 done 0956-examples-0.2.0-MCConsensus.cfg success 0.011s 0.035GB 4  tla-mc: MCConsensus (1 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:07 done 0966-examples-0.2.0-MC.cfg unsupported 0.011s 0.019GB None  tla-mc: /data/community/modules/Bitwise.tla: line 34 col 3: expected `==` (at Op("|"))
+14:24:07 done 0967-examples-0.2.0-MC.cfg unsupported 0.006s 0.019GB None  tla-mc: /data/community/modules/Bitwise.tla: line 34 col 3: expected `==` (at Op("|"))
+14:24:07 done 1475-tlc-tlc-FlintDelegRecallProbeStale.cfg done 0.752s 0.128GB 277 Probe_StaleSignalledReachable 
+14:24:07 done 1476-tlc-tlc-FlintCsiMountProbeCleanup.cfg done 0.762s 0.133GB 16 Probe_CleanupReachable 
+14:24:07 done 0985-examples-0.2.0-AsynchInterface.cfg success 0.007s 0.019GB 12  tla-mc: AsynchInterface (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:07 done 0987-examples-0.2.0-PrintValues.cfg success 0.007s 0.019GB 0  tla-mc: PrintValues (0 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:07 done 0978-examples-0.2.0-SpanTreeTest4Nodes.cfg unsupported 0.009s 0.019GB None  tla-mc: Randomization.tla: No such file or directory (os error 2)
+14:24:07 done 0977-examples-0.2.0-SpanTreeRandom.cfg unsupported 0.01s 0.019GB None  tla-mc: in Edges: unknown operator RandomElement
+14:24:07 done 0984-examples-0.2.0-MCInnerSerial.cfg unsupported 0.008s 0.019GB None  tla-mc: fairness: unsupported fairness conjunct Bin("=>", Bin("#", Ident("oi"), Ident("oj")), Temporal("WF", [Tuple([Ident("regFile"), Ident("opQ"), Ident("opOrder")]), And([And([Bin("\\in", Ident("oi
+14:24:07 done 0993-examples-0.2.0-LiveHourClock.cfg unsupported 0.007s 0.019GB None  tla-mc: PROPERTY AlwaysTick: unsupported shape under []
+14:24:07 done 0992-examples-0.2.0-HourClock2.cfg success 0.01s 0.019GB 12  tla-mc: HourClock2 (1 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:07 done 0986-examples-0.2.0-Channel.cfg success 0.011s 0.033GB 12  tla-mc: Channel (1 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:07 done 0991-examples-0.2.0-HourClock.cfg success 0.008s 0.019GB 12  tla-mc: HourClock (1 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:07 done 0994-examples-0.2.0-MCLiveInternalMemory.cfg unsupported 0.007s 0.019GB None  tla-mc: PROPERTY Liveness: unsupported temporal formula Temporal("WF", [Ident("vars"), Apply("Do", [Ident("p")])])
+14:24:07 done 0995-examples-0.2.0-MCLiveWriteThroughCache.cfg unsupported 0.006s 0.019GB None  tla-mc: PROPERTY LM_Inner_LISpec: unsupported temporal formula Or([Temporal("[]", [Temporal("<>", [Not(Or([Apply("LM_Inner_EnabledDo", [Ident("p")]), Apply("LM_Inner_EnabledRsp", [Ident("p")])]))])]),
+14:24:07 done 1477-tlc-tlc-ForgeMergeChainExcludeBase.cfg done 0.743s 0.123GB 2 Inv_RestorableFromBucket 
+14:24:07 done 1005-examples-0.2.0-TestGraphs.cfg unsupported 0.011s 0.019GB None  tla-mc: unknown operator Constraint
+14:24:07 done 1010-examples-0.2.0-MCTwoPhase.cfg success 0.008s 0.021GB 4  tla-mc: MCTwoPhase (3 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:07 done 0996-examples-0.2.0-MCRealTimeHourClock.cfg unsupported 0.006s 0.019GB None  tla-mc: a temporal formula where a value is expected
+14:24:07 done 0997-examples-0.2.0-SimpleMath.cfg success 0.01s 0.019GB 0  tla-mc: SimpleMath (0 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:24:07 done 0999-examples-0.2.0-MCAlternatingBit.cfg unsupported 0.007s 0.019GB None  tla-mc: PROPERTY ABCSpec: unsupported temporal formula Temporal("WF", [Ident("cvars"), Ident("CRcvMsg")])
+14:24:07 done 0998-examples-0.2.0-ABCorrectness.cfg success 0.007s 0.019GB 20  tla-mc: ABCorrectness (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:07 done 1012-examples-0.2.0-MCYoYoPruning.cfg unsupported 0.01s 0.019GB None  tla-mc: cannot enumerate the infinite set Seq({1})
+14:24:07 done 1014-examples-0.2.0-aba_asyn_byz.cfg unsupported 0.008s 0.019GB None  tla-mc: PROPERTY Unforg_Ltl: unsupported temporal formula Bin("=>", Quant(true, [Bound { names: ["i"], tuple: false, set: Ident("Proc") }], Bin("=", App(Ident("pc"), [Ident("i")]), Str("V0"))), Tempor
+14:24:07 done 1018-examples-0.2.0-AllocatorImplementation.cfg unsupported 0.007s 0.019GB None  tla-mc: PROPERTY SchedAllocator: unsupported temporal formula Temporal("WF", [Ident("Sched!vars"), And([Bin("=", App(Ident("unsat"), [Ident("c")]), SetEnum([])), Apply("Sched!Return", [Ident("c"), App
+14:24:07 done 1009-examples-0.2.0-TransitiveClosure.cfg unsupported 0.008s 0.019GB None  tla-mc: unknown operator R
+14:24:07 done 1011-examples-0.2.0-MCYoYoNoPruning.cfg unsupported 0.011s 0.019GB None  tla-mc: cannot enumerate the infinite set Seq({1})
+14:24:07 done 1019-examples-0.2.0-AllocatorRefinement.cfg unsupported 0.005s 0.019GB None  tla-mc: PROPERTY SimpleAllocator: unsupported temporal formula Temporal("WF", [Ident("Simple!vars"), Apply("Simple!Return", [Ident("c"), App(Ident("alloc"), [Ident("c")])])])
+14:24:08 done 1022-examples-0.2.0-Barrier.cfg success 0.01s 0.064GB 64  tla-mc: Barrier (1 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:08 done 1025-examples-0.2.0-bcastByzNoBcast.cfg unsupported 0.009s 0.019GB None  tla-mc: PROPERTY CorrLtl: unsupported temporal formula Bin("=>", Quant(true, [Bound { names: ["i"], tuple: false, set: Ident("Corr") }], Bin("=", App(Ident("pc"), [Ident("i")]), Str("V1"))), Temporal(
+14:24:08 done 1037-examples-0.2.0-Consensus.cfg success 0.011s 0.035GB 4  tla-mc: Consensus (1 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:08 done 1042-examples-0.2.0-MCChangRoberts.cfg unsupported 0.008s 0.019GB None  tla-mc: PROPERTY Liveness: unsupported temporal formula Bin("=>", Quant(false, [Bound { names: ["n"], tuple: false, set: Ident("Node") }], Bin("=", App(Ident("state"), [Ident("n")]), Str("cand"))), Te
+14:24:08 done 1024-examples-0.2.0-bcastByz.cfg unsupported 0.011s 0.019GB None  tla-mc: PROPERTY CorrLtl: unsupported temporal formula Bin("=>", Quant(true, [Bound { names: ["i"], tuple: false, set: Ident("Corr") }], Bin("=", App(Ident("pc"), [Ident("i")]), Str("V1"))), Temporal(
+14:24:08 done 1028-examples-0.2.0-BufferedRandomAccessFile.cfg unsupported 0.011s 0.019GB None  tla-mc: Common.tla: No such file or directory (os error 2)
+14:24:08 done 1052-examples-0.2.0-MCEWD687a.cfg unsupported 0.01s 0.019GB 1  Error: evaluating TreeWithRoot: cannot enumerate the infinite set Seq({Leader})
+14:24:08 done 1041-examples-0.2.0-cf1s_folklore.cfg unsupported 0.01s 0.019GB None  tla-mc: PROPERTY OneStep0_Ltl: unsupported temporal formula Bin("=>", Quant(true, [Bound { names: ["i"], tuple: false, set: Ident("Proc") }], Bin("=", App(Ident("pc"), [Ident("i")]), Str("V0"))), Temp
+14:24:08 done 1044-examples-0.2.0-TLCSailfish1.cfg unsupported 0.007s 0.019GB None  tla-mc: cannot enumerate the infinite set Nat
+14:24:08 done 1053-examples-0.2.0-EWD840.cfg unsupported 0.011s 0.019GB None  tla-mc: PROPERTY TDSpec: unsupported temporal formula Temporal("WF", [Ident("TD!vars"), Ident("TD!DetectTermination")])
+14:24:08 done 1054-examples-0.2.0-EWD840_json.cfg unsupported 0.008s 0.019GB None  tla-mc: TLCExt.tla: No such file or directory (os error 2)
+14:24:08 done 1055-examples-0.2.0-SyncTerminationDetection.cfg unsupported 0.005s 0.019GB None  tla-mc: PROPERTY Quiescence: unsupported shape under []
+14:24:08 done 1063-examples-0.2.0-EWD998ChanTrace.cfg unsupported 0.007s 0.019GB None  tla-mc: POSTCONDITION is not supported
+14:24:08 done 1070-examples-0.2.0-Lock.cfg success 0.008s 0.039GB 12  tla-mc: Lock (2 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:08 done 1075-examples-0.2.0-MC_spanning.cfg safety failure 0.007s 0.029GB 6  Error: Invariant TypeOK is violated.
+14:24:08 done 1058-examples-0.2.0-EWD998Small.cfg unsupported 0.01s 0.019GB None  tla-mc: in Sum: unknown operator choose
+14:24:08 done 1056-examples-0.2.0-AsyncTerminationDetection.cfg unsupported 0.01s 0.019GB None  tla-mc: PROPERTY Quiescence: unsupported shape under []
+14:24:08 done 1059-examples-0.2.0-EWD998Chan.cfg unsupported 0.01s 0.019GB None  tla-mc: PROPERTY EWD998Spec: unsupported temporal formula Temporal("WF", [Ident("EWD998!vars"), Ident("EWD998!System")])
+14:24:08 done 1077-examples-0.2.0-MCtcp.cfg unsupported 0.007s 0.019GB None  tla-mc: ACTION_CONSTRAINT is not supported
+14:24:08 done 1067-examples-0.2.0-product.cfg unsupported 0.008s 0.019GB None  tla-mc: PROPERTY stagesSpec: unsupported temporal formula Temporal("WF", [Ident("stagesInstance!vars"), Ident("stagesInstance!anneal")])
+14:24:08 done 1074-examples-0.2.0-nbacg_guer01.cfg unsupported 0.011s 0.019GB None  tla-mc: PROPERTY AbortValidityLtl: unsupported temporal formula Bin("=>", Quant(false, [Bound { names: ["i"], tuple: false, set: Ident("Proc") }], Bin("=", App(Ident("pc"), [Ident("i")]), Str("NO"))),
+14:24:08 done 1076-examples-0.2.0-MC_sums_even.cfg unsupported 0.009s 0.019GB None  tla-mc: unknown identifier T1
+14:24:08 done 1082-examples-0.2.0-TCommit.cfg success 0.008s 0.06GB 34  tla-mc: TCommit (1 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.000s
+14:24:35 done 0908-examples-0.2.0-DiningPhilosophers.cfg error 40.954s 0.019GB None  
+14:24:45 done 0609-build-0.2.0-LeanCoreForeignFlat.cfg built 420.376s 4.203GB None  
+14:25:12 done 0686-build-0.1.2-LeanBarrierLeaseHolds.cfg built 447.866s 9.08GB None  
+14:26:03 done 0946-examples-0.2.0-MultiPaxos_MC.cfg timeout 600.335s 11.358GB None  tla-mc: MultiPaxos_MC (5 variables, 11 symmetry permutations), 8 workers, interp engine; loaded in 0.008s
+14:26:30 done 0668-build-0.1.2-LeanRemovalCrashHolds.cfg built 525.737s 9.084GB None  
+14:27:30 done 0635-build-0.2.0-LeanRefineProbe.cfg built 585.408s 9.944GB None  
+14:28:02 done 0924-examples-0.2.0-MCKVSSafetyLarge.cfg timeout 600.258s 11.047GB None  tla-mc: MCKVS (5 variables, 5 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:28:04 done 0973-examples-0.2.0-SlushLarge.cfg timeout 600.374s 8.259GB None  tla-mc: Slush (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:28:07 done 1040-examples-0.2.0-c1cs.cfg timeout 600.224s 1.378GB None  tla-mc: c1cs (5 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:28:08 done 1046-examples-0.2.0-EnvironmentController.cfg timeout 600.242s 0.451GB None  tla-mc: EnvironmentController (11 variables, 0 symmetry permutations), 8 workers, interp engine; loaded in 0.001s
+14:29:02 done 0685-build-0.2.0-LeanBarrierLeaseHolds.cfg built 677.858s 9.106GB None  
+14:29:08 done 0636-build-0.1.2-LeanRefineProbe.cfg built 683.261s 9.913GB None  
+14:30:29 done 0667-build-0.2.0-LeanRemovalCrashHolds.cfg built 765.209s 9.093GB None  
+14:30:34 done 0688-build-0.1.2-LeanBarrierLeaseImplThreeWriters.cfg built 767.634s 9.081GB None  
+14:31:56 done 0697-build-0.2.0-LeanBarrierLeaseHitlOverAnyVerified.cfg built 848.953s 9.098GB None  
+14:31:58 done 0698-build-0.1.2-LeanBarrierLeaseHitlOverAnyVerified.cfg built 851.215s 9.074GB None  
+14:32:59 done 0792-build-0.1.2-LeanBarrierLeaseSupersedeDropsBase.cfg build-failed 908.611s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.1.2)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.1.2/gen/leansubtree-222369278ae0fd64
+14:32:59 done 0758-build-0.1.2-LeanBarrierLeaseCollectorOff.cfg build-failed 912.247s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.1.2)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.1.2/gen/leansubtree-7100f01d4e640ddc
+14:32:59 done 0725-build-0.2.0-LeanProbeOutrankedPartial.cfg build-failed 912.665s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.2.0)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.2.0/gen/leansubtree-a2eea565dbf3643e
+14:32:59 done 0757-build-0.2.0-LeanBarrierLeaseCollectorOff.cfg build-failed 912.255s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.2.0)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.2.0/gen/leansubtree-798468b510af7644
+14:32:59 done 0764-build-0.1.2-LeanBarrierLeaseInboxSnapshot.cfg build-failed 912.24s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.1.2)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.1.2/gen/leansubtree-327237eab50bc998
+14:32:59 done 0823-build-0.2.0-LeanBarrierLeaseAckCarried.cfg build-failed 908.609s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.2.0)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.2.0/gen/leansubtree-fd9e4d5865d21917
+14:32:59 done 0833-build-0.2.0-LeanImmutableNarrowHolds.cfg build-failed 901.361s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.2.0)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.2.0/gen/leansubtree-3267e874000e145d
+14:32:59 done 0763-build-0.2.0-LeanBarrierLeaseInboxSnapshot.cfg build-failed 912.239s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.2.0)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.2.0/gen/leansubtree-0f10ef00cc4a4450
+14:32:59 done 0756-build-0.1.2-LeanBarrierLeaseImplHolds.cfg build-failed 912.259s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.1.2)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.1.2/gen/leansubtree-790b415b3fc404d5
+14:32:59 done 0827-build-0.2.0-LeanImmutableHolds.cfg build-failed 908.598s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.2.0)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.2.0/gen/leansubtree-77f3da1416cf9bfb
+14:32:59 done 0855-build-0.2.0-LeanImmutableAnsweredRecordSkipped.cfg build-failed 899.219s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.2.0)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.2.0/gen/leansubtree-50005173129cbb12
+14:32:59 done 0789-build-0.2.0-LeanBarrierLeaseOrphanConverges.cfg build-failed 908.63s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.2.0)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.2.0/gen/leansubtree-0c4e1bffa4515218
+14:32:59 done 0872-build-0.1.2-LeanImmutableHitlOverAny.cfg build-failed 899.204s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.1.2)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.1.2/gen/leansubtree-a6f8f417aa29b27b
+14:32:59 done 0849-build-0.2.0-LeanImmutableRepairOverridesUI.cfg build-failed 901.347s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.2.0)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.2.0/gen/leansubtree-9ef759eb424b4db3
+14:32:59 done 0687-build-0.2.0-LeanBarrierLeaseImplThreeWriters.cfg build-failed 912.685s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.2.0)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.2.0/gen/leansubtree-b190305d8e74eb4c
+14:32:59 done 0824-build-0.1.2-LeanBarrierLeaseAckCarried.cfg build-failed 908.607s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.1.2)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.1.2/gen/leansubtree-40c8523da37db0ef
+14:32:59 done 0791-build-0.2.0-LeanBarrierLeaseSupersedeDropsBase.cfg build-failed 908.615s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.2.0)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.2.0/gen/leansubtree-4298dd2539c1d2cc
+14:32:59 done 0828-build-0.1.2-LeanImmutableHolds.cfg build-failed 908.592s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.1.2)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.1.2/gen/leansubtree-9fa0ca00b4aa1033
+14:32:59 done 0790-build-0.1.2-LeanBarrierLeaseOrphanConverges.cfg build-failed 908.622s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.1.2)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.1.2/gen/leansubtree-f672ecfa86677780
+14:32:59 done 0726-build-0.1.2-LeanProbeOutrankedPartial.cfg build-failed 912.572s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.1.2)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.1.2/gen/leansubtree-a4c577ae069a4ed2
+14:32:59 done 0724-build-0.1.2-LeanBarrierLeaseSentinelOutrankedOk.cfg build-failed 912.668s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.1.2)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.1.2/gen/leansubtree-8845b7686b9c1d3d
+14:32:59 done 0834-build-0.1.2-LeanImmutableNarrowHolds.cfg build-failed 901.358s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.1.2)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.1.2/gen/leansubtree-80011170a586a5b9
+14:32:59 done 0851-build-0.2.0-LeanImmutablePendingAdoptionDropped.cfg build-failed 901.335s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.2.0)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.2.0/gen/leansubtree-59d1d01e64dd9e1d
+14:32:59 done 0723-build-0.2.0-LeanBarrierLeaseSentinelOutrankedOk.cfg build-failed 912.67s 0.051GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.2.0)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.2.0/gen/leansubtree-f4f8027f448c63a1
+14:32:59 done 0832-build-0.1.2-LeanImmutableRenameHolds.cfg build-failed 901.371s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.1.2)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.1.2/gen/leansubtree-e1ca9de5f1165450
+14:32:59 done 0850-build-0.1.2-LeanImmutableRepairOverridesUI.cfg build-failed 901.34s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.1.2)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.1.2/gen/leansubtree-2857943d8f73254b
+14:32:59 done 0831-build-0.2.0-LeanImmutableRenameHolds.cfg build-failed 901.373s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.2.0)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.2.0/gen/leansubtree-c049ed7ea0bd1648
+14:32:59 done 0871-build-0.2.0-LeanImmutableHitlOverAny.cfg build-failed 899.208s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.2.0)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.2.0/gen/leansubtree-4a3a05da20aef1c3
+14:32:59 done 0755-build-0.2.0-LeanBarrierLeaseImplHolds.cfg build-failed 912.266s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.2.0)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.2.0/gen/leansubtree-3cc133340667ac99
+14:32:59 done 0852-build-0.1.2-LeanImmutablePendingAdoptionDropped.cfg build-failed 901.326s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.1.2)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.1.2/gen/leansubtree-ca3d14699daae9f9
+14:32:59 done 0728-build-0.1.2-LeanBarrierLeaseHitlOverUncited.cfg build-failed 912.268s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.1.2)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.1.2/gen/leansubtree-63f9676d5bc7f95b
+14:32:59 done 0856-build-0.1.2-LeanImmutableAnsweredRecordSkipped.cfg build-failed 899.216s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.1.2)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.1.2/gen/leansubtree-538881c4b44993e6
+14:32:59 done 0727-build-0.2.0-LeanBarrierLeaseHitlOverUncited.cfg build-failed 912.274s 0.052GB None  # cwd /data/flint/lean/formal
+tla-mc: building a checker for LeanSubtree (cache: /data/work/cache-0.2.0)
+tla-mc: -compile: building the checker failed; its crate is in /data/work/cache-0.2.0/gen/leansubtree-ce773988dc43a823
+14:32:59 phase 1 done
+14:32:59 phase 2: 34 big entries, compiled, 192 workers, alone
+14:33:01 handover: first runner stopped after phase 1 (0 tla-mc processes left)
+14:33:02 start: 446 gate entries, 34 big by the 10-07 times; 192 cores; 366 GB available
+14:33:02 phase 2: 31 big entries, compiled, 192 workers, alone; then the 3 undecided, 0.2.0 first
+14:33:10 done 3001-compiled-0.1.2-FlintExtentsCommit.cfg agree 8.017s 3.057GB 25819382  
+14:33:14 done 3002-compiled-0.2.0-FlintExtentsCommit.cfg agree 4.353s 4.638GB 25819382  
+14:33:16 done 3003-compiled-0.2.0-FlintExtentsTarget.cfg agree 1.784s 2.758GB 9646168  
+14:33:19 done 3004-compiled-0.1.2-FlintExtentsTarget.cfg agree 3.551s 1.922GB 9646168  
+14:33:35 done 3005-compiled-0.1.2-FlintReplicationBounce.cfg agree 16.095s 0.694GB 1822000  
+14:33:40 done 3006-compiled-0.2.0-FlintReplicationBounce.cfg agree 4.149s 1.763GB 1822000  
+14:34:14 done 3007-compiled-0.2.0-ForgeSync.cfg agree 34.946s 9.746GB 89146934  
+14:35:04 done 3008-compiled-0.1.2-ForgeSync.cfg agree 49.265s 8.792GB 89146934  
+14:35:21 done 3009-compiled-0.1.2-ForgeSyncCode.cfg agree 17.578s 4.531GB 30277694  
+14:35:33 done 3010-compiled-0.2.0-ForgeSyncCode.cfg agree 11.729s 4.964GB 30277694  
+14:35:35 done 3011-compiled-0.2.0-ForgeSyncFoldCommitMidBatch.cfg agree 1.618s 3.662GB 4810411 Inv_ProofNeverRestsOnRetention 
+14:35:37 done 3012-compiled-0.1.2-ForgeSyncFoldCommitMidBatch.cfg agree 2.205s 3.22GB 4798429 Inv_ProofNeverRestsOnRetention 
+14:35:39 done 3013-compiled-0.1.2-ForgeSyncListingKeepsRetained.cfg agree 1.729s 3.29GB 3713098 Inv_NamedIsUploaded 
+14:35:40 done 3014-compiled-0.2.0-ForgeSyncListingKeepsRetained.cfg agree 1.369s 3.284GB 3697874 Inv_NamedIsUploaded 
+14:35:43 done 3015-compiled-0.2.0-ForgeSyncReclaimAtRestore.cfg agree 3.096s 4.027GB 9444527 Inv_LandedPackComplete 
+14:35:48 done 3016-compiled-0.1.2-ForgeSyncReclaimAtRestore.cfg agree 4.897s 4.198GB 10701810 Inv_LandedPackComplete 
+14:35:52 done 3017-compiled-0.1.2-ForgeSyncReclaimBySet.cfg agree 4.252s 3.854GB 9191013 Inv_LandedPackComplete 
+14:35:56 done 3018-compiled-0.2.0-ForgeSyncReclaimBySet.cfg agree 3.43s 4.157GB 10373739 Inv_LandedPackComplete 
+14:35:57 done 3019-compiled-0.2.0-ForgeSyncReclaimUnlinksServing.cfg agree 1.503s 3.693GB 4110480 Inv_AckedIsDurable 
+14:35:59 done 3020-compiled-0.1.2-ForgeSyncReclaimUnlinksServing.cfg agree 1.808s 3.025GB 3886265 Inv_AckedIsDurable 
+14:36:01 done 3021-compiled-0.1.2-ForgeSyncReclaimWhileServing.cfg agree 1.899s 3.174GB 4118851 Inv_AckedIsDurable 
+14:36:02 done 3022-compiled-0.2.0-ForgeSyncReclaimWhileServing.cfg agree 1.364s 3.468GB 3841930 Inv_AckedIsDurable 
+14:36:04 done 3023-compiled-0.2.0-LeanBarrierLeaseAckCarried.cfg agree 2.206s 5.307GB 4453756  
+14:36:08 done 3024-compiled-0.1.2-LeanBarrierLeaseAckCarried.cfg agree 3.062s 4.044GB 4453756  
+14:36:16 done 3025-compiled-0.1.2-LeanBarrierLeaseCollectorOff.cfg agree 8.741s 7.071GB 13044150  
+14:36:22 done 3026-compiled-0.2.0-LeanBarrierLeaseCollectorOff.cfg agree 5.585s 9.128GB 13044150  
+14:36:24 done 3027-compiled-0.2.0-LeanBarrierLeaseHitlOverAnyVerified.cfg agree 2.172s 6.586GB 4965846  
+14:36:27 done 3028-compiled-0.1.2-LeanBarrierLeaseHitlOverAnyVerified.cfg agree 3.293s 4.49GB 4965846  
+14:36:33 done 3029-compiled-0.1.2-LeanBarrierLeaseHitlOverUncited.cfg agree 5.707s 17.315GB 13135728 Inv_HITLDurable 
+14:36:38 done 3030-compiled-0.2.0-LeanBarrierLeaseHitlOverUncited.cfg agree 5.001s 19.368GB 12913464 Inv_HITLDurable 
+14:36:41 done 3031-compiled-0.2.0-LeanBarrierLeaseHolds.cfg agree 3.095s 6.889GB 6713334  
+14:36:46 done 3032-compiled-0.1.2-LeanBarrierLeaseHolds.cfg agree 4.672s 5.617GB 6713334  
+14:36:52 done 3033-compiled-0.1.2-LeanBarrierLeaseImplHolds.cfg agree 6.34s 6.458GB 9168100  
+14:36:56 done 3034-compiled-0.2.0-LeanBarrierLeaseImplHolds.cfg agree 4.179s 8.59GB 9168100  
+14:37:00 done 3035-compiled-0.2.0-LeanBarrierLeaseImplThreeWriters.cfg agree 4.108s 7.259GB 7652617  
+14:37:07 done 3036-compiled-0.1.2-LeanBarrierLeaseImplThreeWriters.cfg agree 6.594s 6.346GB 7652617  
+14:37:14 done 3037-compiled-0.1.2-LeanBarrierLeaseInboxSnapshot.cfg agree 7.242s 6.747GB 10232060  
+14:37:19 done 3038-compiled-0.2.0-LeanBarrierLeaseInboxSnapshot.cfg agree 4.671s 8.607GB 10232060  
+14:37:41 done 3039-compiled-0.2.0-LeanBarrierLeaseOrphanConverges.cfg agree 21.845s 7.025GB 10398809  
+14:38:03 done 3040-compiled-0.1.2-LeanBarrierLeaseOrphanConverges.cfg agree 21.995s 5.058GB 10398809  
+14:38:07 done 3041-compiled-0.1.2-LeanBarrierLeaseSentinelOutrankedOk.cfg agree 3.872s 9.111GB 8418898 Inv_AckImpliesCited 
+14:38:09 done 3042-compiled-0.2.0-LeanBarrierLeaseSentinelOutrankedOk.cfg agree 2.622s 12.229GB 8367145 Inv_AckImpliesCited 
+14:38:15 done 3043-compiled-0.2.0-LeanBarrierLeaseSupersedeDropsBase.cfg agree 5.735s 6.823GB 4425734 Inv_TreesConverged 
+14:38:22 done 3044-compiled-0.1.2-LeanBarrierLeaseSupersedeDropsBase.cfg agree 6.477s 4.561GB 4892214 Inv_TreesConverged 
+14:38:24 done 3045-compiled-0.1.2-LeanCoreForeignFlat.cfg agree 2.96s 5.818GB 10881024 Inv_AckedNamed 
+14:38:27 done 3046-compiled-0.2.0-LeanCoreForeignFlat.cfg agree 2.473s 6.392GB 10074491 Inv_AckedNamed 
+14:38:38 done 3047-compiled-0.2.0-LeanCoreHoldsSmall.cfg agree 11.176s 13.638GB 49042820  
+14:38:57 done 3048-compiled-0.1.2-LeanCoreHoldsSmall.cfg agree 18.802s 11.339GB 49042820  
+14:39:05 done 3049-compiled-0.1.2-LeanImmutableHitlOverAny.cfg agree 8.126s 7.029GB 10930849  
+14:39:10 done 3050-compiled-0.2.0-LeanImmutableHitlOverAny.cfg agree 5.011s 9.125GB 10930849  
+14:39:18 done 3051-compiled-0.2.0-LeanImmutableHolds.cfg agree 7.524s 11.384GB 17580288  
+14:39:30 done 3052-compiled-0.1.2-LeanImmutableHolds.cfg agree 12.466s 9.203GB 17580288  
+14:39:32 done 3053-compiled-0.1.2-LeanImmutableNarrowHolds.cfg agree 2.121s 3.307GB 2676330  
+14:39:34 done 3054-compiled-0.2.0-LeanImmutableNarrowHolds.cfg agree 1.667s 4.577GB 2676330  
+14:40:03 done 3055-compiled-0.2.0-LeanImmutablePendingAdoptionDropped.cfg agree 29.126s 77.667GB 71214513 Inv_HITLDurable 
+14:40:37 done 3056-compiled-0.1.2-LeanImmutablePendingAdoptionDropped.cfg agree 33.828s 74.471GB 67605250 Inv_HITLDurable 
+14:40:41 done 3057-compiled-0.1.2-LeanProbeOutrankedPartial.cfg agree 3.902s 9.989GB 9096469 ProbePartialAck 
+14:40:43 done 3058-compiled-0.2.0-LeanProbeOutrankedPartial.cfg agree 2.29s 14.016GB 9143708 ProbePartialAck 
+14:41:03 done 3059-compiled-0.2.0-LeanRefineProbe.cfg agree 20.09s 3.309GB 1965383  
+14:41:27 done 3060-compiled-0.1.2-LeanRefineProbe.cfg agree 23.767s 2.335GB 1965383  
+14:41:41 done 3061-compiled-0.1.2-LeanRemovalCrashHolds.cfg agree 13.971s 13.548GB 20384119  
+14:41:48 done 3062-compiled-0.2.0-LeanRemovalCrashHolds.cfg agree 7.356s 15.626GB 20384119  
+14:41:48 phase 2 done (the decided big entries)
+14:41:48 phase 2b: the undecided, 180 s each, 0.2.0 first
+14:44:51 done 3063-compiled-0.2.0-LeanImmutableAnsweredRecordSkipped.cfg timeout 180.923s 109.074GB None  
+14:47:53 done 3064-compiled-0.2.0-LeanImmutableRenameHolds.cfg timeout 181.131s 109.126GB None  
+14:50:56 done 3065-compiled-0.2.0-LeanImmutableRepairOverridesUI.cfg timeout 181.07s 108.895GB None  
+14:53:59 done 3066-compiled-0.1.2-LeanImmutableAnsweredRecordSkipped.cfg timeout 180.904s 113.96GB None  
+14:57:02 done 3067-compiled-0.1.2-LeanImmutableRenameHolds.cfg timeout 181.411s 113.8GB None  
+15:00:04 done 3068-compiled-0.1.2-LeanImmutableRepairOverridesUI.cfg timeout 180.928s 113.464GB None  
+15:00:04 phase 2b done
+15:00:04 DONE

@@ -1,0 +1,71 @@
+# /data/v012/bin/tla-mc -compile -workers 192 -metadir /data/work/meta-3008-compiled-0.1.2-ForgeSync.cfg -config ForgeSync.cfg ForgeSync.tla
+# cwd /data/flint/formal
+tla-mc: ForgeSync (41 variables, 3 symmetry permutations), 192 workers, generated engine; loaded in 0.003s
+level 1: 1 states, wall 6.8 ms, workers busy 0%
+level 2: 1 states, wall 3.8 ms, workers busy 0%
+level 3: 3 states, wall 3.8 ms, workers busy 0%
+level 4: 6 states, wall 3.9 ms, workers busy 0%
+level 5: 12 states, wall 5.5 ms, workers busy 0%
+level 6: 28 states, wall 4.2 ms, workers busy 1%
+level 7: 64 states, wall 4.2 ms, workers busy 1%
+level 8: 154 states, wall 6.1 ms, workers busy 2%
+level 9: 346 states, wall 6.1 ms, workers busy 3%
+level 10: 687 states, wall 7.1 ms, workers busy 6%
+level 11: 1248 states, wall 8.5 ms, workers busy 8%
+level 12: 2131 states, wall 10.7 ms, workers busy 12%
+level 13: 3501 states, wall 13.3 ms, workers busy 19%
+level 14: 5610 states, wall 8.9 ms, workers busy 53%
+level 15: 8829 states, wall 15.0 ms, workers busy 31%
+level 16: 13504 states, wall 17.3 ms, workers busy 37%
+level 17: 20085 states, wall 18.7 ms, workers busy 50%
+level 18: 29101 states, wall 23.8 ms, workers busy 57%
+level 19: 41545 states, wall 30.7 ms, workers busy 65%
+level 20: 58846 states, wall 39.6 ms, workers busy 72%
+level 21: 82963 states, wall 52.1 ms, workers busy 78%
+level 22: 115758 states, wall 70.4 ms, workers busy 81%
+level 23: 160118 states, wall 91.7 ms, workers busy 86%
+level 24: 221087 states, wall 124.6 ms, workers busy 89%
+level 25: 307376 states, wall 171.3 ms, workers busy 92%
+level 26: 432169 states, wall 242.9 ms, workers busy 94%
+level 27: 613717 states, wall 356.2 ms, workers busy 95%
+level 28: 870153 states, wall 515.9 ms, workers busy 95%
+level 29: 1217431 states, wall 718.0 ms, workers busy 96%
+level 30: 1664439 states, wall 973.5 ms, workers busy 97%
+level 31: 2206252 states, wall 1295.1 ms, workers busy 98%
+level 32: 2822237 states, wall 1630.5 ms, workers busy 98%
+level 33: 3478153 states, wall 1973.5 ms, workers busy 98%
+level 34: 4136229 states, wall 2348.0 ms, workers busy 99%
+progress: depth 35, 94172832 generated, 23280617 distinct (0 fingerprint spills), 4766833 on queue (0 on disk), 10.9s
+level 35: 4766833 states, wall 2716.4 ms, workers busy 99%
+level 36: 5349137 states, wall 3014.9 ms, workers busy 99%
+level 37: 5835921 states, wall 3295.4 ms, workers busy 99%
+level 38: 6189225 states, wall 3430.7 ms, workers busy 99%
+progress: depth 39, 205816691 generated, 47032442 distinct (0 fingerprint spills), 6377542 on queue (0 on disk), 23.4s
+level 39: 6377542 states, wall 3503.0 ms, workers busy 99%
+level 40: 6404323 states, wall 3462.8 ms, workers busy 99%
+level 41: 6263121 states, wall 3352.5 ms, workers busy 99%
+progress: depth 42, 296363790 generated, 65648429 distinct (0 fingerprint spills), 5948543 on queue (0 on disk), 33.7s
+level 42: 5948543 states, wall 3142.1 ms, workers busy 99%
+level 43: 5444535 states, wall 2823.6 ms, workers busy 99%
+level 44: 4756185 states, wall 2428.6 ms, workers busy 99%
+level 45: 3933466 states, wall 1984.3 ms, workers busy 99%
+progress: depth 46, 385175909 generated, 82843117 distinct (0 fingerprint spills), 3060502 on queue (0 on disk), 44.1s
+level 46: 3060502 states, wall 1524.7 ms, workers busy 98%
+level 47: 2242456 states, wall 1103.6 ms, workers busy 98%
+level 48: 1553368 states, wall 759.3 ms, workers busy 98%
+level 49: 1022110 states, wall 506.1 ms, workers busy 96%
+level 50: 641007 states, wall 339.9 ms, workers busy 93%
+level 51: 384639 states, wall 199.3 ms, workers busy 91%
+level 52: 220825 states, wall 112.9 ms, workers busy 86%
+level 53: 121174 states, wall 62.3 ms, workers busy 82%
+level 54: 63535 states, wall 34.3 ms, workers busy 78%
+level 55: 31488 states, wall 22.7 ms, workers busy 59%
+level 56: 14350 states, wall 16.5 ms, workers busy 38%
+level 57: 5868 states, wall 21.4 ms, workers busy 13%
+level 58: 2105 states, wall 9.6 ms, workers busy 11%
+level 59: 666 states, wall 8.0 ms, workers busy 5%
+level 60: 184 states, wall 5.7 ms, workers busy 3%
+level 61: 38 states, wall 5.3 ms, workers busy 1%
+level 62: 4 states, wall 5.0 ms, workers busy 0%
+Model checking completed. No error has been found.
+423419639 states generated, 89146934 distinct states found. Depth 62. Checked in 49.110s (1815246 distinct/s).

@@ -122,10 +122,12 @@ This is one machine and seven models; the logs are in the results directory, and
 
 ## How it is checked
 
-- **tlaplus/Examples**: tla-mc accepts **115 of the 165** exhaustive-search
-  models, and **every one it accepts matches TLC's recorded result** (verdict and
-  distinct states). What it rejects, it rejects with a message — it never checks
-  less than the cfg asks.
+- **tlaplus/Examples**: tla-mc 0.2.0 accepts **124 of the 191** exhaustive-search
+  models (Examples `bce9f21`, 2026-10-30), and **every one it accepts matches TLC's
+  recorded result** (verdict and distinct states). Of the rest, it refuses 60 with a
+  message — it never checks less than the cfg asks —, does not finish 6 in 10 minutes
+  (TLC's recorded runtimes for four of them are 50 minutes to 7 hours), and crashes
+  loading one: an `ENABLED` in an invariant (DiningPhilosophers.cfg, in 0.1.2 too).
 - **Against TLC directly**: the 446 entries of [flint](https://github.com/ddalton/flint)'s
   TLA+ gate — **443 decided, all with the gate's expected verdict**, by the interpreter
   and the compiled checker alike; every planted bug caught; on the must-hold runs TLC
@@ -141,8 +143,14 @@ This is one machine and seven models; the logs are in the results directory, and
   a new queue format, so 0.1.2 checkpoints are refused — and tabs counted as SANY
   does) was run side by side with 0.1.2 on those 343 entries, the 8 slowest
   exact-count models and 4 through `-compile`: every verdict the same, every
-  exact count equal; the full gate and tlaplus/Examples are still to run:
+  exact count equal:
   [`results/validation-2026-10-29/`](results/validation-2026-10-29/SUMMARY.md).
+  Then the full gate on 192 cores, 0.1.2 beside it, the 412 fast entries interpreted
+  and the 34 slow ones compiled at 192 workers: the same 443 decided, every one with
+  the gate's verdict and 0.1.2's, every exact count TLC's but the two `SYMMETRY` +
+  `VIEW` worlds; 2.0× faster on flint's models and 1.2× on lean's interpreted, 1.6×
+  and 1.4× compiled (geometric means), peak memory up 24–48%:
+  [`results/validation-2026-10-30/`](results/validation-2026-10-30/SUMMARY.md).
 - **Its own tests**, several of them checked to fail with the code they guard
   disabled.
 - **On every pull request** ([`gate/`](gate/README.md)): the tests; the 113 Examples

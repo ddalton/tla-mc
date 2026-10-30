@@ -1,0 +1,6 @@
+# /data/v020/bin/tla-mc -workers 8 -metadir /data/work/meta-0908-examples-0.2.0-DiningPhilosophers.cfg -config DiningPhilosophers.cfg DiningPhilosophers.tla
+# cwd /data/examples/specifications/DiningPhilosophers
+
+thread 'main' (202060) panicked at /home/ec2-user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tla-mc-0.2.0/src/eval.rs:378:35:
+index out of bounds: the len is 0 but the index is 1
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

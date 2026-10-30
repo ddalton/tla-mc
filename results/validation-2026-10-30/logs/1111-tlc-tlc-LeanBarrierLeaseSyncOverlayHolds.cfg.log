@@ -1,0 +1,27 @@
+# java -XX:+UseParallelGC -Xmx8g -XX:MaxDirectMemorySize=8g -cp /data/tla2tools-1.7.4.jar tlc2.TLC -workers 8 -metadir /data/work/meta-1111-tlc-tlc-LeanBarrierLeaseSyncOverlayHolds.cfg -config LeanBarrierLeaseSyncOverlayHolds.cfg LeanSubtree.tla
+# cwd /data/flint/lean/formal
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 124 and seed 742389963097622185 with 8 workers on 192 cores with 7282MB heap and 8192MB offheap memory [pid: 97095] (Linux 6.18.56-125.164.amzn2023.aarch64 aarch64, Amazon.com Inc. 21.0.13 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /data/flint/lean/formal/LeanSubtree.tla
+Parsing file /tmp/Naturals.tla
+Parsing file /tmp/FiniteSets.tla
+Parsing file /tmp/Sequences.tla
+Parsing file /tmp/TLC.tla
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module LeanSubtree
+Starting... (2026-10-30 14:21:24)
+Computing initial states...
+Finished computing initial states: 1 distinct state generated at 2026-10-30 14:21:24.
+Progress(19) at 2026-10-30 14:21:27: 347,273 states generated (347,273 s/min), 96,476 distinct states found (96,476 ds/min), 27,941 states left on queue.
+Model checking completed. No error has been found.
+  Estimates of the probability that TLC did not check all reachable states
+  because two distinct states had the same fingerprint:
+  calculated (optimistic):  val = 3.2E-8
+  based on the actual fingerprints:  val = 2.6E-8
+1759748 states generated, 455427 distinct states found, 0 states left on queue.
+The depth of the complete state graph search is 33.
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 8 and the 95th percentile is 3).
+Finished in 12s at (2026-10-30 14:21:35)

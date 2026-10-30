@@ -1,0 +1,27 @@
+# /data/v012/bin/tla-mc -compile -workers 192 -metadir /data/work/meta-3068-compiled-0.1.2-LeanImmutableRepairOverridesUI.cfg -config LeanImmutableRepairOverridesUI.cfg LeanSubtree.tla
+# cwd /data/flint/lean/formal
+tla-mc: LeanSubtree (20 variables, 0 symmetry permutations), 192 workers, generated engine; loaded in 0.007s
+level 1: 1 states, wall 6.5 ms, workers busy 0%
+level 2: 8 states, wall 4.8 ms, workers busy 0%
+level 3: 31 states, wall 6.6 ms, workers busy 1%
+level 4: 118 states, wall 6.7 ms, workers busy 3%
+level 5: 702 states, wall 11.9 ms, workers busy 8%
+level 6: 3243 states, wall 12.8 ms, workers busy 54%
+level 7: 12706 states, wall 24.7 ms, workers busy 47%
+level 8: 43335 states, wall 45.9 ms, workers busy 76%
+level 9: 126282 states, wall 108.6 ms, workers busy 89%
+level 10: 326049 states, wall 268.7 ms, workers busy 94%
+level 11: 751753 states, wall 667.8 ms, workers busy 97%
+level 12: 1582904 states, wall 1400.3 ms, workers busy 98%
+level 13: 3106833 states, wall 2649.7 ms, workers busy 99%
+level 14: 5746629 states, wall 4791.0 ms, workers busy 99%
+progress: depth 15, 67796042 generated, 21735992 distinct (0 fingerprint spills), 10035398 on queue (0 on disk), 10.0s
+level 15: 10035398 states, wall 8061.7 ms, workers busy 100%
+level 16: 16484758 states, wall 12736.5 ms, workers busy 100%
+progress: depth 17, 208114472 generated, 63665023 distinct (0 fingerprint spills), 25444273 on queue (0 on disk), 30.9s
+level 17: 25444273 states, wall 18946.1 ms, workers busy 100%
+progress: depth 18, 334676275 generated, 100795193 distinct (0 fingerprint spills), 37130170 on queue (5528762 on disk), 50.0s
+level 18: 37130170 states, wall 27059.9 ms, workers busy 100%
+progress: depth 19, 511149712 generated, 152428050 distinct (0 fingerprint spills), 51632857 on queue (20009689 on disk), 77.4s
+level 19: 51632857 states, wall 88680.2 ms, workers busy 100%
+progress: depth 20, 747808728 generated, 221369364 distinct (0 fingerprint spills), 68941314 on queue (37319426 on disk), 168.6s

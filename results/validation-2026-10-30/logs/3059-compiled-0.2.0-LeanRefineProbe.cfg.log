@@ -1,0 +1,42 @@
+# /data/v020/bin/tla-mc -compile -workers 192 -metadir /data/work/meta-3059-compiled-0.2.0-LeanRefineProbe.cfg -config LeanRefineProbe.cfg LeanRefine.tla
+# cwd /data/flint/lean/formal
+tla-mc: LeanRefine (23 variables, 0 symmetry permutations), 192 workers, generated engine; loaded in 0.016s
+level 1: 1 states, wall 6.4 ms, workers busy 0%
+level 2: 1 states, wall 12.2 ms, workers busy 1%
+level 3: 6 states, wall 6.9 ms, workers busy 2%
+level 4: 21 states, wall 9.1 ms, workers busy 5%
+level 5: 63 states, wall 16.1 ms, workers busy 8%
+level 6: 159 states, wall 18.1 ms, workers busy 20%
+level 7: 345 states, wall 25.6 ms, workers busy 39%
+level 8: 689 states, wall 32.1 ms, workers busy 65%
+level 9: 1270 states, wall 49.9 ms, workers busy 55%
+level 10: 2214 states, wall 63.0 ms, workers busy 79%
+level 11: 3800 states, wall 92.7 ms, workers busy 84%
+level 12: 6463 states, wall 136.4 ms, workers busy 90%
+level 13: 10869 states, wall 208.3 ms, workers busy 91%
+level 14: 17571 states, wall 312.3 ms, workers busy 91%
+level 15: 27159 states, wall 462.4 ms, workers busy 94%
+level 16: 40071 states, wall 605.1 ms, workers busy 92%
+level 17: 55379 states, wall 764.6 ms, workers busy 93%
+level 18: 71928 states, wall 927.6 ms, workers busy 92%
+level 19: 89270 states, wall 1096.9 ms, workers busy 92%
+level 20: 107781 states, wall 1316.9 ms, workers busy 89%
+level 21: 130250 states, wall 1467.3 ms, workers busy 94%
+level 22: 158521 states, wall 1896.0 ms, workers busy 92%
+level 23: 186780 states, wall 2060.3 ms, workers busy 94%
+progress: depth 24, 3091855 generated, 1112619 distinct (0 fingerprint spills), 202008 on queue (0 on disk), 11.6s
+level 24: 202008 states, wall 2374.8 ms, workers busy 94%
+level 25: 192294 states, wall 1875.9 ms, workers busy 92%
+level 26: 159438 states, wall 1085.7 ms, workers busy 92%
+level 27: 121100 states, wall 774.5 ms, workers busy 91%
+level 28: 94698 states, wall 660.5 ms, workers busy 81%
+level 29: 83022 states, wall 513.9 ms, workers busy 88%
+level 30: 75230 states, wall 417.2 ms, workers busy 90%
+level 31: 60398 states, wall 315.3 ms, workers busy 81%
+level 32: 38960 states, wall 164.9 ms, workers busy 83%
+level 33: 19184 states, wall 67.0 ms, workers busy 79%
+level 34: 6812 states, wall 35.9 ms, workers busy 44%
+level 35: 1500 states, wall 17.8 ms, workers busy 11%
+level 36: 128 states, wall 5.6 ms, workers busy 2%
+Model checking completed. No error has been found.
+5481719 states generated, 1965383 distinct states found. Depth 36. Checked in 19.948s (98527 distinct/s).

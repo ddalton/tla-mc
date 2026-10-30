@@ -1,0 +1,50 @@
+# /data/v020/bin/tla-mc -compile -workers 192 -metadir /data/work/meta-3039-compiled-0.2.0-LeanBarrierLeaseOrphanConverges.cfg -config LeanBarrierLeaseOrphanConverges.cfg LeanSubtree.tla
+# cwd /data/flint/lean/formal
+tla-mc: LeanSubtree (20 variables, 0 symmetry permutations), 192 workers, generated engine; loaded in 0.009s
+level 1: 1 states, wall 6.2 ms, workers busy 0%
+level 2: 1 states, wall 3.3 ms, workers busy 0%
+level 3: 5 states, wall 4.0 ms, workers busy 1%
+level 4: 17 states, wall 5.6 ms, workers busy 1%
+level 5: 49 states, wall 5.3 ms, workers busy 3%
+level 6: 120 states, wall 6.8 ms, workers busy 4%
+level 7: 253 states, wall 9.3 ms, workers busy 6%
+level 8: 484 states, wall 11.0 ms, workers busy 10%
+level 9: 867 states, wall 13.5 ms, workers busy 17%
+level 10: 1510 states, wall 9.9 ms, workers busy 56%
+level 11: 2622 states, wall 25.5 ms, workers busy 38%
+level 12: 4470 states, wall 34.1 ms, workers busy 61%
+level 13: 7525 states, wall 48.3 ms, workers busy 70%
+level 14: 12566 states, wall 69.1 ms, workers busy 81%
+level 15: 20609 states, wall 92.4 ms, workers busy 80%
+level 16: 32777 states, wall 131.5 ms, workers busy 86%
+level 17: 50419 states, wall 184.3 ms, workers busy 90%
+level 18: 75233 states, wall 250.0 ms, workers busy 94%
+level 19: 108963 states, wall 335.4 ms, workers busy 94%
+level 20: 153073 states, wall 430.2 ms, workers busy 94%
+level 21: 207594 states, wall 550.0 ms, workers busy 97%
+level 22: 271566 states, wall 680.5 ms, workers busy 88%
+level 23: 345096 states, wall 847.3 ms, workers busy 97%
+level 24: 429392 states, wall 1011.3 ms, workers busy 98%
+level 25: 522610 states, wall 1196.0 ms, workers busy 97%
+level 26: 617905 states, wall 1382.4 ms, workers busy 98%
+level 27: 706438 states, wall 1566.8 ms, workers busy 89%
+level 28: 781247 states, wall 1565.4 ms, workers busy 98%
+progress: depth 29, 12285931 generated, 5188031 distinct (0 fingerprint spills), 834619 on queue (0 on disk), 10.5s
+level 29: 834619 states, wall 1653.2 ms, workers busy 97%
+level 30: 854721 states, wall 1925.0 ms, workers busy 94%
+level 31: 833180 states, wall 1794.2 ms, workers busy 85%
+level 32: 777762 states, wall 1415.9 ms, workers busy 97%
+level 33: 703273 states, wall 1325.9 ms, workers busy 84%
+level 34: 611529 states, wall 977.8 ms, workers busy 89%
+level 35: 501441 states, wall 682.3 ms, workers busy 88%
+level 36: 383641 states, wall 520.9 ms, workers busy 85%
+progress: depth 37, 24324900 generated, 10123062 distinct (0 fingerprint spills), 269484 on queue (0 on disk), 20.8s
+level 37: 269484 states, wall 374.3 ms, workers busy 67%
+level 38: 164642 states, wall 316.7 ms, workers busy 40%
+level 39: 79196 states, wall 68.9 ms, workers busy 90%
+level 40: 26314 states, wall 25.3 ms, workers busy 47%
+level 41: 5137 states, wall 20.4 ms, workers busy 7%
+level 42: 452 states, wall 6.7 ms, workers busy 2%
+level 43: 6 states, wall 5.2 ms, workers busy 0%
+Model checking completed. No error has been found.
+25062921 states generated, 10398809 distinct states found. Depth 43. Checked in 21.669s (479894 distinct/s).

@@ -1,0 +1,39 @@
+# /data/v012/bin/tla-mc -workers 8 -metadir /data/work/meta-0702-interp-0.1.2-LeanBarrierLeaseSyncOverlayHolds.cfg -config LeanBarrierLeaseSyncOverlayHolds.cfg LeanSubtree.tla
+# cwd /data/flint/lean/formal
+tla-mc: LeanSubtree (20 variables, 1 symmetry permutations), 8 workers, interp engine; loaded in 0.007s
+level 1: 1 states, wall 0.6 ms, workers busy 7%
+level 2: 1 states, wall 0.5 ms, workers busy 11%
+level 3: 5 states, wall 0.8 ms, workers busy 45%
+level 4: 16 states, wall 1.2 ms, workers busy 71%
+level 5: 44 states, wall 2.2 ms, workers busy 85%
+level 6: 108 states, wall 4.1 ms, workers busy 92%
+level 7: 234 states, wall 7.9 ms, workers busy 96%
+level 8: 476 states, wall 15.2 ms, workers busy 98%
+level 9: 926 states, wall 28.2 ms, workers busy 98%
+level 10: 1725 states, wall 51.8 ms, workers busy 98%
+level 11: 3116 states, wall 89.4 ms, workers busy 97%
+level 12: 5388 states, wall 156.0 ms, workers busy 98%
+level 13: 8671 states, wall 217.1 ms, workers busy 99%
+level 14: 12811 states, wall 321.8 ms, workers busy 98%
+level 15: 17719 states, wall 427.4 ms, workers busy 97%
+level 16: 23697 states, wall 665.6 ms, workers busy 97%
+level 17: 30863 states, wall 771.3 ms, workers busy 98%
+level 18: 38492 states, wall 998.0 ms, workers busy 98%
+level 19: 44920 states, wall 1104.7 ms, workers busy 99%
+level 20: 48125 states, wall 1102.7 ms, workers busy 98%
+level 21: 46975 states, wall 1041.7 ms, workers busy 98%
+level 22: 42223 states, wall 784.5 ms, workers busy 99%
+level 23: 35755 states, wall 666.6 ms, workers busy 98%
+level 24: 29053 states, wall 530.7 ms, workers busy 98%
+level 25: 22908 states, wall 414.0 ms, workers busy 97%
+level 26: 17349 states, wall 301.2 ms, workers busy 96%
+level 27: 12095 states, wall 198.9 ms, workers busy 95%
+level 28: 7288 states, wall 109.7 ms, workers busy 97%
+progress: depth 29, 1607271 generated, 454594 distinct (0 fingerprint spills), 3610 on queue (0 on disk), 10.0s
+level 29: 3610 states, wall 50.1 ms, workers busy 96%
+level 30: 1427 states, wall 17.8 ms, workers busy 93%
+level 31: 401 states, wall 4.7 ms, workers busy 89%
+level 32: 77 states, wall 1.0 ms, workers busy 75%
+level 33: 7 states, wall 0.3 ms, workers busy 30%
+Model checking completed. No error has been found.
+1614149 states generated, 456506 distinct states found. Depth 33. Checked in 10.091s (45237 distinct/s).

@@ -1,0 +1,33 @@
+# /data/v012/bin/tla-mc -workers 8 -metadir /data/work/meta-0556-interp-0.1.2-LeanScopedSyncHolds.cfg -config LeanScopedSyncHolds.cfg LeanSubtree.tla
+# cwd /data/flint/lean/formal
+tla-mc: LeanSubtree (20 variables, 1 symmetry permutations), 8 workers, interp engine; loaded in 0.007s
+level 1: 1 states, wall 0.6 ms, workers busy 5%
+level 2: 1 states, wall 0.5 ms, workers busy 10%
+level 3: 5 states, wall 0.7 ms, workers busy 39%
+level 4: 15 states, wall 1.0 ms, workers busy 72%
+level 5: 35 states, wall 1.5 ms, workers busy 82%
+level 6: 79 states, wall 2.8 ms, workers busy 90%
+level 7: 175 states, wall 5.9 ms, workers busy 96%
+level 8: 354 states, wall 10.6 ms, workers busy 98%
+level 9: 668 states, wall 20.3 ms, workers busy 98%
+level 10: 1249 states, wall 37.1 ms, workers busy 99%
+level 11: 2312 states, wall 72.8 ms, workers busy 99%
+level 12: 4053 states, wall 96.1 ms, workers busy 99%
+level 13: 6618 states, wall 172.2 ms, workers busy 98%
+level 14: 10145 states, wall 234.7 ms, workers busy 98%
+level 15: 14581 states, wall 372.6 ms, workers busy 99%
+level 16: 19363 states, wall 464.3 ms, workers busy 98%
+level 17: 23572 states, wall 611.6 ms, workers busy 98%
+level 18: 26631 states, wall 666.2 ms, workers busy 98%
+level 19: 28483 states, wall 676.3 ms, workers busy 99%
+level 20: 28913 states, wall 657.2 ms, workers busy 98%
+level 21: 27165 states, wall 607.4 ms, workers busy 98%
+level 22: 22571 states, wall 440.5 ms, workers busy 97%
+level 23: 15759 states, wall 258.2 ms, workers busy 97%
+level 24: 8746 states, wall 142.1 ms, workers busy 96%
+level 25: 3559 states, wall 50.5 ms, workers busy 95%
+level 26: 943 states, wall 11.0 ms, workers busy 90%
+level 27: 143 states, wall 1.8 ms, workers busy 77%
+level 28: 12 states, wall 0.3 ms, workers busy 31%
+Model checking completed. No error has been found.
+845442 states generated, 246151 distinct states found. Depth 28. Checked in 5.620s (43802 distinct/s).

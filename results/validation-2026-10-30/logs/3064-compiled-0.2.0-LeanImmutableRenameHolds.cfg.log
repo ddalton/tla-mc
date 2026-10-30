@@ -1,0 +1,26 @@
+# /data/v020/bin/tla-mc -compile -workers 192 -metadir /data/work/meta-3064-compiled-0.2.0-LeanImmutableRenameHolds.cfg -config LeanImmutableRenameHolds.cfg LeanSubtree.tla
+# cwd /data/flint/lean/formal
+tla-mc: LeanSubtree (20 variables, 0 symmetry permutations), 192 workers, generated engine; loaded in 0.007s
+level 1: 1 states, wall 6.9 ms, workers busy 0%
+level 2: 8 states, wall 5.3 ms, workers busy 0%
+level 3: 31 states, wall 4.6 ms, workers busy 2%
+level 4: 118 states, wall 6.3 ms, workers busy 5%
+level 5: 702 states, wall 10.8 ms, workers busy 11%
+level 6: 3243 states, wall 13.0 ms, workers busy 67%
+level 7: 12706 states, wall 25.7 ms, workers busy 49%
+level 8: 43335 states, wall 44.3 ms, workers busy 75%
+level 9: 126282 states, wall 101.8 ms, workers busy 88%
+level 10: 326049 states, wall 244.2 ms, workers busy 93%
+level 11: 751753 states, wall 531.8 ms, workers busy 96%
+level 12: 1582904 states, wall 1066.3 ms, workers busy 98%
+level 13: 3106833 states, wall 2013.0 ms, workers busy 99%
+level 14: 5746629 states, wall 3578.2 ms, workers busy 99%
+level 15: 10035398 states, wall 6013.7 ms, workers busy 99%
+progress: depth 16, 122239050 generated, 38220750 distinct (0 fingerprint spills), 16484758 on queue (0 on disk), 13.8s
+level 16: 16484758 states, wall 9637.0 ms, workers busy 100%
+level 17: 25444273 states, wall 14410.1 ms, workers busy 100%
+progress: depth 18, 334676275 generated, 100795193 distinct (0 fingerprint spills), 37130170 on queue (7869882 on disk), 38.0s
+level 18: 37130170 states, wall 22434.1 ms, workers busy 100%
+progress: depth 19, 511149728 generated, 152428058 distinct (0 fingerprint spills), 51632865 on queue (22343393 on disk), 60.9s
+level 19: 51632865 states, wall 106714.1 ms, workers busy 100%
+progress: depth 20, 747808960 generated, 221369460 distinct (0 fingerprint spills), 68941402 on queue (39668058 on disk), 169.6s
