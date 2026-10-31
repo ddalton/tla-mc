@@ -731,14 +731,14 @@ impl Program {
             PathE::Idx(e) => self.eval(e, cx)?,
             PathE::Field(id) => Value::Str(*id),
         };
-        let Ok(old) = f.apply(&key) else { return Ok(f) };
-        let new = if path.len() == 1 {
-            cx.set(at, old);
-            self.eval(val, cx)?.normalized()?
-        } else {
-            self.except_path(old, &path[1..], at, val, cx)?
-        };
-        f.except(&key, new)
+        f.update(&key, |old| {
+            if path.len() == 1 {
+                cx.set(at, old);
+                self.eval(val, cx)
+            } else {
+                self.except_path(old, &path[1..], at, val, cx)
+            }
+        })
     }
 
     fn builtin(&self, bi: Bi, args: &[Expr], cx: &mut Cx) -> R<Value> {

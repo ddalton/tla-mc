@@ -557,6 +557,30 @@ impl Value {
         }
     }
 
+    /// `[f EXCEPT ![k] = g(f[k])]`, `g` given f[k] by value. When nothing
+    /// else holds f's function or sequence (an EXCEPT's later clauses, and
+    /// every level below the first that copied), the entry is replaced in
+    /// place: `except` would copy all of f to change one entry. A key
+    /// outside the domain leaves f unchanged, as in TLA+.
+    pub fn update(mut self, k: &Value, g: impl FnOnce(Value) -> R<Value>) -> R<Value> {
+        let slot = match &mut self {
+            Value::Func(f) => Arc::get_mut(f).and_then(|f| Value::find(&f.keys, k).map(|i| &mut f.vals[i])),
+            Value::Seq(s) => match k {
+                Value::Int(i) if *i >= 1 && (*i as usize) <= s.len() => Arc::get_mut(s).map(|s| &mut s[*i as usize - 1]),
+                _ => None,
+            },
+            _ => None,
+        };
+        if let Some(slot) = slot {
+            let old = std::mem::replace(slot, Value::Bool(false));
+            *slot = g(old)?.normalized()?;
+            return Ok(self);
+        }
+        let Ok(old) = self.apply(k) else { return Ok(self) };
+        let new = g(old)?.normalized()?;
+        self.except(k, new)
+    }
+
     pub fn pairs(&self) -> R<Vec<(Value, Value)>> {
         match self {
             Value::Seq(s) => Ok(s.iter().enumerate().map(|(i, v)| (Value::Int(i as i64 + 1), v.clone())).collect()),
@@ -1048,5 +1072,35 @@ mod tests {
         assert!(a.len() > 10, "the fixture must reach every kind of node");
         let shared: Vec<_> = b.iter().filter(|p| a.contains(p)).collect();
         assert!(shared.is_empty(), "the copy shares {} counted nodes with the original", shared.len());
+    }
+
+    #[test]
+    fn update_changes_an_unshared_value_in_place_and_copies_a_shared_one() {
+        let ints = |xs: &[i64]| -> Vec<Value> { xs.iter().map(|&x| Value::Int(x)).collect() };
+        let func = Value::Func(Arc::new(Func { keys: ints(&[1, 2]).into(), vals: ints(&[10, 20]).into() }));
+        let seq = Value::Seq(ints(&[10, 20]).into());
+        let node = |v: &Value| match v {
+            Value::Func(f) => Arc::as_ptr(f) as *const u8,
+            Value::Seq(s) => s.as_ptr() as *const u8,
+            _ => unreachable!(),
+        };
+        let at = |v: &Value, k: i64| v.apply(&Value::Int(k)).unwrap();
+        let bump = |old: Value| -> R<Value> { Ok(Value::Int(old.as_int()? + 1)) };
+        for f in [func, seq] {
+            // nothing else holds f: its own node changes, g given the old entry
+            let was = node(&f);
+            let f = f.update(&Value::Int(2), bump).unwrap();
+            assert_eq!(node(&f), was, "{f}: an unshared value must change in place");
+            assert_eq!(at(&f, 2), Value::Int(21));
+            // another holder: a copy changes, and the holder still sees the old entry
+            let held = f.clone();
+            let g = f.update(&Value::Int(1), bump).unwrap();
+            assert_ne!(node(&g), node(&held), "{g}: a shared value must be copied");
+            assert_eq!((at(&held, 1), at(&g, 1)), (Value::Int(10), Value::Int(11)));
+            // a key outside the domain: no change, and g is not called
+            let was = node(&g);
+            let g = g.update(&Value::Int(3), |_| panic!("no entry at 3")).unwrap();
+            assert_eq!((node(&g), at(&g, 1), at(&g, 2)), (was, Value::Int(11), Value::Int(21)));
+        }
     }
 }
