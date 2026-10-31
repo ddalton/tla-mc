@@ -98,10 +98,8 @@ pub mod rt {
     /// One `![k] = ...` step of an EXCEPT; a key outside the domain leaves
     /// the function unchanged, as in TLA+.
     #[inline]
-    pub fn upd(f: Value, k: &Value, g: impl FnOnce(&Value) -> R<Value>) -> R<Value> {
-        let Ok(old) = f.apply_ref(k) else { return Ok(f) };
-        let new = g(old)?.normalized()?;
-        f.except(k, new)
+    pub fn upd(f: Value, k: &Value, g: impl FnOnce(Value) -> R<Value>) -> R<Value> {
+        f.update(k, g)
     }
 
     #[inline]
@@ -539,15 +537,15 @@ impl Gen<'_> {
                 let mut s = format!("{{ let mut v{n}: Value = {}; ", self.val(f));
                 for u in ups.iter() {
                     let val = self.val(&u.val);
-                    let mut inner = format!("{{ let s{}: &Value = o_last; Ok({val}) }}", u.at);
+                    let mut inner = format!("{{ let s{}: &Value = &o_last; Ok({val}) }}", u.at);
                     for (depth, p) in u.path.iter().enumerate().rev() {
                         let key = match p {
                             PathE::Idx(e) => self.arg(e),
                             PathE::Field(id) => format!("&Value::Str({id})"),
                         };
                         let param = if depth + 1 == u.path.len() { "o_last".to_string() } else { format!("o{n}_{depth}") };
-                        let base = if depth == 0 { format!("v{n}") } else { format!("o{n}_{}.clone()", depth - 1) };
-                        inner = format!("upd({base}, {key}, |{param}: &Value| -> R<Value> {{ {inner} }})");
+                        let base = if depth == 0 { format!("v{n}") } else { format!("o{n}_{}", depth - 1) };
+                        inner = format!("upd({base}, {key}, |{param}: Value| -> R<Value> {{ {inner} }})");
                     }
                     let _ = write!(s, "v{n} = {inner}?; ");
                 }

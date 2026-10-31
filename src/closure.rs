@@ -836,12 +836,12 @@ fn except_path(f: Value, path: &[PathC], at: u32, val: &VF, cx: &mut Cx) -> R<Va
         PathC::Idx(e) => e(cx)?,
         PathC::Field(id) => Value::Str(*id),
     };
-    let Ok(old) = f.apply(&key) else { return Ok(f) };
-    let new = if path.len() == 1 {
-        cx.set(at, old);
-        val(cx)?.normalized()?
-    } else {
-        except_path(old, &path[1..], at, val, cx)?
-    };
-    f.except(&key, new)
+    f.update(&key, |old| {
+        if path.len() == 1 {
+            cx.set(at, old);
+            val(cx)
+        } else {
+            except_path(old, &path[1..], at, val, cx)
+        }
+    })
 }
