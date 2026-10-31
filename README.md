@@ -156,6 +156,12 @@ This is one machine and seven models; the logs are in the results directory, and
   variable itself is evaluated in each state, not once at load, where it crashed;
   nothing changes for a model that loaded before. The gate passed on it: the tests,
   114 Examples models, DiningPhilosophers.cfg among them, and the 343 flint entries.
+  0.2.2 changes one thing: an `EXCEPT` changes the entry in place when nothing else
+  holds the function, where it copied the whole function once per clause; every
+  verdict and count the same, 1.30–1.35× faster on lean's models compiled at 192
+  workers and 1.25–1.4× on the M1, flint's unchanged
+  ([#7](https://github.com/ddalton/tla-mc/pull/7)). The gate passed on it: the
+  tests, 114 Examples models and the 343 flint entries.
 - **Its own tests**, several of them checked to fail with the code they guard
   disabled.
 - **On every pull request** ([`gate/`](gate/README.md)): the tests; the 114 Examples
