@@ -3,6 +3,13 @@
 //!   tla-mc [-workers N] [-engine interp|closure] [-codegen DIR] [-config X.cfg]
 //!          [-metadir DIR] [-checkpoint MIN] [-recover DIR] [-queue-mem MB] [-fpmem MB] X.tla
 //!   tla-mc -version
+//!   tla-mc -cluster HOST:PORT,HOST:PORT,... -node K [the options above] X.tla
+//!
+//! Cluster: one search over several machines, every one of them started
+//! with the same `-cluster` list (and the same spec, cfg and tla-mc) and
+//! its own place in it as `-node`; node 0 prints the result. Each node
+//! keeps the states whose keys it owns, with its own `-workers`, memory
+//! and disk (see `cluster`). Not yet: liveness properties, checkpoints.
 //!
 //! Disk: a BFS level (kept serialized) beyond `-queue-mem` spills to the
 //! metadir (default `states/<spec>-<time>` beside the spec), and every
@@ -220,6 +227,7 @@ fn run(generated: Option<Generated>) -> Result<bool, String> {
     let mut pin: Option<crate::topo::Order> = None;
     let mut var_order: Option<String> = None;
     let mut print_var_order = false;
+    let (mut cluster, mut node): (Option<Vec<String>>, Option<usize>) = (None, None);
     let share = mem_share_mb();
     let (mut metadir, mut recover, mut checkpoint_min, mut queue_mb): (Option<PathBuf>, bool, f64, u64) =
         (None, false, 30.0, share.map_or(256, |m| m.max(256)));
@@ -280,6 +288,14 @@ fn run(generated: Option<Generated>) -> Result<bool, String> {
                 codegen_dir = Some(PathBuf::from(&args[i]));
             }
             "-compile" => compile = true,
+            "-cluster" => {
+                i += 1;
+                cluster = Some(args.get(i).ok_or("-cluster needs HOST:PORT,HOST:PORT,...")?.split(',').map(|a| a.trim().to_string()).collect());
+            }
+            "-node" => {
+                i += 1;
+                node = Some(args.get(i).and_then(|a| a.parse().ok()).ok_or("bad -node (this machine's place in the -cluster list, from 0)")?);
+            }
             "-pin" => pin = Some(crate::topo::Order::Compact),
             a if a.starts_with("-pin=") => {
                 pin = Some(crate::topo::Order::parse(&a[5..]).ok_or("bad -pin= (compact, spread or llc)")?);
@@ -379,6 +395,19 @@ fn run(generated: Option<Generated>) -> Result<bool, String> {
 
     let t1 = Instant::now();
     let checker = check::Checker::new(prog, e, workers)?;
+    if cluster.is_some() != node.is_some() {
+        return Err("-cluster and -node go together".into());
+    }
+    if cluster.is_some() {
+        if checker.needs_graph() {
+            return Err("-cluster: liveness properties are not supported on a cluster yet".into());
+        }
+        if recover {
+            return Err("-cluster: -recover is not supported on a cluster yet".into());
+        }
+        // a checkpoint would be one node's part of the search
+        checkpoint_min = 0.0;
+    }
     if let Some(dump) = std::env::var_os("TLAMC_KEYS") {
         return keys_of_dump(&checker, Path::new(&dump), None);
     }
@@ -410,8 +439,23 @@ fn run(generated: Option<Generated>) -> Result<bool, String> {
         recover,
         source_hash: l.source_hash,
     };
+    if let (Some(addrs), Some(me)) = (&cluster, node) {
+        let t = Instant::now();
+        checker.net = Some(crate::cluster::Net::start(me, addrs, l.source_hash, prog.vars.len(), workers)?);
+        println!("tla-mc: node {me} of {}: the cluster is connected ({:.1}s)", addrs.len(), t.elapsed().as_secs_f64());
+    }
     let checker = checker;
     let out = checker.run();
+    if let Some(me) = node.filter(|&me| me != 0) {
+        // node 0 prints the result
+        let secs = t1.elapsed().as_secs_f64();
+        println!("tla-mc: node {me}: done; {} distinct states kept here, {} generated here, in {secs:.3}s", out.distinct, out.generated);
+        // a lost node: this node's search decided nothing either
+        if matches!(out.failure, Some(check::Failure::Eval(..))) {
+            return Err(RUN_FAILED.into());
+        }
+        return Ok(true);
+    }
     let secs = t1.elapsed().as_secs_f64();
     let ok = match &out.failure {
         None => {

@@ -85,6 +85,8 @@ pub struct Checker<'p> {
     /// where each liveness instance's predicate bits sit in a graph node
     pub lay: Layout,
     pub disk: Disk,
+    /// `-cluster`: this node's part in a search over several machines
+    pub net: Option<std::sync::Arc<crate::cluster::Net>>,
 }
 
 /// Mark the state variables `e` reads, through operator bodies and LET
@@ -164,10 +166,10 @@ impl<'p> Checker<'p> {
         let lay = liveness::layout(&props);
         let steps = props.iter().enumerate().filter(|(_, i)| matches!(i.leaf, crate::eval::TProp::ActionBox(..))).map(|(k, _)| k).collect();
         let (inv_reads, con_reads) = (read_sets(p, &p.invariants), read_sets(p, &p.constraints));
-        Ok(Checker { reference: None, p, e, sk: SymKey::new(p, e), vbufs: Default::default(), workers, pin: None, progress: true, props, steps, fair, inv_reads, con_reads, lay, disk })
+        Ok(Checker { reference: None, p, e, sk: SymKey::new(p, e), vbufs: Default::default(), workers, pin: None, progress: true, props, steps, fair, inv_reads, con_reads, lay, disk, net: None })
     }
 
-    fn needs_graph(&self) -> bool {
+    pub fn needs_graph(&self) -> bool {
         self.props.iter().any(|i| liveness::is_graph_leaf(i.leaf))
     }
 
@@ -257,7 +259,7 @@ impl<'p> Checker<'p> {
                     }
                     sk.reset(succ);
                     let fp = sk.key(&s, changed, parent, succ, vbufs)?;
-                    if keep_all || !seen.contains(fp)? {
+                    if keep_all || !(self.mine(fp) && seen.contains(fp)?) {
                         out.push((fp, s.into_boxed_slice(), 0));
                     }
                     Ok(())
@@ -305,7 +307,7 @@ impl<'p> Checker<'p> {
                 let ok = self.steps.iter().all(|&pi| matches!(self.e.step_prop_nx(pi, st, &cx.next[..]), Some(Ok(true))));
                 if !ok {
                     out.push((fp, cx.next.iter().map(|v| v.clone().unwrap()).collect(), 0));
-                } else if no_constraints {
+                } else if no_constraints && self.mine(fp) {
                     // no constraint can turn it away: claim it now, one
                     // shard lock as `search` would take (a `contains` here
                     // as well cost more than the allocations it saved at
@@ -313,17 +315,34 @@ impl<'p> Checker<'p> {
                     if seen.insert(fp)? {
                         out.push((fp, cx.next.iter().map(|v| v.clone().unwrap()).collect(), 2));
                     }
-                } else if !seen.contains(fp)? {
+                } else if !(self.mine(fp) && seen.contains(fp)?) {
                     out.push((fp, cx.next.iter().map(|v| v.clone().unwrap()).collect(), 1));
                 }
                 return Ok(());
             }
-            if keep_all || !seen.contains(fp)? {
+            if keep_all || !(self.mine(fp) && seen.contains(fp)?) {
                 out.push((fp, cx.next.iter().map(|v| v.clone().unwrap()).collect(), 0));
             }
             Ok(())
         })?;
         Ok((pfp, n))
+    }
+
+    /// A cluster node's failure before its first level, reported at the
+    /// first barrier as any other node's would be at the end of a level.
+    fn bail_cluster(&self, net: &crate::cluster::Net, seen: &FpSet, generated: u64, depth: usize, failure: Option<Failure>) -> (Outcome, Option<Failure>) {
+        let s = crate::cluster::Summary { queued: 0, on_disk: 0, generated, distinct: seen.len() as u64 };
+        match net.barrier(&s, failure) {
+            Ok(d) => (Outcome { generated: d.totals.generated, distinct: d.totals.distinct as usize, depth, failure: None }, d.failure),
+            Err(e) => (Outcome { generated, distinct: seen.len(), depth, failure: None }, Some(Failure::Eval(e, None))),
+        }
+    }
+
+    /// Does this node own key `fp` (always, on one machine)? Only the
+    /// owner's part of the seen set can say whether it is new.
+    #[inline]
+    fn mine(&self, fp: u64) -> bool {
+        self.net.as_ref().is_none_or(|n| n.owner(fp) == n.me)
     }
 
     /// A state's fingerprint: under SYMMETRY, the least fingerprint of its
@@ -396,10 +415,28 @@ impl<'p> Checker<'p> {
         let t0 = Instant::now();
         let meta = Meta::new(self.disk.metadir.clone());
         store::raise_fd_limit();
-        let seen = FpSet::new(self.disk.fp_mem, meta.dir.clone());
+        let seen = std::sync::Arc::new(FpSet::new(self.disk.fp_mem, meta.dir.clone()));
+        if let Some(net) = &self.net {
+            // peers' keys are claimed in it as they ask
+            net.set_seen(seen.clone());
+        }
         let mut trace = Trace::new(self.workers);
+        if let Some(net) = &self.net {
+            trace.set_node(net.me);
+        }
         let mut glogs = GraphLogs::new(self.workers);
         let (mut out, failure) = self.search(&meta, &seen, &mut trace, &mut glogs, t0);
+        // on a cluster node 0 reports; the others keep their trace records
+        // for it until it is done
+        if let Some(net) = self.net.as_ref().filter(|n| n.me != 0) {
+            if let Err(e) = net.serve(&trace) {
+                eprintln!("tla-mc: node {}: {e}", net.me);
+            }
+            drop(trace);
+            self.clean(&meta);
+            out.failure = failure;
+            return out;
+        }
         if let Some(f) = &failure {
             let idx = match f {
                 Failure::Invariant(_, i) | Failure::Deadlock(i) | Failure::Step(_, i, _) | Failure::InitProperty(_, i) => Some(*i),
@@ -412,6 +449,9 @@ impl<'p> Checker<'p> {
                     self.show(n, s);
                 }
             }
+        }
+        if let Some(net) = &self.net {
+            net.finish();
         }
         drop(trace);
         self.clean(&meta);
@@ -447,6 +487,12 @@ impl<'p> Checker<'p> {
         let sv = liveness::sub_vars(self.p, &self.fair);
         let mut init_keys: Vec<u64> = Vec::new();
         let done = |generated, depth, failure| (Outcome { generated, distinct: seen.len(), depth, failure: None }, failure);
+        // before the first level: a cluster node that fails here still
+        // reports, or every other node would wait for it at the first barrier
+        let bail = |generated, depth, failure| match &self.net {
+            None => done(generated, depth, failure),
+            Some(net) => self.bail_cluster(net, seen, generated, depth, failure),
+        };
 
         let mut frontier = Level::default();
         let mut depth = 1;
@@ -475,7 +521,7 @@ impl<'p> Checker<'p> {
         } else {
             let inits = match self.init_states(&mut bufs) {
                 Ok(v) => v,
-                Err(e) => return done(generated, 0, Some(Failure::Eval(e, None))),
+                Err(e) => return bail(generated, 0, Some(Failure::Eval(e, None))),
             };
             let mut log = trace.logs[0].lock().unwrap();
             let mut init_level: Vec<(u64, State)> = Vec::new();
@@ -483,26 +529,31 @@ impl<'p> Checker<'p> {
                 generated += 1;
                 let fp = match self.key_of(&s) {
                     Ok(fp) => fp,
-                    Err(e) => return done(generated, 0, Some(Failure::Eval(e, None))),
+                    Err(e) => return bail(generated, 0, Some(Failure::Eval(e, None))),
                 };
+                if !self.mine(fp) {
+                    // another node's: it counts it
+                    generated -= 1;
+                    continue;
+                }
                 match self.holds(true, &s, None, &mut bufs) {
                     Ok(None) => {}
                     Ok(Some(_)) => continue,
-                    Err(e) => return done(generated, 0, Some(Failure::Eval(e, None))),
+                    Err(e) => return bail(generated, 0, Some(Failure::Eval(e, None))),
                 }
                 let new = match seen.insert(fp) {
                     Ok(b) => b,
-                    Err(e) => return done(generated, 0, Some(Failure::Eval(e, None))),
+                    Err(e) => return bail(generated, 0, Some(Failure::Eval(e, None))),
                 };
                 if new {
                     let idx = match log.append(meta, fp, NO_PARENT) {
                         Ok(i) => i,
-                        Err(e) => return done(generated, 1, Some(Failure::Eval(e, None))),
+                        Err(e) => return bail(generated, 1, Some(Failure::Eval(e, None))),
                     };
                     match self.init_ok(&s, &mut bufs) {
                         Ok(None) => {}
-                        Ok(Some(name)) => return done(generated, 1, Some(Failure::InitProperty(name, idx))),
-                        Err(e) => return done(generated, 1, Some(Failure::Eval(e, Some(idx)))),
+                        Ok(Some(name)) => return bail(generated, 1, Some(Failure::InitProperty(name, idx))),
+                        Err(e) => return bail(generated, 1, Some(Failure::Eval(e, Some(idx)))),
                     }
                     let held = self.holds(false, &s, None, &mut bufs).and_then(|r| match r {
                         None => self.always_ok(&s, &mut bufs),
@@ -515,8 +566,8 @@ impl<'p> Checker<'p> {
                             }
                             init_level.push((idx, s))
                         }
-                        Ok(Some(inv)) => return done(generated, 1, Some(Failure::Invariant(inv, idx))),
-                        Err(e) => return done(generated, 1, Some(Failure::Eval(e, Some(idx)))),
+                        Ok(Some(inv)) => return bail(generated, 1, Some(Failure::Invariant(inv, idx))),
+                        Err(e) => return bail(generated, 1, Some(Failure::Eval(e, Some(idx)))),
                     }
                 }
             }
@@ -527,14 +578,29 @@ impl<'p> Checker<'p> {
         let trace = &*trace;
         let glogs = &*glogs;
 
+        // a cluster's totals, as node 0 last summed them; whether any node
+        // has states to expand
+        let mut totals: Option<crate::cluster::Summary> = None;
+        if let Some(net) = &self.net {
+            let s = crate::cluster::Summary { queued: frontier.len(), on_disk: 0, generated, distinct: seen.len() as u64 };
+            match net.barrier(&s, None) {
+                Ok(d) if d.go => totals = Some(d.totals),
+                Ok(d) => return (Outcome { generated: d.totals.generated, distinct: d.totals.distinct as usize, depth, failure: None }, d.failure),
+                Err(e) => return done(generated, depth, Some(Failure::Eval(e, None))),
+            }
+        }
         let failure: Mutex<Option<Failure>> = Mutex::new(None);
-        let stop = AtomicBool::new(false);
+        // on a cluster, every node's workers stop when any node fails
+        let own_stop = AtomicBool::new(false);
+        let stop: &AtomicBool = self.net.as_ref().map_or(&own_stop, |n| &n.abort);
         let gen_total = AtomicU64::new(generated);
         let mut last_report = Instant::now();
         let ckpt_every = Duration::from_secs(self.disk.checkpoint_secs);
         let mut last_ckpt = Instant::now();
         let mut next_live_check = 1000usize;
-        while !frontier.is_empty() {
+        // a cluster node goes on while any node has states left: node 0
+        // says when the search is over
+        while self.net.is_some() || !frontier.is_empty() {
             if self.disk.checkpoint_secs > 0 && last_ckpt.elapsed() >= ckpt_every {
                 let t = Instant::now();
                 let g = gen_total.load(Ordering::Relaxed);
@@ -570,6 +636,9 @@ impl<'p> Checker<'p> {
             let lvl_t0 = Instant::now();
             let busy_ns = AtomicU64::new(0);
             let busy = &busy_ns;
+            if let Some(net) = &self.net {
+                net.begin_level();
+            }
             std::thread::scope(|s| {
                 for w in 0..self.workers {
                     let (writer, failure, stop, gen_total, sv) = (&writer, &failure, &stop, &gen_total, &sv);
@@ -593,16 +662,48 @@ impl<'p> Checker<'p> {
                         let mut glog = glogs.logs[w].lock().unwrap();
                         let (mut node_edges, mut node_bits): (Vec<(u64, u128)>, Vec<u64>) = (Vec::new(), Vec::new());
                         let mut local_gen = 0u64;
+                        // on a cluster: the successors bound for other nodes;
+                        // those their owners have answered are new
+                        let outgoing = std::cell::RefCell::new(self.net.as_ref().map(|n| crate::cluster::Outgoing::new(n, w, BATCH)));
+                        let mut claimed: Vec<(usize, crate::cluster::Pending)> = Vec::new();
                         let wt0 = Instant::now();
                         let fail = |f: Failure| {
                             let mut g = failure.lock().unwrap();
                             if g.is_none() {
                                 *g = Some(f);
                             }
+                            if let Some(net) = &self.net {
+                                net.raise_abort();
+                            }
                             stop.store(true, Ordering::Relaxed);
                         };
-                        // expand one state; Some(failure) stops the search
-                        let mut handle = |pidx: u64, st: &[Value]| -> Option<Failure> {
+                        // expand one state; Some(failure) stops the search.
+                        // On a cluster, `claimed` instead: a successor found
+                        // here before (below) that its owner, the node given,
+                        // has answered is new (the other arguments unused)
+                        let mut handle = |pidx: u64, st: &[Value], claimed: Option<(usize, crate::cluster::Pending)>| -> Option<Failure> {
+                            if let Some((to, c)) = claimed {
+                                // the rest of what a new successor found here
+                                // goes through (below); then to its owner's queue
+                                let idx = match log.append(meta, c.fp, c.pidx) {
+                                    Ok(i) => i,
+                                    Err(e) => return Some(Failure::Eval(e, None)),
+                                };
+                                chg.clear();
+                                chg.extend((0..nvars).map(|i| (c.chg >> i.min(127)) & 1 != 0));
+                                let held = self.holds(false, &c.st, Some(&chg), &mut bufs).and_then(|r| match r {
+                                    None => self.always_ok(&c.st, &mut bufs),
+                                    some => Ok(some),
+                                });
+                                return match held {
+                                    Ok(None) => {
+                                        outgoing.borrow_mut().as_mut().unwrap().send(self.net.as_ref().unwrap(), to, idx, c.st);
+                                        None
+                                    }
+                                    Ok(Some(inv)) => Some(Failure::Invariant(inv, idx)),
+                                    Err(e) => Some(Failure::Eval(e, Some(idx))),
+                                };
+                            }
                             succ.clear();
                             let (pfp, n) = match self.expand(st, seen, &mut bufs, &mut hv, &mut hs, &mut sc, &mut succ) {
                                 Ok(r) => r,
@@ -651,6 +752,21 @@ impl<'p> Checker<'p> {
                                         Ok(None) => {}
                                         Ok(Some(_)) => continue,
                                         Err(e) => return Some(Failure::Eval(e, Some(pidx))),
+                                    }
+                                }
+                                if let Some(net) = &self.net {
+                                    let o = net.owner(fp);
+                                    if o != net.me {
+                                        // its owner decides whether it is new; if
+                                        // it is, its invariants are checked here,
+                                        // where its parent is known
+                                        let chg = if nvars > 128 {
+                                            u128::MAX
+                                        } else {
+                                            s.iter().zip(st).enumerate().fold(0, |m, (i, (a, b))| if same(a, b) { m } else { m | 1 << i })
+                                        };
+                                        outgoing.borrow_mut().as_mut().unwrap().push(net, o, crate::cluster::Pending { fp, pidx, chg, st: s });
+                                        continue;
                                     }
                                 }
                                 match if done == 2 { Ok(true) } else { seen.insert(fp) } {
@@ -702,6 +818,27 @@ impl<'p> Checker<'p> {
                             if stop.load(Ordering::Relaxed) {
                                 break;
                             }
+                            // answers about the keys this worker asked, and states
+                            // other nodes sent for this one's queue: between
+                            // blocks, so they are not held up
+                            if let Some(net) = &self.net {
+                                if let Err(e) = outgoing.borrow_mut().as_mut().unwrap().answers(net, false, &mut claimed) {
+                                    fail(Failure::Eval(e, None));
+                                    break 'outer;
+                                }
+                                for c in claimed.drain(..) {
+                                    if let Some(f) = handle(0, &[], Some(c)) {
+                                        fail(f);
+                                        break 'outer;
+                                    }
+                                }
+                                while let Some((block, n)) = net.try_frame() {
+                                    if let Err(e) = writer.push_encoded(block, n) {
+                                        fail(Failure::Eval(e, None));
+                                        break 'outer;
+                                    }
+                                }
+                            }
                             // a block (up to BATCH states) at a time, from
                             // memory first, then from the file
                             let i = mem_cursor.fetch_add(1, Ordering::Relaxed);
@@ -712,7 +849,7 @@ impl<'p> Checker<'p> {
                                     break;
                                 }
                                 for (pidx, st) in decoded.drain(..) {
-                                    if let Some(f) = handle(pidx, &st) {
+                                    if let Some(f) = handle(pidx, &st, None) {
                                         fail(f);
                                         break 'outer;
                                     }
@@ -729,9 +866,37 @@ impl<'p> Checker<'p> {
                                 break;
                             }
                             for (pidx, st) in decoded.drain(..) {
-                                if let Some(f) = handle(pidx, &st) {
+                                if let Some(f) = handle(pidx, &st, None) {
                                     fail(f);
                                     break 'outer;
+                                }
+                            }
+                        }
+                        if let Some(net) = &self.net {
+                            // the rest of the keys to ask about, and every answer;
+                            // what is new goes to its owner. Then this worker is
+                            // done sending for the level.
+                            outgoing.borrow_mut().as_mut().unwrap().ask_all(net);
+                            while !stop.load(Ordering::Relaxed) && outgoing.borrow().as_ref().unwrap().waiting() {
+                                if let Err(e) = outgoing.borrow_mut().as_mut().unwrap().answers(net, true, &mut claimed) {
+                                    fail(Failure::Eval(e, None));
+                                }
+                                for c in claimed.drain(..) {
+                                    if let Some(f) = handle(0, &[], Some(c)) {
+                                        fail(f);
+                                        break;
+                                    }
+                                }
+                            }
+                            outgoing.borrow_mut().as_mut().unwrap().flush(net);
+                            net.worker_done(self.workers, depth as u64);
+                            // what the other nodes send until they are all done
+                            // (after a failure, only drained)
+                            while let Some((block, n)) = net.next_frame(depth as u64) {
+                                if !stop.load(Ordering::Relaxed) {
+                                    if let Err(e) = writer.push_encoded(block, n) {
+                                        fail(Failure::Eval(e, None));
+                                    }
                                 }
                             }
                         }
@@ -747,6 +912,46 @@ impl<'p> Checker<'p> {
             if std::env::var_os("TLAMC_LEVEL_PROFILE").is_some() {
                 let wall = lvl_t0.elapsed().as_secs_f64();
                 eprintln!("level {depth}: {} states, wall {:.1} ms, workers busy {:.0}%", frontier.len(), wall * 1e3, busy_ns.load(Ordering::Relaxed) as f64 / 1e9 / (wall * self.workers as f64) * 100.0);
+            }
+            if let Some(net) = &self.net {
+                // every node reports the level; node 0 decides whether
+                // there is another, and which failure, if any, stops it
+                std::mem::replace(&mut frontier, writer.finish()).discard();
+                let s = crate::cluster::Summary {
+                    queued: frontier.len(),
+                    on_disk: frontier.blocks.iter().map(|b| b.count).sum(),
+                    generated: gen_total.load(Ordering::Relaxed),
+                    distinct: seen.len() as u64,
+                };
+                let ours = failure.lock().unwrap().take();
+                match net.barrier(&s, ours) {
+                    Ok(d) => {
+                        *failure.lock().unwrap() = d.failure;
+                        totals = Some(d.totals);
+                        if !d.go {
+                            break;
+                        }
+                        depth += 1;
+                    }
+                    Err(e) => {
+                        *failure.lock().unwrap() = Some(Failure::Eval(e, None));
+                        break;
+                    }
+                }
+                if net.me == 0 && self.progress && last_report.elapsed().as_secs() >= 10 {
+                    last_report = Instant::now();
+                    let t = totals.as_ref().unwrap();
+                    eprintln!(
+                        "progress: depth {depth}, {} generated, {} distinct, {} on queue ({} on disk), {:.1}s ({} nodes)",
+                        t.generated,
+                        t.distinct,
+                        t.queued,
+                        t.on_disk,
+                        t0.elapsed().as_secs_f64(),
+                        net.n
+                    );
+                }
+                continue;
             }
             if stop.load(Ordering::Relaxed) {
                 break;
@@ -801,6 +1006,9 @@ impl<'p> Checker<'p> {
         let mut failure = failure.into_inner().unwrap();
         let generated = gen_total.load(Ordering::Relaxed);
         drop(frontier);
+        if let Some(t) = totals {
+            return (Outcome { generated: t.generated, distinct: t.distinct as usize, depth, failure: None }, failure);
+        }
         if failure.is_none() && graph {
             if self.progress {
                 eprintln!("liveness: checking {} property instances under {} fairness instances", self.props.iter().filter(|i| liveness::is_graph_leaf(i.leaf)).count(), self.fair.len());
@@ -880,7 +1088,11 @@ impl<'p> Checker<'p> {
     /// The states from an initial state to the one at trace index `idx`,
     /// replayed from the fingerprints the trace logs keep.
     fn replay(&self, trace: &Trace, idx: u64) -> Result<Vec<State>, String> {
-        let chain = trace.chain(idx)?;
+        let chain = match &self.net {
+            // a cluster's parents are on the nodes that own them
+            Some(net) => Trace::chain_with(idx, |i| net.trace_get(trace, i))?,
+            None => trace.chain(idx)?,
+        };
         let mut bufs = Bufs::default();
         let inits = self.init_states(&mut bufs)?;
         let mut st = inits.into_iter().find(|s| self.fp(s) == chain[0]).ok_or("could not replay the trace")?;

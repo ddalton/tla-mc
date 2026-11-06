@@ -4,6 +4,7 @@ pub mod ast;
 pub mod check;
 pub mod cli;
 pub mod closure;
+pub mod cluster;
 pub mod codegen;
 pub mod compile;
 pub mod eval;
