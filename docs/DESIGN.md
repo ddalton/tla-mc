@@ -508,7 +508,10 @@ at the handshake.
 Each ordered pair of nodes has its own TCP connection with a sending and
 a receiving thread. A worker waits when 64 MB of its frames are queued for
 one peer; network threads never wait (an answer or a relayed abort cannot
-deadlock behind a full queue).
+deadlock behind a full queue). At start a node listens, looks up all its
+peers at once, and only then gives them 180 s to connect. (Looked up one
+after another inside that window, they ran past it on a 39-node lab
+cluster where half the nodes' resolver took 15 s an answer.)
 
 **Measured** (2026-11-05), six nodes of 2× Xeon Silver 4114 (20 cores, 40
 threads), 125 GB, 10 GbE; compiled, 40 workers a node; flint's

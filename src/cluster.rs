@@ -18,7 +18,7 @@ use crate::check::Failure;
 use crate::store::{self, FpSet, State, Trace, NO_PARENT};
 use std::collections::VecDeque;
 use std::io::{BufReader, BufWriter, Read, Write};
-use std::net::{Shutdown, TcpListener, TcpStream, ToSocketAddrs};
+use std::net::{Shutdown, SocketAddr, TcpListener, TcpStream, ToSocketAddrs};
 use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
 use std::sync::{Arc, Condvar, Mutex, OnceLock};
 use std::thread::JoinHandle;
@@ -148,11 +148,29 @@ fn hello(me: usize, n: usize, hash: u64, nvars: usize) -> Vec<u8> {
     frame(HELLO, &p)
 }
 
+/// The address of every peer of node `me`, the lookups all made at once:
+/// a resolver that takes seconds to answer then costs one lookup, not one
+/// for each peer.
+fn resolve(addrs: &[String], me: usize) -> R<Vec<(usize, SocketAddr)>> {
+    std::thread::scope(|s| {
+        let lookups: Vec<_> = addrs.iter().enumerate().filter(|&(p, _)| p != me).map(|(p, a)| (p, a, s.spawn(move || a.to_socket_addrs()))).collect();
+        lookups
+            .into_iter()
+            .map(|(p, a, h)| {
+                let sa = h.join().map_err(|_| format!("-cluster: {a}: the lookup panicked"))?.map_err(|e| format!("-cluster: {a}: {e}"))?.next().ok_or(format!("-cluster: {a}: no address"))?;
+                Ok((p, sa))
+            })
+            .collect()
+    })
+}
+
 impl Net {
     /// Join the cluster as node `me` of `addrs` (host:port each, the same
-    /// list on every node): listen on our port, connect to every peer, and
-    /// wait until every peer has connected to us. `hash`: the sources';
-    /// nodes that loaded different specs or cfgs refuse each other.
+    /// list on every node): listen on our port, look up every peer, connect
+    /// to each, and wait until every peer has connected to us. The wait
+    /// starts after the lookups, so a slow resolver does not use it up.
+    /// `hash`: the sources'; nodes that loaded different specs or cfgs
+    /// refuse each other.
     pub fn start(me: usize, addrs: &[String], hash: u64, nvars: usize, workers: usize) -> R<Arc<Net>> {
         let n = addrs.len();
         if !(2..=256).contains(&n) || me >= n {
@@ -160,6 +178,7 @@ impl Net {
         }
         let port = addrs[me].rsplit_once(':').and_then(|(_, p)| p.parse::<u16>().ok()).ok_or(format!("-cluster: {} has no port", addrs[me]))?;
         let listener = TcpListener::bind(("0.0.0.0", port)).map_err(|e| format!("-cluster: listening on port {port}: {e}"))?;
+        let peers = resolve(addrs, me)?;
         let net = Arc::new(Net {
             me,
             n,
@@ -207,8 +226,8 @@ impl Net {
             }
             Ok(got)
         });
-        for (peer, addr) in addrs.iter().enumerate().filter(|&(p, _)| p != me) {
-            let sa = addr.to_socket_addrs().map_err(|e| format!("-cluster: {addr}: {e}"))?.next().ok_or(format!("-cluster: {addr}: no address"))?;
+        for (peer, sa) in peers {
+            let addr = &addrs[peer];
             let s = loop {
                 match TcpStream::connect_timeout(&sa, Duration::from_secs(5)) {
                     Ok(s) => break s,
@@ -754,6 +773,16 @@ mod tests {
             assert!((90_000..110_000).contains(&count[o]), "node {o}: {}", count[o]);
             assert_eq!(shards[o].len(), 1024);
         }
+    }
+
+    #[test]
+    fn resolve_gives_every_peer_and_names_a_bad_address() {
+        let addrs = ["127.0.0.1:7001", "127.0.0.1:7002", "[::1]:7003"].map(String::from);
+        let got = resolve(&addrs, 1).unwrap();
+        assert_eq!(got.iter().map(|&(p, sa)| (p, sa.port())).collect::<Vec<_>>(), [(0, 7001), (2, 7003)]);
+        let bad = ["127.0.0.1:7001", "127.0.0.1"].map(String::from);
+        let e = resolve(&bad, 0).unwrap_err();
+        assert!(e.starts_with("-cluster: 127.0.0.1: "), "{e}");
     }
 
     #[test]
