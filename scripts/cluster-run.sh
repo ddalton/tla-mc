@@ -11,9 +11,12 @@
 # and its output is shown here; every node's is kept in LOGS. The binary
 # reaches the others through this machine.
 #
-#   HOSTS        the nodes, node 0 first (names they resolve for each other)
+#   HOSTS        the nodes, node 0 first (names they resolve for each other,
+#                or IP addresses)
 #   CLUSTER_USER the ssh user (default: yours)
-#   PORT         the TCP port every node listens on (default 47000)
+#   PORT         the TCP port every node listens on (default 27470: below
+#                32768, where Linux starts giving outgoing connections their
+#                local ports, and one of those holding it fails the listen)
 #   REMOTE_DIR   under each node's home (default tla-mc-cluster)
 #   LOGS         where the nodes' output is kept here (default cluster-logs/<time>)
 set -euo pipefail
@@ -21,7 +24,7 @@ set -euo pipefail
 read -r -a hosts <<< "${HOSTS:?set HOSTS to the nodes, node 0 first}"
 [ ${#hosts[@]} -ge 2 ] || { echo "cluster-run: HOSTS needs at least two nodes" >&2; exit 2; }
 at=${CLUSTER_USER:+$CLUSTER_USER@}
-port=${PORT:-47000}
+port=${PORT:-27470}
 remote=${REMOTE_DIR:-tla-mc-cluster}
 src=$(cd "$(dirname "$0")/.." && pwd)
 specdir=${1:?usage: HOSTS=... cluster-run.sh SPECDIR [tla-mc options] X.tla}
@@ -57,15 +60,28 @@ if [ $compile = 1 ]; then
     bin=checker
 fi
 
+# the binary comes here once and goes from here to each node: not one
+# connection to the build host per node at once (its sshd drops some of
+# those, MaxStartups), and a node keeps it only if all of it arrived
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+r "$build" "cat $remote/$bin" > "$tmp/$bin"
+size=$(r "$build" "wc -c < $remote/$bin")
+[ "$(wc -c < "$tmp/$bin" | tr -d ' ')" = "$size" ] || { echo "cluster-run: $bin from $build came short" >&2; exit 2; }
+push() {
+    r "$1" "cat > $remote/$bin.tmp && [ \$(wc -c < $remote/$bin.tmp) = $size ] && chmod +x $remote/$bin.tmp && mv $remote/$bin.tmp $remote/$bin" < "$tmp/$bin"
+}
+
 echo "cluster-run: copying $bin and the spec to ${hosts[*]:1}" >&2
+pids=()
 for h in "${hosts[@]:1}"; do
-    (
-        r "$h" "rm -rf $remote/spec"
-        put "$specdir" "$h" spec ./states
-        r "$build" "cat $remote/$bin" | r "$h" "cat > $remote/$bin.tmp && chmod +x $remote/$bin.tmp && mv $remote/$bin.tmp $remote/$bin"
-    ) &
+    { r "$h" "rm -rf $remote/spec" && put "$specdir" "$h" spec ./states && push "$h" ||
+        { echo "cluster-run: copying to $h failed" >&2; exit 1; }; } &
+    pids+=($!)
 done
-wait
+copied=1
+for p in "${pids[@]}"; do wait "$p" || copied=0; done
+[ $copied = 1 ] || exit 2
 
 addrs=$(printf "%s:$port," "${hosts[@]}")
 addrs=${addrs%,}

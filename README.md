@@ -114,10 +114,15 @@ been found on any node. Every node needs the same spec, cfg and tla-mc:
 
 ```sh
 # on each machine, its own place in the list as -node
-tla-mc -cluster h0:47000,h1:47000,h2:47000 -node 1 -workers 40 -config MC.cfg MC.tla
+tla-mc -cluster h0:27470,h1:27470,h2:27470 -node 1 -workers 40 -config MC.cfg MC.tla
 # or from a machine that can ssh to them all: builds on the first, copies, starts all
 HOSTS="h0 h1 h2" scripts/cluster-run.sh SPECDIR -compile -workers 40 -config MC.cfg MC.tla
 ```
+
+Use a port below 32768: above it, Linux gives outgoing connections their
+local ports, and one holding the port makes the listen fail. The list takes
+names or IP addresses; each node looks its peers up once, all at once, before
+it starts waiting for them.
 
 On six nodes of 20 cores each (2× Xeon Silver 4114, 10 GbE), compiled, 40
 workers a node, flint's `LeanP1ReaderScopeHolds` (19.4 M distinct states):
