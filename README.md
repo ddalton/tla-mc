@@ -20,6 +20,8 @@ count — and can compile a spec into a native, parallel checker.
   refinement.
 - **Beyond memory**: the seen set, the queue and the liveness graph spill to disk;
   long runs checkpoint and resume.
+- **Across machines**: `-cluster` spreads one search over several nodes, 4.4×
+  on six ([below](#on-a-cluster)); safety properties for now.
 
 ## Quick start
 
@@ -52,6 +54,7 @@ states/s per core on one model, against ~31,000 compiled).
 | `-lib DIR` | where to find modules not beside the spec, e.g. the [CommunityModules](https://github.com/tlaplus/CommunityModules) `modules/` directory (also `TLAMC_LIB`) |
 | `-metadir DIR`, `-checkpoint MIN`, `-recover DIR` | where state spills and checkpoints go; resume a stopped run |
 | `-fpmem MB`, `-queue-mem MB` | memory for the seen set and the BFS queue before they spill to disk (default: an eighth of the memory available, at least 1024 / 256 MB) |
+| `-cluster HOST:PORT,...`, `-node K` | one search over several machines, each started with the same list and its own place in it ([below](#on-a-cluster)) |
 | `-engine interp\|closure` | the evaluator when not compiled |
 | `-version` | print the version |
 | `-codegen DIR` | write the generated checker's crate to `DIR` and stop |
@@ -99,6 +102,28 @@ time was ~84 minutes). A larger model of the same spec — **9,821,039,047 disti
 states**, three syncing writers — ran to completion in 99 minutes on 192 cores,
 spilling ~790 GB of queue to disk. The runs are recorded in flint's
 `lean/formal/results/2026-10-04-leanp1-gate/`, `2026-10-05-ec2/` and `2026-10-06-ec2/`.
+
+### On a cluster
+
+`-cluster` runs one search over several machines: each node keeps the states
+whose fingerprints it owns (its part of the seen set and of every BFS level,
+with its own workers, memory and disk), and a successor another node owns goes
+there — its 8-byte key first, the state itself only if the owner says it is
+new. Node 0 prints the result and the counterexample, whose states may have
+been found on any node. Every node needs the same spec, cfg and tla-mc:
+
+```sh
+# on each machine, its own place in the list as -node
+tla-mc -cluster h0:47000,h1:47000,h2:47000 -node 1 -workers 40 -config MC.cfg MC.tla
+# or from a machine that can ssh to them all: builds on the first, copies, starts all
+HOSTS="h0 h1 h2" scripts/cluster-run.sh SPECDIR -compile -workers 40 -config MC.cfg MC.tla
+```
+
+On six nodes of 20 cores each (2× Xeon Silver 4114, 10 GbE), compiled, 40
+workers a node, flint's `LeanP1ReaderScopeHolds` (19.4 M distinct states):
+**90.2 s on one node, 20.5 s on six** (4.4×), the same counts on both. Not yet
+on a cluster: liveness properties, checkpoints and `-recover` (refused). How it
+works: [`docs/DESIGN.md`](docs/DESIGN.md#across-machines--cluster).
 
 ### Against other Rust TLA+ model checkers
 

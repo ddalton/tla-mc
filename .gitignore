@@ -4,3 +4,4 @@ gen/
 # tla-mc
 states/
 *.profraw
+cluster-logs/

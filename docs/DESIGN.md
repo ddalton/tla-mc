@@ -469,6 +469,64 @@ default and fully spilled; LeanScopedSyncHolds 246,151 at 64, 1 and 0 MB.
 Not yet: checkpoints only at level boundaries (TLC's can land
 mid-level).
 
+## Across machines (`-cluster`)
+
+One search over several machines, each running the whole checker on its
+own cores, memory and disk (`cluster.rs`). Every node loads the same spec
+and cfg; names are interned in an order fixed by the sources, and the
+fingerprint is unseeded, so a state's encoding and its key are the same
+on every node, and nodes that loaded different sources refuse each other
+at the handshake.
+
+- **Ownership.** Key `fp` belongs to node `owner(fp)`: 32 bits of it that
+  neither the seen set's shards (the top 10) nor its tables (the low ones)
+  use, so each node's part of the set still spreads over all 1024 shards.
+  A node holds the seen set, and the BFS queue, for its own keys only.
+- **A successor another node owns.** Only the owner can say whether it is
+  new. The expanding worker batches such successors per owner and sends
+  their keys (8 bytes each); the owner's network thread claims each one in
+  its seen set and answers a bit per key. For a new one the expanding
+  worker does what it does for a new successor of its own — logs it,
+  checks the invariants with the parent at hand (only the parts reading a
+  variable the step changed) — and sends it to the owner as a block of
+  the queue's own encoding, which the owner appends to its next level
+  without decoding it. Step properties and constraints are judged where
+  the transition is, as on one machine.
+- **Levels in step.** A node whose workers have sent all of a level's
+  successors says so to each peer (after its data, on the same ordered
+  connection); a worker's part of a level ends once every peer has. Every
+  node then reports its totals to node 0, which starts the next level or
+  stops all of them: on an empty queue everywhere, or a failure anywhere
+  (the failing node also raises an abort at once, which node 0 relays).
+- **Traces.** A trace index carries its node in 8 bits (0 on one machine,
+  so the single-machine format is unchanged). Node 0 rebuilds a
+  counterexample by asking each record's node for it, then replays the
+  states forward itself.
+- **Not yet:** liveness (the graph would be split across nodes),
+  checkpoints and `-recover`. Both are refused rather than run partly.
+
+Each ordered pair of nodes has its own TCP connection with a sending and
+a receiving thread. A worker waits when 64 MB of its frames are queued for
+one peer; network threads never wait (an answer or a relayed abort cannot
+deadlock behind a full queue).
+
+**Measured** (2026-11-05), six nodes of 2× Xeon Silver 4114 (20 cores, 40
+threads), 125 GB, 10 GbE; compiled, 40 workers a node; flint's
+`LeanP1ReaderScopeHolds` (19,382,667 distinct, 78,445,945 generated,
+depth 33, the same counts every run, on one node and on six):
+
+| | one node | six nodes | each node's traffic |
+|---|---:|---:|---:|
+| every successor sent whole to its owner | 90.2 s | 34.3 s (2.6×) | ~440 MB/s each way |
+| keys first; only new states sent | | 23.9 s (3.8×) | ~140 MB/s |
+| and checked where found, appended undecoded | | **20.5 s (4.4×)** | ~150 MB/s |
+
+Three in four successors are states seen before, and a state of this spec
+is ~1.3 KB on the wire: sending them whole built, encoded, sent and
+decoded ~1 KB for each duplicate, where one machine drops it right after
+hashing. The invariants are ~30% of a single node's time (63 s without
+them); checking them at the owner, with no parent, checked every part.
+
 ## Where the time went (and what fixed it)
 
 1. Fingerprint every successor from scratch → per-variable hashes, reusing

@@ -392,12 +392,20 @@ impl Meta {
 // ---- trace logs ---------------------------------------------------------
 
 /// A state's trace index: the log (worker slot) in the top 8 bits, the
-/// record's position in that log below.
+/// node of a cluster that keeps the log in the 8 below (0 on one machine),
+/// the record's position in that log below them.
 pub const SLOT_SHIFT: u32 = 56;
+pub const NODE_SHIFT: u32 = 48;
 pub const NO_PARENT: u64 = u64::MAX;
+
+/// The cluster node whose trace logs hold the record at `idx`.
+pub fn node_of(idx: u64) -> usize {
+    ((idx >> NODE_SHIFT) & 0xff) as usize
+}
 
 pub struct Log {
     slot: usize,
+    node: usize,
     file: Option<File>,
     /// records [0, flushed) are in the file, the rest in `buf`
     flushed: u64,
@@ -411,7 +419,7 @@ impl Log {
         if self.buf.len() >= self.cap {
             self.flush(meta)?;
         }
-        let idx = ((self.slot as u64) << SLOT_SHIFT) | (self.flushed + self.buf.len() as u64);
+        let idx = ((self.slot as u64) << SLOT_SHIFT) | ((self.node as u64) << NODE_SHIFT) | (self.flushed + self.buf.len() as u64);
         self.buf.push([fp, parent]);
         Ok(idx)
     }
@@ -452,15 +460,27 @@ impl Trace {
         // at most ~32M records (512 MB) buffered in all; TLAMC_TRACE_BUF
         // (records per log) forces spilling, for testing
         let cap = std::env::var("TLAMC_TRACE_BUF").ok().and_then(|v| v.parse().ok()).unwrap_or((32 << 20) / workers.max(1)).max(1);
-        Trace { logs: (0..workers.max(1)).map(|slot| Mutex::new(Log { slot, file: None, flushed: 0, buf: Vec::new(), cap })).collect() }
+        Trace { logs: (0..workers.max(1)).map(|slot| Mutex::new(Log { slot, node: 0, file: None, flushed: 0, buf: Vec::new(), cap })).collect() }
+    }
+    /// The logs of cluster node `node`: their records' indexes say so.
+    pub fn set_node(&mut self, node: usize) {
+        self.logs.iter_mut().for_each(|l| l.get_mut().unwrap().node = node);
+    }
+    /// The (fingerprint, parent) record at `idx`, in this node's logs.
+    pub fn get(&self, idx: u64) -> R<[u64; 2]> {
+        let slot = (idx >> SLOT_SHIFT) as usize;
+        self.logs.get(slot).ok_or("bad trace index")?.lock().unwrap().get(idx & ((1 << NODE_SHIFT) - 1))
     }
     /// The fingerprints from an initial state to the state at `idx`.
     pub fn chain(&self, idx: u64) -> R<Vec<u64>> {
+        Self::chain_with(idx, |i| self.get(i))
+    }
+    /// The same, each record read by `get` (a cluster's are on its nodes).
+    pub fn chain_with(idx: u64, mut get: impl FnMut(u64) -> R<[u64; 2]>) -> R<Vec<u64>> {
         let mut out = Vec::new();
         let mut cur = idx;
         while cur != NO_PARENT {
-            let slot = (cur >> SLOT_SHIFT) as usize;
-            let [fp, parent] = self.logs.get(slot).ok_or("bad trace index")?.lock().unwrap().get(cur & ((1 << SLOT_SHIFT) - 1))?;
+            let [fp, parent] = get(cur)?;
             out.push(fp);
             cur = parent;
         }
@@ -744,6 +764,11 @@ fn skip(b: &[u8], pos: &mut usize) -> R<()> {
     Ok(())
 }
 
+/// States as a block of a BFS level holds them (for another node's level).
+pub fn encode_block(states: &[(u64, State)], out: &mut Vec<u8>) {
+    encode_states(states, out)
+}
+
 fn encode_states(states: &[(u64, State)], out: &mut Vec<u8>) {
     // where each variable of the state before was written: successors of
     // one state come in runs, and a compound value they share is copied
@@ -916,6 +941,29 @@ impl<'a> LevelWriter<'a> {
             self.mem_bytes.fetch_sub(n, Ordering::Relaxed);
             self.spilled.store(true, Ordering::Relaxed);
         }
+        self.write(enc, count)?;
+        batch.clear();
+        Ok(())
+    }
+    /// A block encoded elsewhere (another node of a cluster), kept as it is.
+    pub fn push_encoded(&self, bytes: Vec<u8>, count: u64) -> R<()> {
+        if count == 0 {
+            return Ok(());
+        }
+        let n = bytes.len() as u64;
+        if !self.spilled.load(Ordering::Relaxed) {
+            if self.mem_bytes.fetch_add(n, Ordering::Relaxed) + n <= self.budget {
+                self.mem.lock().unwrap().push(MemBlock { bytes, count });
+                return Ok(());
+            }
+            self.mem_bytes.fetch_sub(n, Ordering::Relaxed);
+            self.spilled.store(true, Ordering::Relaxed);
+        }
+        self.write(&bytes, count)
+    }
+    /// A block to the level's file.
+    fn write(&self, enc: &[u8], count: u64) -> R<()> {
+        let n = enc.len() as u64;
         // reserve the block's place in the file; blocks stay in the order
         // reserved, and the level is read only after every write is done
         let off = {
@@ -930,9 +978,7 @@ impl<'a> LevelWriter<'a> {
             d.1.push(Block { off, len: n, count });
             off
         };
-        io("queue file", self.file.get().unwrap().0.write_all_at(enc, off))?;
-        batch.clear();
-        Ok(())
+        io("queue file", self.file.get().unwrap().0.write_all_at(enc, off))
     }
     pub fn finish(self) -> Level {
         let (_, blocks) = self.disk.into_inner().unwrap();
@@ -1089,7 +1135,7 @@ pub fn recover(meta: &Meta, source_hash: u64, nvars: usize, fps: &FpSet, trace: 
     if trace.logs.len() < lens.len() {
         let cap = trace.logs[0].lock().unwrap().cap;
         for slot in trace.logs.len()..lens.len() {
-            trace.logs.push(Mutex::new(Log { slot, file: None, flushed: 0, buf: Vec::new(), cap }));
+            trace.logs.push(Mutex::new(Log { slot, node: 0, file: None, flushed: 0, buf: Vec::new(), cap }));
         }
     }
     for (slot, &len) in lens.iter().enumerate() {
