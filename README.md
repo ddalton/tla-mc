@@ -20,8 +20,9 @@ count — and can compile a spec into a native, parallel checker.
   refinement.
 - **Beyond memory**: the seen set, the queue and the liveness graph spill to disk;
   long runs checkpoint and resume.
-- **Across machines**: `-cluster` spreads one search over several nodes, 4.4×
-  on six ([below](#on-a-cluster)); safety properties for now.
+- **Across machines**: `-cluster` spreads one search over several nodes: 4.4×
+  on six, and 693 M distinct states in 134 s on 39 ([below](#on-a-cluster));
+  safety properties for now.
 
 ## Quick start
 
@@ -124,11 +125,19 @@ local ports, and one holding the port makes the listen fail. The list takes
 names or IP addresses; each node looks its peers up once, all at once, before
 it starts waiting for them.
 
-On six nodes of 20 cores each (2× Xeon Silver 4114, 10 GbE), compiled, 40
-workers a node, flint's `LeanP1ReaderScopeHolds` (19.4 M distinct states):
-**90.2 s on one node, 20.5 s on six** (4.4×), the same counts on both. Not yet
-on a cluster: liveness properties, checkpoints and `-recover` (refused). How it
-works: [`docs/DESIGN.md`](docs/DESIGN.md#across-machines--cluster).
+On nodes of 20 cores each (2× Xeon Silver 4114, 125 GB, 10 GbE), compiled, 40
+workers a node, with the same counts on every number of nodes:
+
+| flint model | one node | six nodes | 39 nodes |
+|---|---:|---:|---:|
+| `LeanP1ReaderScopeHolds` (19.4 M distinct states) | 90.2 s | **20.5 s** (4.4×) | not run |
+| `LeanP1AllHolds` (693.2 M distinct, 3.2 G generated, depth 41) | not run | 740 s | **134.3 s** |
+
+On 39 nodes `LeanP1AllHolds` runs 5.5× faster than on six (6.5× the nodes):
+5.2 M distinct states/s, each node keeping 17.8 M of them, the widest level 61 M
+states and nothing spilled to disk. Not yet on a cluster: liveness properties,
+checkpoints and `-recover` (refused). How it works:
+[`docs/DESIGN.md`](docs/DESIGN.md#across-machines--cluster).
 
 ### Against other Rust TLA+ model checkers
 
