@@ -201,6 +201,12 @@ This is one machine and seven models; the logs are in the results directory, and
   workers and 1.25–1.4× on the M1, flint's unchanged
   ([#7](https://github.com/ddalton/tla-mc/pull/7)). The gate passed on it: the
   tests, 114 Examples models and the 343 flint entries.
+  0.3.0 adds one thing, `-cluster`: one search over several machines
+  ([#8](https://github.com/ddalton/tla-mc/pull/8)). One machine is unchanged, the
+  same counts and, within 0.6%, the same times. On three local nodes the 84 gate
+  models without liveness give one machine's verdict, counts exact where they hold,
+  counterexamples as long where they fail; the 30 with liveness are refused. The
+  gate passed on it: the tests, 114 Examples models and the 343 flint entries.
 - **Its own tests**, several of them checked to fail with the code they guard
   disabled.
 - **On every pull request** ([`gate/`](gate/README.md)): the tests; the 114 Examples
