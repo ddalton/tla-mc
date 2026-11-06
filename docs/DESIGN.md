@@ -511,7 +511,8 @@ one peer; network threads never wait (an answer or a relayed abort cannot
 deadlock behind a full queue). At start a node listens, looks up all its
 peers at once, and only then gives them 180 s to connect. (Looked up one
 after another inside that window, they ran past it on a 39-node lab
-cluster where half the nodes' resolver took 15 s an answer.)
+cluster where half the nodes' resolver took 5 s a lookup: 38 lookups,
+190 s.)
 
 **Measured** (2026-11-05), six nodes of 2× Xeon Silver 4114 (20 cores, 40
 threads), 125 GB, 10 GbE; compiled, 40 workers a node; flint's
